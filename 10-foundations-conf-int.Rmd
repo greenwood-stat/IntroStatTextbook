@@ -295,6 +295,8 @@ Section \@ref(theory-prop) also provides a longer discussion on what "95% confid
 <!-- TODO -->
 <!-- ::: -->
 
+-   A **simulation-based confidence interval** takes percentiles of a bootstrap distribution of sample statistics as its endpoints. For example, a 95% confidence interval is the interval from the 2.5^th^ percentile to the 97.5^th^ percentile --- those percentiles that capture the middle 95% of the bootstrap distribution.
+
 ### Terms {-}
 
 We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.

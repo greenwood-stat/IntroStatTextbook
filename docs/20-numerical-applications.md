@@ -27,7 +27,7 @@ First, we'll review how to obtain probabilities and critical values for the $t$-
 
 The tricky part is making sure you get the correct area under the distribution.  For our example, assume we have 12 degrees of freedom.  If your $t$-statistic is positive, say $t = 1.33$:
 
-```r
+``` r
 #Area less than observed:
 pt(1.33, df = 12)
 #> [1] 0.896
@@ -43,7 +43,7 @@ pt(1.33, df = 12)
 
 If your $t$-statistic is negative, say $t = -2.75$:
 
-```r
+``` r
 #Area less than observed:
 pt(-2.75, df = 12)
 #> [1] 0.0088
@@ -72,15 +72,16 @@ To find $t^*_{df}$ using R, we use the `qt()` function (short for "quantile of $
 Simulation-based inference for quantitative data will use functions in the `catstats` package, as we did for categorical data.  
 
 
-```r
+``` r
 library(catstats)
 ```
 
 The `catstats` functions for paired data assume that the values for the two groups are in separate columns in a data frame.  We'll work through an example using the tire wear data, which is currently stored in "long format", with one variable for brand and another for tread depth.  First, we'll convert it to "wide format", with a column for each brand. 
-<img src="20-numerical-applications_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;" />
+
+<img src="20-numerical-applications_files/figure-html/unnamed-chunk-4-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 
-```r
+``` r
 tiresWide <- tires %>% 
   select(brand, tread, car) %>%   #select only ID, group, and outcome vars
   pivot_wider(names_from = brand,   #name of variable for group
@@ -88,17 +89,19 @@ tiresWide <- tires %>%
 tiresWide <- as.data.frame(tiresWide)
 ```
 
-Once we have this format, all the paired data functions in `catstats` should be able to handle the data.  First, we can get a look at the pairs of observations:
+Once we have this format, all the paired data functions in `catstats` should be able to handle the data.  First, we can get a look at the pairs of observations that were in the second and third columns of the dataset:
 
-```r
-paired_observed_plot(tiresWide)
+``` r
+paired_observed_plot(tiresWide %>% select(`Smooth Turn`, `Quick Spin`),
+                     which_first = 1,
+                     gg = T)
 ```
 
-<img src="20-numerical-applications_files/figure-html/observedPlotPaired-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="20-numerical-applications_files/figure-html/observedPlotPaired-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 This gives us an idea of the distributions within groups and the differences within pairs. To perform the hypothesis test for a difference in tread depth after 1000 miles, we use the `paired_test()` function:
 
-```r
+``` r
 paired_test(
   data = tiresWide,  #data frame with observed values in groups
   shift = -0.002,  #amount to shift differences to bootstrap null distribution
@@ -112,7 +115,7 @@ paired_test(
 Note that `data` could also be a vector of differences.  If this is all you have, you can do hypothesis testing and generate a confidence interval, but won't be able to use `paired_observed_plot()`.  Now let's take a look at the output of the function:
 
 
-```r
+``` r
 set.seed(1054)
 paired_test(
   data = tiresWide,  #data frame with observed values in groups
@@ -124,7 +127,7 @@ paired_test(
 )
 ```
 
-<img src="20-numerical-applications_files/figure-html/pairedSimTest-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="20-numerical-applications_files/figure-html/pairedSimTest-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 This figure displays the bootstrapped null distribution, with the mean and standard deviation of the draws in the upper right corner. We want to see that the mean is close to the null value (almost always zero).  If it isn't, check the value of the `shift` input, and/or increase the `number_repetitions` if the shift is correct.
 
@@ -132,7 +135,7 @@ The red lines give the cutoffs based on the observed statistic, and values as or
 
 Finally, we will want to generate a confidence interval for the true mean difference using the `paired_bootstrap_CI()` function.
 
-```r
+``` r
 set.seed(2374)
 paired_bootstrap_CI(
   data = tiresWide,   #Wide-form data set or vector of differences
@@ -142,7 +145,7 @@ paired_bootstrap_CI(
 )
 ```
 
-<img src="20-numerical-applications_files/figure-html/pairedBootstrapCI-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="20-numerical-applications_files/figure-html/pairedBootstrapCI-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference.  We've requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption.  In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Smooth Turn.
 
@@ -151,7 +154,7 @@ Here we again have a bootstrap distribution, but now it is the bootstrap distrib
 To implement theory-based inference for a paired mean difference in R, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Chapter \@ref(inference-paired-means).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
 
 
-```r
+``` r
 t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for one of each pair
        y = ucla_textbooks_f18$amazon_new,  #Outcomes for other of each pair
        paired = TRUE,  #Tell it to do a paired t-test!!
@@ -167,7 +170,7 @@ Important things to note here:
 
 Now let's take a look at the output of the call:
 
-```r
+``` r
 t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for first in order of subtraction
        y = ucla_textbooks_f18$amazon_new,  #Outcomes for second in order of subtraction
        paired = TRUE,  #Tell it to do a paired t-test!!
@@ -207,7 +210,7 @@ The confidence interval given is a one-sided confidence interval, since we have 
 
 You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called `price_diff`.  This format is also usable with the `t.test()` function:
 
-```r
+``` r
 ucla_textbooks_f18 %>% 
   mutate(price_diff = bookstore_new-amazon_new)
 
@@ -223,7 +226,7 @@ This requires two fewer arguments:
 
 The output for this will look almost identical to the two-variable version above:
 
-```r
+``` r
 ucla_textbooks_f18 <- ucla_textbooks_f18 %>% 
   mutate(price_diff = bookstore_new-amazon_new)
 
@@ -249,7 +252,7 @@ Since we only input one variable, `t.test()` treats it as a one-sample t-test, b
 
 We can perform simulation-based inference for a difference in means using the `two_mean_test()` and `two_mean_bootstrap_CI()` functions in the `catstats` package.  As a working example, let's look at the embryonic stem cell data from Section \@ref(rand2mean).
 
-```r
+``` r
 #load data from openintro package
 data (stem_cell)
 
@@ -260,7 +263,7 @@ stem_cell <- stem_cell %>%
 
 To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the `two_mean_test()` function in the `catstats` package, which is very similar to the use of the `two_proportion_test()` function in Chapter \@ref(inference-categ-applications):
 
-```r
+``` r
 set.seed(4750)
 two_mean_test(
   formula = change ~ trmt,  #Always use response ~ explanatory
@@ -272,7 +275,7 @@ two_mean_test(
 )
 ```
 
-<img src="20-numerical-applications_files/figure-html/unnamed-chunk-7-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="20-numerical-applications_files/figure-html/unnamed-chunk-7-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top.  Check that you had the right value for the observed difference!  Next to the box plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red.  The figure caption gives the approximate p-value: for this set of 1000 simulations, we have only 1/1000 = 0.001.
 
@@ -286,7 +289,7 @@ There are a couple of things to note when using the `two_mean_test` function:
 We use bootstrapping to find a confidence interval for the true difference in means with the `two_mean_bootstrap_CI()` function.  The arguments will be very similar to `two_mean_test()`, with the addition of the confidence level.
 
 
-```r
+``` r
 set.seed(450)
 two_mean_bootstrap_CI(
   formula = change ~ trmt,  #Always use response ~ explanatory
@@ -297,7 +300,7 @@ two_mean_bootstrap_CI(
 )
 ```
 
-<img src="20-numerical-applications_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="20-numerical-applications_files/figure-html/unnamed-chunk-8-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines.  The figure caption gives the estimated confidence interval.  In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average. 
 
@@ -307,13 +310,13 @@ To demonstrate theory-based methods in R for a difference in means, we will cont
 
 To perform theory-based inference, we will again use the `t.test()` function in R.  Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is `ctrl - esc`, since `ctrl` is first alphabetically.  We can get our preferred order of subtracation of `esc-ctrl` this way:
 
-```r
+``` r
 stem_cell$trmt <- relevel(stem_cell$trmt, ref = "esc")
 ```
 
 
 
-```r
+``` r
 t.test(stem_cell$change ~ stem_cell$trmt, #Always use response ~ explanatory
        alternative = "two.sided", # Direction of alternative
        conf.level = 0.9)  #confidence level as a proportion
@@ -353,7 +356,7 @@ help file for the `paired_test` function.
 2. `paired_test`: Simulation-based hypothesis test for a paired mean difference.  
 
     * `data` = vector of observed differences; or two-column data frame, with values for each group in the two columns
-    * `which_first` = name of group which should be first in order of subtraction (if data is two-column data frame)  
+    * `which_first` = name of group which should be first in order of subtraction (if data are two-column data frame)  
     * `shift` = amount to shift differences for bootstrapping of null distribution
     * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
     * `as_extreme_as` = value of observed statistic
@@ -363,7 +366,7 @@ help file for the `paired_test` function.
 3. `paired_bootstrap_CI`: Bootstrap confidence interval for a paired mean difference.  
 
     * `data` = vector of observed differences; or two-column data frame, with values for each group in the two columns
-    * `which_first` = name of group which should be first in order of subtraction (if data is two-column data frame)  
+    * `which_first` = name of group which should be first in order of subtraction (if data are two-column data frame)  
     * `confidence_level` = confidence level as a decimal (e.g., 0.90, 0.95, etc)
     * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
 <br>

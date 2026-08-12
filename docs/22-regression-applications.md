@@ -18,7 +18,7 @@ Coming soon!
 
 As a demonstration, we will apply the simulation-based inference functions for regression in the `catstats` package to our data on the change in House seats in the President's party at midterm elections as a function of national unemployment rate.  We need to drop the Great Depression years before we perform our simulations:
 
-```r
+``` r
 #load data
 data(midterms_house)
 #Drop Great Depression years
@@ -28,7 +28,7 @@ d <- midterms_house %>%
 
 Now that we have the correct data, we can perform a randomization test of the slope in the simple linear regression.
 
-```r
+``` r
 library(catstats)
 set.seed(621311)
 regression_test(
@@ -41,13 +41,13 @@ regression_test(
 )
 ```
 
-<img src="22-regression-applications_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="22-regression-applications_files/figure-html/unnamed-chunk-3-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for `as_extreme_as`).  Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red.  The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.
 
 To obtain a confidence interval for the slope, we use `regression_bootstrap_CI()`, with the same core arguments as `regression_test()`.
 
-```r
+``` r
 set.seed(31143518)
 regression_bootstrap_CI(
   formula = house_change ~ unemp,  #Always use response ~ explanatory
@@ -58,7 +58,7 @@ regression_bootstrap_CI(
 )
 ```
 
-<img src="22-regression-applications_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="22-regression-applications_files/figure-html/unnamed-chunk-4-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 Here we have the bootstrap distribution of the slope based on the observed data, with the upper and lower bounds of the confidence interval highlighted in red.  The confidence interval is also given in the caption of the figure.  Here, we are 95% confident that the true change in the number of seats in the House of Representatives for each additional percentage point in unemployment is between a decrease of 2.6 percent of seats and an increase of 0.3 percent of seats.
 
@@ -80,7 +80,7 @@ To demonstrate theory-based inference in R, we will revisit the gift aid and inc
 
 Instead, when doing linear regression, we want to save the regression results so we can get complete output using `summary()`:
 
-```r
+``` r
 gift_reg <- lm(gift_aid~family_income, #Always use reponse ~ explanatory
                data = elmhurst)  #Name of data set
 summary(gift_reg)  #Obtain full results for regression
@@ -108,14 +108,14 @@ This produces a lot of output; we will focus on the *Coefficients* section.  Thi
 
 We can compute confidence intervals by hand using the reported estimate, standard error, and df.  We will need to compute a t-value as in Chapters \@ref(inference-one-mean), \@ref(inference-paired-means), and \@ref(inference-two-means):
 
-```r
+``` r
 #Get t-star for 90% confidence interval
 qt(.95, df = 48)
 #> [1] 1.68
 ```
 
 
-```r
+``` r
 #Lower confidence bound
 -0.04307 - 1.677224*0.01081
 #> [1] -0.0612
@@ -127,7 +127,7 @@ qt(.95, df = 48)
 
 We can also use the `confint()` function in R to compute confidence intervals for regression coefficients.
 
-```r
+``` r
 confint(gift_reg,   #name of regression results
         level = 0.9)  #confidence level as a proportion
 #>                   5 %    95 %

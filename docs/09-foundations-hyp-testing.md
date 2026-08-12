@@ -21,7 +21,7 @@ However, quantifying the variability in the data is neither obvious nor easy to 
 
 First, a reminder on notation.
 We generally use $\pi$ to denote a population proportion and $\hat{p}$ to a sample proportion.
-Similarly, we generally use $\mu$ to denote a population mean and $\bar{x}$ to denote a sample mean.
+Similarly, we generally use $\mu$ to denote a population mean and $\bar{y}$ to denote a sample mean.
 
 ::: workedexample
 Suppose your professor splits the students in your class into two groups: students who sit on the left side of the classroom and students who sit on the right side of the classroom.
@@ -67,7 +67,7 @@ How well can humans distinguish one "Martian" letter from another? The Figure \@
 
 ### Observed data
 
-This same image and question from Figure \@ref(fig:kiki-bumba) were presented to an introductory statistics class of 38 students. In that class, 34 students correctly identified Bumba as the Martian letter on the left. That is, a sample proportion of $\hat{p} = 34/38 = 0.90$. Assuming we can't read Martian, is this result surprising?
+This same image and question from Figure \@ref(fig:kiki-bumba) were presented to an introductory statistics class of 38 students. In that class, 34 students correctly identified Bumba as the Martian letter on the left. That is, a sample proportion of $\hat{p} = 34/38 = 0.895$. Assuming we can't read Martian, is this result surprising?
 
 One of two possibilities occurred:
 
@@ -187,6 +187,8 @@ In this study, a smaller proportion of female identifying applications were prom
 </tbody>
 </table>
 
+
+
 The data are visualized in Figure \@ref(fig:sex-rand-obs) as a set of cards.
 Note that each card denotes a personnel file (an observation from our data set) and the colors indicate the decision: red for promoted and white for not promoted.
 Additionally, the observations are broken up into groups of male and female identifying groups.
@@ -273,7 +275,7 @@ Figure \@ref(fig:sex-rand-shuffle-1) highlights both the shuffle and the realloc
 
 <div class="figure" style="text-align: center">
 <img src="images/sex-rand-02-shuffle-1.png" alt="The 48 red and white cards which denote the original data are shuffled and reassigned, 24 to each group indicating 24 male files and 24 female files." width="80%" />
-<p class="caption">(\#fig:sex-rand-shuffle-1)The sex discrimination data is shuffled and reallocated to new groups of male and female files.</p>
+<p class="caption">(\#fig:sex-rand-shuffle-1)The sex discrimination data are shuffled and reallocated to new groups of male and female files.</p>
 </div>
 
 Then, as we did with the original data, we tabulate the results and determine the fraction of personnel files designated as "male" and "female" who were promoted.
@@ -319,6 +321,8 @@ Table \@ref(tab:sex-discrimination-rand-1) show the results of one such simulati
   </tr>
 </tbody>
 </table>
+
+
 
 ::: {.guidedpractice data-latex=""}
 What is the difference in promotion rates between the two simulated groups in Table \@ref(tab:sex-discrimination-rand-1) ?
@@ -481,11 +485,11 @@ The test statistic in the the Martian alphabet example was the sample proportion
 
 Since the p-value is a probability, its value will always be between 0 and 1. The closer the p-value is to 0, the stronger the evidence we have *against the null hypothesis*. Why? A small p-value means that our data are *unlikely* to occur, *if* the null hypothesis is true. We take that to mean that the null hypothesis isn't a plausible assumption, and we reject it. This process mimics the scientific method---it is easier to disprove a theory than prove it. If scientists want to find evidence that a new drug reduces the risk of stroke, then they assume it *doesn't* reduce the risk of stroke and then show that the observed data are so unlikely to occur that the more plausible explanation is that the drug works.
 
-Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect.
+Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide little to no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect.
 
 <div class="figure" style="text-align: center">
-<img src="images/soe_gradient_gray.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
-<p class="caption">(\#fig:pval-continuum)Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis.</p>
+<img src="images/soe_gradient_gray.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide little to no evidence against the null hypothesis." width="100%" />
+<p class="caption">(\#fig:pval-continuum)Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide little to no evidence against the null hypothesis.</p>
 </div>
 
 <!-- You may use Table @ref(tab:pvalue-continuum) as a general guide, but remember that there are no hard and fast cutoffs on this scale---the strength of evidence against the null with a p-value of 0.049 is the same as with a p-value of 0.051.  -->
@@ -611,13 +615,15 @@ We introduced the following terms in the chapter. If you're not sure what some o
 </tbody>
 </table>
 
+
+
 ### Key ideas {-}
 
 <!-- ::: {.underconstruction} -->
 <!-- Need to update this list and distribute across chapters -->
 <!-- ::: -->
 
-In this chapter, we introduced statistical inference methods --- both simulation-based and theory-based --- for scenarios involving one or two categorical variables.
+In this chapter, we introduced statistical inference methods --- both simulation-based and theory-based --- for scenarios involving one or two categorical variables. These are explored further in Chapters \ref(inference-one-prop) and \ref(inference-two-prop).
 
 -   All of statistical inference revolves around the idea of **sampling variability**: as we take different samples from the population, the value of the sample statistic will vary. In this chapter, we explored sampling variability of a single proportion and a difference in two proportions. If we see some sort of effect in our sample, was it just due to chance? or was it indicative of an actual effect in the population? **Statistical inference** is how we answer this question.
 
@@ -636,12 +642,8 @@ In this chapter, we introduced statistical inference methods --- both simulation
     -   A small p-value indicates that the observed data would have been unusual if the null hypothesis were true, and thus we have evidence against the null hypothesis.
     -   A p-value that is not small indicates that the observed data are plausible under the assumption of the null hypothesis, and thus we do not have evidence against the null hypothesis.
 
--   Since decisions in hypothesis testing are based on probabilities (i.e., p-values), it's possible to make the wrong decision. A **Type 1 error** occurs when we reject a true null hypothesis. If we fail to reject a false null hypothesis, we have committed a **Type 2 error**.
 
--   The **power** of a hypothesis test is the probability of rejecting the null hypothesis, which varies depending on the true value of the parameter. Power typically increases as the sample size increases. Thus, small samples may show an effect in the sample that is **practically important** --- may matter in real life --- but the test did not have high enough power to reject the null hypothesis, so was not statistically significant. On the other hand, large samples may show an effect in the sample that isn't very meaningful, or not practically important, but is **statistically significant** due to high power.
+-  All statistical inference methods require that certain **validity conditions** are met; otherwise, the methods are not valid. Almost all methods in this textbook require that the observations in our data set are **independent**.[^9-independence-clarification] Additionally, theory-based methods require that we have a large enough sample size so that the Central Limit Theorem can apply. For proportions, this condition is known as the **success-failure condition**.
 
--   A **simulation-based confidence interval** takes percentiles of a bootstrap distribution of sample statistics as its endpoints. For example, a 95% confidence interval is the interval from the 2.5^th^ percentile to the 97.5^th^ percentile --- those percentiles that capture the middle 95% of the bootstrap distribution.
 
--   A **theory-based confidence interval** is always of the form: statistic $\pi$ (multiplier) $\times$ (standard error of the statistic). The amount we add and subtract to the statistic ((multiplier) $\times$ (standard error of the statistic)) is called the **margin of error**. The mathematical model for the sampling variability of a sample proportion or difference in sample proportions is the **normal distribution**, which is due to the **Central Limit Theorem**.
-
--   All statistical inference methods require that certain **validity conditions** are met; otherwise, the methods are not valid. All methods in this textbook require that the observations in our data set are **independent**. Additionally, theory-based methods require that we have a large enough sample size so that the Central Limit Theorem can apply. For proportions, this condition is known as the **success-failure condition**.
+[^9-independence-clarification]: *Independence* is used and assessed in four ways in this course. (1) The independence assumption *for observations* means that each row in the data set is not obviously related to another, such as having multiple observations for the same subject. This assumption is relaxed in the matched pairs procedure where two observations from each subject are directly analyzed. Look for violations of independence due to clustered or repeated measures from groups that are part of the data collection process. Random sampling does not protect from violations of independence, as even randomly selected observations could vary based on underlying groups. (2) Independence is used to describe the groups in the two-sample proportion and two-sample mean settings, in order to convey the idea that there are not connections between observations in the two groups, now both across and within groups. (3) Independence is used to frame the null hypothesis in the two-sample proportion setting, where the results for the response variable are assumed to be independent of the group. (4) Independence is tested between two quantitative variables in the correlation material.

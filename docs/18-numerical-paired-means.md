@@ -13,7 +13,7 @@ However, this particular dependency, **pairing**, can be modeled quite effective
 Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter \@ref(inference-one-mean)) but has other features that resemble a two-sample analysis (which we will see in Chapter \@ref(inference-two-means)).  Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are **paired** --- each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:pairedexamples)Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.</caption>
+<caption>(\#tab:pairedexamples)(\#tab:pairedexamples)Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Observational unit </th>
@@ -51,6 +51,8 @@ Paired data represent a particular type of experimental structure where the anal
 </table>
 
 
+
+
 ::: {.onebox}
 **Paired data.**
 
@@ -86,13 +88,13 @@ A comparison of the notation used in Chapter \@ref(inference-one-mean) and the n
 |-|-|-|
 | Population mean | $\mu$ | $\mu_d$ |
 | Population standard deviation | $\sigma$ | $\sigma_d$ |
-| Sample mean | $\bar{x}$ | $\bar{x}_d$ |
+| Sample mean | $\bar{y}$ | $\bar{y}_d$ |
 | Sample standard deviation | $s$ | $s_d$ |
 | Sample size | $n$ | $n$ |
 :::
 
 Instead of $n$ representing the number of observational units, with paired data, $n$ represents the number of *pairs* in paired samples.
-Similarly, $\mu_d$, $\sigma_d$, $\bar{x}_d$ and $s_d$ are all calculated
+Similarly, $\mu_d$, $\sigma_d$, $\bar{y}_d$ and $s_d$ are all calculated
 using the differences in measured values within pairs.
 
 ## Shifted bootstrap test for $H_0: \mu_d = 0$
@@ -125,7 +127,7 @@ Since these are paired data, we are only interested in the _differences_ in tire
 
 
 
-```r
+``` r
 favstats(differences)
 #>       min        Q1  median     Q3    max    mean      sd  n missing
 #>  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0
@@ -154,16 +156,16 @@ To simulate the null distribution of mean differences in tread, we will implemen
 
 To simulate a null distribution of sample mean differences under the null hypothesis $H_0: \mu_d = 0$,
 
-1. Subtract $\bar{x}_d$ from each difference in the original sample:^[Subtracting the sample mean is equivalent to adding $\mu_0 - \bar{x}_d$ when the null value is $\mu_d = 0$. Thus, we are using the same process as that described in Section \@ref(one-mean-null-boot).]  
+1. Subtract $\bar{y}_d$ from each difference in the original sample:^[Subtracting the sample mean is equivalent to adding $\mu_0 - \bar{y}_d$ when the null value is $\mu_d = 0$. Thus, we are using the same process as that described in Section \@ref(one-mean-null-boot).]  
   \[
-    x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
+    y_1 - \bar{y}_d , \hspace{2.5mm} y_2 - \bar{y}_d, \hspace{2.5mm}  y_3 - \bar{y}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  y_n - \bar{y}_d.
   \]
-  Note that if $\bar{x}_d$ is a negative number, then you will be _adding_ the distance between $0$ and $\bar{x}_d$ to each value.
+  Note that if $\bar{y}_d$ is a negative number, then you will be _adding_ the distance between $0$ and $\bar{y}_d$ to each value.
 2. Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.
 :::
 
 
-To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to **shift the data** to be centered at the null value of zero. We shift the data by subtracting $\bar{x}_d$ = 0.00196 from each tire tread difference in the sample. This process is displayed in Figure \@ref(fig:tiredata-diff-shift).
+To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to **shift the data** to be centered at the null value of zero. We shift the data by subtracting $\bar{y}_d$ = 0.00196 from each tire tread difference in the sample. This process is displayed in Figure \@ref(fig:tiredata-diff-shift).
 
 <div class="figure" style="text-align: center">
 <img src="18-numerical-paired-means_files/figure-html/tiredata-diff-shift-1.png" alt="Mean difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin) (blue), and the shifted mean differences in tire tread (red), found by subtracting 0.00196 to each original difference." width="75%" />
@@ -175,10 +177,10 @@ To use bootstrapping to generate a null distribution of sample mean differences 
 
 By repeatedly sampling 25 cars with replacement from the shifted bootstrap null distribution, we can create a distribution of the sample mean difference in tire tread, as seen in Figure \@ref(fig:pairRandomiz).
 As expected (because the differences were generated under the null hypothesis), the histogram is centered at zero.
-A line has been drawn at the observed mean difference, $\bar{x}_d$ = 0.00196, which is nowhere near the differences simulated from natural variability when we assume there is no difference in tire tread wear between brands.
+A line has been drawn at the observed mean difference, $\bar{y}_d$ = 0.00196, which is nowhere near the differences simulated from natural variability when we assume there is no difference in tire tread wear between brands.
 Because the observed mean difference in tire tread is so far away from the natural variability of the randomized mean differences in tire tread, we believe that there is a significant difference in tire tread wear between Smooth Turn and Quick Spin brand tires, on average. 
 
-To be precise, the proportion of simulated $\bar{x}_d$'s that are 0.00196 inches or further away from zero is 0.023. This p-value gives us strong evidence in favor of our alternative $H_A: \mu_d \neq 0$.
+To be precise, the proportion of simulated $\bar{y}_d$'s that are 0.00196 inches or further away from zero is 0.023. This p-value gives us strong evidence in favor of our alternative $H_A: \mu_d \neq 0$.
 Our conclusion is that the extra amount of tire tread remaining in Smooth Turn brand tires after 1,000 miles, on average, is due to more than just natural variability. Data from this experiment suggest that, on average, Smooth Turn tires differ in tread wear compared to Quick Spin tires.
 
 <div class="figure" style="text-align: center">
@@ -226,7 +228,7 @@ $14.26 - 13.55 = 0.71$,
  and the third is $13.50 - 12.53 = 0.97$.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:textbooksDF)Four cases of the `ucla_textbooks_f18` dataset.</caption>
+<caption>(\#tab:textbooksDF)(\#tab:textbooksDF)Four cases of the `ucla_textbooks_f18` dataset.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> subject </th>
@@ -268,10 +270,12 @@ $14.26 - 13.55 = 0.71$,
 </tbody>
 </table>
 
+
+
 A dot plot of the data is shown in Figure \@ref(fig:text-price-hist), with summary statistics displayed below.
 
 
-```r
+``` r
 favstats(ucla_textbooks_f18$price_diff)
 ```
 
@@ -336,11 +340,11 @@ Figure \@ref(fig:diffInTextbookPricesF18), and summary statistics
 are displayed in Table \@ref(tab:textbooksSummaryStats).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:textbooksSummaryStats)Summary statistics for the 68 new textbook price differences (UCLA -- Amazon).</caption>
+<caption>(\#tab:textbooksSummaryStats)(\#tab:textbooksSummaryStats)Summary statistics for the 68 new textbook price differences (UCLA -- Amazon).</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> $n$ </th>
-   <th style="text-align:left;"> $\bar{x}_{d}$ </th>
+   <th style="text-align:left;"> $\bar{y}_{d}$ </th>
    <th style="text-align:left;"> $s_{d}$ </th>
   </tr>
  </thead>
@@ -352,6 +356,8 @@ are displayed in Table \@ref(tab:textbooksSummaryStats).
   </tr>
 </tbody>
 </table>
+
+
 
 
 <div class="figure" style="text-align: center">
@@ -388,13 +394,13 @@ We are considering two scenarios:
 
 Next, we check the independence and normality conditions:
 
-* The observations are based on a simple random sample,
+* The observations (textbooks) are based on a simple random sample and we have no information on any sub-groups in the books,
   so independence is reasonable.
 
 * While there are some outliers,
   $n = 68$ and none of the outliers
   are particularly extreme, so the normality
-  of $\bar{x}$ is satisfied.
+  of $\bar{y}$ is satisfied.
 
 With these conditions satisfied,
   we can move forward with the $t$-distribution.
@@ -412,31 +418,31 @@ Complete the hypothesis test started
 ---
 
 To start, compute the standard error associated with
-  $\bar{x}_{d}$ using the sample standard
+  $\bar{y}_{d}$ using the sample standard
   deviation of the differences
   ($s_{d} = 13.42$)
   and the number of differences
   ($n = 68$):
   \begin{align*}
-  SE(\bar{x}_{d})
+  SE(\bar{y}_{d})
     = \frac{s_{d}}{\sqrt{n}}
     = \frac{13.42}{\sqrt{68}} = 1.63
   \end{align*}
   The test statistic is the T-score of
-  $\bar{x}_{d}$
+  $\bar{y}_{d}$
   under the null condition that the actual mean
   difference is 0:
   \begin{align*}
   T
-    = \frac{\bar{x}_{d} - 0}
-        { SE(\bar{x}_{d})}
+    = \frac{\bar{y}_{d} - 0}
+        { SE(\bar{y}_{d})}
     = \frac{3.58 - 0}{1.63} = 2.20
   \end{align*}
   This value tells us that the sample mean difference in price, \$3.58,
   is 2.20 standard errors above zero (the null value).
   
   To visualize the p-value, the approximate sampling distribution
-  of $\bar{x}_{d}$ is drawn as though
+  of $\bar{y}_{d}$ is drawn as though
   $H_0$ is true,
   and the p-value is represented by the shaded upper tail in Figure \@ref(fig:textbooksF18HTTails). This area is equivalent
   to the area above 2.20 on a $t$-distribution with $df = n - 1$ = 68 $-$ 1 = 67 degrees of freedom.
@@ -451,8 +457,8 @@ To start, compute the standard error associated with
 
 
 <div class="figure" style="text-align: center">
-<img src="18-numerical-paired-means_files/figure-html/textbooksF18HTTails-1.png" alt="Distribution of $\bar{x}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value." width="90%" />
-<p class="caption">(\#fig:textbooksF18HTTails)Distribution of $\bar{x}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value.</p>
+<img src="18-numerical-paired-means_files/figure-html/textbooksF18HTTails-1.png" alt="Distribution of $\bar{y}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value." width="90%" />
+<p class="caption">(\#fig:textbooksF18HTTails)Distribution of $\bar{y}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value.</p>
 </div>
 
 <!-- TODO later - add note to compare to 99% CI in previous section, which contained zero. -->
@@ -472,7 +478,7 @@ To find the confidence interval,
   and the standard error into the confidence
   interval formula:
   \begin{align*}
-  \bar{x}_d \ \pm\ t^{\star} \times SE(\bar{x}_d)
+  \bar{y}_d \ \pm\ t^{\star} \times SE(\bar{y}_d)
       \quad\to\quad
           3.58 \ \pm\ 2.00 \times 1.63
       \quad\to\quad (0.32, 6.84)
@@ -543,6 +549,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
   </tr>
 </tbody>
 </table>
+
+
 
 <!-- ### Key ideas {-} -->
 

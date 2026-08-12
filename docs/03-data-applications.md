@@ -96,7 +96,7 @@ and their data type. Or, we could use the `head()` function to see the first
 few rows of the data set.
 
 
-```r
+``` r
 data(email50)
 glimpse(email50)
 #> Rows: 50
@@ -125,22 +125,21 @@ glimpse(email50)
 ```
 
 
-```r
+``` r
 head(email50) 
 #> # A tibble: 6 × 21
-#>   spam  to_multiple from     cc sent_e…¹ time                image attach dollar
-#>   <fct> <fct>       <fct> <int> <fct>    <dttm>              <dbl>  <dbl>  <dbl>
-#> 1 0     0           1         0 1        2012-01-04 06:19:16     0      0      0
-#> 2 0     0           1         0 0        2012-02-16 13:10:06     0      0      0
-#> 3 1     0           1         4 0        2012-01-04 08:36:23     0      2      0
-#> 4 0     0           1         0 0        2012-01-04 10:49:52     0      0      0
-#> 5 0     0           1         0 0        2012-01-27 02:34:45     0      0      9
-#> 6 0     0           1         0 0        2012-01-17 10:31:57     0      0      0
-#> # … with 12 more variables: winner <fct>, inherit <dbl>, viagra <dbl>,
+#>   spam  to_multiple from     cc sent_email time                image attach
+#>   <fct> <fct>       <fct> <int> <fct>      <dttm>              <dbl>  <dbl>
+#> 1 0     0           1         0 1          2012-01-04 06:19:16     0      0
+#> 2 0     0           1         0 0          2012-02-16 13:10:06     0      0
+#> 3 1     0           1         4 0          2012-01-04 08:36:23     0      2
+#> 4 0     0           1         0 0          2012-01-04 10:49:52     0      0
+#> 5 0     0           1         0 0          2012-01-27 02:34:45     0      0
+#> 6 0     0           1         0 0          2012-01-17 10:31:57     0      0
+#> # ℹ 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>, viagra <dbl>,
 #> #   password <dbl>, num_char <dbl>, line_breaks <int>, format <fct>,
 #> #   re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>, exclaim_mess <dbl>,
-#> #   number <fct>, and abbreviated variable name ¹​sent_email
-#> # ℹ Use `colnames()` to see all variable names
+#> #   number <fct>
 ```
 
 
@@ -158,7 +157,7 @@ For example `data[i,j]` will extract the entry in row $i$ and column $j$;
 Notice, when extracting an  entire row (or column), you do not need to specify the columns (or rows) you would like, which is why the second entry does not contain a number. 
 
 
-```r
+``` r
 email50$num_char # The num_char variable column
 #>  [1] 21.705  7.011  0.631  2.454 41.623  0.057  0.809  5.229  9.277 17.170
 #> [11] 64.401 10.368 42.793  0.451 29.233  9.794  2.139  0.130  4.945 11.533
@@ -172,14 +171,13 @@ email50[47,3] # The entry in the 47th row and 3rd column
 #> 1 1
 email50[47,] # The 47th row
 #> # A tibble: 1 × 21
-#>   spam  to_multiple from     cc sent_e…¹ time                image attach dollar
-#>   <fct> <fct>       <fct> <int> <fct>    <dttm>              <dbl>  <dbl>  <dbl>
-#> 1 0     1           1         0 0        2012-03-06 07:10:00     0      0      0
-#> # … with 12 more variables: winner <fct>, inherit <dbl>, viagra <dbl>,
+#>   spam  to_multiple from     cc sent_email time                image attach
+#>   <fct> <fct>       <fct> <int> <fct>      <dttm>              <dbl>  <dbl>
+#> 1 0     1           1         0 0          2012-03-06 07:10:00     0      0
+#> # ℹ 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>, viagra <dbl>,
 #> #   password <dbl>, num_char <dbl>, line_breaks <int>, format <fct>,
 #> #   re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>, exclaim_mess <dbl>,
-#> #   number <fct>, and abbreviated variable name ¹​sent_email
-#> # ℹ Use `colnames()` to see all variable names
+#> #   number <fct>
 ```
 
 
@@ -263,7 +261,7 @@ two types of school, `public` and `private`.
 First, load the data into your R session:
 
 
-```r
+``` r
 data(hsb2) # Load the data
 ```
 
@@ -273,7 +271,7 @@ produced by the `$` command with `table` and the chaining
 syntax done with `%>%`.
 
 
-```r
+``` r
 table(hsb2$schtyp) 
 #> 
 #>  public private 
@@ -281,7 +279,7 @@ table(hsb2$schtyp)
 ```
 is equivalent to
 
-```r
+``` r
 hsb2 %>%
   select(schtyp) %>% # Select the schtyp variable
   table()
@@ -309,7 +307,7 @@ to public for each of the observations in the data set and
 `filter` for those where this is true.
 
 
-```r
+``` r
 # Filter for public schools
 hsb2_public <- hsb2 %>%  # Save final result as hsb2_public
   filter(schtyp == "public")  # Only include observations
@@ -336,7 +334,7 @@ However, in order to be able to refer back to this value later on,
 we might want to store it as an object that we can refer to by name.
 
 
-```r
+``` r
 # Calculate average reading score and show the value
 mean(hsb2$read)
 #> [1] 52.2
@@ -346,7 +344,7 @@ So instead of just printing the result, let’s save it as
 a new object called `avg_read`.
 
 
-```r
+``` r
 # Calculate average reading score and store as avg_read
 avg_read <- mean(hsb2$read)
 ```
@@ -369,7 +367,7 @@ existing data frame `hsb2`.
 
 
 
-```r
+``` r
 hsb2 <- hsb2 %>% mutate(read_cat = 
                           ifelse(read < avg_read, 
                                  "below average", 
@@ -417,6 +415,8 @@ However you should be able to easily spot them as **bolded text**.
 </table>
 
 
+
+
 ## R functions {-}
 
 The following R functions were introduced in this chapter.
@@ -429,17 +429,17 @@ The following R functions were introduced in this chapter.
    <td style="text-align:left;"> `read.csv()` </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> `[ , ]` </td>
+   <td style="text-align:left;"> `$` </td>
    <td style="text-align:left;"> `glimpse()` </td>
    <td style="text-align:left;"> `select()` </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> `==` </td>
+   <td style="text-align:left;"> `[ , ]` </td>
    <td style="text-align:left;"> `head()` </td>
    <td style="text-align:left;"> `table()` </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> `$` </td>
+   <td style="text-align:left;"> `==` </td>
    <td style="text-align:left;"> `ifelse()` </td>
    <td style="text-align:left;"> &lt;- </td>
   </tr>
@@ -450,4 +450,6 @@ The following R functions were introduced in this chapter.
   </tr>
 </tbody>
 </table>
+
+
 

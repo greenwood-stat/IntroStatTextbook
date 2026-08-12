@@ -69,11 +69,9 @@ References for the sources of the real data are provided at the end of the book.
 
 ## STAT 216 Coursepack {-}
 
-Each week, you will work through in-class activities with your team mates and the guidance of your instructor. These activities, as well as reading guides to guide you in taking notes on the required readings and videos, are included in the _STAT 216 Coursepack_. This course requires you to purchase a printed copy of the _STAT 216 Coursepack_ and bring it with you to class each day. 
+Each week, you will work through in-class activities with your teammates and the guidance of your instructor. These activities, as well as reading guides to guide you in taking notes on the required readings and videos, are included in the _STAT 216 Coursepack_. This course requires you to purchase a printed copy of the _STAT 216 Coursepack_ and bring it with you to class each day. 
 
-The coursepack is available for purchase through the [MSU Bookstore](https://www.msubookstore.org/). You may purchase the coursepack in person, or you may purchase online and have the coursepack shipped to you. The coursepack will be available in the MSU Bookstore on the first day of classes. Chapter 1 of the coursepack is provided here if you do not have the coursepack by your first day of class.
-
-* [STAT 216 Coursepack: Chapter 1](Coursepack-Ch1.pdf)
+The coursepack is available for purchase through the [MSU Bookstore](https://www.msubookstore.org/). The coursepack will be available in the MSU Bookstore on the first day of classes.
 
 ## Acknowledgements {-}
 

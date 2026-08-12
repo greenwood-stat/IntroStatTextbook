@@ -70,6 +70,7 @@ library(catstats)
 ```
 
 The `catstats` functions for paired data assume that the values for the two groups are in separate columns in a data frame.  We'll work through an example using the tire wear data, which is currently stored in "long format", with one variable for brand and another for tread depth.  First, we'll convert it to "wide format", with a column for each brand. 
+
 ```{r echo = FALSE, include = TRUE}
 # Copied from paired mean section
 set.seed(47)
@@ -83,9 +84,9 @@ tires <- data.frame(tread = c(brandA, brandB),
 tires %>%
   mutate(`Tire Brand` = brand) %>%
 ggplot(aes( x = `Tire Brand`, y = tread, color = `Tire Brand`)) +
-  geom_boxplot() +
-  geom_point() +
-  geom_line(aes(group = car), color = "grey") +
+  geom_boxplot(alpha = 0) + #needed to avoid double-plotting points outside fence
+  geom_point(alpha = 0.5) +
+  geom_line(aes(group = car), color = "grey", alpha = 0.8) +
   ylab("Tire tread (inches)") + 
   xlab("Brand of tires.")
 ```
@@ -98,9 +99,11 @@ tiresWide <- tires %>%
 tiresWide <- as.data.frame(tiresWide)
 ```
 
-Once we have this format, all the paired data functions in `catstats` should be able to handle the data.  First, we can get a look at the pairs of observations:
-```{r observedPlotPaired, echo = TRUE}
-paired_observed_plot(tiresWide)
+Once we have this format, all the paired data functions in `catstats` should be able to handle the data.  First, we can get a look at the pairs of observations that were in the second and third columns of the dataset:
+```{r observedPlotPaired, echo = TRUE, fig.height = 12}
+paired_observed_plot(tiresWide %>% select(`Smooth Turn`, `Quick Spin`),
+                     which_first = 1,
+                     gg = T)
 ```
 
 This gives us an idea of the distributions within groups and the differences within pairs. To perform the hypothesis test for a difference in tread depth after 1000 miles, we use the `paired_test()` function:
@@ -301,7 +304,7 @@ help file for the `paired_test` function.
 2. `paired_test`: Simulation-based hypothesis test for a paired mean difference.  
 
     * `data` = vector of observed differences; or two-column data frame, with values for each group in the two columns
-    * `which_first` = name of group which should be first in order of subtraction (if data is two-column data frame)  
+    * `which_first` = name of group which should be first in order of subtraction (if data are two-column data frame)  
     * `shift` = amount to shift differences for bootstrapping of null distribution
     * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
     * `as_extreme_as` = value of observed statistic
@@ -311,7 +314,7 @@ help file for the `paired_test` function.
 3. `paired_bootstrap_CI`: Bootstrap confidence interval for a paired mean difference.  
 
     * `data` = vector of observed differences; or two-column data frame, with values for each group in the two columns
-    * `which_first` = name of group which should be first in order of subtraction (if data is two-column data frame)  
+    * `which_first` = name of group which should be first in order of subtraction (if data are two-column data frame)  
     * `confidence_level` = confidence level as a decimal (e.g., 0.90, 0.95, etc)
     * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
 <br>
