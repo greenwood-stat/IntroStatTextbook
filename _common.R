@@ -57,10 +57,16 @@ drawnormal = function(m=0, s=1, xlabel="Z", maintitle="",shade=FALSE,dir="lower"
 suppressMessages(library(catstats))
 suppressMessages(library(gapminder))
 suppressMessages(library(ggraph))
+suppressMessages(library(ggmosaic))
 suppressMessages(library(igraph))
 suppressMessages(library(mosaic))
 suppressMessages(library(plotly))
 suppressMessages(library(RColorBrewer))
+#remotes::install_github("hrbrmstr/waffle")
+suppressMessages(library(waffle))
+suppressMessages(library(tibble))
+
+
 
 # packages that are loaded in exercises files in IMS
 suppressMessages(library(cherryblossom))
@@ -104,6 +110,7 @@ suppressMessages(library(skimr))
 suppressMessages(library(survival))
 suppressMessages(library(tidymodels))
 suppressMessages(library(tidyverse))
+
 suppressMessages(library(waffle)) # Need package version >= 1.0.1
 # Github install: https://github.com/hrbrmstr/waffle
 

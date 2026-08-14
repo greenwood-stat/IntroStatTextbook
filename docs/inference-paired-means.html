@@ -1,138 +1,681 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R</title>
-<meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="In Chapter 17, analysis was done to summarize a quantitative variable measured on a single population. What if we were to measure that variable twice on the same observational unit? In this case,...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-paired-means.html">
-<meta property="og:description" content="In Chapter 17, analysis was done to summarize a quantitative variable measured on a single population. What if we were to measure that variable twice on the same observational unit? In this case,...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="In Chapter 17, analysis was done to summarize a quantitative variable measured on a single population. What if we were to measure that variable twice on the same observational unit? In this case,...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
-    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-    for (let popover of popovers){
-      const div = document.createElement('div');
-      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-      div.innerHTML = popover.getAttribute('data-content');
-      
-      // Will this work with TeX on its own line?
-      var has_math = div.querySelector("span.math");
-      if (has_math) {
-        document.body.appendChild(div);
-      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-      	MathJax.Hub.Queue(function(){
-          popover.setAttribute('data-content', div.innerHTML);
-      	})
-      }
-    }
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R</title>
+  <meta name="description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="github-repo" content="MTstateIntroStats/IntroStatTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R" />
+  
+  <meta name="twitter:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  
+
+<meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager, Mark Greenwood" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="inference-one-mean.html"/>
+<link rel="next" href="inference-two-means.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
 <style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
-  </style>
-<link rel="stylesheet" href="css/ims-style.css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/ims-style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="authors.html">Authors</a></li>
-<li><a class="" href="preface.html">Preface</a></li>
-<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
-<li class="book-part">Introduction to data</li>
-<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
-<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
-<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
-<li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
-<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
-<li class="book-part">Foundations of inference</li>
-<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
-<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
-<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
-<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
-<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
-<li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
-<li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
-<li><a class="active" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
-<li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
-<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
-<li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
-<li><a class="" href="references.html">References</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MSU Intro Stat with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="authors.html"><a href="authors.html"><i class="fa fa-check"></i>Authors</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#examples-and-exercises"><i class="fa fa-check"></i>Examples and exercises</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#data-sets-and-their-sources"><i class="fa fa-check"></i>Data sets and their sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#stat-216-coursepack"><i class="fa fa-check"></i>STAT 216 Coursepack</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i>Preliminaries: Getting started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#accessing-rstudio"><i class="fa fa-check"></i>Accessing RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#alternative-options-for-accessing-rstudio"><i class="fa fa-check"></i>Alternative options for accessing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#packages"><i class="fa fa-check"></i>Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#using-packages"><i class="fa fa-check"></i>Using packages</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#the-catstats-package"><i class="fa fa-check"></i>The <code>catstats</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#projects"><i class="fa fa-check"></i>Projects</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#r-script-files"><i class="fa fa-check"></i>R script files</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#loading-data"><i class="fa fa-check"></i>Loading data</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-1"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-files"><i class="fa fa-check"></i>Exporting files</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-r-script-files"><i class="fa fa-check"></i>Exporting R script files</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-2"><i class="fa fa-check"></i>Try it!</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-plots"><i class="fa fa-check"></i>Exporting plots</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-3"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#home"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i>Troubleshooting</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#extra-references"><i class="fa fa-check"></i>Extra references</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction to data</b></span></li>
+<li class="chapter" data-level="1" data-path="data-hello.html"><a href="data-hello.html"><i class="fa fa-check"></i><b>1</b> Hello data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-hello.html"><a href="data-hello.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.2" data-path="data-hello.html"><a href="data-hello.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-hello.html"><a href="data-hello.html#observations-variables-and-data-frames"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data frames</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-hello.html"><a href="data-hello.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-hello.html"><a href="data-hello.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-hello.html"><a href="data-hello.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.2.5" data-path="data-hello.html"><a href="data-hello.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-hello.html"><a href="data-hello.html#chp1-review"><i class="fa fa-check"></i><b>1.3</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#terms"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#key-ideas"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-design.html"><a href="data-design.html"><i class="fa fa-check"></i><b>2</b> Study design</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-design.html"><a href="data-design.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>2.1</b> Sampling principles and strategies</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-design.html"><a href="data-design.html#populations-and-samples"><i class="fa fa-check"></i><b>2.1.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-design.html"><a href="data-design.html#parameters-and-statistics"><i class="fa fa-check"></i><b>2.1.2</b> Parameters and statistics</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-design.html"><a href="data-design.html#anecdotal-evidence"><i class="fa fa-check"></i><b>2.1.3</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-design.html"><a href="data-design.html#sampling-from-a-population"><i class="fa fa-check"></i><b>2.1.4</b> Sampling from a population</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-design.html"><a href="data-design.html#samp-methods"><i class="fa fa-check"></i><b>2.1.5</b> Four sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-design.html"><a href="data-design.html#observational-studies"><i class="fa fa-check"></i><b>2.2</b> Observational studies</a></li>
+<li class="chapter" data-level="2.3" data-path="data-design.html"><a href="data-design.html#experiments"><i class="fa fa-check"></i><b>2.3</b> Experiments</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data-design.html"><a href="data-design.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>2.3.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-design.html"><a href="data-design.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>2.3.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-design.html"><a href="data-design.html#scope-of-inference"><i class="fa fa-check"></i><b>2.4</b> Scope of inference</a></li>
+<li class="chapter" data-level="2.5" data-path="data-design.html"><a href="data-design.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#terms-1"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#key-ideas-1"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-applications.html"><a href="data-applications.html"><i class="fa fa-check"></i><b>3</b> Applications: Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-applications.html"><a href="data-applications.html#dataframes-in-r"><i class="fa fa-check"></i><b>3.1</b> Dataframes in R</a></li>
+<li class="chapter" data-level="3.2" data-path="data-applications.html"><a href="data-applications.html#datastruc"><i class="fa fa-check"></i><b>3.2</b> Tidy structure of data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-applications.html"><a href="data-applications.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>3.3</b> Using the pipe to chain</a></li>
+<li class="chapter" data-level="3.4" data-path="data-applications.html"><a href="data-applications.html#a-data-wrangling-example"><i class="fa fa-check"></i><b>3.4</b> A data wrangling example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#filtering"><i class="fa fa-check"></i>Filtering</a></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#mutating"><i class="fa fa-check"></i>Mutating</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#terms-2"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#r-functions"><i class="fa fa-check"></i>R functions</a></li>
+</ul></li>
+<li class="part"><span><b>II Exploratory data analysis</b></span></li>
+<li class="chapter" data-level="4" data-path="explore-categorical.html"><a href="explore-categorical.html"><i class="fa fa-check"></i><b>4</b> Exploring categorical data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="explore-categorical.html"><a href="explore-categorical.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>4.1</b> Contingency tables and conditional proportions</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="explore-categorical.html"><a href="explore-categorical.html#row-and-column-proportions"><i class="fa fa-check"></i><b>4.1.1</b> Row and column proportions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="explore-categorical.html"><a href="explore-categorical.html#sample-proportions-and-population-proportions"><i class="fa fa-check"></i><b>4.1.2</b> Sample proportions and population proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="explore-categorical.html"><a href="explore-categorical.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>4.2</b> Bar plots and mosaic plots</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="explore-categorical.html"><a href="explore-categorical.html#mosaic-plots"><i class="fa fa-check"></i><b>4.2.1</b> Mosaic plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="explore-categorical.html"><a href="explore-categorical.html#why-not-pie-charts"><i class="fa fa-check"></i><b>4.3</b> Why not pie charts?</a></li>
+<li class="chapter" data-level="4.4" data-path="explore-categorical.html"><a href="explore-categorical.html#simpson"><i class="fa fa-check"></i><b>4.4</b> Simpson’s paradox</a></li>
+<li class="chapter" data-level="4.5" data-path="explore-categorical.html"><a href="explore-categorical.html#chp4-review"><i class="fa fa-check"></i><b>4.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#terms-3"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#key-ideas-2"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="explore-numerical.html"><a href="explore-numerical.html"><i class="fa fa-check"></i><b>5</b> Exploring quantitative data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="explore-numerical.html"><a href="explore-numerical.html#scatterplots"><i class="fa fa-check"></i><b>5.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="5.2" data-path="explore-numerical.html"><a href="explore-numerical.html#dotplots"><i class="fa fa-check"></i><b>5.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="5.3" data-path="explore-numerical.html"><a href="explore-numerical.html#histograms"><i class="fa fa-check"></i><b>5.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="5.4" data-path="explore-numerical.html"><a href="explore-numerical.html#variance-sd"><i class="fa fa-check"></i><b>5.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="5.5" data-path="explore-numerical.html"><a href="explore-numerical.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>5.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="5.6" data-path="explore-numerical.html"><a href="explore-numerical.html#describing-and-comparing-quantitative-distributions"><i class="fa fa-check"></i><b>5.6</b> Describing and comparing quantitative distributions</a></li>
+<li class="chapter" data-level="5.7" data-path="explore-numerical.html"><a href="explore-numerical.html#robust-statistics"><i class="fa fa-check"></i><b>5.7</b> Robust statistics</a></li>
+<li class="chapter" data-level="5.8" data-path="explore-numerical.html"><a href="explore-numerical.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>5.8</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="5.9" data-path="explore-numerical.html"><a href="explore-numerical.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>5.9</b> Mapping data (special topic)</a></li>
+<li class="chapter" data-level="5.10" data-path="explore-numerical.html"><a href="explore-numerical.html#chp5-review"><i class="fa fa-check"></i><b>5.10</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#terms-4"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#key-ideas-3"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="explore-regression.html"><a href="explore-regression.html"><i class="fa fa-check"></i><b>6</b> Correlation and regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="explore-regression.html"><a href="explore-regression.html#fit-line-res-cor"><i class="fa fa-check"></i><b>6.1</b> Fitting a line, residuals, and correlation</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="explore-regression.html"><a href="explore-regression.html#fitting-a-line-to-data"><i class="fa fa-check"></i><b>6.1.1</b> Fitting a line to data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="explore-regression.html"><a href="explore-regression.html#using-linear-regression-to-predict-possum-head-lengths"><i class="fa fa-check"></i><b>6.1.2</b> Using linear regression to predict possum head lengths</a></li>
+<li class="chapter" data-level="6.1.3" data-path="explore-regression.html"><a href="explore-regression.html#residuals"><i class="fa fa-check"></i><b>6.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="6.1.4" data-path="explore-regression.html"><a href="explore-regression.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>6.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="explore-regression.html"><a href="explore-regression.html#least-squares-regression"><i class="fa fa-check"></i><b>6.2</b> Least squares regression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="explore-regression.html"><a href="explore-regression.html#gift-aid-for-freshman-at-elmhurst-college"><i class="fa fa-check"></i><b>6.2.1</b> Gift aid for freshman at Elmhurst College</a></li>
+<li class="chapter" data-level="6.2.2" data-path="explore-regression.html"><a href="explore-regression.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>6.2.2</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="6.2.3" data-path="explore-regression.html"><a href="explore-regression.html#finding-and-interpreting-the-least-squares-line"><i class="fa fa-check"></i><b>6.2.3</b> Finding and interpreting the least squares line</a></li>
+<li class="chapter" data-level="6.2.4" data-path="explore-regression.html"><a href="explore-regression.html#calculating-the-least-squares-regression-line-using-summary-statistics-special-topic"><i class="fa fa-check"></i><b>6.2.4</b> Calculating the least squares regression line using summary statistics (special topic)</a></li>
+<li class="chapter" data-level="6.2.5" data-path="explore-regression.html"><a href="explore-regression.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>6.2.5</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="6.2.6" data-path="explore-regression.html"><a href="explore-regression.html#describing-the-strength-of-a-fit"><i class="fa fa-check"></i><b>6.2.6</b> Describing the strength of a fit</a></li>
+<li class="chapter" data-level="6.2.7" data-path="explore-regression.html"><a href="explore-regression.html#categorical-predictor-two-levels"><i class="fa fa-check"></i><b>6.2.7</b> Categorical predictors with two levels (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="explore-regression.html"><a href="explore-regression.html#outliers-in-regression"><i class="fa fa-check"></i><b>6.3</b> Outliers in linear regression</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="explore-regression.html"><a href="explore-regression.html#types-of-outliers"><i class="fa fa-check"></i><b>6.3.1</b> Types of outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="explore-regression.html"><a href="explore-regression.html#chp6-review"><i class="fa fa-check"></i><b>6.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#data-visualization-summary"><i class="fa fa-check"></i>Data visualization summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#summary-measures"><i class="fa fa-check"></i>Summary measures</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#notation-summary"><i class="fa fa-check"></i>Notation summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#terms-5"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#key-ideas-4"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html"><i class="fa fa-check"></i><b>7</b> Multivariable models</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#gapminder-world"><i class="fa fa-check"></i><b>7.1</b> Gapminder world</a></li>
+<li class="chapter" data-level="7.2" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#simpsons-paradox-revisited"><i class="fa fa-check"></i><b>7.2</b> Simpson’s paradox revisited</a></li>
+<li class="chapter" data-level="7.3" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#regression-multiple-predictors"><i class="fa fa-check"></i><b>7.3</b> Multiple regression (special topic)</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#ind-and-cat-predictors"><i class="fa fa-check"></i><b>7.3.1</b> Indicator and categorical predictors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#many-predictors-in-a-model"><i class="fa fa-check"></i><b>7.3.2</b> Many predictors in a model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#terms-6"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#key-ideas-5"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="explore-applications.html"><a href="explore-applications.html"><i class="fa fa-check"></i><b>8</b> Applications: Explore</a></li>
+<li class="part"><span><b>III Foundations of inference</b></span></li>
+<li class="chapter" data-level="9" data-path="foundations-randomization.html"><a href="foundations-randomization.html"><i class="fa fa-check"></i><b>9</b> Hypothesis testing with randomization</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#Martian"><i class="fa fa-check"></i><b>9.1</b> Motivating example: Martian alphabet</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-data"><i class="fa fa-check"></i><b>9.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#variability-in-a-statistic"><i class="fa fa-check"></i><b>9.1.2</b> Variability in a statistic</a></li>
+<li class="chapter" data-level="9.1.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-statistic-vs.-null-statistics"><i class="fa fa-check"></i><b>9.1.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#caseStudySexDiscrimination"><i class="fa fa-check"></i><b>9.2</b> Case study: Sex discrimination</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-data-1"><i class="fa fa-check"></i><b>9.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="9.2.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#variability-of-the-statistic"><i class="fa fa-check"></i><b>9.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="9.2.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-statistic-vs.-null-statistics-1"><i class="fa fa-check"></i><b>9.2.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#HypothesisTesting"><i class="fa fa-check"></i><b>9.3</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#the-us-court-system"><i class="fa fa-check"></i><b>9.3.1</b> The US court system</a></li>
+<li class="chapter" data-level="9.3.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#p-value-stat-signif"><i class="fa fa-check"></i><b>9.3.2</b> p-value and statistical significance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="foundations-randomization.html"><a href="foundations-randomization.html#chp9-review"><i class="fa fa-check"></i><b>9.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#summary-6"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#terms-7"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#key-ideas-6"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html"><i class="fa fa-check"></i><b>10</b> Confidence intervals with bootstrapping</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#case-study-med-consult"><i class="fa fa-check"></i><b>10.1</b> Case study: Medical consultant</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#observed-data-2"><i class="fa fa-check"></i><b>10.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="10.1.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#variability-of-the-statistic-1"><i class="fa fa-check"></i><b>10.1.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>10.2</b> Confidence intervals</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#plausible-range-of-values-for-the-population-parameter"><i class="fa fa-check"></i><b>10.2.1</b> Plausible range of values for the population parameter</a></li>
+<li class="chapter" data-level="10.2.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#bootstrap-confidence-interval"><i class="fa fa-check"></i><b>10.2.2</b> Bootstrap confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#chp10-review"><i class="fa fa-check"></i><b>10.3</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#terms-8"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html"><i class="fa fa-check"></i><b>11</b> Inference with mathematical models</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#CLTsection"><i class="fa fa-check"></i><b>11.1</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="11.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal"><i class="fa fa-check"></i><b>11.2</b> Normal distributions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-distribution-model"><i class="fa fa-check"></i><b>11.2.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="11.2.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>11.2.2</b> Standardizing with Z-scores</a></li>
+<li class="chapter" data-level="11.2.3" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>11.2.3</b> Normal probability calculations in R</a></li>
+<li class="chapter" data-level="11.2.4" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-probability-examples"><i class="fa fa-check"></i><b>11.2.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="11.2.5" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#rule"><i class="fa fa-check"></i><b>11.2.5</b> 68-95-99.7 rule</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#quantifying-the-variability-of-a-statistic"><i class="fa fa-check"></i><b>11.3</b> Quantifying the variability of a statistic</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#standard-error"><i class="fa fa-check"></i><b>11.3.1</b> Standard error</a></li>
+<li class="chapter" data-level="11.3.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#moe"><i class="fa fa-check"></i><b>11.3.2</b> Margin of error</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#chp11-review"><i class="fa fa-check"></i><b>11.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#terms-9"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="foundations-errors.html"><a href="foundations-errors.html"><i class="fa fa-check"></i><b>12</b> Errors, power, and practical importance</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="foundations-errors.html"><a href="foundations-errors.html#decerr"><i class="fa fa-check"></i><b>12.1</b> Decision errors</a></li>
+<li class="chapter" data-level="12.2" data-path="foundations-errors.html"><a href="foundations-errors.html#significance-level"><i class="fa fa-check"></i><b>12.2</b> Significance level</a></li>
+<li class="chapter" data-level="12.3" data-path="foundations-errors.html"><a href="foundations-errors.html#two-sided-tests"><i class="fa fa-check"></i><b>12.3</b> Two-sided hypotheses</a></li>
+<li class="chapter" data-level="12.4" data-path="foundations-errors.html"><a href="foundations-errors.html#controlling-the-type-1-error-rate"><i class="fa fa-check"></i><b>12.4</b> Controlling the Type 1 error rate</a></li>
+<li class="chapter" data-level="12.5" data-path="foundations-errors.html"><a href="foundations-errors.html#power"><i class="fa fa-check"></i><b>12.5</b> Power</a></li>
+<li class="chapter" data-level="12.6" data-path="foundations-errors.html"><a href="foundations-errors.html#statistical-significance-vs.-practical-importance"><i class="fa fa-check"></i><b>12.6</b> Statistical significance vs. practical importance</a></li>
+<li class="chapter" data-level="12.7" data-path="foundations-errors.html"><a href="foundations-errors.html#chp12-review"><i class="fa fa-check"></i><b>12.7</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-errors.html"><a href="foundations-errors.html#terms-10"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="foundations-applications.html"><a href="foundations-applications.html"><i class="fa fa-check"></i><b>13</b> Applications: Foundations</a></li>
+<li class="part"><span><b>IV Inference for categorical data</b></span></li>
+<li class="chapter" data-level="14" data-path="inference-one-prop.html"><a href="inference-one-prop.html"><i class="fa fa-check"></i><b>14</b> Inference for a single proportion</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="inference-one-prop.html"><a href="inference-one-prop.html#one-prop-null-boot"><i class="fa fa-check"></i><b>14.1</b> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#steps-1-and-2-hypotheses-and-test-statistic"><i class="fa fa-check"></i>Steps 1 and 2: Hypotheses and test statistic</a></li>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#steps-3-and-4-null-distribution-and-p-value"><i class="fa fa-check"></i>Steps 3 and 4: Null distribution and p-value</a></li>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#step-5-conclusion-and-scope-of-inference"><i class="fa fa-check"></i>Step 5: Conclusion and scope of inference</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="inference-one-prop.html"><a href="inference-one-prop.html#boot-ci-prop"><i class="fa fa-check"></i><b>14.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></a></li>
+<li class="chapter" data-level="14.3" data-path="inference-one-prop.html"><a href="inference-one-prop.html#theory-prop"><i class="fa fa-check"></i><b>14.3</b> Theory-based inferential methods for <span class="math inline">\(\pi\)</span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="inference-one-prop.html"><a href="inference-one-prop.html#evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods"><i class="fa fa-check"></i><b>14.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\hat{p}\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="14.3.2" data-path="inference-one-prop.html"><a href="inference-one-prop.html#payday-lenders"><i class="fa fa-check"></i><b>14.3.2</b> Theory-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
+<li class="chapter" data-level="14.3.3" data-path="inference-one-prop.html"><a href="inference-one-prop.html#theory-based-confidence-interval-for-pi"><i class="fa fa-check"></i><b>14.3.3</b> Theory-based confidence interval for <span class="math inline">\(\pi\)</span></a></li>
+<li class="chapter" data-level="14.3.4" data-path="inference-one-prop.html"><a href="inference-one-prop.html#violating-conditions"><i class="fa fa-check"></i><b>14.3.4</b> Violating conditions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="inference-one-prop.html"><a href="inference-one-prop.html#chp14-review"><i class="fa fa-check"></i><b>14.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#terms-11"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="inference-two-props.html"><a href="inference-two-props.html"><i class="fa fa-check"></i><b>15</b> Inference for comparing two proportions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="inference-two-props.html"><a href="inference-two-props.html#two-prop-errors"><i class="fa fa-check"></i><b>15.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="inference-two-props.html"><a href="inference-two-props.html#cpr"><i class="fa fa-check"></i><b>15.1.1</b> Case study: CPR and blood thinner</a></li>
+<li class="chapter" data-level="15.1.2" data-path="inference-two-props.html"><a href="inference-two-props.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>15.1.2</b> Case study: Opportunity cost</a></li>
+<li class="chapter" data-level="15.1.3" data-path="inference-two-props.html"><a href="inference-two-props.html#caseStudyMalaria"><i class="fa fa-check"></i><b>15.1.3</b> Case study: Malaria vaccine</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="inference-two-props.html"><a href="inference-two-props.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>15.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="inference-two-props.html"><a href="inference-two-props.html#observed-data-3"><i class="fa fa-check"></i><b>15.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="15.2.2" data-path="inference-two-props.html"><a href="inference-two-props.html#variability-of-the-statistic-2"><i class="fa fa-check"></i><b>15.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="15.2.3" data-path="inference-two-props.html"><a href="inference-two-props.html#what-does-95-mean"><i class="fa fa-check"></i><b>15.2.3</b> What does 95% mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="inference-two-props.html"><a href="inference-two-props.html#math-2prop"><i class="fa fa-check"></i><b>15.3</b> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="inference-two-props.html"><a href="inference-two-props.html#evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods"><i class="fa fa-check"></i><b>15.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\pi_1 - \pi_2\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="15.3.2" data-path="inference-two-props.html"><a href="inference-two-props.html#confidence-interval-for-pi_1---pi_2"><i class="fa fa-check"></i><b>15.3.2</b> Confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
+<li class="chapter" data-level="15.3.3" data-path="inference-two-props.html"><a href="inference-two-props.html#hypothesis-test-for-h_0-pi_1---pi_2-0"><i class="fa fa-check"></i><b>15.3.3</b> Hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="inference-two-props.html"><a href="inference-two-props.html#chp15-review"><i class="fa fa-check"></i><b>15.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="inference-two-props.html"><a href="inference-two-props.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>15.4.1</b> Summary of Z-procedures</a></li>
+<li class="chapter" data-level="" data-path="inference-two-props.html"><a href="inference-two-props.html#terms-12"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html"><i class="fa fa-check"></i><b>16</b> Applications: Infer categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#making-tables-from-raw-data"><i class="fa fa-check"></i>Making tables from raw data</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-one-proportion"><i class="fa fa-check"></i>Simulation-based inference for one proportion</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-difference-in-two-proportions"><i class="fa fa-check"></i>Simulation-based inference for difference in two proportions</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-relative-risk"><i class="fa fa-check"></i>Simulation-based inference for relative risk</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#theory-based-inference-for-one-proportion"><i class="fa fa-check"></i>Theory-based inference for one proportion</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#theory-based-inference-for-a-difference-in-two-proportions"><i class="fa fa-check"></i>Theory-based inference for a difference in two proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="16.1" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#catstats-function-summary"><i class="fa fa-check"></i><b>16.1</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>V Inference for quantitative data</b></span></li>
+<li class="chapter" data-level="17" data-path="inference-one-mean.html"><a href="inference-one-mean.html"><i class="fa fa-check"></i><b>17</b> Inference for a single mean</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>17.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#observed-data-4"><i class="fa fa-check"></i><b>17.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="17.1.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#variability-of-the-statistic-3"><i class="fa fa-check"></i><b>17.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="17.1.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrap-percentile-confidence-interval-for-sigma-special-topic"><i class="fa fa-check"></i><b>17.1.3</b> Bootstrap percentile confidence interval for <span class="math inline">\(\sigma\)</span> (special topic)</a></li>
+<li class="chapter" data-level="17.1.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrapping-is-not-a-solution-to-small-sample-sizes"><i class="fa fa-check"></i><b>17.1.4</b> Bootstrapping is not a solution to small sample sizes!</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-mean-null-boot"><i class="fa fa-check"></i><b>17.2</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#observed-data-5"><i class="fa fa-check"></i><b>17.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="17.2.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#shifted-bootstrapped-null-distribution"><i class="fa fa-check"></i><b>17.2.2</b> Shifted bootstrapped null distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-mean-math"><i class="fa fa-check"></i><b>17.3</b> Theory-based inferential methods for <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#evaluating-the-two-conditions-required-for-modeling-bary-using-theory-based-methods"><i class="fa fa-check"></i><b>17.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\bar{y}\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="17.3.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#introducing-the-t-distribution"><i class="fa fa-check"></i><b>17.3.2</b> Introducing the <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="17.3.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-sample-t-confidence-intervals"><i class="fa fa-check"></i><b>17.3.3</b> One sample <span class="math inline">\(t\)</span>-confidence intervals</a></li>
+<li class="chapter" data-level="17.3.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-sample-t-tests"><i class="fa fa-check"></i><b>17.3.4</b> One sample <span class="math inline">\(t\)</span>-tests</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#chp17-review"><i class="fa fa-check"></i><b>17.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-mean.html"><a href="inference-one-mean.html#terms-13"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="inference-paired-means.html"><a href="inference-paired-means.html"><i class="fa fa-check"></i><b>18</b> Inference for comparing paired means</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#shifted-bootstrap-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>18.1</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-7"><i class="fa fa-check"></i><b>18.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.1.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-4"><i class="fa fa-check"></i><b>18.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="18.1.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-statistic-vs.-null-value"><i class="fa fa-check"></i><b>18.1.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>18.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-8"><i class="fa fa-check"></i><b>18.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.2.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-5"><i class="fa fa-check"></i><b>18.2.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#paired-mean-math"><i class="fa fa-check"></i><b>18.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span></a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-9"><i class="fa fa-check"></i><b>18.3.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.3.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-6"><i class="fa fa-check"></i><b>18.3.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="18.3.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-statistic-vs.-null-statistics-2"><i class="fa fa-check"></i><b>18.3.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="inference-paired-means.html"><a href="inference-paired-means.html#chp18-review"><i class="fa fa-check"></i><b>18.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-paired-means.html"><a href="inference-paired-means.html#terms-14"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="inference-two-means.html"><a href="inference-two-means.html"><i class="fa fa-check"></i><b>19</b> Inference for comparing two independent means</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="inference-two-means.html"><a href="inference-two-means.html#rand2mean"><i class="fa fa-check"></i><b>19.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-data-10"><i class="fa fa-check"></i><b>19.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="19.1.2" data-path="inference-two-means.html"><a href="inference-two-means.html#variability-of-the-statistic-7"><i class="fa fa-check"></i><b>19.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="19.1.3" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-statistic-vs.-null-value-1"><i class="fa fa-check"></i><b>19.1.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="inference-two-means.html"><a href="inference-two-means.html#boot-ci-diff-means"><i class="fa fa-check"></i><b>19.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-data-11"><i class="fa fa-check"></i><b>19.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="19.2.2" data-path="inference-two-means.html"><a href="inference-two-means.html#variability-of-the-statistic-8"><i class="fa fa-check"></i><b>19.2.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="inference-two-means.html"><a href="inference-two-means.html#math2samp"><i class="fa fa-check"></i><b>19.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span></a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="inference-two-means.html"><a href="inference-two-means.html#t-test-for-mu_1---mu_2"><i class="fa fa-check"></i><b>19.3.1</b> <span class="math inline">\(t\)</span>-test for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+<li class="chapter" data-level="19.3.2" data-path="inference-two-means.html"><a href="inference-two-means.html#t-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>19.3.2</b> <span class="math inline">\(t\)</span> confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="inference-two-means.html"><a href="inference-two-means.html#chp19-review"><i class="fa fa-check"></i><b>19.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-two-means.html"><a href="inference-two-means.html#summary-of-t-procedures"><i class="fa fa-check"></i>Summary of t-procedures</a></li>
+<li class="chapter" data-level="" data-path="inference-two-means.html"><a href="inference-two-means.html#terms-15"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="inference-num-applications.html"><a href="inference-num-applications.html"><i class="fa fa-check"></i><b>20</b> Applications: Infer quantitative</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="inference-num-applications.html"><a href="inference-num-applications.html#inference-for-quantitative-data-using-r-and-catstats"><i class="fa fa-check"></i><b>20.1</b> Inference for quantitative data using R and <code>catstats</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#using-the-t-distribution"><i class="fa fa-check"></i>Using the <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#simulation-based-inference-for-paired-mean-difference"><i class="fa fa-check"></i>Simulation-based inference for paired mean difference</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#theory-based-inference-for-paired-mean-difference"><i class="fa fa-check"></i>Theory-based inference for paired mean difference</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#simulation-based-inference-for-the-difference-of-two-means"><i class="fa fa-check"></i>Simulation-based inference for the difference of two means</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#theory-based-inference-for-the-difference-of-two-means"><i class="fa fa-check"></i>Theory-based inference for the difference of two means</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="inference-num-applications.html"><a href="inference-num-applications.html#catstats-function-summary-1"><i class="fa fa-check"></i><b>20.2</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>VI Inference for regression</b></span></li>
+<li class="chapter" data-level="21" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>21</b> Inference for correlation and slope</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="inference-reg.html"><a href="inference-reg.html#case-study-sandwich-store"><i class="fa fa-check"></i><b>21.1</b> Case study: Sandwich store</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-13"><i class="fa fa-check"></i><b>21.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.1.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-10"><i class="fa fa-check"></i><b>21.1.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="inference-reg.html"><a href="inference-reg.html#randslope"><i class="fa fa-check"></i><b>21.2</b> Randomization test for <span class="math inline">\(H_0: \beta_1= 0\)</span></a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-14"><i class="fa fa-check"></i><b>21.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.2.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-11"><i class="fa fa-check"></i><b>21.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="21.2.3" data-path="inference-reg.html"><a href="inference-reg.html#observed-statistic-vs.-null-value-3"><i class="fa fa-check"></i><b>21.2.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="inference-reg.html"><a href="inference-reg.html#bootbeta1"><i class="fa fa-check"></i><b>21.3</b> Bootstrap confidence interval for <span class="math inline">\(\beta_1\)</span></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-15"><i class="fa fa-check"></i><b>21.3.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.3.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-12"><i class="fa fa-check"></i><b>21.3.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="inference-reg.html"><a href="inference-reg.html#inference-on-the-correlation-coefficient-rho"><i class="fa fa-check"></i><b>21.4</b> Inference on the correlation coefficient <span class="math inline">\(\rho\)</span></a></li>
+<li class="chapter" data-level="21.5" data-path="inference-reg.html"><a href="inference-reg.html#mathslope"><i class="fa fa-check"></i><b>21.5</b> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span></a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="inference-reg.html"><a href="inference-reg.html#case-study-midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>21.5.1</b> Case study: Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="21.5.2" data-path="inference-reg.html"><a href="inference-reg.html#understanding-regression-output-from-software"><i class="fa fa-check"></i><b>21.5.2</b> Understanding regression output from software</a></li>
+<li class="chapter" data-level="21.5.3" data-path="inference-reg.html"><a href="inference-reg.html#intuition-vs.-formal-inference"><i class="fa fa-check"></i><b>21.5.3</b> Intuition vs. formal inference</a></li>
+<li class="chapter" data-level="21.5.4" data-path="inference-reg.html"><a href="inference-reg.html#theory-based-confidence-interval-for-a-regression-coefficient"><i class="fa fa-check"></i><b>21.5.4</b> Theory-based confidence interval for a regression coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="21.6" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>21.6</b> Checking model conditions</a>
+<ul>
+<li class="chapter" data-level="21.6.1" data-path="inference-reg.html"><a href="inference-reg.html#linearity"><i class="fa fa-check"></i><b>21.6.1</b> <strong>L</strong>inearity</a></li>
+<li class="chapter" data-level="21.6.2" data-path="inference-reg.html"><a href="inference-reg.html#independence"><i class="fa fa-check"></i><b>21.6.2</b> <strong>I</strong>ndependence</a></li>
+<li class="chapter" data-level="21.6.3" data-path="inference-reg.html"><a href="inference-reg.html#normality"><i class="fa fa-check"></i><b>21.6.3</b> <strong>N</strong>ormality</a></li>
+<li class="chapter" data-level="21.6.4" data-path="inference-reg.html"><a href="inference-reg.html#equal-variability"><i class="fa fa-check"></i><b>21.6.4</b> <strong>E</strong>qual variability</a></li>
+<li class="chapter" data-level="21.6.5" data-path="inference-reg.html"><a href="inference-reg.html#scope-of-inference-for-regression"><i class="fa fa-check"></i><b>21.6.5</b> Scope of Inference for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="21.7" data-path="inference-reg.html"><a href="inference-reg.html#chp21-review"><i class="fa fa-check"></i><b>21.7</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-reg.html"><a href="inference-reg.html#terms-16"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html"><i class="fa fa-check"></i><b>22</b> Applications: Infer regression</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#inference-for-regression-using-r-and-catstats"><i class="fa fa-check"></i><b>22.1</b> Inference for regression using R and <code>catstats</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#simulation-based-inference-for-the-regression-slope"><i class="fa fa-check"></i>Simulation-based inference for the regression slope</a></li>
+<li class="chapter" data-level="" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#theory-based-inference-for-the-regression-slope"><i class="fa fa-check"></i>Theory-based inference for the regression slope</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#catstats-function-summary-2"><i class="fa fa-check"></i><b>22.2</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>VII Probability</b></span></li>
+<li class="chapter" data-level="23" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>23</b> Probability with tables</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="probability.html"><a href="probability.html#defining-probability"><i class="fa fa-check"></i><b>23.1</b> Defining probability</a></li>
+<li class="chapter" data-level="23.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-tables"><i class="fa fa-check"></i><b>23.2</b> Finding probabilities with tables</a></li>
+<li class="chapter" data-level="23.3" data-path="probability.html"><a href="probability.html#probability-notation"><i class="fa fa-check"></i><b>23.3</b> Probability notation</a></li>
+<li class="chapter" data-level="23.4" data-path="probability.html"><a href="probability.html#diagnostic-testing"><i class="fa fa-check"></i><b>23.4</b> Diagnostic testing</a>
+<ul>
+<li class="chapter" data-level="23.4.1" data-path="probability.html"><a href="probability.html#the-case-of-baby-jeff"><i class="fa fa-check"></i><b>23.4.1</b> The case of Baby Jeff</a></li>
+</ul></li>
+<li class="chapter" data-level="23.5" data-path="probability.html"><a href="probability.html#chp23-review"><i class="fa fa-check"></i><b>23.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#terms-17"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#key-ideas-7"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-paired-means" class="section level1" number="18">
-<h1>
-<span class="header-section-number">18</span> Inference for comparing paired means<a class="anchor" aria-label="anchor" href="#inference-paired-means"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Montana State Introductory Statistics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inference-paired-means" class="section level1 hasAnchor" number="18">
+<h1><span class="header-section-number">Chapter 18</span> Inference for comparing paired means<a href="inference-paired-means.html#inference-paired-means" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="chapterintro">
 <p>In Chapter <a href="inference-one-mean.html#inference-one-mean">17</a>, analysis was done to summarize a quantitative variable measured on a single population.
 What if we were to measure that variable twice on the same observational unit?
@@ -141,11 +684,12 @@ Sometimes dependency is not something that can be addressed through a statistica
 However, this particular dependency, <strong>pairing</strong>, can be modeled quite effectively by using the same tools for a single quantitative variable from Chapter <a href="inference-one-mean.html#inference-one-mean">17</a> applied to the differences between two measurements on each pair.</p>
 </div>
 <p>Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter <a href="inference-one-mean.html#inference-one-mean">17</a>) but has other features that resemble a two-sample analysis (which we will see in Chapter <a href="inference-two-means.html#inference-two-means">19</a>). Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are <strong>paired</strong> — each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained. Table <a href="inference-paired-means.html#tab:pairedexamples">18.1</a> presents some examples of studies where paired designs were implemented.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:pairedexamples">Table 18.1: </span>Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.
+<span id="tab:pairedexamples">Table 18.1: </span><span id="tab:pairedexamples">Table 18.2: </span>Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 Observational unit
 </th>
@@ -158,7 +702,8 @@ Measurement
 <th style="text-align:left;">
 Value of interest
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -217,7 +762,7 @@ difference in score
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div class="onebox">
 <p><strong>Paired data.</strong></p>
 <p>Two sets of observations are <em>paired</em> if each
@@ -237,12 +782,14 @@ Thinking about the differences as a single observation on an observational unit 
 <p>A comparison of the notation used in Chapter <a href="inference-one-mean.html#inference-one-mean">17</a> and the notation used in this chapter is shown below. The subscript “d” stands for “difference” since our variable is now a paired difference.</p>
 <div class="onebox">
 <p><strong>Notation for a single quantitative variable (left) and paired differences (right).</strong></p>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
+<table>
+<thead>
+<tr class="header">
 <th></th>
 <th><strong>One Mean</strong></th>
 <th><strong>Paired Mean Difference</strong></th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>Population mean</td>
@@ -256,8 +803,8 @@ Thinking about the differences as a single observation on an observational unit 
 </tr>
 <tr class="odd">
 <td>Sample mean</td>
-<td><span class="math inline">\(\bar{x}\)</span></td>
-<td><span class="math inline">\(\bar{x}_d\)</span></td>
+<td><span class="math inline">\(\bar{y}\)</span></td>
+<td><span class="math inline">\(\bar{y}_d\)</span></td>
 </tr>
 <tr class="even">
 <td>Sample standard deviation</td>
@@ -270,20 +817,16 @@ Thinking about the differences as a single observation on an observational unit 
 <td><span class="math inline">\(n\)</span></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
 <p>Instead of <span class="math inline">\(n\)</span> representing the number of observational units, with paired data, <span class="math inline">\(n\)</span> represents the number of <em>pairs</em> in paired samples.
-Similarly, <span class="math inline">\(\mu_d\)</span>, <span class="math inline">\(\sigma_d\)</span>, <span class="math inline">\(\bar{x}_d\)</span> and <span class="math inline">\(s_d\)</span> are all calculated
+Similarly, <span class="math inline">\(\mu_d\)</span>, <span class="math inline">\(\sigma_d\)</span>, <span class="math inline">\(\bar{y}_d\)</span> and <span class="math inline">\(s_d\)</span> are all calculated
 using the differences in measured values within pairs.</p>
-<div id="shifted-bootstrap-test-for-h_0-mu_d-0" class="section level2" number="18.1">
-<h2>
-<span class="header-section-number">18.1</span> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span><a class="anchor" aria-label="anchor" href="#shifted-bootstrap-test-for-h_0-mu_d-0"><i class="fas fa-link"></i></a>
-</h2>
+<div id="shifted-bootstrap-test-for-h_0-mu_d-0" class="section level2 hasAnchor" number="18.1">
+<h2><span class="header-section-number">18.1</span> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span><a href="inference-paired-means.html#shifted-bootstrap-test-for-h_0-mu_d-0" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Consider an experiment done to measure whether tire brand Smooth Turn or tire brand Quick Spin has longer tread wear. That is, after 1,000 miles on a car, which brand of tires has more tread, on average?</p>
-<div id="observed-data-7" class="section level3" number="18.1.1">
-<h3>
-<span class="header-section-number">18.1.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-7"><i class="fas fa-link"></i></a>
-</h3>
+<div id="observed-data-7" class="section level3 hasAnchor" number="18.1.1">
+<h3><span class="header-section-number">18.1.1</span> Observed data<a href="inference-paired-means.html#observed-data-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The observed data represent 25 tread measurements (in inches) taken on 25 Smooth Turn tires and 25 Quick Spin tires.
 The study used a total of 25 cars, so on each car, one brand was randomly assigned to the front driver’s side tire and the other to the front passenger’s side tire.
 Figure <a href="inference-paired-means.html#fig:tiredata">18.1</a> presents the observed data.
@@ -296,80 +839,72 @@ The Smooth Turn manufacturer looks at the box plot below and says:</p>
 <p>but with only 25 cars, it seems that the variability in road conditions (sometimes one tire hits a pothole, etc.) could be what leads to the small difference in average tread amount.</p>
 </blockquote>
 <p>We’d like to be able to systematically distinguish between what the Smooth Turn manufacturer sees in the plot and what the Quick Spin manufacturer sees in the plot. Fortunately for us, we have an excellent way to simulate the natural variability (from road conditions, etc.) that can lead to tires being worn at different rates: bootstrapping.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:tiredata"></span>
-<img src="18-numerical-paired-means_files/figure-html/tiredata-1.png" alt="Boxplots of the tire tread remaining after 1,000 miles by the brand of tire from which the original measurements came. Gray lines connect the same cars." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tiredata"></span>
+<img src="18-numerical-paired-means_files/figure-html/tiredata-1.png" alt="Boxplots of the tire tread remaining after 1,000 miles by the brand of tire from which the original measurements came. Gray lines connect the same cars." width="90%" />
+<p class="caption">
 Figure 18.1: Boxplots of the tire tread remaining after 1,000 miles by the brand of tire from which the original measurements came. Gray lines connect the same cars.
 </p>
 </div>
 <p>Since these are paired data, we are only interested in the <em>differences</em> in tire tread between the two brands on each car. The dotplot in Figure <a href="inference-paired-means.html#fig:tiredata-diff">18.2</a> displays these differences, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">differences</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       min        Q1  median     Q3    max    mean      sd  n missing</span></span>
-<span><span class="co">#&gt;  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0</span></span></code></pre></div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:tiredata-diff"></span>
-<img src="18-numerical-paired-means_files/figure-html/tiredata-diff-1.png" alt="Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin)." width="75%"><p class="caption">
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="inference-paired-means.html#cb79-1" tabindex="-1"></a><span class="fu">favstats</span>(differences)</span>
+<span id="cb79-2"><a href="inference-paired-means.html#cb79-2" tabindex="-1"></a><span class="co">#&gt;       min        Q1  median     Q3    max    mean      sd  n missing</span></span>
+<span id="cb79-3"><a href="inference-paired-means.html#cb79-3" tabindex="-1"></a><span class="co">#&gt;  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tiredata-diff"></span>
+<img src="18-numerical-paired-means_files/figure-html/tiredata-diff-1.png" alt="Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin)." width="75%" />
+<p class="caption">
 Figure 18.2: Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn – Quick Spin).
 </p>
 </div>
 </div>
-<div id="variability-of-the-statistic-4" class="section level3" number="18.1.2">
-<h3>
-<span class="header-section-number">18.1.2</span> Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-4"><i class="fas fa-link"></i></a>
-</h3>
+<div id="variability-of-the-statistic-4" class="section level3 hasAnchor" number="18.1.2">
+<h3><span class="header-section-number">18.1.2</span> Variability of the statistic<a href="inference-paired-means.html#variability-of-the-statistic-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A simulation-based test will identify whether the differences seen in the box plot below could plausibly have happened just by chance variability.
 As before, we will simulate the variability in sample statistics under the assumption that the null hypothesis is true.
 In this study, the null hypothesis is that average difference in tire tread wear between Smooth Turn and Quick Spin tires is zero. The experiment was conducted to determine whether Smooth Turn or Quick Spin has longer tread wear. Taking the order of differences to be Smooth Turn <span class="math inline">\(-\)</span> Quick Spin, we express the hypotheses as follows.</p>
 <ul>
-<li>
-<span class="math inline">\(H_0: \mu_d = 0\)</span>, the true mean difference in tire tread remaining after 1,000 miles between Smooth Turn and Quick Spin (Smooth Turn <span class="math inline">\(-\)</span> Quick Spin) tires is equal to zero.<br>
+<li><span class="math inline">\(H_0: \mu_d = 0\)</span>, the true mean difference in tire tread remaining after 1,000 miles between Smooth Turn and Quick Spin (Smooth Turn <span class="math inline">\(-\)</span> Quick Spin) tires is equal to zero.<br />
 </li>
-<li>
-<span class="math inline">\(H_A: \mu_d \neq 0\)</span>, the true mean difference in tire tread remaining after 1,000 miles between Smooth Turn and Quick Spin (Smooth Turn <span class="math inline">\(-\)</span> Quick Spin) tires is not equal to zero.</li>
+<li><span class="math inline">\(H_A: \mu_d \neq 0\)</span>, the true mean difference in tire tread remaining after 1,000 miles between Smooth Turn and Quick Spin (Smooth Turn <span class="math inline">\(-\)</span> Quick Spin) tires is not equal to zero.</li>
 </ul>
 <p>To simulate the null distribution of mean differences in tread, we will implement the same method used in Section <a href="inference-one-mean.html#one-mean-null-boot">17.2</a> using a shifted bootstrap distribution.</p>
 <div class="onebox">
 <p><strong>Shifted bootstrap null distribution for a sample mean difference.</strong></p>
 <p>To simulate a null distribution of sample mean differences under the null hypothesis <span class="math inline">\(H_0: \mu_d = 0\)</span>,</p>
 <ol style="list-style-type: decimal">
-<li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Subtracting the sample mean is equivalent to adding &lt;span class="math inline"&gt;\(\mu_0 - \bar{x}_d\)&lt;/span&gt; when the null value is &lt;span class="math inline"&gt;\(\mu_d = 0\)&lt;/span&gt;. Thus, we are using the same process as that described in Section &lt;a href="inference-one-mean.html#one-mean-null-boot"&gt;17.2&lt;/a&gt;.&lt;/p&gt;'><sup>152</sup></a><br><span class="math display">\[
-x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
+<li>Subtract <span class="math inline">\(\bar{y}_d\)</span> from each difference in the original sample:<a href="#fn155" class="footnote-ref" id="fnref155"><sup>155</sup></a><br />
+<span class="math display">\[
+y_1 - \bar{y}_d , \hspace{2.5mm} y_2 - \bar{y}_d, \hspace{2.5mm}  y_3 - \bar{y}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  y_n - \bar{y}_d.
   \]</span>
-Note that if <span class="math inline">\(\bar{x}_d\)</span> is a negative number, then you will be <em>adding</em> the distance between <span class="math inline">\(0\)</span> and <span class="math inline">\(\bar{x}_d\)</span> to each value.</li>
+Note that if <span class="math inline">\(\bar{y}_d\)</span> is a negative number, then you will be <em>adding</em> the distance between <span class="math inline">\(0\)</span> and <span class="math inline">\(\bar{y}_d\)</span> to each value.</li>
 <li>Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.</li>
 </ol>
 </div>
-<p>To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to <strong>shift the data</strong> to be centered at the null value of zero. We shift the data by subtracting <span class="math inline">\(\bar{x}_d\)</span> = 0.00196 from each tire tread difference in the sample. This process is displayed in Figure <a href="inference-paired-means.html#fig:tiredata-diff-shift">18.3</a>.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:tiredata-diff-shift"></span>
-<img src="18-numerical-paired-means_files/figure-html/tiredata-diff-shift-1.png" alt="Mean difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin) (blue), and the shifted mean differences in tire tread (red), found by subtracting 0.00196 to each original difference." width="75%"><p class="caption">
+<p>To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to <strong>shift the data</strong> to be centered at the null value of zero. We shift the data by subtracting <span class="math inline">\(\bar{y}_d\)</span> = 0.00196 from each tire tread difference in the sample. This process is displayed in Figure <a href="inference-paired-means.html#fig:tiredata-diff-shift">18.3</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tiredata-diff-shift"></span>
+<img src="18-numerical-paired-means_files/figure-html/tiredata-diff-shift-1.png" alt="Mean difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin) (blue), and the shifted mean differences in tire tread (red), found by subtracting 0.00196 to each original difference." width="75%" />
+<p class="caption">
 Figure 18.3: Mean difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn – Quick Spin) (blue), and the shifted mean differences in tire tread (red), found by subtracting 0.00196 to each original difference.
 </p>
 </div>
 </div>
-<div id="observed-statistic-vs.-null-value" class="section level3" number="18.1.3">
-<h3>
-<span class="header-section-number">18.1.3</span> Observed statistic vs. null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-value"><i class="fas fa-link"></i></a>
-</h3>
+<div id="observed-statistic-vs.-null-value" class="section level3 hasAnchor" number="18.1.3">
+<h3><span class="header-section-number">18.1.3</span> Observed statistic vs. null value<a href="inference-paired-means.html#observed-statistic-vs.-null-value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>By repeatedly sampling 25 cars with replacement from the shifted bootstrap null distribution, we can create a distribution of the sample mean difference in tire tread, as seen in Figure <a href="inference-paired-means.html#fig:pairRandomiz">18.4</a>.
 As expected (because the differences were generated under the null hypothesis), the histogram is centered at zero.
-A line has been drawn at the observed mean difference, <span class="math inline">\(\bar{x}_d\)</span> = 0.00196, which is nowhere near the differences simulated from natural variability when we assume there is no difference in tire tread wear between brands.
+A line has been drawn at the observed mean difference, <span class="math inline">\(\bar{y}_d\)</span> = 0.00196, which is nowhere near the differences simulated from natural variability when we assume there is no difference in tire tread wear between brands.
 Because the observed mean difference in tire tread is so far away from the natural variability of the randomized mean differences in tire tread, we believe that there is a significant difference in tire tread wear between Smooth Turn and Quick Spin brand tires, on average.</p>
-<p>To be precise, the proportion of simulated <span class="math inline">\(\bar{x}_d\)</span>’s that are 0.00196 inches or further away from zero is 0.023. This p-value gives us strong evidence in favor of our alternative <span class="math inline">\(H_A: \mu_d \neq 0\)</span>.
+<p>To be precise, the proportion of simulated <span class="math inline">\(\bar{y}_d\)</span>’s that are 0.00196 inches or further away from zero is 0.023. This p-value gives us strong evidence in favor of our alternative <span class="math inline">\(H_A: \mu_d \neq 0\)</span>.
 Our conclusion is that the extra amount of tire tread remaining in Smooth Turn brand tires after 1,000 miles, on average, is due to more than just natural variability. Data from this experiment suggest that, on average, Smooth Turn tires differ in tread wear compared to Quick Spin tires.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:pairRandomiz"></span>
-<img src="18-numerical-paired-means_files/figure-html/pairRandomiz-1.png" alt="Histogram of 1000 simulated mean differences in tire tread, assuming that the two brands perform equally, on average." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pairRandomiz"></span>
+<img src="18-numerical-paired-means_files/figure-html/pairRandomiz-1.png" alt="Histogram of 1000 simulated mean differences in tire tread, assuming that the two brands perform equally, on average." width="90%" />
+<p class="caption">
 Figure 18.4: Histogram of 1000 simulated mean differences in tire tread, assuming that the two brands perform equally, on average.
 </p>
 </div>
 </div>
 </div>
-<div id="bootstrap-confidence-interval-for-mu_d" class="section level2" number="18.2">
-<h2>
-<span class="header-section-number">18.2</span> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span><a class="anchor" aria-label="anchor" href="#bootstrap-confidence-interval-for-mu_d"><i class="fas fa-link"></i></a>
-</h2>
+<div id="bootstrap-confidence-interval-for-mu_d" class="section level2 hasAnchor" number="18.2">
+<h2><span class="header-section-number">18.2</span> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span><a href="inference-paired-means.html#bootstrap-confidence-interval-for-mu_d" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In an earlier edition of this textbook,
 we found that Amazon prices were, on average,
 lower than those of the UCLA Bookstore for UCLA courses
@@ -377,10 +912,8 @@ in 2010.
 It’s been several years, and many stores have adapted
 to the online market, so we wondered,
 how is the UCLA Bookstore doing today?</p>
-<div id="observed-data-8" class="section level3" number="18.2.1">
-<h3>
-<span class="header-section-number">18.2.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-8"><i class="fas fa-link"></i></a>
-</h3>
+<div id="observed-data-8" class="section level3 hasAnchor" number="18.2.1">
+<h3><span class="header-section-number">18.2.1</span> Observed data<a href="inference-paired-means.html#observed-data-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We sampled 201 UCLA courses.
 Of those, 68
 required books could be found on Amazon.</p>
@@ -388,7 +921,7 @@ required books could be found on Amazon.</p>
 <p>The <code>ucla_textbooks_f18</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.</p>
 </div>
 <p>A portion of the data set from these courses
-is shown in Table <a href="inference-paired-means.html#tab:textbooksDF">18.2</a>,
+is shown in Table <a href="inference-paired-means.html#tab:textbooksDF">18.3</a>,
 where prices are in US dollars. Here the differences are taken as
 <span class="math display">\[\begin{align*}
 \text{UCLA Bookstore price} - \text{Amazon price}
@@ -396,16 +929,17 @@ where prices are in US dollars. Here the differences are taken as
 <p>It is important that we always subtract using
 a consistent order;
 here Amazon prices are always subtracted from UCLA prices.
-The first difference shown in Table <a href="inference-paired-means.html#tab:textbooksDF">18.2</a>
+The first difference shown in Table <a href="inference-paired-means.html#tab:textbooksDF">18.3</a>
 is computed as <span class="math inline">\(47.97 - 47.45 = 0.52\)</span>.
 Similarly, the second difference is computed as
 <span class="math inline">\(14.26 - 13.55 = 0.71\)</span>,
 and the third is <span class="math inline">\(13.50 - 12.53 = 0.97\)</span>.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:textbooksDF">Table 18.2: </span>Four cases of the <code>ucla_textbooks_f18</code> dataset.
+<span id="tab:textbooksDF">Table 18.3: </span><span id="tab:textbooksDF">Table 18.4: </span>Four cases of the <code>ucla_textbooks_f18</code> dataset.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 subject
 </th>
@@ -421,7 +955,8 @@ amazon_new
 <th style="text-align:right;">
 price_diff
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -492,15 +1027,14 @@ M60W
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>A dot plot of the data is shown in Figure <a href="inference-paired-means.html#fig:text-price-hist">18.5</a>, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="inference-paired-means.html#cb80-1" tabindex="-1"></a><span class="fu">favstats</span>(ucla_textbooks_f18<span class="sc">$</span>price_diff)</span></code></pre></div>
 <pre><code>#&gt;    min     Q1 median   Q3  max mean   sd  n missing
 #&gt;  -12.2 -0.992  0.625 2.99 75.2 3.58 13.4 68       0</code></pre>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:text-price-hist"></span>
-<img src="18-numerical-paired-means_files/figure-html/text-price-hist-1.png" alt="Distribution of differences in new textbook price (UCLA Bookstore -- Amazon) in US dollars for 68 required textbooks at UCLA." width="75%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:text-price-hist"></span>
+<img src="18-numerical-paired-means_files/figure-html/text-price-hist-1.png" alt="Distribution of differences in new textbook price (UCLA Bookstore -- Amazon) in US dollars for 68 required textbooks at UCLA." width="75%" />
+<p class="caption">
 Figure 18.5: Distribution of differences in new textbook price (UCLA Bookstore – Amazon) in US dollars for 68 required textbooks at UCLA.
 </p>
 </div>
@@ -519,53 +1053,50 @@ Thus, the two prices for the same textbook are <strong>paired</strong>,
 and our analysis need only focus on the <em>differences</em>
 in textbook price between the two suppliers.</p>
 </div>
-<div id="variability-of-the-statistic-5" class="section level3" number="18.2.2">
-<h3>
-<span class="header-section-number">18.2.2</span> Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-5"><i class="fas fa-link"></i></a>
-</h3>
+<div id="variability-of-the-statistic-5" class="section level3 hasAnchor" number="18.2.2">
+<h3><span class="header-section-number">18.2.2</span> Variability of the statistic<a href="inference-paired-means.html#variability-of-the-statistic-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Following the example of bootstrapping a single mean, the observed mean differences can be bootstrapped in order to understand the variability of the average difference from sample to sample. We can then use the bootstrap distribution of mean differences to calculate bootstrap percentile confidence intervals for the true mean difference in the population.</p>
 <p>In Figure <a href="inference-paired-means.html#fig:pairboot">18.6</a>, a 99% confidence interval for the mean difference in the cost of a new book at the UCLA Bookstore compared with Amazon has been calculated.
 The bootstrap percentile interval is computing using the 0.5<sup>th</sup> percentile and 99.5<sup>th</sup> percentile of the bootstrapped mean differences and is found to be (-0.044, 8.138).
 Since this confidence interval contains zero, it does not support the hypothesis that the UCLA Bookstore price is, on average, higher than the Amazon price. That is, since the interval contains both negative and positive values, it is plausible that the prices of UCLA textbooks are lower, on average, than Amazon, and it is also plausible that the prices of UCLA textbooks are higher, on average, than Amazon. We would interpret the interval as follows: We are 99% confident that, on average, new textbook prices at the UCLA Bookstore are between $0.04 lower to $8.14 higher than the same textbook on Amazon.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:pairboot"></span>
-<img src="18-numerical-paired-means_files/figure-html/pairboot-1.png" alt="Bootstrap distribution for the average difference in new book price at the UCLA Bookstore versus Amazon (UCLA -- Amazon). The bounds for a 99% bootstrap percentile confidence interval are superimposed in red, and the observed mean difference in new book price is superimposed in blue." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pairboot"></span>
+<img src="18-numerical-paired-means_files/figure-html/pairboot-1.png" alt="Bootstrap distribution for the average difference in new book price at the UCLA Bookstore versus Amazon (UCLA -- Amazon). The bounds for a 99% bootstrap percentile confidence interval are superimposed in red, and the observed mean difference in new book price is superimposed in blue." width="90%" />
+<p class="caption">
 Figure 18.6: Bootstrap distribution for the average difference in new book price at the UCLA Bookstore versus Amazon (UCLA – Amazon). The bounds for a 99% bootstrap percentile confidence interval are superimposed in red, and the observed mean difference in new book price is superimposed in blue.
 </p>
 </div>
 </div>
 </div>
-<div id="paired-mean-math" class="section level2" number="18.3">
-<h2>
-<span class="header-section-number">18.3</span> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span><a class="anchor" aria-label="anchor" href="#paired-mean-math"><i class="fas fa-link"></i></a>
-</h2>
+<div id="paired-mean-math" class="section level2 hasAnchor" number="18.3">
+<h2><span class="header-section-number">18.3</span> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span><a href="inference-paired-means.html#paired-mean-math" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As with the simulation-based inferential methods for a paired mean difference,
 theory-based inferential methods for this scenario are identical
 to the theory-based inferential methods for a single mean—only the notation differs.</p>
-<div id="observed-data-9" class="section level3" number="18.3.1">
-<h3>
-<span class="header-section-number">18.3.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-9"><i class="fas fa-link"></i></a>
-</h3>
+<div id="observed-data-9" class="section level3 hasAnchor" number="18.3.1">
+<h3><span class="header-section-number">18.3.1</span> Observed data<a href="inference-paired-means.html#observed-data-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Consider again the paired textbook price data in the previous section.
 A histogram of the differences in new textbook price between the UCLA Bookstore and Amazon is shown in
 Figure <a href="inference-paired-means.html#fig:diffInTextbookPricesF18">18.7</a>, and summary statistics
-are displayed in Table <a href="inference-paired-means.html#tab:textbooksSummaryStats">18.3</a>.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+are displayed in Table <a href="inference-paired-means.html#tab:textbooksSummaryStats">18.5</a>.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:textbooksSummaryStats">Table 18.3: </span>Summary statistics for the 68 new textbook price differences (UCLA – Amazon).
+<span id="tab:textbooksSummaryStats">Table 18.5: </span><span id="tab:textbooksSummaryStats">Table 18.6: </span>Summary statistics for the 68 new textbook price differences (UCLA – Amazon).
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 <span class="math inline">\(n\)</span>
 </th>
 <th style="text-align:left;">
-<span class="math inline">\(\bar{x}_{d}\)</span>
+<span class="math inline">\(\bar{y}_{d}\)</span>
 </th>
 <th style="text-align:left;">
 <span class="math inline">\(s_{d}\)</span>
 </th>
-</tr></thead>
-<tbody><tr>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align:left;">
 68
 </td>
@@ -575,19 +1106,18 @@ $3.58
 <td style="text-align:left;">
 $13.42
 </td>
-</tr></tbody>
-</table></div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:diffInTextbookPricesF18"></span>
-<img src="18-numerical-paired-means_files/figure-html/diffInTextbookPricesF18-1.png" alt="Histogram of the difference in price for each book sampled." width="90%"><p class="caption">
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:diffInTextbookPricesF18"></span>
+<img src="18-numerical-paired-means_files/figure-html/diffInTextbookPricesF18-1.png" alt="Histogram of the difference in price for each book sampled." width="90%" />
+<p class="caption">
 Figure 18.7: Histogram of the difference in price for each book sampled.
 </p>
 </div>
 </div>
-<div id="variability-of-the-statistic-6" class="section level3" number="18.3.2">
-<h3>
-<span class="header-section-number">18.3.2</span> Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-6"><i class="fas fa-link"></i></a>
-</h3>
+<div id="variability-of-the-statistic-6" class="section level3 hasAnchor" number="18.3.2">
+<h3><span class="header-section-number">18.3.2</span> Variability of the statistic<a href="inference-paired-means.html#variability-of-the-statistic-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To analyze a paired data set,
 we simply analyze the differences using the same one-sample <span class="math inline">\(t\)</span>-distribution techniques
 we applied in
@@ -599,65 +1129,61 @@ a new textbook is higher than the price of the same
 book on Amazon.
 Also, check the conditions for whether we can move
 forward with the test using the <span class="math inline">\(t\)</span>-distribution.</p>
-<hr>
+<hr />
 <p>We are considering two scenarios:</p>
 <ul>
-<li>
-<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{d} = 0\)</span>.
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_{d} = 0\)</span>.
 The true mean difference in new textbook prices (UCLA – Amazon)
 is equal to zero.</li>
-<li>
-<span class="math inline">\(H_A\)</span>: <span class="math inline">\(\mu_{d} &gt; 0\)</span>.
+<li><span class="math inline">\(H_A\)</span>: <span class="math inline">\(\mu_{d} &gt; 0\)</span>.
 The true mean difference in new textbook prices (UCLA – Amazon)
 is greater than zero.</li>
 </ul>
 <p>Next, we check the independence and normality conditions:</p>
 <ul>
-<li><p>The observations are based on a simple random sample,
+<li><p>The observations (textbooks) are based on a simple random sample and we have no information on any sub-groups in the books,
 so independence is reasonable.</p></li>
 <li><p>While there are some outliers,
 <span class="math inline">\(n = 68\)</span> and none of the outliers
 are particularly extreme, so the normality
-of <span class="math inline">\(\bar{x}\)</span> is satisfied.</p></li>
+of <span class="math inline">\(\bar{y}\)</span> is satisfied.</p></li>
 </ul>
 <p>With these conditions satisfied,
 we can move forward with the <span class="math inline">\(t\)</span>-distribution.</p>
 </div>
 </div>
-<div id="observed-statistic-vs.-null-statistics-2" class="section level3" number="18.3.3">
-<h3>
-<span class="header-section-number">18.3.3</span> Observed statistic vs. null statistics<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-statistics-2"><i class="fas fa-link"></i></a>
-</h3>
+<div id="observed-statistic-vs.-null-statistics-2" class="section level3 hasAnchor" number="18.3.3">
+<h3><span class="header-section-number">18.3.3</span> Observed statistic vs. null statistics<a href="inference-paired-means.html#observed-statistic-vs.-null-statistics-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As mentioned previously, the methods applied to a difference will be identical to the one-sample techniques. Therefore, the full hypothesis test framework is given as an example.</p>
 <div class="workedexample">
 <p>Complete the hypothesis test started
 in the previous Example.</p>
-<hr>
+<hr />
 <p>To start, compute the standard error associated with
-<span class="math inline">\(\bar{x}_{d}\)</span> using the sample standard
+<span class="math inline">\(\bar{y}_{d}\)</span> using the sample standard
 deviation of the differences
 (<span class="math inline">\(s_{d} = 13.42\)</span>)
 and the number of differences
 (<span class="math inline">\(n = 68\)</span>):
 <span class="math display">\[\begin{align*}
-  SE(\bar{x}_{d})
+  SE(\bar{y}_{d})
     = \frac{s_{d}}{\sqrt{n}}
     = \frac{13.42}{\sqrt{68}} = 1.63
   \end{align*}\]</span>
 The test statistic is the T-score of
-<span class="math inline">\(\bar{x}_{d}\)</span>
+<span class="math inline">\(\bar{y}_{d}\)</span>
 under the null condition that the actual mean
 difference is 0:
 <span class="math display">\[\begin{align*}
   T
-    = \frac{\bar{x}_{d} - 0}
-        { SE(\bar{x}_{d})}
+    = \frac{\bar{y}_{d} - 0}
+        { SE(\bar{y}_{d})}
     = \frac{3.58 - 0}{1.63} = 2.20
   \end{align*}\]</span>
 This value tells us that the sample mean difference in price, $3.58,
 is 2.20 standard errors above zero (the null value).</p>
 <p>To visualize the p-value, the approximate sampling distribution
-of <span class="math inline">\(\bar{x}_{d}\)</span> is drawn as though
+of <span class="math inline">\(\bar{y}_{d}\)</span> is drawn as though
 <span class="math inline">\(H_0\)</span> is true,
 and the p-value is represented by the shaded upper tail in Figure <a href="inference-paired-means.html#fig:textbooksF18HTTails">18.8</a>. This area is equivalent
 to the area above 2.20 on a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = n - 1\)</span> = 68 <span class="math inline">\(-\)</span> 1 = 67 degrees of freedom.</p>
@@ -667,16 +1193,16 @@ upper tail area of 0.0156.</p>
 Amazon prices are, on average, lower than the
 UCLA Bookstore prices for UCLA courses.</p>
 </div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:textbooksF18HTTails"></span>
-<img src="18-numerical-paired-means_files/figure-html/textbooksF18HTTails-1.png" alt="Distribution of $\bar{x}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value." width="90%"><p class="caption">
-Figure 18.8: Distribution of <span class="math inline">\(\bar{x}_{d}\)</span> under the null hypothesis of no difference. The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value.
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:textbooksF18HTTails"></span>
+<img src="18-numerical-paired-means_files/figure-html/textbooksF18HTTails-1.png" alt="Distribution of $\bar{y}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value." width="90%" />
+<p class="caption">
+Figure 18.8: Distribution of <span class="math inline">\(\bar{y}_{d}\)</span> under the null hypothesis of no difference. The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value.
 </p>
 </div>
 <!-- TODO later - add note to compare to 99% CI in previous section, which contained zero. -->
 <div class="workedexample">
 <p>Create a theory-based 95% confidence interval for the average price difference between books at the UCLA Bookstore and books on Amazon.</p>
-<hr>
+<hr />
 <p>Conditions
 for using theory-based methods have already been verified and the standard error
 computed in the previous Example.</p>
@@ -686,7 +1212,7 @@ and plug it, the point estimate,
 and the standard error into the confidence
 interval formula:
 <span class="math display">\[\begin{align*}
-  \bar{x}_d \ \pm\ t^{\star} \times SE(\bar{x}_d)
+  \bar{y}_d \ \pm\ t^{\star} \times SE(\bar{y}_d)
       \quad\to\quad
           3.58 \ \pm\ 2.00 \times 1.63
       \quad\to\quad (0.32, 6.84)
@@ -701,10 +1227,50 @@ on average, less expensive.
 How should this conclusion affect UCLA student
 buying habits?
 Should UCLA students always buy their books
-on Amazon?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The average price difference
+on Amazon?<a href="#fn156" class="footnote-ref" id="fnref156"><sup>156</sup></a></p>
+</div>
+<p>
+</p>
+</div>
+</div>
+<div id="chp18-review" class="section level2 hasAnchor" number="18.4">
+<h2><span class="header-section-number">18.4</span> Chapter review<a href="inference-paired-means.html#chp18-review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!-- ### Summary {-} -->
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
+<div id="terms-14" class="section level3 unnumbered hasAnchor">
+<h3>Terms<a href="inference-paired-means.html#terms-14" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+paired data
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+<!-- ### Key ideas {-} -->
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="155">
+<li id="fn155"><p>Subtracting the sample mean is equivalent to adding <span class="math inline">\(\mu_0 - \bar{y}_d\)</span> when the null value is <span class="math inline">\(\mu_d = 0\)</span>. Thus, we are using the same process as that described in Section <a href="inference-one-mean.html#one-mean-null-boot">17.2</a>.<a href="inference-paired-means.html#fnref155" class="footnote-back">↩︎</a></p></li>
+<li id="fn156"><p>The average price difference
 is only mildly useful for this question.
 Examine the distribution shown in
-Figure &lt;a href="inference-paired-means.html#fig:diffInTextbookPricesF18"&gt;18.7&lt;/a&gt;.
+Figure <a href="inference-paired-means.html#fig:diffInTextbookPricesF18">18.7</a>.
 There are certainly a handful of cases where
 Amazon prices are far below the UCLA Bookstore’s,
 which suggests it is worth checking Amazon
@@ -726,121 +1292,73 @@ lower than those of the UCLA Bookstore’s and by
 a large margin, making the case to use Amazon over
 the UCLA Bookstore quite compelling at that time.
 Now we frequently check multiple websites
-to find the best price.&lt;/p&gt;'><sup>153</sup></a></p>
+to find the best price.<a href="inference-paired-means.html#fnref156" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
-<p>
-</p>
-</div>
-</div>
-<div id="chp18-review" class="section level2" number="18.4">
-<h2>
-<span class="header-section-number">18.4</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp18-review"><i class="fas fa-link"></i></a>
-</h2>
-<!-- ### Summary {-} -->
-<!-- ::: {.underconstruction} -->
-<!-- TODO -->
-<!-- ::: -->
-<div id="terms-14" class="section level3 unnumbered">
-<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-14"><i class="fas fa-link"></i></a>
-</h3>
-<p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
-<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody><tr>
-<td style="text-align:left;">
-paired data
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-</tr></tbody></table></div>
-<!-- ### Key ideas {-} --><!-- ::: {.underconstruction} --><!-- TODO --><!-- ::: -->
-</div>
-</div>
-</div>
+            </section>
 
-  <div class="chapter-nav">
-<div class="prev"><a href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></div>
-<div class="next"><a href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#inference-paired-means"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
-<li>
-<a class="nav-link" href="#shifted-bootstrap-test-for-h_0-mu_d-0"><span class="header-section-number">18.1</span> Shifted bootstrap test for \(H_0: \mu_d = 0\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#observed-data-7"><span class="header-section-number">18.1.1</span> Observed data</a></li>
-<li><a class="nav-link" href="#variability-of-the-statistic-4"><span class="header-section-number">18.1.2</span> Variability of the statistic</a></li>
-<li><a class="nav-link" href="#observed-statistic-vs.-null-value"><span class="header-section-number">18.1.3</span> Observed statistic vs. null value</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#bootstrap-confidence-interval-for-mu_d"><span class="header-section-number">18.2</span> Bootstrap confidence interval for \(\mu_d\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#observed-data-8"><span class="header-section-number">18.2.1</span> Observed data</a></li>
-<li><a class="nav-link" href="#variability-of-the-statistic-5"><span class="header-section-number">18.2.2</span> Variability of the statistic</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#paired-mean-math"><span class="header-section-number">18.3</span> Theory-based inferential methods for \(\mu_d\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#observed-data-9"><span class="header-section-number">18.3.1</span> Observed data</a></li>
-<li><a class="nav-link" href="#variability-of-the-statistic-6"><span class="header-section-number">18.3.2</span> Variability of the statistic</a></li>
-<li><a class="nav-link" href="#observed-statistic-vs.-null-statistics-2"><span class="header-section-number">18.3.3</span> Observed statistic vs. null statistics</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#chp18-review"><span class="header-section-number">18.4</span> Chapter review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-14">Terms</a></li></ul>
-</li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/18-numerical-paired-means.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/18-numerical-paired-means.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
-
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+          </div>
+        </div>
+      </div>
+<a href="inference-one-mean.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inference-two-means.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/18-numerical-paired-means.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["stat216-textbook.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
+
 </html>

@@ -1,138 +1,681 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 15 Inference for comparing two proportions | Montana State Introductory Statistics with R</title>
-<meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="We now extend the methods from Chapter 14 to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups, Group 1 and Group 2: \(\pi_1 -...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 15 Inference for comparing two proportions | Montana State Introductory Statistics with R">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-two-props.html">
-<meta property="og:description" content="We now extend the methods from Chapter 14 to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups, Group 1 and Group 2: \(\pi_1 -...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 15 Inference for comparing two proportions | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="We now extend the methods from Chapter 14 to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups, Group 1 and Group 2: \(\pi_1 -...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
-    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-    for (let popover of popovers){
-      const div = document.createElement('div');
-      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-      div.innerHTML = popover.getAttribute('data-content');
-      
-      // Will this work with TeX on its own line?
-      var has_math = div.querySelector("span.math");
-      if (has_math) {
-        document.body.appendChild(div);
-      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-      	MathJax.Hub.Queue(function(){
-          popover.setAttribute('data-content', div.innerHTML);
-      	})
-      }
-    }
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 15 Inference for comparing two proportions | Montana State Introductory Statistics with R</title>
+  <meta name="description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 15 Inference for comparing two proportions | Montana State Introductory Statistics with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="github-repo" content="MTstateIntroStats/IntroStatTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 15 Inference for comparing two proportions | Montana State Introductory Statistics with R" />
+  
+  <meta name="twitter:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  
+
+<meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager, Mark Greenwood" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="inference-one-prop.html"/>
+<link rel="next" href="inference-categ-applications.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
 <style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
-  </style>
-<link rel="stylesheet" href="css/ims-style.css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/ims-style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="authors.html">Authors</a></li>
-<li><a class="" href="preface.html">Preface</a></li>
-<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
-<li class="book-part">Introduction to data</li>
-<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
-<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
-<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
-<li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
-<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
-<li class="book-part">Foundations of inference</li>
-<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
-<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
-<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
-<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
-<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
-<li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
-<li><a class="active" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
-<li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
-<li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
-<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
-<li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
-<li><a class="" href="references.html">References</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MSU Intro Stat with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="authors.html"><a href="authors.html"><i class="fa fa-check"></i>Authors</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#examples-and-exercises"><i class="fa fa-check"></i>Examples and exercises</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#data-sets-and-their-sources"><i class="fa fa-check"></i>Data sets and their sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#stat-216-coursepack"><i class="fa fa-check"></i>STAT 216 Coursepack</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i>Preliminaries: Getting started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#accessing-rstudio"><i class="fa fa-check"></i>Accessing RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#alternative-options-for-accessing-rstudio"><i class="fa fa-check"></i>Alternative options for accessing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#packages"><i class="fa fa-check"></i>Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#using-packages"><i class="fa fa-check"></i>Using packages</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#the-catstats-package"><i class="fa fa-check"></i>The <code>catstats</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#projects"><i class="fa fa-check"></i>Projects</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#r-script-files"><i class="fa fa-check"></i>R script files</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#loading-data"><i class="fa fa-check"></i>Loading data</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-1"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-files"><i class="fa fa-check"></i>Exporting files</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-r-script-files"><i class="fa fa-check"></i>Exporting R script files</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-2"><i class="fa fa-check"></i>Try it!</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-plots"><i class="fa fa-check"></i>Exporting plots</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-3"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#home"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i>Troubleshooting</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#extra-references"><i class="fa fa-check"></i>Extra references</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction to data</b></span></li>
+<li class="chapter" data-level="1" data-path="data-hello.html"><a href="data-hello.html"><i class="fa fa-check"></i><b>1</b> Hello data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-hello.html"><a href="data-hello.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.2" data-path="data-hello.html"><a href="data-hello.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-hello.html"><a href="data-hello.html#observations-variables-and-data-frames"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data frames</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-hello.html"><a href="data-hello.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-hello.html"><a href="data-hello.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-hello.html"><a href="data-hello.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.2.5" data-path="data-hello.html"><a href="data-hello.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-hello.html"><a href="data-hello.html#chp1-review"><i class="fa fa-check"></i><b>1.3</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#terms"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#key-ideas"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-design.html"><a href="data-design.html"><i class="fa fa-check"></i><b>2</b> Study design</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-design.html"><a href="data-design.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>2.1</b> Sampling principles and strategies</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-design.html"><a href="data-design.html#populations-and-samples"><i class="fa fa-check"></i><b>2.1.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-design.html"><a href="data-design.html#parameters-and-statistics"><i class="fa fa-check"></i><b>2.1.2</b> Parameters and statistics</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-design.html"><a href="data-design.html#anecdotal-evidence"><i class="fa fa-check"></i><b>2.1.3</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-design.html"><a href="data-design.html#sampling-from-a-population"><i class="fa fa-check"></i><b>2.1.4</b> Sampling from a population</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-design.html"><a href="data-design.html#samp-methods"><i class="fa fa-check"></i><b>2.1.5</b> Four sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-design.html"><a href="data-design.html#observational-studies"><i class="fa fa-check"></i><b>2.2</b> Observational studies</a></li>
+<li class="chapter" data-level="2.3" data-path="data-design.html"><a href="data-design.html#experiments"><i class="fa fa-check"></i><b>2.3</b> Experiments</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data-design.html"><a href="data-design.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>2.3.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-design.html"><a href="data-design.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>2.3.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-design.html"><a href="data-design.html#scope-of-inference"><i class="fa fa-check"></i><b>2.4</b> Scope of inference</a></li>
+<li class="chapter" data-level="2.5" data-path="data-design.html"><a href="data-design.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#terms-1"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#key-ideas-1"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-applications.html"><a href="data-applications.html"><i class="fa fa-check"></i><b>3</b> Applications: Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-applications.html"><a href="data-applications.html#dataframes-in-r"><i class="fa fa-check"></i><b>3.1</b> Dataframes in R</a></li>
+<li class="chapter" data-level="3.2" data-path="data-applications.html"><a href="data-applications.html#datastruc"><i class="fa fa-check"></i><b>3.2</b> Tidy structure of data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-applications.html"><a href="data-applications.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>3.3</b> Using the pipe to chain</a></li>
+<li class="chapter" data-level="3.4" data-path="data-applications.html"><a href="data-applications.html#a-data-wrangling-example"><i class="fa fa-check"></i><b>3.4</b> A data wrangling example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#filtering"><i class="fa fa-check"></i>Filtering</a></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#mutating"><i class="fa fa-check"></i>Mutating</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#terms-2"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#r-functions"><i class="fa fa-check"></i>R functions</a></li>
+</ul></li>
+<li class="part"><span><b>II Exploratory data analysis</b></span></li>
+<li class="chapter" data-level="4" data-path="explore-categorical.html"><a href="explore-categorical.html"><i class="fa fa-check"></i><b>4</b> Exploring categorical data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="explore-categorical.html"><a href="explore-categorical.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>4.1</b> Contingency tables and conditional proportions</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="explore-categorical.html"><a href="explore-categorical.html#row-and-column-proportions"><i class="fa fa-check"></i><b>4.1.1</b> Row and column proportions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="explore-categorical.html"><a href="explore-categorical.html#sample-proportions-and-population-proportions"><i class="fa fa-check"></i><b>4.1.2</b> Sample proportions and population proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="explore-categorical.html"><a href="explore-categorical.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>4.2</b> Bar plots and mosaic plots</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="explore-categorical.html"><a href="explore-categorical.html#mosaic-plots"><i class="fa fa-check"></i><b>4.2.1</b> Mosaic plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="explore-categorical.html"><a href="explore-categorical.html#why-not-pie-charts"><i class="fa fa-check"></i><b>4.3</b> Why not pie charts?</a></li>
+<li class="chapter" data-level="4.4" data-path="explore-categorical.html"><a href="explore-categorical.html#simpson"><i class="fa fa-check"></i><b>4.4</b> Simpson’s paradox</a></li>
+<li class="chapter" data-level="4.5" data-path="explore-categorical.html"><a href="explore-categorical.html#chp4-review"><i class="fa fa-check"></i><b>4.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#terms-3"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#key-ideas-2"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="explore-numerical.html"><a href="explore-numerical.html"><i class="fa fa-check"></i><b>5</b> Exploring quantitative data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="explore-numerical.html"><a href="explore-numerical.html#scatterplots"><i class="fa fa-check"></i><b>5.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="5.2" data-path="explore-numerical.html"><a href="explore-numerical.html#dotplots"><i class="fa fa-check"></i><b>5.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="5.3" data-path="explore-numerical.html"><a href="explore-numerical.html#histograms"><i class="fa fa-check"></i><b>5.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="5.4" data-path="explore-numerical.html"><a href="explore-numerical.html#variance-sd"><i class="fa fa-check"></i><b>5.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="5.5" data-path="explore-numerical.html"><a href="explore-numerical.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>5.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="5.6" data-path="explore-numerical.html"><a href="explore-numerical.html#describing-and-comparing-quantitative-distributions"><i class="fa fa-check"></i><b>5.6</b> Describing and comparing quantitative distributions</a></li>
+<li class="chapter" data-level="5.7" data-path="explore-numerical.html"><a href="explore-numerical.html#robust-statistics"><i class="fa fa-check"></i><b>5.7</b> Robust statistics</a></li>
+<li class="chapter" data-level="5.8" data-path="explore-numerical.html"><a href="explore-numerical.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>5.8</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="5.9" data-path="explore-numerical.html"><a href="explore-numerical.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>5.9</b> Mapping data (special topic)</a></li>
+<li class="chapter" data-level="5.10" data-path="explore-numerical.html"><a href="explore-numerical.html#chp5-review"><i class="fa fa-check"></i><b>5.10</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#terms-4"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#key-ideas-3"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="explore-regression.html"><a href="explore-regression.html"><i class="fa fa-check"></i><b>6</b> Correlation and regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="explore-regression.html"><a href="explore-regression.html#fit-line-res-cor"><i class="fa fa-check"></i><b>6.1</b> Fitting a line, residuals, and correlation</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="explore-regression.html"><a href="explore-regression.html#fitting-a-line-to-data"><i class="fa fa-check"></i><b>6.1.1</b> Fitting a line to data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="explore-regression.html"><a href="explore-regression.html#using-linear-regression-to-predict-possum-head-lengths"><i class="fa fa-check"></i><b>6.1.2</b> Using linear regression to predict possum head lengths</a></li>
+<li class="chapter" data-level="6.1.3" data-path="explore-regression.html"><a href="explore-regression.html#residuals"><i class="fa fa-check"></i><b>6.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="6.1.4" data-path="explore-regression.html"><a href="explore-regression.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>6.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="explore-regression.html"><a href="explore-regression.html#least-squares-regression"><i class="fa fa-check"></i><b>6.2</b> Least squares regression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="explore-regression.html"><a href="explore-regression.html#gift-aid-for-freshman-at-elmhurst-college"><i class="fa fa-check"></i><b>6.2.1</b> Gift aid for freshman at Elmhurst College</a></li>
+<li class="chapter" data-level="6.2.2" data-path="explore-regression.html"><a href="explore-regression.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>6.2.2</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="6.2.3" data-path="explore-regression.html"><a href="explore-regression.html#finding-and-interpreting-the-least-squares-line"><i class="fa fa-check"></i><b>6.2.3</b> Finding and interpreting the least squares line</a></li>
+<li class="chapter" data-level="6.2.4" data-path="explore-regression.html"><a href="explore-regression.html#calculating-the-least-squares-regression-line-using-summary-statistics-special-topic"><i class="fa fa-check"></i><b>6.2.4</b> Calculating the least squares regression line using summary statistics (special topic)</a></li>
+<li class="chapter" data-level="6.2.5" data-path="explore-regression.html"><a href="explore-regression.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>6.2.5</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="6.2.6" data-path="explore-regression.html"><a href="explore-regression.html#describing-the-strength-of-a-fit"><i class="fa fa-check"></i><b>6.2.6</b> Describing the strength of a fit</a></li>
+<li class="chapter" data-level="6.2.7" data-path="explore-regression.html"><a href="explore-regression.html#categorical-predictor-two-levels"><i class="fa fa-check"></i><b>6.2.7</b> Categorical predictors with two levels (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="explore-regression.html"><a href="explore-regression.html#outliers-in-regression"><i class="fa fa-check"></i><b>6.3</b> Outliers in linear regression</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="explore-regression.html"><a href="explore-regression.html#types-of-outliers"><i class="fa fa-check"></i><b>6.3.1</b> Types of outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="explore-regression.html"><a href="explore-regression.html#chp6-review"><i class="fa fa-check"></i><b>6.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#data-visualization-summary"><i class="fa fa-check"></i>Data visualization summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#summary-measures"><i class="fa fa-check"></i>Summary measures</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#notation-summary"><i class="fa fa-check"></i>Notation summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#terms-5"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#key-ideas-4"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html"><i class="fa fa-check"></i><b>7</b> Multivariable models</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#gapminder-world"><i class="fa fa-check"></i><b>7.1</b> Gapminder world</a></li>
+<li class="chapter" data-level="7.2" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#simpsons-paradox-revisited"><i class="fa fa-check"></i><b>7.2</b> Simpson’s paradox revisited</a></li>
+<li class="chapter" data-level="7.3" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#regression-multiple-predictors"><i class="fa fa-check"></i><b>7.3</b> Multiple regression (special topic)</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#ind-and-cat-predictors"><i class="fa fa-check"></i><b>7.3.1</b> Indicator and categorical predictors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#many-predictors-in-a-model"><i class="fa fa-check"></i><b>7.3.2</b> Many predictors in a model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#terms-6"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#key-ideas-5"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="explore-applications.html"><a href="explore-applications.html"><i class="fa fa-check"></i><b>8</b> Applications: Explore</a></li>
+<li class="part"><span><b>III Foundations of inference</b></span></li>
+<li class="chapter" data-level="9" data-path="foundations-randomization.html"><a href="foundations-randomization.html"><i class="fa fa-check"></i><b>9</b> Hypothesis testing with randomization</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#Martian"><i class="fa fa-check"></i><b>9.1</b> Motivating example: Martian alphabet</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-data"><i class="fa fa-check"></i><b>9.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#variability-in-a-statistic"><i class="fa fa-check"></i><b>9.1.2</b> Variability in a statistic</a></li>
+<li class="chapter" data-level="9.1.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-statistic-vs.-null-statistics"><i class="fa fa-check"></i><b>9.1.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#caseStudySexDiscrimination"><i class="fa fa-check"></i><b>9.2</b> Case study: Sex discrimination</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-data-1"><i class="fa fa-check"></i><b>9.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="9.2.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#variability-of-the-statistic"><i class="fa fa-check"></i><b>9.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="9.2.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-statistic-vs.-null-statistics-1"><i class="fa fa-check"></i><b>9.2.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#HypothesisTesting"><i class="fa fa-check"></i><b>9.3</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#the-us-court-system"><i class="fa fa-check"></i><b>9.3.1</b> The US court system</a></li>
+<li class="chapter" data-level="9.3.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#p-value-stat-signif"><i class="fa fa-check"></i><b>9.3.2</b> p-value and statistical significance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="foundations-randomization.html"><a href="foundations-randomization.html#chp9-review"><i class="fa fa-check"></i><b>9.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#summary-6"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#terms-7"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#key-ideas-6"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html"><i class="fa fa-check"></i><b>10</b> Confidence intervals with bootstrapping</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#case-study-med-consult"><i class="fa fa-check"></i><b>10.1</b> Case study: Medical consultant</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#observed-data-2"><i class="fa fa-check"></i><b>10.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="10.1.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#variability-of-the-statistic-1"><i class="fa fa-check"></i><b>10.1.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>10.2</b> Confidence intervals</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#plausible-range-of-values-for-the-population-parameter"><i class="fa fa-check"></i><b>10.2.1</b> Plausible range of values for the population parameter</a></li>
+<li class="chapter" data-level="10.2.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#bootstrap-confidence-interval"><i class="fa fa-check"></i><b>10.2.2</b> Bootstrap confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#chp10-review"><i class="fa fa-check"></i><b>10.3</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#terms-8"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html"><i class="fa fa-check"></i><b>11</b> Inference with mathematical models</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#CLTsection"><i class="fa fa-check"></i><b>11.1</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="11.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal"><i class="fa fa-check"></i><b>11.2</b> Normal distributions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-distribution-model"><i class="fa fa-check"></i><b>11.2.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="11.2.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>11.2.2</b> Standardizing with Z-scores</a></li>
+<li class="chapter" data-level="11.2.3" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>11.2.3</b> Normal probability calculations in R</a></li>
+<li class="chapter" data-level="11.2.4" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-probability-examples"><i class="fa fa-check"></i><b>11.2.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="11.2.5" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#rule"><i class="fa fa-check"></i><b>11.2.5</b> 68-95-99.7 rule</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#quantifying-the-variability-of-a-statistic"><i class="fa fa-check"></i><b>11.3</b> Quantifying the variability of a statistic</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#standard-error"><i class="fa fa-check"></i><b>11.3.1</b> Standard error</a></li>
+<li class="chapter" data-level="11.3.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#moe"><i class="fa fa-check"></i><b>11.3.2</b> Margin of error</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#chp11-review"><i class="fa fa-check"></i><b>11.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#terms-9"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="foundations-errors.html"><a href="foundations-errors.html"><i class="fa fa-check"></i><b>12</b> Errors, power, and practical importance</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="foundations-errors.html"><a href="foundations-errors.html#decerr"><i class="fa fa-check"></i><b>12.1</b> Decision errors</a></li>
+<li class="chapter" data-level="12.2" data-path="foundations-errors.html"><a href="foundations-errors.html#significance-level"><i class="fa fa-check"></i><b>12.2</b> Significance level</a></li>
+<li class="chapter" data-level="12.3" data-path="foundations-errors.html"><a href="foundations-errors.html#two-sided-tests"><i class="fa fa-check"></i><b>12.3</b> Two-sided hypotheses</a></li>
+<li class="chapter" data-level="12.4" data-path="foundations-errors.html"><a href="foundations-errors.html#controlling-the-type-1-error-rate"><i class="fa fa-check"></i><b>12.4</b> Controlling the Type 1 error rate</a></li>
+<li class="chapter" data-level="12.5" data-path="foundations-errors.html"><a href="foundations-errors.html#power"><i class="fa fa-check"></i><b>12.5</b> Power</a></li>
+<li class="chapter" data-level="12.6" data-path="foundations-errors.html"><a href="foundations-errors.html#statistical-significance-vs.-practical-importance"><i class="fa fa-check"></i><b>12.6</b> Statistical significance vs. practical importance</a></li>
+<li class="chapter" data-level="12.7" data-path="foundations-errors.html"><a href="foundations-errors.html#chp12-review"><i class="fa fa-check"></i><b>12.7</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-errors.html"><a href="foundations-errors.html#terms-10"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="foundations-applications.html"><a href="foundations-applications.html"><i class="fa fa-check"></i><b>13</b> Applications: Foundations</a></li>
+<li class="part"><span><b>IV Inference for categorical data</b></span></li>
+<li class="chapter" data-level="14" data-path="inference-one-prop.html"><a href="inference-one-prop.html"><i class="fa fa-check"></i><b>14</b> Inference for a single proportion</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="inference-one-prop.html"><a href="inference-one-prop.html#one-prop-null-boot"><i class="fa fa-check"></i><b>14.1</b> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#steps-1-and-2-hypotheses-and-test-statistic"><i class="fa fa-check"></i>Steps 1 and 2: Hypotheses and test statistic</a></li>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#steps-3-and-4-null-distribution-and-p-value"><i class="fa fa-check"></i>Steps 3 and 4: Null distribution and p-value</a></li>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#step-5-conclusion-and-scope-of-inference"><i class="fa fa-check"></i>Step 5: Conclusion and scope of inference</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="inference-one-prop.html"><a href="inference-one-prop.html#boot-ci-prop"><i class="fa fa-check"></i><b>14.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></a></li>
+<li class="chapter" data-level="14.3" data-path="inference-one-prop.html"><a href="inference-one-prop.html#theory-prop"><i class="fa fa-check"></i><b>14.3</b> Theory-based inferential methods for <span class="math inline">\(\pi\)</span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="inference-one-prop.html"><a href="inference-one-prop.html#evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods"><i class="fa fa-check"></i><b>14.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\hat{p}\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="14.3.2" data-path="inference-one-prop.html"><a href="inference-one-prop.html#payday-lenders"><i class="fa fa-check"></i><b>14.3.2</b> Theory-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
+<li class="chapter" data-level="14.3.3" data-path="inference-one-prop.html"><a href="inference-one-prop.html#theory-based-confidence-interval-for-pi"><i class="fa fa-check"></i><b>14.3.3</b> Theory-based confidence interval for <span class="math inline">\(\pi\)</span></a></li>
+<li class="chapter" data-level="14.3.4" data-path="inference-one-prop.html"><a href="inference-one-prop.html#violating-conditions"><i class="fa fa-check"></i><b>14.3.4</b> Violating conditions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="inference-one-prop.html"><a href="inference-one-prop.html#chp14-review"><i class="fa fa-check"></i><b>14.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#terms-11"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="inference-two-props.html"><a href="inference-two-props.html"><i class="fa fa-check"></i><b>15</b> Inference for comparing two proportions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="inference-two-props.html"><a href="inference-two-props.html#two-prop-errors"><i class="fa fa-check"></i><b>15.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="inference-two-props.html"><a href="inference-two-props.html#cpr"><i class="fa fa-check"></i><b>15.1.1</b> Case study: CPR and blood thinner</a></li>
+<li class="chapter" data-level="15.1.2" data-path="inference-two-props.html"><a href="inference-two-props.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>15.1.2</b> Case study: Opportunity cost</a></li>
+<li class="chapter" data-level="15.1.3" data-path="inference-two-props.html"><a href="inference-two-props.html#caseStudyMalaria"><i class="fa fa-check"></i><b>15.1.3</b> Case study: Malaria vaccine</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="inference-two-props.html"><a href="inference-two-props.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>15.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="inference-two-props.html"><a href="inference-two-props.html#observed-data-3"><i class="fa fa-check"></i><b>15.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="15.2.2" data-path="inference-two-props.html"><a href="inference-two-props.html#variability-of-the-statistic-2"><i class="fa fa-check"></i><b>15.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="15.2.3" data-path="inference-two-props.html"><a href="inference-two-props.html#what-does-95-mean"><i class="fa fa-check"></i><b>15.2.3</b> What does 95% mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="inference-two-props.html"><a href="inference-two-props.html#math-2prop"><i class="fa fa-check"></i><b>15.3</b> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="inference-two-props.html"><a href="inference-two-props.html#evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods"><i class="fa fa-check"></i><b>15.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\pi_1 - \pi_2\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="15.3.2" data-path="inference-two-props.html"><a href="inference-two-props.html#confidence-interval-for-pi_1---pi_2"><i class="fa fa-check"></i><b>15.3.2</b> Confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
+<li class="chapter" data-level="15.3.3" data-path="inference-two-props.html"><a href="inference-two-props.html#hypothesis-test-for-h_0-pi_1---pi_2-0"><i class="fa fa-check"></i><b>15.3.3</b> Hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="inference-two-props.html"><a href="inference-two-props.html#chp15-review"><i class="fa fa-check"></i><b>15.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="inference-two-props.html"><a href="inference-two-props.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>15.4.1</b> Summary of Z-procedures</a></li>
+<li class="chapter" data-level="" data-path="inference-two-props.html"><a href="inference-two-props.html#terms-12"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html"><i class="fa fa-check"></i><b>16</b> Applications: Infer categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#making-tables-from-raw-data"><i class="fa fa-check"></i>Making tables from raw data</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-one-proportion"><i class="fa fa-check"></i>Simulation-based inference for one proportion</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-difference-in-two-proportions"><i class="fa fa-check"></i>Simulation-based inference for difference in two proportions</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-relative-risk"><i class="fa fa-check"></i>Simulation-based inference for relative risk</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#theory-based-inference-for-one-proportion"><i class="fa fa-check"></i>Theory-based inference for one proportion</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#theory-based-inference-for-a-difference-in-two-proportions"><i class="fa fa-check"></i>Theory-based inference for a difference in two proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="16.1" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#catstats-function-summary"><i class="fa fa-check"></i><b>16.1</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>V Inference for quantitative data</b></span></li>
+<li class="chapter" data-level="17" data-path="inference-one-mean.html"><a href="inference-one-mean.html"><i class="fa fa-check"></i><b>17</b> Inference for a single mean</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>17.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#observed-data-4"><i class="fa fa-check"></i><b>17.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="17.1.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#variability-of-the-statistic-3"><i class="fa fa-check"></i><b>17.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="17.1.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrap-percentile-confidence-interval-for-sigma-special-topic"><i class="fa fa-check"></i><b>17.1.3</b> Bootstrap percentile confidence interval for <span class="math inline">\(\sigma\)</span> (special topic)</a></li>
+<li class="chapter" data-level="17.1.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrapping-is-not-a-solution-to-small-sample-sizes"><i class="fa fa-check"></i><b>17.1.4</b> Bootstrapping is not a solution to small sample sizes!</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-mean-null-boot"><i class="fa fa-check"></i><b>17.2</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#observed-data-5"><i class="fa fa-check"></i><b>17.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="17.2.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#shifted-bootstrapped-null-distribution"><i class="fa fa-check"></i><b>17.2.2</b> Shifted bootstrapped null distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-mean-math"><i class="fa fa-check"></i><b>17.3</b> Theory-based inferential methods for <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#evaluating-the-two-conditions-required-for-modeling-bary-using-theory-based-methods"><i class="fa fa-check"></i><b>17.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\bar{y}\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="17.3.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#introducing-the-t-distribution"><i class="fa fa-check"></i><b>17.3.2</b> Introducing the <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="17.3.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-sample-t-confidence-intervals"><i class="fa fa-check"></i><b>17.3.3</b> One sample <span class="math inline">\(t\)</span>-confidence intervals</a></li>
+<li class="chapter" data-level="17.3.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-sample-t-tests"><i class="fa fa-check"></i><b>17.3.4</b> One sample <span class="math inline">\(t\)</span>-tests</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#chp17-review"><i class="fa fa-check"></i><b>17.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-mean.html"><a href="inference-one-mean.html#terms-13"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="inference-paired-means.html"><a href="inference-paired-means.html"><i class="fa fa-check"></i><b>18</b> Inference for comparing paired means</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#shifted-bootstrap-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>18.1</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-7"><i class="fa fa-check"></i><b>18.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.1.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-4"><i class="fa fa-check"></i><b>18.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="18.1.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-statistic-vs.-null-value"><i class="fa fa-check"></i><b>18.1.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>18.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-8"><i class="fa fa-check"></i><b>18.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.2.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-5"><i class="fa fa-check"></i><b>18.2.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#paired-mean-math"><i class="fa fa-check"></i><b>18.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span></a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-9"><i class="fa fa-check"></i><b>18.3.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.3.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-6"><i class="fa fa-check"></i><b>18.3.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="18.3.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-statistic-vs.-null-statistics-2"><i class="fa fa-check"></i><b>18.3.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="inference-paired-means.html"><a href="inference-paired-means.html#chp18-review"><i class="fa fa-check"></i><b>18.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-paired-means.html"><a href="inference-paired-means.html#terms-14"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="inference-two-means.html"><a href="inference-two-means.html"><i class="fa fa-check"></i><b>19</b> Inference for comparing two independent means</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="inference-two-means.html"><a href="inference-two-means.html#rand2mean"><i class="fa fa-check"></i><b>19.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-data-10"><i class="fa fa-check"></i><b>19.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="19.1.2" data-path="inference-two-means.html"><a href="inference-two-means.html#variability-of-the-statistic-7"><i class="fa fa-check"></i><b>19.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="19.1.3" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-statistic-vs.-null-value-1"><i class="fa fa-check"></i><b>19.1.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="inference-two-means.html"><a href="inference-two-means.html#boot-ci-diff-means"><i class="fa fa-check"></i><b>19.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-data-11"><i class="fa fa-check"></i><b>19.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="19.2.2" data-path="inference-two-means.html"><a href="inference-two-means.html#variability-of-the-statistic-8"><i class="fa fa-check"></i><b>19.2.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="inference-two-means.html"><a href="inference-two-means.html#math2samp"><i class="fa fa-check"></i><b>19.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span></a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="inference-two-means.html"><a href="inference-two-means.html#t-test-for-mu_1---mu_2"><i class="fa fa-check"></i><b>19.3.1</b> <span class="math inline">\(t\)</span>-test for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+<li class="chapter" data-level="19.3.2" data-path="inference-two-means.html"><a href="inference-two-means.html#t-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>19.3.2</b> <span class="math inline">\(t\)</span> confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="inference-two-means.html"><a href="inference-two-means.html#chp19-review"><i class="fa fa-check"></i><b>19.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-two-means.html"><a href="inference-two-means.html#summary-of-t-procedures"><i class="fa fa-check"></i>Summary of t-procedures</a></li>
+<li class="chapter" data-level="" data-path="inference-two-means.html"><a href="inference-two-means.html#terms-15"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="inference-num-applications.html"><a href="inference-num-applications.html"><i class="fa fa-check"></i><b>20</b> Applications: Infer quantitative</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="inference-num-applications.html"><a href="inference-num-applications.html#inference-for-quantitative-data-using-r-and-catstats"><i class="fa fa-check"></i><b>20.1</b> Inference for quantitative data using R and <code>catstats</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#using-the-t-distribution"><i class="fa fa-check"></i>Using the <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#simulation-based-inference-for-paired-mean-difference"><i class="fa fa-check"></i>Simulation-based inference for paired mean difference</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#theory-based-inference-for-paired-mean-difference"><i class="fa fa-check"></i>Theory-based inference for paired mean difference</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#simulation-based-inference-for-the-difference-of-two-means"><i class="fa fa-check"></i>Simulation-based inference for the difference of two means</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#theory-based-inference-for-the-difference-of-two-means"><i class="fa fa-check"></i>Theory-based inference for the difference of two means</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="inference-num-applications.html"><a href="inference-num-applications.html#catstats-function-summary-1"><i class="fa fa-check"></i><b>20.2</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>VI Inference for regression</b></span></li>
+<li class="chapter" data-level="21" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>21</b> Inference for correlation and slope</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="inference-reg.html"><a href="inference-reg.html#case-study-sandwich-store"><i class="fa fa-check"></i><b>21.1</b> Case study: Sandwich store</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-13"><i class="fa fa-check"></i><b>21.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.1.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-10"><i class="fa fa-check"></i><b>21.1.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="inference-reg.html"><a href="inference-reg.html#randslope"><i class="fa fa-check"></i><b>21.2</b> Randomization test for <span class="math inline">\(H_0: \beta_1= 0\)</span></a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-14"><i class="fa fa-check"></i><b>21.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.2.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-11"><i class="fa fa-check"></i><b>21.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="21.2.3" data-path="inference-reg.html"><a href="inference-reg.html#observed-statistic-vs.-null-value-3"><i class="fa fa-check"></i><b>21.2.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="inference-reg.html"><a href="inference-reg.html#bootbeta1"><i class="fa fa-check"></i><b>21.3</b> Bootstrap confidence interval for <span class="math inline">\(\beta_1\)</span></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-15"><i class="fa fa-check"></i><b>21.3.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.3.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-12"><i class="fa fa-check"></i><b>21.3.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="inference-reg.html"><a href="inference-reg.html#inference-on-the-correlation-coefficient-rho"><i class="fa fa-check"></i><b>21.4</b> Inference on the correlation coefficient <span class="math inline">\(\rho\)</span></a></li>
+<li class="chapter" data-level="21.5" data-path="inference-reg.html"><a href="inference-reg.html#mathslope"><i class="fa fa-check"></i><b>21.5</b> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span></a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="inference-reg.html"><a href="inference-reg.html#case-study-midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>21.5.1</b> Case study: Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="21.5.2" data-path="inference-reg.html"><a href="inference-reg.html#understanding-regression-output-from-software"><i class="fa fa-check"></i><b>21.5.2</b> Understanding regression output from software</a></li>
+<li class="chapter" data-level="21.5.3" data-path="inference-reg.html"><a href="inference-reg.html#intuition-vs.-formal-inference"><i class="fa fa-check"></i><b>21.5.3</b> Intuition vs. formal inference</a></li>
+<li class="chapter" data-level="21.5.4" data-path="inference-reg.html"><a href="inference-reg.html#theory-based-confidence-interval-for-a-regression-coefficient"><i class="fa fa-check"></i><b>21.5.4</b> Theory-based confidence interval for a regression coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="21.6" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>21.6</b> Checking model conditions</a>
+<ul>
+<li class="chapter" data-level="21.6.1" data-path="inference-reg.html"><a href="inference-reg.html#linearity"><i class="fa fa-check"></i><b>21.6.1</b> <strong>L</strong>inearity</a></li>
+<li class="chapter" data-level="21.6.2" data-path="inference-reg.html"><a href="inference-reg.html#independence"><i class="fa fa-check"></i><b>21.6.2</b> <strong>I</strong>ndependence</a></li>
+<li class="chapter" data-level="21.6.3" data-path="inference-reg.html"><a href="inference-reg.html#normality"><i class="fa fa-check"></i><b>21.6.3</b> <strong>N</strong>ormality</a></li>
+<li class="chapter" data-level="21.6.4" data-path="inference-reg.html"><a href="inference-reg.html#equal-variability"><i class="fa fa-check"></i><b>21.6.4</b> <strong>E</strong>qual variability</a></li>
+<li class="chapter" data-level="21.6.5" data-path="inference-reg.html"><a href="inference-reg.html#scope-of-inference-for-regression"><i class="fa fa-check"></i><b>21.6.5</b> Scope of Inference for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="21.7" data-path="inference-reg.html"><a href="inference-reg.html#chp21-review"><i class="fa fa-check"></i><b>21.7</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-reg.html"><a href="inference-reg.html#terms-16"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html"><i class="fa fa-check"></i><b>22</b> Applications: Infer regression</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#inference-for-regression-using-r-and-catstats"><i class="fa fa-check"></i><b>22.1</b> Inference for regression using R and <code>catstats</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#simulation-based-inference-for-the-regression-slope"><i class="fa fa-check"></i>Simulation-based inference for the regression slope</a></li>
+<li class="chapter" data-level="" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#theory-based-inference-for-the-regression-slope"><i class="fa fa-check"></i>Theory-based inference for the regression slope</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#catstats-function-summary-2"><i class="fa fa-check"></i><b>22.2</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>VII Probability</b></span></li>
+<li class="chapter" data-level="23" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>23</b> Probability with tables</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="probability.html"><a href="probability.html#defining-probability"><i class="fa fa-check"></i><b>23.1</b> Defining probability</a></li>
+<li class="chapter" data-level="23.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-tables"><i class="fa fa-check"></i><b>23.2</b> Finding probabilities with tables</a></li>
+<li class="chapter" data-level="23.3" data-path="probability.html"><a href="probability.html#probability-notation"><i class="fa fa-check"></i><b>23.3</b> Probability notation</a></li>
+<li class="chapter" data-level="23.4" data-path="probability.html"><a href="probability.html#diagnostic-testing"><i class="fa fa-check"></i><b>23.4</b> Diagnostic testing</a>
+<ul>
+<li class="chapter" data-level="23.4.1" data-path="probability.html"><a href="probability.html#the-case-of-baby-jeff"><i class="fa fa-check"></i><b>23.4.1</b> The case of Baby Jeff</a></li>
+</ul></li>
+<li class="chapter" data-level="23.5" data-path="probability.html"><a href="probability.html#chp23-review"><i class="fa fa-check"></i><b>23.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#terms-17"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#key-ideas-7"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-two-props" class="section level1" number="15">
-<h1>
-<span class="header-section-number">15</span> Inference for comparing two proportions<a class="anchor" aria-label="anchor" href="#inference-two-props"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Montana State Introductory Statistics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inference-two-props" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Inference for comparing two proportions<a href="inference-two-props.html#inference-two-props" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="chapterintro">
 <p>We now extend the methods from Chapter <a href="inference-one-prop.html#inference-one-prop">14</a> to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups, Group 1 and Group 2: <span class="math inline">\(\pi_1 - \pi_2.\)</span></p>
 <p>In our investigations, we’ll identify a reasonable point estimate of <span class="math inline">\(\pi_1 - \pi_2\)</span> based on the sample, and you may have already guessed its form: <span class="math inline">\(\hat{p}_1 - \hat{p}_2.\)</span> Then we’ll look at the inferential analysis in two different ways: simulation-based methods of a randomization test and applying bootstrapping for interval estimates, and, if we verify that the point estimate can be modeled using a normal distribution, theory-based methods through a two sample <span class="math inline">\(z\)</span>-test and <span class="math inline">\(z\)</span>-interval.</p>
@@ -148,29 +691,22 @@
 <div class="onebox">
 <p><strong>Notation for a binary explanatory variable and a binary response variable.</strong></p>
 <ul>
-<li>
-<span class="math inline">\(n_1\)</span>, <span class="math inline">\(n_2\)</span> = sample sizes of two independent samples</li>
-<li>
-<span class="math inline">\(\hat{p}_1\)</span>, <span class="math inline">\(\hat{p}_2\)</span> = sample proportions of two independent samples</li>
-<li>
-<span class="math inline">\(\pi_1\)</span>, <span class="math inline">\(\pi_2\)</span> = population proportions of two independent samples</li>
+<li><span class="math inline">\(n_1\)</span>, <span class="math inline">\(n_2\)</span> = sample sizes of two independent samples</li>
+<li><span class="math inline">\(\hat{p}_1\)</span>, <span class="math inline">\(\hat{p}_2\)</span> = sample proportions of two independent samples</li>
+<li><span class="math inline">\(\pi_1\)</span>, <span class="math inline">\(\pi_2\)</span> = population proportions of two independent samples</li>
 </ul>
 </div>
-<div id="two-prop-errors" class="section level2" number="15.1">
-<h2>
-<span class="header-section-number">15.1</span> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span><a class="anchor" aria-label="anchor" href="#two-prop-errors"><i class="fas fa-link"></i></a>
-</h2>
+<div id="two-prop-errors" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span><a href="inference-two-props.html#two-prop-errors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As you learned in Chapter <a href="data-hello.html#data-hello">1</a>, a <strong>randomized experiment</strong> is done to assess whether or not one variable (the <strong>explanatory</strong> variable) causes changes in a second variable (the <strong>response</strong> variable). Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. We first observed this method in the <a href="caseStudySexDiscrimination">Sex discrimination case study</a> from Chapter <a href="foundations-randomization.html#foundations-randomization">9</a>. Now, using a few more studies, let’s look more carefully at this idea of a <strong>randomization test</strong>.</p>
-<div id="cpr" class="section level3" number="15.1.1">
-<h3>
-<span class="header-section-number">15.1.1</span> Case study: CPR and blood thinner<a class="anchor" aria-label="anchor" href="#cpr"><i class="fas fa-link"></i></a>
-</h3>
+<div id="cpr" class="section level3 hasAnchor" number="15.1.1">
+<h3><span class="header-section-number">15.1.1</span> Case study: CPR and blood thinner<a href="inference-two-props.html#cpr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p></p>
 <p>Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts. For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.</p>
-<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;B&lt;span class="math inline"&gt;\(\ddot{\text{o}}\)&lt;/span&gt;ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.&lt;/p&gt;'><sup>124</sup></a> Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
+<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a href="#fn126" class="footnote-ref" id="fnref126"><sup>126</sup></a> Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
 <div class="workedexample">
 <p>Form hypotheses for this study in plain and statistical language. Let <span class="math inline">\(\pi_c\)</span> represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and <span class="math inline">\(\pi_t\)</span> represent the true survival rate for people receiving a blood thinner (corresponding to the treatment group).</p>
-<hr>
+<hr />
 <p>We want to understand whether blood thinners are helpful or harmful. We’ll consider both of these possibilities using a two-sided hypothesis test.</p>
 <ul>
 <li><p><span class="math inline">\(H_0\)</span>: Blood thinners do not have an overall survival effect, i.e., <span class="math inline">\(\pi_t - \pi_c = 0\)</span>.</p></li>
@@ -183,11 +719,12 @@
 </ul>
 </div>
 <p>There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did. The study results are shown in Table <a href="inference-two-props.html#tab:resultsForCPRStudyInSmallSampleSection">15.1</a>.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:resultsForCPRStudyInSmallSampleSection">Table 15.1: </span>Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.
+<span id="tab:resultsForCPRStudyInSmallSampleSection">Table 15.1: </span><span id="tab:resultsForCPRStudyInSmallSampleSection">Table 15.2: </span>Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
@@ -199,7 +736,8 @@ Control
 <th style="text-align:left;">
 Total
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -244,26 +782,26 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div class="guidedpractice">
-<p>What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups (<span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>) and the relative “risk” of survival (<span class="math inline">\(\hat{p}_t/\hat{p}_c\)</span>).<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Observed control survival rate: &lt;span class="math inline"&gt;\(\hat{p}_c = \frac{11}{50} = 0.22\)&lt;/span&gt;. Treatment survival rate: &lt;span class="math inline"&gt;\(\hat{p}_t = \frac{14}{40} = 0.35\)&lt;/span&gt;. Observed difference: &lt;span class="math inline"&gt;\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)&lt;/span&gt;. Relative risk: &lt;span class="math inline"&gt;\(\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59\)&lt;/span&gt;&lt;/p&gt;'><sup>125</sup></a></p>
+<p>What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups (<span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>) and the relative “risk” of survival (<span class="math inline">\(\hat{p}_t/\hat{p}_c\)</span>).<a href="#fn127" class="footnote-ref" id="fnref127"><sup>127</sup></a></p>
 </div>
 <p>According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. Interpreting the relative risk, patients in this sample who had undergone CPR outside of the hospital had a 59% higher survival rate when they were treated with blood thinners. However, we wonder if this difference could be easily explainable by chance.</p>
 <p>As we did in our past studies this chapter, we will simulate what type of differences we might see from chance alone under the null hypothesis. By randomly assigning “simulated treatment” and “simulated control” stickers to the patients’ files, we get a new grouping. If we repeat this simulation 10,000 times, we can build a <strong>null distribution</strong> of the differences in sample proportions shown in Figure <a href="inference-two-props.html#fig:CPR-study-right-tail">15.1</a>.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:CPR-study-right-tail"></span>
-<img src="15-categorical-two-props_files/figure-html/CPR-study-right-tail-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:CPR-study-right-tail"></span>
+<img src="15-categorical-two-props_files/figure-html/CPR-study-right-tail-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13." width="90%" />
+<p class="caption">
 Figure 15.1: Null distribution of the point estimate for the difference in proportions, <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>. The shaded right tail shows observations that are at least as large as the observed difference, 0.13.
 </p>
 </div>
-<p>The right tail area is 0.131.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note: it is only a coincidence that we also have &lt;span class="math inline"&gt;\(\hat{p}_t - \hat{p}_c=0.13\)&lt;/span&gt;!&lt;/p&gt;'><sup>126</sup></a> However, contrary to how we calculated the p-value in previous studies, the p-value of this test is not 0.131!</p>
-<p>The p-value is defined as the chance we observe a result <em>at least as favorable to the alternative hypothesis as the result</em> (i.e., the difference) we observe. In this case, any differences less than or equal to <span class="math inline">\(-0.13\)</span> would also provide equally strong evidence favoring the alternative hypothesis as a difference of <span class="math inline">\(+0.13\)</span> did. A difference of <span class="math inline">\(-0.13\)</span> would correspond to the survival rate in the <em>control group</em> being 0.13 higher than the treatment group.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that the relative risk in the opposite direction is not a &lt;em&gt;decrease&lt;/em&gt; of 59%! When comparing control to treatment, the relative risk would be &lt;span class="math inline"&gt;\(0.22/0.35 = 0.63\)&lt;/span&gt;, or a decrease of 37%. These values differ because the quantity we’re comparing to (the “100%” quantity) differs.&lt;/p&gt;'><sup>127</sup></a> In Figure <a href="inference-two-props.html#fig:CPR-study-p-value">15.2</a> we’ve also shaded these differences in the left tail of the distribution. These two shaded tails provide a visual representation of the p-value for a two-sided test.</p>
+<p>The right tail area is 0.131.<a href="#fn128" class="footnote-ref" id="fnref128"><sup>128</sup></a> However, contrary to how we calculated the p-value in previous studies, the p-value of this test is not 0.131!</p>
+<p>The p-value is defined as the chance we observe a result <em>at least as favorable to the alternative hypothesis as the result</em> (i.e., the difference) we observe. In this case, any differences less than or equal to <span class="math inline">\(-0.13\)</span> would also provide equally strong evidence favoring the alternative hypothesis as a difference of <span class="math inline">\(+0.13\)</span> did. A difference of <span class="math inline">\(-0.13\)</span> would correspond to the survival rate in the <em>control group</em> being 0.13 higher than the treatment group.<a href="#fn129" class="footnote-ref" id="fnref129"><sup>129</sup></a> In Figure <a href="inference-two-props.html#fig:CPR-study-p-value">15.2</a> we’ve also shaded these differences in the left tail of the distribution. These two shaded tails provide a visual representation of the p-value for a two-sided test.</p>
 <!--
 %There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase *or* decrease the risk of death in patients who undergo CPR before arriving at the hospital.\footnote{Realistically, we probably are interested in either direction in the past studies as well, and so we should have used the approach we now discuss in this section. However, for simplicity and the sake of not introducing too many concepts at once, we skipped over these details in earlier sections.} For example, there are chance differences of $\hat{p}_t - \hat{p}_c = -0.14$, that would have been stronger evidence against the null hypothesis as our observed difference of +0.13. Likewise, anything less than or equal -0.13 would provide as much evidence against the null hypothesis as +0.13, and for this reason, we must count both tails towards the p-value, as shown in Figure \ref{CPR-study-p-value}.
 -->
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:CPR-study-p-value"></span>
-<img src="15-categorical-two-props_files/figure-html/CPR-study-p-value-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:CPR-study-p-value"></span>
+<img src="15-categorical-two-props_files/figure-html/CPR-study-p-value-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded." width="90%" />
+<p class="caption">
 Figure 15.2: Null distribution of the point estimate for the difference in proportions, <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded.
 </p>
 </div>
@@ -272,10 +810,8 @@ Figure 15.2: Null distribution of the point estimate for the difference in propo
 -->
 <p></p>
 </div>
-<div id="caseStudyOpportunityCost" class="section level3" number="15.1.2">
-<h3>
-<span class="header-section-number">15.1.2</span> Case study: Opportunity cost<a class="anchor" aria-label="anchor" href="#caseStudyOpportunityCost"><i class="fas fa-link"></i></a>
-</h3>
+<div id="caseStudyOpportunityCost" class="section level3 hasAnchor" number="15.1.2">
+<h3><span class="header-section-number">15.1.2</span> Case study: Opportunity cost<a href="inference-two-props.html#caseStudyOpportunityCost" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>How rational and consistent is the behavior of the typical American college student? In this section, we’ll explore whether college student consumers always consider the following: money not spent now can be spent later.</p>
 <p>In particular, we are interested in whether reminding students about this well-known fact about money causes them to be a little thriftier. A skeptic might think that such a reminder would have no impact. We can summarize the two different perspectives using the null and alternative hypothesis framework.</p>
 <ul>
@@ -283,14 +819,14 @@ Figure 15.2: Null distribution of the point estimate for the difference in propo
 <li><p><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. Reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase.</p></li>
 </ul>
 <div class="guidedpractice">
-<p>How could you design a randomized experiment to test these two hypotheses?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.&lt;/p&gt;"><sup>128</sup></a></p>
+<p>How could you design a randomized experiment to test these two hypotheses?<a href="#fn130" class="footnote-ref" id="fnref130"><sup>130</sup></a></p>
 </div>
 <p>In statistical notation, we can define parameters <span class="math inline">\(\pi_{ctrl}\)</span> = the probability a student under a control condition (not reminding them that they can save money for later purchases) refrains from making a purchase, and <span class="math inline">\(\pi_{trmt}\)</span> = the probability a student under a treatment condition (reminding them that they can save money for later purchases) refrains from makes a purchase. Our hypotheses are then</p>
 <ul>
 <li><p><span class="math inline">\(H_0: \pi_{trmt} - \pi_{ctrl} = 0\)</span></p></li>
 <li><p><span class="math inline">\(H_A: \pi_{trmt} - \pi_{ctrl} &gt; 0\)</span></p></li>
 </ul>
-<p>In this section, we’ll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.&lt;/p&gt;"><sup>129</sup></a></p>
+<p>In this section, we’ll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.<a href="#fn131" class="footnote-ref" id="fnref131"><sup>131</sup></a></p>
 <!-- #### Observed data {.unnumbered} -->
 <!--Shane Frederick of Yale School of Management and his collaborators conducted an experiment exploring the rational behavior of consumers. 
 
@@ -327,12 +863,13 @@ Figure 15.2: Null distribution of the point estimate for the difference in propo
 <li>Not buy this entertaining video. Keep the $14.99 for other purchases.</li>
 </ol>
 </blockquote>
-<p>Would the extra statement reminding students of an obvious fact impact the purchasing decision? Table <a href="inference-two-props.html#tab:OpportunityCostTable">15.2</a> summarizes the study results.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<p>Would the extra statement reminding students of an obvious fact impact the purchasing decision? Table <a href="inference-two-props.html#tab:OpportunityCostTable">15.3</a> summarizes the study results.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:OpportunityCostTable">Table 15.2: </span>Summary of student choices in the opportunity cost study.
+<span id="tab:OpportunityCostTable">Table 15.3: </span><span id="tab:OpportunityCostTable">Table 15.4: </span>Summary of student choices in the opportunity cost study.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
@@ -344,7 +881,8 @@ treatment group
 <th style="text-align:left;">
 Total
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -389,15 +927,17 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <!--
 %150 participants were asked whether they would buy a DVD under a particular circumstance. Participants in the control group were given two options, and participants in the treatment group were given the same options, except in the *not buy* option they were reminded that not spending the money meant the money could be used for a later purchase. This table summarizes the results from the study.}
---><p>It might be a little easier to review the results using row proportions, specifically considering the proportion of participants in each group who said they would buy or not buy the DVD. These summaries are given in Table <a href="inference-two-props.html#tab:OpportunityCostTableRowProp">15.3</a>, and a segmented bar plot is provided in Figure <a href="inference-two-props.html#fig:OpportunityCostBarplot">15.3</a>.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+-->
+<p>It might be a little easier to review the results using row proportions, specifically considering the proportion of participants in each group who said they would buy or not buy the DVD. These summaries are given in Table <a href="inference-two-props.html#tab:OpportunityCostTableRowProp">15.5</a>, and a segmented bar plot is provided in Figure <a href="inference-two-props.html#fig:OpportunityCostBarplot">15.3</a>.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:OpportunityCostTableRowProp">Table 15.3: </span>The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of <em>buy</em> and <em>not buy</em> decisions in each group.
+<span id="tab:OpportunityCostTableRowProp">Table 15.5: </span><span id="tab:OpportunityCostTableRowProp">Table 15.6: </span>The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of <em>buy</em> and <em>not buy</em> decisions in each group.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
@@ -409,7 +949,8 @@ treatment group
 <th style="text-align:left;">
 Total
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -454,14 +995,14 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:OpportunityCostBarplot"></span>
-<img src="15-categorical-two-props_files/figure-html/OpportunityCostBarplot-1.png" alt="Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups." width="90%"><p class="caption">
+</table>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:OpportunityCostBarplot"></span>
+<img src="15-categorical-two-props_files/figure-html/OpportunityCostBarplot-1.png" alt="Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups." width="90%" />
+<p class="caption">
 Figure 15.3: Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups.
 </p>
 </div>
-<p>We will define a <strong>success</strong> in this study as a student who chooses not to buy the DVD.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Success is often defined in a study as the outcome of interest, and a “success” may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a “success” in the statistical sense as a patient who is HIV+.&lt;/p&gt;"><sup>130</sup></a> Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.</p>
+<p>We will define a <strong>success</strong> in this study as a student who chooses not to buy the DVD.<a href="#fn132" class="footnote-ref" id="fnref132"><sup>132</sup></a> Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.</p>
 <!-- ::: {.underconstruction} -->
 <!-- Check that we define success in previous chapter and then refer to it here. -->
 <!-- ::: -->
@@ -482,13 +1023,13 @@ Figure 15.3: Segmented bar plot comparing the proportion who bought and did not 
 <p>While we would in reality do this simulation on a computer, it might be useful to think about how we would go about carrying out the simulation without a computer. We start with 150 index cards and label each card to indicate the distribution of our response variable: <code>decision</code>. That is, 53 cards will be labeled “not buy DVD” to represent the 53 students who opted not to buy, and 97 will be labeled “buy DVD” for the other 97 students. Then we shuffle these cards thoroughly and divide them into two stacks of size 75, representing the simulated treatment and control groups. Any observed difference between the proportions of “not buy DVD” cards (what we earlier defined as <em>success</em>) can be attributed entirely to chance.</p>
 <div class="workedexample">
 <p>If we are randomly assigning the cards into the simulated treatment and control groups, how many “not buy DVD” cards would we expect to end up with in each simulated group? What would be the expected difference between the proportions of “not buy DVD” cards in each group?</p>
-<hr>
+<hr />
 <p>Since the simulated groups are of equal size, we would expect <span class="math inline">\(53 / 2 = 26.5\)</span>, i.e., 26 or 27, “not buy DVD” cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.</p>
 </div>
 <!--
 %We'll take the students and randomize them into two new groups, simulated-control and simulated-treatment groups, and then we'll look at the difference in the two groups. 
 -->
-<p>The results of a single randomization from chance alone is shown in Table <a href="inference-two-props.html#tab:OpportunityCostTableSimulated">15.4</a>. From this table, we can compute a difference that occurred from chance alone: <span class="math display">\[\begin{align*}
+<p>The results of a single randomization from chance alone is shown in Table <a href="inference-two-props.html#tab:OpportunityCostTableSimulated">15.7</a>. From this table, we can compute a difference that occurred from chance alone: <span class="math display">\[\begin{align*}
 \hat{p}_{trmt, simulated} - \hat{p}_{ctrl, simulated}
 = \frac{24}{75} - \frac{29}{75}
 = 0.32 - 0.387
@@ -496,11 +1037,12 @@ Figure 15.3: Segmented bar plot comparing the proportion who bought and did not 
 \end{align*}\]</span> <!--
 %This difference of -6.7% is entirely due to chance.
 --></p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:OpportunityCostTableSimulated">Table 15.4: </span>Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.
+<span id="tab:OpportunityCostTableSimulated">Table 15.7: </span><span id="tab:OpportunityCostTableSimulated">Table 15.8: </span>Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
@@ -512,7 +1054,8 @@ treatment group
 <th style="text-align:left;">
 Total
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -557,17 +1100,17 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>Just one simulation will not be enough to get a sense of what sorts of differences would happen from chance alone. We’ll simulate another set of simulated groups and compute the new difference: 0.013. And again: 0.067. And again: -0.173. We’ll do this 1,000 times. The results are summarized in a dot plot in Figure <a href="inference-two-props.html#fig:OpportunityCostDiffsDotPlot">15.4</a>, where each point represents a simulation. Since there are so many points, it is more convenient to summarize the results in a histogram such as the one in Figure <a href="inference-two-props.html#fig:OpportunityCostDiffs">15.5</a>, where the height of each histogram bar represents the fraction of observations in that group.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:OpportunityCostDiffsDotPlot"></span>
-<img src="15-categorical-two-props_files/figure-html/OpportunityCostDiffsDotPlot-1.png" alt="A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:OpportunityCostDiffsDotPlot"></span>
+<img src="15-categorical-two-props_files/figure-html/OpportunityCostDiffsDotPlot-1.png" alt="A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study." width="90%" />
+<p class="caption">
 Figure 15.4: A stacked dot plot of 1,000 chance differences produced under the null hypothesis, <span class="math inline">\(H_0\)</span>. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study.
 </p>
 </div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:OpportunityCostDiffs"></span>
-<img src="15-categorical-two-props_files/figure-html/OpportunityCostDiffs-1.png" alt="A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:OpportunityCostDiffs"></span>
+<img src="15-categorical-two-props_files/figure-html/OpportunityCostDiffs-1.png" alt="A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations." width="90%" />
+<p class="caption">
 Figure 15.5: A histogram of 1,000 chance differences produced under the null hypothesis, <span class="math inline">\(H_0\)</span>. Histograms like this one are a more convenient representation of data or results when there are a large number of observations.
 </p>
 </div>
@@ -575,15 +1118,13 @@ Figure 15.5: A histogram of 1,000 chance differences produced under the null hyp
 <!-- #### Scope of inference {.unnumbered} -->
 <p>Since the study was a randomized experiment, we can conclude that the effect was due to the reminder about saving money for other purchases—the reminder <em>caused</em> the lower rate of purchase. However, since this study used a volunteer sample (students were “recruited”), we can only generalize this result to individuals similar to those in the study. Thus, we have evidence that reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase, but only among students are similar to those in the study.</p>
 </div>
-<div id="caseStudyMalaria" class="section level3" number="15.1.3">
-<h3>
-<span class="header-section-number">15.1.3</span> Case study: Malaria vaccine<a class="anchor" aria-label="anchor" href="#caseStudyMalaria"><i class="fas fa-link"></i></a>
-</h3>
+<div id="caseStudyMalaria" class="section level3 hasAnchor" number="15.1.3">
+<h3><span class="header-section-number">15.1.3</span> Case study: Malaria vaccine<a href="inference-two-props.html#caseStudyMalaria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <!-- #### Observed data {.unnumbered} -->
-<p>We consider a study on a new malaria vaccine called PfSPZ. In this study, volunteer patients were randomized into one of two experiment groups: 14 patients received an experimental vaccine and 6 patients received a placebo vaccine. Nineteen weeks later, all 20 patients were exposed to a drug-sensitive malaria virus strain; the motivation of using a drug-sensitive strain of virus here is for ethical considerations, allowing any infections to be treated effectively. The results are summarized in Table <a href="inference-two-props.html#tab:malaria-vaccine-20-exp-summary">15.5</a>, where 9 of the 14 treatment patients remained free of signs of infection while all of the 6 patients in the control group patients showed some baseline signs of infection.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<p>We consider a study on a new malaria vaccine called PfSPZ. In this study, volunteer patients were randomized into one of two experiment groups: 14 patients received an experimental vaccine and 6 patients received a placebo vaccine. Nineteen weeks later, all 20 patients were exposed to a drug-sensitive malaria virus strain; the motivation of using a drug-sensitive strain of virus here is for ethical considerations, allowing any infections to be treated effectively. The results are summarized in Table <a href="inference-two-props.html#tab:malaria-vaccine-20-exp-summary">15.9</a>, where 9 of the 14 treatment patients remained free of signs of infection while all of the 6 patients in the control group patients showed some baseline signs of infection.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:malaria-vaccine-20-exp-summary">Table 15.5: </span>Summary results for the malaria vaccine experiment.
+<span id="tab:malaria-vaccine-20-exp-summary">Table 15.9: </span><span id="tab:malaria-vaccine-20-exp-summary">Table 15.10: </span>Summary results for the malaria vaccine experiment.
 </caption>
 <thead>
 <tr>
@@ -634,10 +1175,9 @@ infection
 </tr>
 <tr>
 <td style="text-align:left;">
-<code>no infection</code>
 </td>
 <td style="text-align:left;">
-placebo
+no infection
 </td>
 <td style="text-align:left;">
 9
@@ -666,16 +1206,16 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div class="guidedpractice">
-<p>Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The study is an experiment, as patients were randomly assigned an experiment group. Since this is an experiment, the results can be used to evaluate a causal relationship between the malaria vaccine and whether patients showed signs of an infection.&lt;/p&gt;"><sup>131</sup></a></p>
+<p>Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?<a href="#fn133" class="footnote-ref" id="fnref133"><sup>133</sup></a></p>
 </div>
 <p>In this study, a smaller proportion of patients who received the vaccine showed signs of an infection (35.7% versus 100%). However, the sample is very small, and it is unclear whether the difference provides <em>convincing evidence</em> that the vaccine is effective. To determine this, we need to perform statistical inference.</p>
 <p>Instead of using the <em>difference in proportion</em> infected as our summary measure, let’s use the <em>relative risk</em> of infection for this case study. Thus, the parameter of interest is <span class="math inline">\(\pi_{Vac} / \pi_{Pla}\)</span>, and our point estimate of this parameter is</p>
 <p><span class="math display">\[
 \frac{\hat{p}_{Vac}}{\hat{p}_{Pla}} = \frac{5/14}{6/6} = 0.357.
 \]</span></p>
-<p>Converting this to a percent decrease<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\((0.357 - 1)\times 100\)&lt;/span&gt;% = -64.3%&lt;/p&gt;'><sup>132</sup></a>, we see that the patients in the vaccine group had a 64.3% reduced risk of infection compared to the placebo group.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero. With this adjustment, the sample relative risk is: &lt;span class="math inline"&gt;\(\frac{5.5/15}{6.5/7} = 0.395\)&lt;/span&gt;. We will use this adjustment when simulating relative risks as well.&lt;/p&gt;'><sup>133</sup></a></p>
+<p>Converting this to a percent decrease<a href="#fn134" class="footnote-ref" id="fnref134"><sup>134</sup></a>, we see that the patients in the vaccine group had a 64.3% reduced risk of infection compared to the placebo group.<a href="#fn135" class="footnote-ref" id="fnref135"><sup>135</sup></a></p>
 <p>In terms of relative risk, our null and alternative hypotheses are</p>
 <p><strong>Independence model</strong> <span class="math inline">\(H_0: \dfrac{\pi_{Vac}}{\pi_{Pla}} = 1\)</span> <br></p>
 <p><strong>Alternative model</strong> <span class="math inline">\(H_A: \dfrac{\pi_{Vac}}{\pi_{Pla}} &lt; 1\)</span></p>
@@ -689,94 +1229,88 @@ Total
 <p>We’re going to implement simulation, where we will pretend we know that the malaria vaccine being tested does work. Ultimately, we want to understand if the large difference we observed is common in these simulations. If it is common, then maybe the difference we observed was purely due to chance. If it is very uncommon, then the possibility that the vaccine was helpful seems more plausible.</p>
 <p>We can again randomize the responses (<code>infection</code> or <code>no infection</code>) to the treatment conditions under the null hypothesis of independence, but this time, we’ll compute sample relative risks with each simulated sample.</p>
 <div class="guidedpractice">
-<p>How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment and control groups again.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;1. Take 20 notecards to represent the 20 patients, where we write down “infection” on 11 cards and “no infection” on 9 cards. 2. Thoroughly shuffle the notecards and deal 14 into a “vaccine” pile and 6 into a “placebo” pile. 3. Compute the proportion of “infection” cards in the “vaccine” pile and divide it by the proportion of “infection” cards in the “placebo” pile to get the simulated sample relative risk.&lt;/p&gt;"><sup>134</sup></a></p>
+<p>How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment and control groups again.<a href="#fn136" class="footnote-ref" id="fnref136"><sup>136</sup></a></p>
 </div>
-<p>Figure <a href="inference-two-props.html#fig:malaria-rand-dot-plot">15.6</a> shows a histogram of the relative risks found from 1,000 randomization simulations, where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:malaria-rand-dot-plot"></span>
-<img src="15-categorical-two-props_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study." width="90%"><p class="caption">
-Figure 15.6: A histogram of relative risks of infection from 1,000 simulations produced under the independence model <span class="math inline">\(H_0\)</span>, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study.
+<p>Figure <a href="inference-two-props.html#fig:malaria-rand-dot-plot">15.6</a> shows a histogram of the relative risks found from 1,000 randomization simulations, where each value represents a simulated relative risk of infection (treatment rate divided by control rate) assuming the relative risk is 1.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:malaria-rand-dot-plot"></span>
+<img src="15-categorical-two-props_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Twelve of the 1,000 simulations (shaded in red) had a relative risk of at most 0.395, the adjusted relative risk observed in the study." width="90%" />
+<p class="caption">
+Figure 15.6: A histogram of relative risks of infection from 1,000 simulations produced under the independence model <span class="math inline">\(H_0\)</span>, where in these simulations infections are unaffected by the vaccine. Twelve of the 1,000 simulations (shaded in red) had a relative risk of at most 0.395, the adjusted relative risk observed in the study.
 </p>
 </div>
 <!-- #### Observed statistic vs null value {.unnumbered} -->
-<p>Note that the distribution of these simulated differences is centered around 1. We simulated the relative risks assuming that the independence model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where <em>near</em> is pretty generous in this case since the sample sizes are so small in this study.</p>
+<p>The distribution of simulated relative risks is not symmetric, but will have a median around one. We simulated the relative risks assuming that the independence (of observations relative to group) model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where <em>near</em> is pretty generous in this case since the sample sizes are so small in this study.</p>
 <div class="workedexample">
 <p>How often would you observe a sample relative risk of at most 0.357 (at least a 64.3% reduction in risk on vaccine) according to Figure <a href="inference-two-props.html#fig:malaria-rand-dot-plot">15.6</a>? Often, sometimes, rarely, or never?</p>
-<hr>
+<hr />
 <p>It appears that a 64.3% reduction in risk due to chance alone would only happen about 2% of the time according to Figure <a href="inference-two-props.html#fig:malaria-rand-dot-plot">15.6</a>. Such a low probability indicates a rare event.</p>
 </div>
 <p>Based on the simulations, we have two options:</p>
 <ol style="list-style-type: decimal">
 <li><p>We conclude that the study results do not provide strong evidence against the independence model. That is, we do not have sufficiently strong evidence to conclude the vaccine had an effect in this clinical setting.</p></li>
-<li><p>We conclude the evidence is sufficiently strong to reject <span class="math inline">\(H_0\)</span> and assert that the vaccine was useful. When we conduct formal studies, usually we reject the notion that we just happened to observe a rare event.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 292 million chance that the Powerball numbers for the largest jackpot in history (January 13th, 2016) would be (04, 08, 19, 27, 34) with a Powerball of (10), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, &lt;em&gt;any set of numbers we could have observed would ultimately be incredibly rare&lt;/em&gt;. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.&lt;/p&gt;"><sup>135</sup></a></p></li>
+<li><p>We conclude the evidence is sufficiently strong to reject <span class="math inline">\(H_0\)</span> and assert that the vaccine was useful. When we conduct formal studies, usually we reject the notion that we just happened to observe a rare event.<a href="#fn137" class="footnote-ref" id="fnref137"><sup>137</sup></a></p></li>
 </ol>
 <p>In this case, we reject the independence model in favor of the alternative. That is, we are concluding the data provide strong evidence that the vaccine provides some protection against malaria in this clinical setting.</p>
 <p></p>
 <p>Statistical inference is built on evaluating whether such differences are due to chance. In statistical inference, data scientists evaluate which model is most reasonable given the data. Errors do occur, just like rare events, and we might choose the wrong model. While we do not always choose correctly, statistical inference gives us tools to control and evaluate how often these errors occur.</p>
 </div>
 </div>
-<div id="two-prop-boot-ci" class="section level2" number="15.2">
-<h2>
-<span class="header-section-number">15.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span><a class="anchor" aria-label="anchor" href="#two-prop-boot-ci"><i class="fas fa-link"></i></a>
-</h2>
+<div id="two-prop-boot-ci" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span><a href="inference-two-props.html#two-prop-boot-ci" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Section <a href="inference-two-props.html#two-prop-errors">15.1</a>, we worked with the randomization distribution to understand the distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> when the null hypothesis <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span> is true. Now, through bootstrapping, we study the variability of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> without the null assumption.</p>
-<div id="observed-data-3" class="section level3" number="15.2.1">
-<h3>
-<span class="header-section-number">15.2.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-3"><i class="fas fa-link"></i></a>
-</h3>
+<div id="observed-data-3" class="section level3 hasAnchor" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> Observed data<a href="inference-two-props.html#observed-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Reconsider the CPR data from Section <a href="inference-two-props.html#two-prop-errors">15.1</a> which is provided in Table <a href="inference-two-props.html#tab:resultsForCPRStudyInSmallSampleSection">15.1</a>. The experiment consisted of two treatments on patients who underwent CPR for a heart attack and were subsequently admitted to a hospital. Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
 <p>Again, we use the difference in sample proportions as the observed statistic of interest. Here, the value of the statistic is: <span class="math inline">\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)</span>.</p>
 </div>
-<div id="variability-of-the-statistic-2" class="section level3" number="15.2.2">
-<h3>
-<span class="header-section-number">15.2.2</span> Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-2"><i class="fas fa-link"></i></a>
-</h3>
+<div id="variability-of-the-statistic-2" class="section level3 hasAnchor" number="15.2.2">
+<h3><span class="header-section-number">15.2.2</span> Variability of the statistic<a href="inference-two-props.html#variability-of-the-statistic-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The bootstrap method applied to two samples is an extension of the method described in Section <a href="inference-one-prop.html#boot-ci-prop">14.2</a>. Now, we have two samples, so each sample estimates the population from which they came. In the CPR setting, the <code>treatment</code> sample estimates the population of all individuals who have gotten (or will get) the treatment; the <code>control</code> sample estimate the population of all individuals who do not get the treatment and are controls. Figure <a href="inference-two-props.html#fig:boot2proppops">15.7</a> extends Figure <a href="foundations-bootstrapping.html#fig:boot1">10.1</a> to show the bootstrapping process from two samples simultaneously.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:boot2proppops"></span>
-<img src="05/figures/boot2proppops.png" alt="Creating two estimated populations from two different samples from different populations." width="100%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boot2proppops"></span>
+<img src="05/figures/boot2proppops.png" alt="Creating two estimated populations from two different samples from different populations." width="100%" />
+<p class="caption">
 Figure 15.7: Creating two estimated populations from two different samples from different populations.
 </p>
 </div>
 <p>As before, once the population is estimated, we can randomly resample observations to create bootstrap samples, as seen in Figure <a href="inference-two-props.html#fig:boot2propresamps">15.8</a>. Computationally, each bootstrap resample is created by randomly sampling with replacement from the original sample.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:boot2propresamps"></span>
-<img src="05/figures/boot2propresamps.png" alt="Bootstrapped resamples from two separate estimated populations." width="100%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boot2propresamps"></span>
+<img src="05/figures/boot2propresamps.png" alt="Bootstrapped resamples from two separate estimated populations." width="100%" />
+<p class="caption">
 Figure 15.8: Bootstrapped resamples from two separate estimated populations.
 </p>
 </div>
 <p>The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. Figure <a href="inference-two-props.html#fig:boot2samp2">15.9</a> displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:boot2samp2"></span>
-<img src="05/figures/boot2prop3.png" alt="The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$." width="75%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boot2samp2"></span>
+<img src="05/figures/boot2prop3.png" alt="The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$." width="75%" />
+<p class="caption">
 Figure 15.9: The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be <span class="math inline">\(\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}\)</span>.
 </p>
 </div>
 <p>As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples. Figure <a href="inference-two-props.html#fig:boot2samp3">15.10</a> shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:boot2samp3"></span>
-<img src="05/figures/boot2prop2.png" alt="For each pair of bootstrap samples, we calculate the difference in sample proportions." width="75%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boot2samp3"></span>
+<img src="05/figures/boot2prop2.png" alt="For each pair of bootstrap samples, we calculate the difference in sample proportions." width="75%" />
+<p class="caption">
 Figure 15.10: For each pair of bootstrap samples, we calculate the difference in sample proportions.
 </p>
 </div>
 <p>Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions. Figure <a href="inference-two-props.html#fig:boot2samp1">15.11</a> visualizes the process in the toy example, and Figure <a href="inference-two-props.html#fig:bootCPR1000">15.12</a> shows 1000 bootstrap differences in proportions for the CPR data. Note that the CPR data includes 40 and 50 people in the respective groups, and the toy example includes 7 and 9 people in the two groups. Accordingly, the variability in the distribution of sample proportions is higher for the toy example. It turns out that the standard error for the sample difference in proportions is inversely related to the sample sizes.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:boot2samp1"></span>
-<img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:boot2samp1"></span>
+<img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%" />
+<p class="caption">
 Figure 15.11: The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution.
 </p>
 </div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:bootCPR1000"></span>
-<img src="15-categorical-two-props_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootCPR1000"></span>
+<img src="15-categorical-two-props_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data." width="90%" />
+<p class="caption">
 Figure 15.12: A histogram of differences in proportions (treatment <span class="math inline">\(-\)</span> control) from 1000 bootstrap simulations using the CPR data.
 </p>
 </div>
 <p>Figure <a href="inference-two-props.html#fig:bootCPR1000">15.12</a> provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section <a href="inference-one-prop.html#boot-ci-prop">14.2</a>, the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure <a href="inference-two-props.html#fig:bootCPR1000">15.12</a> by finding the percentiles of the distribution that correspond to the confidence level. For example, here we calculate the 90% confidence interval by finding the 5<sup>th</sup> and 95<sup>th</sup> percentile values from the bootstrapped differences. The bootstrap 5<sup>th</sup> percentile proportion is -0.03 and the 95<sup>th</sup> percentile is 0.28. The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment <span class="math inline">\(-\)</span> control) is between -0.03 and 0.28. More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.03 less to 0.28 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:bootCPR1000CI"></span>
-<img src="15-categorical-two-props_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="90%"><p class="caption">
-Figure 15.13: The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is <span class="math inline">\(\hat{p}_{t} = 14/40\)</span> and the proportion who survived in the control group is <span class="math inline">\(\hat{p}_{c} = 11/50\)</span>.
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bootCPR1000CI"></span>
+<img src="15-categorical-two-props_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data are bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="90%" />
+<p class="caption">
+Figure 15.13: The CPR data are bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is <span class="math inline">\(\hat{p}_{t}  = 14/40\)</span> and the proportion who survived in the control group is <span class="math inline">\(\hat{p}_{c} = 11/50\)</span>.
 </p>
 </div>
 <!-- ##### SE bootstrap interval {-} -->
@@ -797,39 +1331,31 @@ Figure 15.13: The CPR data is bootstrapped 1000 times. Each simulation creates a
 <!-- Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal. -->
 <!-- ``` -->
 </div>
-<div id="what-does-95-mean" class="section level3" number="15.2.3">
-<h3>
-<span class="header-section-number">15.2.3</span> What does 95% mean?<a class="anchor" aria-label="anchor" href="#what-does-95-mean"><i class="fas fa-link"></i></a>
-</h3>
+<div id="what-does-95-mean" class="section level3 hasAnchor" number="15.2.3">
+<h3><span class="header-section-number">15.2.3</span> What does 95% mean?<a href="inference-two-props.html#what-does-95-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Recall that the goal of a confidence interval is to find a plausible range of values for a <em>parameter</em> of interest. The estimated statistic is not the value of interest, but it is typically the best guess for the unknown parameter. The confidence level (often 95%) is a number that takes a while to get used to. Surprisingly, the percentage doesn’t describe the data set at hand, it describes many possible data sets. One way to understand a confidence interval is to think about all the confidence intervals that you have ever made or that you will ever make as a scientist, the confidence level describes <strong>those</strong> intervals.</p>
 <p>Figure <a href="inference-two-props.html#fig:ci25ints">15.14</a> demonstrates a hypothetical situation in which 25 different studies are performed on the exact same population (with the same goal of estimating the true parameter value of <span class="math inline">\(\pi_1 - \pi_2 = 0.47\)</span>). The study at hand represents one point estimate (a dot) and a corresponding interval. It is not possible to know whether the interval at hand is to the right of the unknown true parameter value (the black line) or to the left of that line. It is also impossible to know whether the interval captures the true parameter (is blue) or doesn’t (is red). If we are making 95% intervals, then 5% of the intervals we create over our lifetime will <em>not</em> capture the parameter of interest (e.g., will be red as in Figure <a href="inference-two-props.html#fig:ci25ints">15.14</a> ). What we know is that over our lifetimes as scientists, 95% of the intervals created and reported on will capture the parameter value of interest: thus the language “95% confident.”</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:ci25ints"></span>
-<img src="15-categorical-two-props_files/figure-html/ci25ints-1.png" alt="One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!)." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ci25ints"></span>
+<img src="15-categorical-two-props_files/figure-html/ci25ints-1.png" alt="One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!)." width="90%" />
+<p class="caption">
 Figure 15.14: One hypothetical population, parameter value of: <span class="math inline">\(\pi_1 - \pi_2 = 0.47\)</span>. Twenty-five different studies all which led to a different point estimate, SE, and confidence interval. The study at hand is one of the horizontal lines (hopefully a blue line!).
 </p>
 </div>
 <p>The choice of 95% or 90% or even 99% as a confidence level is admittedly somewhat arbitrary; however, it is related to the logic we used when deciding that a p-value should be declared as significant if it is lower than 0.05 (or 0.10 or 0.01, respectively). Indeed, one can show mathematically, that a 95% confidence interval and a two-sided hypothesis test at a cutoff of 0.05 will provide the same conclusion when the same data and mathematical tools are applied for the analysis. A full derivation of the explicit connection between confidence intervals and hypothesis tests is beyond the scope of this text.</p>
 </div>
 </div>
-<div id="math-2prop" class="section level2" number="15.3">
-<h2>
-<span class="header-section-number">15.3</span> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span><a class="anchor" aria-label="anchor" href="#math-2prop"><i class="fas fa-link"></i></a>
-</h2>
+<div id="math-2prop" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span><a href="inference-two-props.html#math-2prop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Like with <span class="math inline">\(\hat{p}\)</span>, the difference of two sample proportions <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> can be modeled using a normal distribution when certain conditions are met.</p>
-<div id="evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods" class="section level3" number="15.3.1">
-<h3>
-<span class="header-section-number">15.3.1</span> Evaluating the two conditions required for modeling <span class="math inline">\(\pi_1 - \pi_2\)</span> using theory-based methods<a class="anchor" aria-label="anchor" href="#evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods"><i class="fas fa-link"></i></a>
-</h3>
-<p>First, we require a broader independence condition, and secondly, the success-failure condition must be met by both groups.</p>
+<div id="evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Evaluating the two conditions required for modeling <span class="math inline">\(\pi_1 - \pi_2\)</span> using theory-based methods<a href="inference-two-props.html#evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First, we require a broader independence condition for the observations, and secondly, the success-failure condition must be met by both groups.</p>
 <div class="onebox">
 <p><strong>Conditions for the sampling distribution of</strong> <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span> to be normal.</p>
 <p>The difference <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> can be modeled using a normal distribution when</p>
 <ol style="list-style-type: decimal">
-<li>
-<strong>Independence</strong> (extended). The data are independent within and between the two groups. Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.</li>
-<li>
-<strong>Success-failure condition.</strong> The success-failure condition holds for both groups, where we check successes and failures in each group separately. This condition is met if we have at least 10 successes and 10 failures in each sample. If data are displayed in a two-way table, this is equivalent to checking that all cells in the table have at least 10 observations.</li>
+<li><strong>Independence</strong> (extended). The data are independent within and between the two groups. Generally this is satisfied if the data come from two independent random samples (so only differ based on the group) or if the data come from a randomized experiment, but always consider the data collection story in assessing this assumption.<a href="#fn138" class="footnote-ref" id="fnref138"><sup>138</sup></a></li>
+<li><strong>Success-failure condition.</strong> The success-failure condition holds for both groups, where we check successes and failures in each group separately. This condition is met if we have at least 10 successes and 10 failures in each sample. If data are displayed in a two-way table, this is equivalent to checking that all cells in the table have at least 10 observations.</li>
 </ol>
 <p>When these conditions are satisfied, then the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> is approximately normal with mean <span class="math inline">\(\pi_1 - \pi_2\)</span> and standard deviation</p>
 <p><span class="math display">\[\begin{eqnarray*}
@@ -849,10 +1375,8 @@ SE reference above?
 </div>
 <p>As in the case of one proportion, we typically don’t know the true proportions <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span>, so we will substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</p>
 </div>
-<div id="confidence-interval-for-pi_1---pi_2" class="section level3" number="15.3.2">
-<h3>
-<span class="header-section-number">15.3.2</span> Confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span><a class="anchor" aria-label="anchor" href="#confidence-interval-for-pi_1---pi_2"><i class="fas fa-link"></i></a>
-</h3>
+<div id="confidence-interval-for-pi_1---pi_2" class="section level3 hasAnchor" number="15.3.2">
+<h3><span class="header-section-number">15.3.2</span> Confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span><a href="inference-two-props.html#confidence-interval-for-pi_1---pi_2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p></p>
 <div class="onebox">
 <p><strong>Standard error of the difference in two proportions,</strong> <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>:</p>
@@ -869,14 +1393,14 @@ SE reference above?
 \end{align*}\]</span></p>
 <div class="workedexample">
 <p>We reconsider the experiment for patients who underwent cardiopulmonary resuscitation (CPR) for a heart attack and were subsequently admitted to a hospital. These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner. The outcome variable of interest was whether the patients survived for at least 24 hours. The results are shown in Table <a href="inference-two-props.html#tab:resultsForCPRStudyInSmallSampleSection">15.1</a>. Check whether we can model the difference in sample proportions using the normal distribution.</p>
-<hr>
-<p>We first check for independence: since this is a randomized experiment, this condition is satisfied.</p>
+<hr />
+<p>We first check for independence: since this is a randomized experiment and we do not expect any connections between the observed results either within or between groups, this condition is satisfied.</p>
 <p>Next, we check the success-failure condition for each group. We have at least 10 successes and 10 failures in each experiment arm (11, 14, 39, 26), so this condition is also satisfied.</p>
 <p>With both conditions satisfied, the difference in sample proportions can be reasonably modeled using a normal distribution for these data.</p>
 </div>
 <!--
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
+<caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
     Patients in the treatment group were given
     a blood thinner, and patients in the control
     group were not.</caption>
@@ -909,10 +1433,12 @@ SE reference above?
   </tr>
 </tbody>
 </table>
+
+
 -->
 <div class="workedexample">
 <p>Create and interpret a 90% confidence interval of the difference for the survival rates in the CPR study.</p>
-<hr>
+<hr />
 <p>We’ll use <span class="math inline">\(\pi_t\)</span> for the true survival rate in the treatment group and <span class="math inline">\(\pi_c\)</span> for the control group. Our point estimate of <span class="math inline">\(\pi_t - \pi_c\)</span> is: <span class="math display">\[\begin{align*}
   \hat{p}_{t} - \hat{p}_{c}
     = \frac{14}{40} - \frac{11}{50}
@@ -930,14 +1456,15 @@ SE reference above?
 </div>
 <p></p>
 <div class="guidedpractice">
-<p>A 5-year experiment was conducted to evaluate the effectiveness of fish oils on reducing cardiovascular events, where each subject was randomized into one of two treatment groups. We will consider heart attack outcomes in the patients listed in Table <a href="inference-two-props.html#tab:fish-oil-data">15.6</a>.</p>
-<p>Create a 95% confidence interval for the effect of fish oils on heart attacks for patients who are well-represented by those in the study. Also interpret the interval in the context of the study.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Because the patients were randomized, the subjects are independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions (&lt;span class="math inline"&gt;\(\hat{p}_{\text{fish oil}} = 0.0112\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(\hat{p}_{\text{placebo}} = 0.0155\)&lt;/span&gt;), point estimate of the difference (&lt;span class="math inline"&gt;\(0.0112 - 0.0155 = -0.0043\)&lt;/span&gt;), and standard error &lt;span class="math inline"&gt;\(SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145\)&lt;/span&gt;. Next, plug the values into the general formula for a confidence interval, where &lt;span class="math inline"&gt;\(z^{\star} = 1.96\)&lt;/span&gt; for a 95% confidence level: &lt;span class="math inline"&gt;\(-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)\)&lt;/span&gt;. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.&lt;/p&gt;'><sup>136</sup></a></p>
+<p>A 5-year experiment was conducted to evaluate the effectiveness of fish oils on reducing cardiovascular events, where each subject was randomized into one of two treatment groups. We will consider heart attack outcomes in the patients listed in Table <a href="inference-two-props.html#tab:fish-oil-data">15.11</a>.</p>
+<p>Create a 95% confidence interval for the effect of fish oils on heart attacks for patients who are well-represented by those in the study. Also interpret the interval in the context of the study.<a href="#fn139" class="footnote-ref" id="fnref139"><sup>139</sup></a></p>
 </div>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:fish-oil-data">Table 15.6: </span>Results for the study on n-3 fatty acid supplement and related health benefits.
+<span id="tab:fish-oil-data">Table 15.11: </span><span id="tab:fish-oil-data">Table 15.12: </span>Results for the study on n-3 fatty acid supplement and related health benefits.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
@@ -946,7 +1473,8 @@ fish oil
 <th style="text-align:right;">
 placebo
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -982,21 +1510,20 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
-<div id="hypothesis-test-for-h_0-pi_1---pi_2-0" class="section level3" number="15.3.3">
-<h3>
-<span class="header-section-number">15.3.3</span> Hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span><a class="anchor" aria-label="anchor" href="#hypothesis-test-for-h_0-pi_1---pi_2-0"><i class="fas fa-link"></i></a>
-</h3>
+<div id="hypothesis-test-for-h_0-pi_1---pi_2-0" class="section level3 hasAnchor" number="15.3.3">
+<h3><span class="header-section-number">15.3.3</span> Hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span><a href="inference-two-props.html#hypothesis-test-for-h_0-pi_1---pi_2-0" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p> </p>
 <p>A mammogram is an X-ray procedure used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it’s the topic of our next example where we learn about two proportion hypothesis tests when <span class="math inline">\(H_0\)</span> is <span class="math inline">\(\pi_1 - \pi_2 = 0\)</span> (or equivalently, <span class="math inline">\(\pi_1 = \pi_2\)</span>).</p>
-<p>A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we’ll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure <a href="inference-two-props.html#tab:mammogramStudySummaryTable">15.7</a>.</p>
+<p>A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we’ll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure <a href="inference-two-props.html#tab:mammogramStudySummaryTable">15.13</a>.</p>
 <p>If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On the other hand, if mammograms are not as effective as regular breast cancer exams, we would expect to see an increase in breast cancer deaths in the mammogram group.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:mammogramStudySummaryTable">Table 15.7: </span>Summary results for breast cancer study.
+<span id="tab:mammogramStudySummaryTable">Table 15.13: </span><span id="tab:mammogramStudySummaryTable">Table 15.14: </span>Summary results for breast cancer study.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
@@ -1007,7 +1534,8 @@ Mammogram
 <th style="text-align:left;">
 Control
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -1037,14 +1565,14 @@ No
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div class="guidedpractice">
-<p>Is this study an experiment or an observational study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is an experiment. Patients were randomized to receive mammograms or a standard breast cancer exam. We will be able to make causal conclusions based on this study.&lt;/p&gt;"><sup>137</sup></a></p>
+<p>Is this study an experiment or an observational study?<a href="#fn140" class="footnote-ref" id="fnref140"><sup>140</sup></a></p>
 </div>
 <div class="guidedpractice">
-<p>Set up hypotheses to test whether there was a difference in breast cancer deaths in the mammogram and control groups.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: the breast cancer death rate for patients screened using mammograms is the same as the breast cancer death rate for patients in the control, &lt;span class="math inline"&gt;\(\pi_{mgm} - \pi_{ctrl} = 0\)&lt;/span&gt;.&lt;br&gt;&lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: the breast cancer death rate for patients screened using mammograms is different than the breast cancer death rate for patients in the control, &lt;span class="math inline"&gt;\(\pi_{mgm} - \pi_{ctrl} \neq 0\)&lt;/span&gt;.&lt;/p&gt;'><sup>138</sup></a></p>
+<p>Set up hypotheses to test whether there was a difference in breast cancer deaths in the mammogram and control groups.<a href="#fn141" class="footnote-ref" id="fnref141"><sup>141</sup></a></p>
 </div>
-<p>The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter). In order to fully take advantage of the hypothesis testing structure, we assess the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing). Using the data from Table <a href="inference-two-props.html#tab:mammogramStudySummaryTable">15.7</a>, we will check the conditions for using a normal distribution to analyze the results of the study using a hypothesis test. The details for checking conditions are very similar to that of confidence intervals. However, when the null hypothesis is that <span class="math inline">\(\pi_1 - \pi_2 = 0\)</span>, we use a special proportion called the <strong>pooled proportion</strong> to check the success-failure condition and when computing the standard error: <span class="math display">\[\begin{align*}
+<p>The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter). In order to fully take advantage of the hypothesis testing structure, we assess the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing). Using the data from Table <a href="inference-two-props.html#tab:mammogramStudySummaryTable">15.13</a>, we will check the conditions for using a normal distribution to analyze the results of the study using a hypothesis test. The details for checking conditions are very similar to that of confidence intervals. However, when the null hypothesis is that <span class="math inline">\(\pi_1 - \pi_2 = 0\)</span>, we use a special proportion called the <strong>pooled proportion</strong> to check the success-failure condition and when computing the standard error: <span class="math display">\[\begin{align*}
 \hat{p}_{\textit{pool}}
     &amp;= \frac
         {\text{# of patients who died from breast cancer in the entire study}}
@@ -1068,8 +1596,8 @@ No
 </div>
 <div class="workedexample">
 <p>Is it reasonable to model the difference in proportions using a normal distribution in this study?</p>
-<hr>
-<p>Because the patients are randomized, they can be treated as independent, both within and between groups. We also must check the success-failure condition for each group. Under the null hypothesis, the proportions <span class="math inline">\(\pi_{mgm}\)</span> and <span class="math inline">\(\pi_{ctrl}\)</span> are equal, so we check the success-failure condition with our best estimate of these values under <span class="math inline">\(H_0\)</span>, the pooled proportion from the two samples, <span class="math inline">\(\hat{p}_{\textit{pool}} = 0.0112\)</span>: <span class="math display">\[\begin{align*}
+<hr />
+<p>Because the patients are randomized and the study design does not suggest any connections among the subjects or their outcomes, they can be treated as independent, both within and between groups. We also must check the success-failure condition for each group. Under the null hypothesis, the proportions <span class="math inline">\(\pi_{mgm}\)</span> and <span class="math inline">\(\pi_{ctrl}\)</span> are equal, so we check the success-failure condition with our best estimate of these values under <span class="math inline">\(H_0\)</span>, the pooled proportion from the two samples, <span class="math inline">\(\hat{p}_{\textit{pool}} = 0.0112\)</span>: <span class="math display">\[\begin{align*}
   \hat{p}_{\textit{pool}} \times n_{mgm}
       &amp;= 0.0112 \times \text{44,925} = 503 \\
    (1 - \hat{p}_{\textit{pool}}) \times n_{mgm}
@@ -1081,7 +1609,7 @@ No
       &amp;= 0.9888 \times \text{44,910} = \text{44,407}
   \end{align*}\]</span> The success-failure condition is satisfied since all values are at least 10. With both conditions satisfied, we can safely model the difference in proportions using a normal distribution.</p>
 </div>
-<p>We used the pooled proportion to check the success-failure condition<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For an example of a two proportion hypothesis test that does not require the success-failure condition to be met, see Section &lt;a href="inference-two-props.html#two-prop-errors"&gt;15.1&lt;/a&gt;.&lt;/p&gt;'><sup>139</sup></a>. We next use it again in the standard error calculation.</p>
+<p>We used the pooled proportion to check the success-failure condition<a href="#fn142" class="footnote-ref" id="fnref142"><sup>142</sup></a>. We next use it again in the standard error calculation.</p>
 <div class="onebox">
 <p><strong>Null standard error of the difference in two proportions,</strong> <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>: =</p>
 <p>Since we assume <span class="math inline">\(\pi_1 = \pi_2\)</span> when we conduct a theory-based hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span>, we substitute the <strong>pooled sample proportion</strong>, <span class="math inline">\(\hat{p}_{pool}\)</span> in for both <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span> in the expression for the standard deviation of the statistic, resulting in its <strong>null standard error</strong>:</p>
@@ -1093,7 +1621,7 @@ No
 </div>
 <div class="workedexample">
 <p>Compute the point estimate of the difference in breast cancer death rates in the two groups, and use the pooled proportion <span class="math inline">\(\hat{p}_{\textit{pool}} = 0.0112\)</span> to calculate the standard error.</p>
-<hr>
+<hr />
 <p>The point estimate of the difference in breast cancer death rates is <span class="math display">\[\begin{align*}
   \hat{p}_{mgm} - \hat{p}_{ctrl}
     &amp;= \frac{500}{500 + 44,425} - \frac{505}{505 + 44,405} \\
@@ -1103,18 +1631,12 @@ No
     &amp;= -0.00012
   \end{align*}\]</span> The breast cancer death rate in the mammogram group was 0.00012 less than in the control group.</p>
 <p>Next, the standard error of <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl}\)</span> is calculated <em>using the pooled proportion</em>, <span class="math inline">\(\hat{p}_{\textit{pool}}\)</span>: <span class="math display">\[\begin{align*}
-SE_0 = \sqrt{
-      \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
-          {n_{mgm}}
-      + \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
-          {n_{ctrl}}
-    }
-    = 0.00070
+SE_0 = \sqrt{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}}) \left(\frac{1}{n_{mgm}} + \frac{1}{n_{ctrl}} \right)}= 0.00070
 \end{align*}\]</span></p>
 </div>
 <div class="workedexample">
 <p>Using the point estimate <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012\)</span> and standard error <span class="math inline">\(SE = 0.00070\)</span>, calculate a p-value for the hypothesis test and write a conclusion.</p>
-<hr>
+<hr />
 <p>Just like in past tests, we first compute a test statistic and draw a picture: <span class="math display">\[\begin{align*}
 Z = \frac{\text{point estimate} - \text{null value}}{\mbox{Null }SE}
     = \frac{-0.00012 - 0}{0.00070}
@@ -1122,9 +1644,9 @@ Z = \frac{\text{point estimate} - \text{null value}}{\mbox{Null }SE}
 \end{align*}\]</span></p>
 <p>The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure <a href="inference-two-props.html#fig:mamm-norm">15.15</a>). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.</p>
 </div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:mamm-norm"></span>
-<img src="15-categorical-two-props_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mamm-norm"></span>
+<img src="15-categorical-two-props_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="90%" />
+<p class="caption">
 Figure 15.15: Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal.
 </p>
 </div>
@@ -1166,24 +1688,21 @@ Figure 15.15: Standard normal distribution with the p-value shaded. The shaded a
 -->
 </div>
 </div>
-<div id="chp15-review" class="section level2" number="15.4">
-<h2>
-<span class="header-section-number">15.4</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp15-review"><i class="fas fa-link"></i></a>
-</h2>
+<div id="chp15-review" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> Chapter review<a href="inference-two-props.html#chp15-review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <!-- ### Summary {-} -->
 <!-- ::: {.underconstruction} -->
 <!-- TODO -->
 <!-- ::: -->
-<div id="summary-of-z-procedures" class="section level3" number="15.4.1">
-<h3>
-<span class="header-section-number">15.4.1</span> Summary of Z-procedures<a class="anchor" aria-label="anchor" href="#summary-of-z-procedures"><i class="fas fa-link"></i></a>
-</h3>
-<p>So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings. Although the two data structures are different, their similarities and differences are worth pointing out. We provide Table <a href="inference-two-props.html#tab:zcompare">15.8</a> partly as a mechanism for understanding <span class="math inline">\(z\)</span>-procedures and partly to highlight the extremely common usage of the normal distribution in practice. You will often hear the following two <span class="math inline">\(z\)</span>-procedures referred to as a <strong>one sample</strong> <span class="math inline">\(z\)</span>-test (<span class="math inline">\(z\)</span>-interval) and <strong>two sample</strong> <span class="math inline">\(z\)</span>-test (<span class="math inline">\(z\)</span>-interval).</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<div id="summary-of-z-procedures" class="section level3 hasAnchor" number="15.4.1">
+<h3><span class="header-section-number">15.4.1</span> Summary of Z-procedures<a href="inference-two-props.html#summary-of-z-procedures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings. Although the two data structures are different, their similarities and differences are worth pointing out. We provide Table <a href="inference-two-props.html#tab:zcompare">15.15</a> partly as a mechanism for understanding <span class="math inline">\(z\)</span>-procedures and partly to highlight the extremely common usage of the normal distribution in practice. You will often hear the following two <span class="math inline">\(z\)</span>-procedures referred to as a <strong>one sample</strong> <span class="math inline">\(z\)</span>-test (<span class="math inline">\(z\)</span>-interval) and <strong>two sample</strong> <span class="math inline">\(z\)</span>-test (<span class="math inline">\(z\)</span>-interval).</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:zcompare">Table 15.8: </span>Similarities of <span class="math inline">\(z\)</span>-methods across one sample and two independent samples analysis of a categorical response variable.
+<span id="tab:zcompare">Table 15.15: </span><span id="tab:zcompare">Table 15.16: </span>Similarities of <span class="math inline">\(z\)</span>-methods across one sample and two independent samples analysis of a categorical response variable.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
@@ -1192,7 +1711,8 @@ one sample
 <th style="text-align:left;">
 two indep. samples
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -1265,12 +1785,12 @@ standard error of the statistic
 conditions
 </td>
 <td style="text-align:left;">
-<ol style="list-style-type: decimal"><li>independence, 2. large samples (at least 10 successes and 10 failures)
-</li></ol>
+<ol style="list-style-type: decimal">
+<li>independence, 2. large samples (at least 10 successes and 10 failures)
 </td>
 <td style="text-align:left;">
-<ol style="list-style-type: decimal"><li>independence, 2. large samples (at least 10 successes and 10 failures in each sample)
-</li></ol>
+<ol style="list-style-type: decimal">
+<li>independence, 2. large samples (at least 10 successes and 10 failures in each sample)
 </td>
 </tr>
 <tr>
@@ -1296,52 +1816,49 @@ two_proportion_test, two_proportion_bootstrap_CI
 </td>
 </tr>
 </tbody>
-</table></div>
+</table></li>
+</ol></li>
+</ol>
 <p><strong>Hypothesis tests.</strong> When applying the normal distribution for a hypothesis test, we proceed as follows:</p>
 <ol style="list-style-type: decimal">
-<li>Write appropriate hypotheses.<br>
+<li>Write appropriate hypotheses.<br />
 </li>
 <li>Verify conditions for using the normal distribution.
 <ul>
-<li>One-sample: the observations must be independent, and you must have at least 10 successes and 10 failures.<br>
+<li>One-sample: the observations must be independent, and you must have at least 10 successes and 10 failures.<br />
 </li>
 <li>For a difference of proportions: each sample must separately satisfy the one-sample conditions for the normal distribution, and the data in the groups must also be independent.</li>
-</ul>
-</li>
-<li>Compute the statistic of interest, the null standard error, and the degrees of freedom. For <span class="math inline">\(df\)</span>, use <span class="math inline">\(n-1\)</span> for one sample, and for two samples use either statistical software or the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span>.<br>
+</ul></li>
+<li>Compute the statistic of interest, the null standard error, and the degrees of freedom. For <span class="math inline">\(df\)</span>, use <span class="math inline">\(n-1\)</span> for one sample, and for two samples use either statistical software or the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span>.<br />
 </li>
 <li>Compute the Z-score using the general formula: <span class="math display">\[
 Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0(\mbox{statistic})}
-\]</span>
-</li>
+\]</span></li>
 <li>Use the statistical software to find the p-value using the standard normal distribution:
 <ul>
 <li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(&lt;\)</span>: p-value = area below Z-score</li>
 <li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(&gt;\)</span>: p-value = area above Z-score</li>
-<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(\neq\)</span>: p-value = 2 <span class="math inline">\(\times\)</span> area below <span class="math inline">\(-|\mbox{Z-score}|\)</span>
-</li>
-</ul>
-</li>
+<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(\neq\)</span>: p-value = 2 <span class="math inline">\(\times\)</span> area below <span class="math inline">\(-|\mbox{Z-score}|\)</span></li>
+</ul></li>
 <li>Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</li>
 </ol>
 <p><strong>Confidence intervals.</strong> Similarly, the following is how we generally compute a confidence interval using a normal distribution:</p>
 <ol style="list-style-type: decimal">
-<li>Verify conditions for using the normal distribution. (See above.)<br>
+<li>Verify conditions for using the normal distribution. (See above.)<br />
 </li>
-<li>Compute the statistic of interest, the standard error, and <span class="math inline">\(z^{\star}\)</span>.<br>
+<li>Compute the statistic of interest, the standard error, and <span class="math inline">\(z^{\star}\)</span>.<br />
 </li>
 <li>Calculate the confidence interval using the general formula: <span class="math display">\[
 \mbox{statistic} \pm\ z^{\star} SE(\mbox{statistic}).
-\]</span>
-</li>
+\]</span></li>
 <li>Put the conclusions in context and in plain language so even non-data scientists can understand the results.</li>
 </ol>
 </div>
-<div id="terms-12" class="section level3 unnumbered">
-<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-12"><i class="fas fa-link"></i></a>
-</h3>
+<div id="terms-12" class="section level3 unnumbered hasAnchor">
+<h3>Terms<a href="inference-two-props.html#terms-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
-<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<tbody>
 <tr>
 <td style="text-align:left;">
 one sample <span class="math inline">\(z\)</span>-test
@@ -1374,99 +1891,103 @@ statistically significant
 <td style="text-align:left;">
 </td>
 </tr>
-</tbody></table></div>
-<!-- ### Key ideas {-} --><!-- ::: {.underconstruction} --><!-- TODO --><!-- ::: -->
-</div>
-</div>
-</div>
-
-  <div class="chapter-nav">
-<div class="prev"><a href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></div>
-<div class="next"><a href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#inference-two-props"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
-<li>
-<a class="nav-link" href="#two-prop-errors"><span class="header-section-number">15.1</span> Randomization test for \(H_0: \pi_1 - \pi_2 = 0\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#cpr"><span class="header-section-number">15.1.1</span> Case study: CPR and blood thinner</a></li>
-<li><a class="nav-link" href="#caseStudyOpportunityCost"><span class="header-section-number">15.1.2</span> Case study: Opportunity cost</a></li>
-<li><a class="nav-link" href="#caseStudyMalaria"><span class="header-section-number">15.1.3</span> Case study: Malaria vaccine</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#two-prop-boot-ci"><span class="header-section-number">15.2</span> Bootstrap confidence interval for \(\pi_1 - \pi_2\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#observed-data-3"><span class="header-section-number">15.2.1</span> Observed data</a></li>
-<li><a class="nav-link" href="#variability-of-the-statistic-2"><span class="header-section-number">15.2.2</span> Variability of the statistic</a></li>
-<li><a class="nav-link" href="#what-does-95-mean"><span class="header-section-number">15.2.3</span> What does 95% mean?</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#math-2prop"><span class="header-section-number">15.3</span> Theory-based inferential methods for \(\pi_1 - \pi_2\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods"><span class="header-section-number">15.3.1</span> Evaluating the two conditions required for modeling \(\pi_1 - \pi_2\) using theory-based methods</a></li>
-<li><a class="nav-link" href="#confidence-interval-for-pi_1---pi_2"><span class="header-section-number">15.3.2</span> Confidence interval for \(\pi_1 - \pi_2\)</a></li>
-<li><a class="nav-link" href="#hypothesis-test-for-h_0-pi_1---pi_2-0"><span class="header-section-number">15.3.3</span> Hypothesis test for \(H_0: \pi_1 - \pi_2 = 0\)</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#chp15-review"><span class="header-section-number">15.4</span> Chapter review</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#summary-of-z-procedures"><span class="header-section-number">15.4.1</span> Summary of Z-procedures</a></li>
-<li><a class="nav-link" href="#terms-12">Terms</a></li>
-</ul>
-</li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/15-categorical-two-props.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/15-categorical-two-props.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
+</tbody>
+</table>
+<!-- ### Key ideas {-} -->
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 </div>
-</div> <!-- .container -->
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="126">
+<li id="fn126"><p>B<span class="math inline">\(\ddot{\text{o}}\)</span>ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.<a href="inference-two-props.html#fnref126" class="footnote-back">↩︎</a></p></li>
+<li id="fn127"><p>Observed control survival rate: <span class="math inline">\(\hat{p}_c = \frac{11}{50} = 0.22\)</span>. Treatment survival rate: <span class="math inline">\(\hat{p}_t = \frac{14}{40} = 0.35\)</span>. Observed difference: <span class="math inline">\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)</span>. Relative risk: <span class="math inline">\(\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59\)</span><a href="inference-two-props.html#fnref127" class="footnote-back">↩︎</a></p></li>
+<li id="fn128"><p>Note: it is only a coincidence that we also have <span class="math inline">\(\hat{p}_t - \hat{p}_c=0.13\)</span>!<a href="inference-two-props.html#fnref128" class="footnote-back">↩︎</a></p></li>
+<li id="fn129"><p>Note that the relative risk in the opposite direction is not a <em>decrease</em> of 59%! When comparing control to treatment, the relative risk would be <span class="math inline">\(0.22/0.35 = 0.63\)</span>, or a decrease of 37%. These values differ because the quantity we’re comparing to (the “100%” quantity) differs.<a href="inference-two-props.html#fnref129" class="footnote-back">↩︎</a></p></li>
+<li id="fn130"><p>With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.<a href="inference-two-props.html#fnref130" class="footnote-back">↩︎</a></p></li>
+<li id="fn131"><p>Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.<a href="inference-two-props.html#fnref131" class="footnote-back">↩︎</a></p></li>
+<li id="fn132"><p>Success is often defined in a study as the outcome of interest, and a “success” may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a “success” in the statistical sense as a patient who is HIV+.<a href="inference-two-props.html#fnref132" class="footnote-back">↩︎</a></p></li>
+<li id="fn133"><p>The study is an experiment, as patients were randomly assigned an experiment group. Since this is an experiment, the results can be used to evaluate a causal relationship between the malaria vaccine and whether patients showed signs of an infection.<a href="inference-two-props.html#fnref133" class="footnote-back">↩︎</a></p></li>
+<li id="fn134"><p><span class="math inline">\((0.357 - 1)\times 100\)</span>% = -64.3%<a href="inference-two-props.html#fnref134" class="footnote-back">↩︎</a></p></li>
+<li id="fn135"><p>With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero (which happens in rare simulated relative risks here. With this adjustment, the sample relative risk is: <span class="math inline">\(\frac{5.5/15}{6.5/7} = 0.395\)</span>. We will use this adjustment when simulating relative risks as well.<a href="inference-two-props.html#fnref135" class="footnote-back">↩︎</a></p></li>
+<li id="fn136"><p>1. Take 20 notecards to represent the 20 patients, where we write down “infection” on 11 cards and “no infection” on 9 cards. 2. Thoroughly shuffle the notecards and deal 14 into a “vaccine” pile and 6 into a “placebo” pile. 3. Compute the proportion of “infection” cards in the “vaccine” pile and divide it by the proportion of “infection” cards in the “placebo” pile to get the simulated sample relative risk.<a href="inference-two-props.html#fnref136" class="footnote-back">↩︎</a></p></li>
+<li id="fn137"><p>This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 292 million chance that the Powerball numbers for the largest jackpot in history (January 13th, 2016) would be (04, 08, 19, 27, 34) with a Powerball of (10), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, <em>any set of numbers we could have observed would ultimately be incredibly rare</em>. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.<a href="inference-two-props.html#fnref137" class="footnote-back">↩︎</a></p></li>
+<li id="fn138"><p>A possible violation of independence for this situation is that the “groups” to measure the outcome on come from two different assessments on the same individual, such as from two time points of measuring the same outcome or measuring two different outcomes, but where each response has a pair in the other group.<a href="inference-two-props.html#fnref138" class="footnote-back">↩︎</a></p></li>
+<li id="fn139"><p>Because the patients were randomized and there is no indication that results for one subject might impact another, the subjects may be assumed to be independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions (<span class="math inline">\(\hat{p}_{\text{fish oil}} = 0.0112\)</span>, <span class="math inline">\(\hat{p}_{\text{placebo}} = 0.0155\)</span>), point estimate of the difference (<span class="math inline">\(0.0112 - 0.0155 = -0.0043\)</span>), and standard error <span class="math inline">\(SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145\)</span>. Next, plug the values into the general formula for a confidence interval, where <span class="math inline">\(z^{\star} = 1.96\)</span> for a 95% confidence level: <span class="math inline">\(-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)\)</span>. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.<a href="inference-two-props.html#fnref139" class="footnote-back">↩︎</a></p></li>
+<li id="fn140"><p>This is an experiment. Patients were randomized to receive mammograms or a standard breast cancer exam. We will be able to make causal conclusions based on this study.<a href="inference-two-props.html#fnref140" class="footnote-back">↩︎</a></p></li>
+<li id="fn141"><p><span class="math inline">\(H_0\)</span>: the breast cancer death rate for patients screened using mammograms is the same as the breast cancer death rate for patients in the control, <span class="math inline">\(\pi_{mgm} - \pi_{ctrl} = 0\)</span>.<br />
+<span class="math inline">\(H_A\)</span>: the breast cancer death rate for patients screened using mammograms is different than the breast cancer death rate for patients in the control, <span class="math inline">\(\pi_{mgm} - \pi_{ctrl} \neq 0\)</span>.<a href="inference-two-props.html#fnref141" class="footnote-back">↩︎</a></p></li>
+<li id="fn142"><p>For an example of a two proportion hypothesis test that does not require the success-failure condition to be met, see Section <a href="inference-two-props.html#two-prop-errors">15.1</a>.<a href="inference-two-props.html#fnref142" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+          </div>
+        </div>
+      </div>
+<a href="inference-one-prop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inference-categ-applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/15-categorical-two-props.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["stat216-textbook.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
+
 </html>

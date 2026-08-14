@@ -374,7 +374,7 @@ one-mean-null-boot
 observed-data-5
 shifted-bootstrapped-null-distribution
 one-mean-math
-evaluating-the-two-conditions-required-for-modeling-barx-using-theory-based-methods
+evaluating-the-two-conditions-required-for-modeling-bary-using-theory-based-methods
 introducing-the-t-distribution
 one-sample-t-confidence-intervals
 one-sample-t-tests
@@ -429,6 +429,7 @@ linearity
 independence
 normality
 equal-variability
+scope-of-inference-for-regression
 chp21-review
 inference-reg-applications
 inference-for-regression-using-r-and-catstats

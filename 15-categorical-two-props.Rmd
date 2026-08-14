@@ -460,7 +460,7 @@ We consider a study on a new malaria vaccine called PfSPZ. In this study, volunt
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, ~col4, 
  "", "infection", "5", "6", "11",
- "`no infection`", "placebo", "9", "0","9",
+ "","no infection", "9", "0","9",
  "", "Total", "14", "6", "20"
 )
 
@@ -489,7 +489,7 @@ Converting this to a percent decrease[^15-categorical-two-props-9], we see that 
 
 [^15-categorical-two-props-9]: $(0.357 - 1)\times 100$% = -64.3%
 
-[^15-categorical-two-props-10]: With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero. With this adjustment, the sample relative risk is: $\frac{5.5/15}{6.5/7} = 0.395$. We will use this adjustment when simulating relative risks as well.
+[^15-categorical-two-props-10]: With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero (which happens in rare simulated relative risks here. With this adjustment, the sample relative risk is: $\frac{5.5/15}{6.5/7} = 0.395$. We will use this adjustment when simulating relative risks as well.
 
 In terms of relative risk, our null and alternative hypotheses are
 
@@ -519,66 +519,78 @@ How could you use cards to re-randomize one sample into groups? Remember, in thi
 
 [^15-categorical-two-props-11]: 1\. Take 20 notecards to represent the 20 patients, where we write down "infection" on 11 cards and "no infection" on 9 cards. 2. Thoroughly shuffle the notecards and deal 14 into a "vaccine" pile and 6 into a "placebo" pile. 3. Compute the proportion of "infection" cards in the "vaccine" pile and divide it by the proportion of "infection" cards in the "placebo" pile to get the simulated sample relative risk.
 
-Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram of the relative risks found from 1,000 randomization simulations, where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).
+Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram of the relative risks found from 1,000 randomization simulations, where each value represents a simulated relative risk of infection (treatment rate divided by control rate) assuming the relative risk is 1.
 
-```{r malaria-rand-dot-plot, fig.cap="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study.", warning=FALSE, fig.width=10}
+```{r malaria-rand-dot-plot, fig.cap="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Twelve of the 1,000 simulations (shaded in red) had a relative risk of at most 0.395, the adjusted relative risk observed in the study.", warning=FALSE, fig.width=10}
 
 set.seed(48)
 
 exp_gp  <- rep(c("vaccine", "placebo"), c(14, 6))
 outcome <- c(rep(c('infection', 'no infection'), c(5, 9)),
              rep(c('infection', 'no infection'), c(6, 0)))
+malaria <- data.frame(exp_gp = factor(exp_gp), outcome = factor(outcome))
 
-nsim    <- 1000
-n       <- length(exp_gp)
-success <- "infection"
-
-SimulateTable <- function(exp_gp, outcome, ...) {
-  table(sample(exp_gp), outcome)
-}
-# SimulateTable(exp_gp, outcome)
-
-sim_tables <-
-    lapply(1:nsim, SimulateTable,
-        exp_gp = exp_gp,
-        outcome = outcome)
-result <- sim_tables %>%
-    lapply(function(x) {
-    	  ((x[2, 1]+0.5) / sum(x[2, ],1))/((x[1, 1]+0.5) / sum(x[1, ],1))
-    	}) %>%
-    	unlist()
+relative_risk_test(outcome ~ exp_gp,
+       data = malaria,
+       group_numerator = "vaccine",
+       response_value_numerator = "infection",
+       annotate = T,
+       number_repetitions = 1000,
+       direction = "less",
+       adjust = T) #+ xlim(c(-0.5, ???)) 
+# %>% plotly() #Eventually provide interaction version of plots.
 
 
-pval <- sum(result <= (5.5/15)/(6.5/7)) / nsim
-values <- table(result)
-diffs <- unique(result)
+# nsim    <- 1000
+# n       <- length(exp_gp)
+# success <- "infection"
+# 
+# SimulateTable <- function(exp_gp, outcome, ...) {
+#   table(sample(exp_gp), outcome)
+# }
+# # SimulateTable(exp_gp, outcome)
+# 
+# sim_tables <-
+#     lapply(1:nsim, SimulateTable,
+#         exp_gp = exp_gp,
+#         outcome = outcome)
+# result <- sim_tables %>%
+#     lapply(function(x) {
+#     	  ((x[2, 1]+0.5) / sum(x[2, ],1))/((x[1, 1]+0.5) / sum(x[1, ],1))
+#     	}) %>%
+#     	unlist()
+# 
+# 
+# pval <- sum(result <= (5.5/15)/(6.5/7)) / nsim
+# values <- table(result)
+# diffs <- unique(result)
+# 
+# X <- c()
+# Y <- c()
+# for (i in 1:length(diffs)) {
+#   x   <- diffs[i]
+#   rec <- sum(result == x)
+#   X   <- append(X, rep(x, rec))
+#   Y   <- append(Y, 1:rec)
+# }
 
-X <- c()
-Y <- c()
-for (i in 1:length(diffs)) {
-  x   <- diffs[i]
-  rec <- sum(result == x)
-  X   <- append(X, rep(x, rec))
-  Y   <- append(Y, 1:rec)
-}
-
-plot(X, Y,
-     xlim = range(diffs) + c(-1, 1) * sd(diffs) / 4,
-     xlab = "Relative risk of infection (vaccine/placebo)",
-     ylab = "",
-     axes = FALSE,
-     ylim = c(0, max(Y)),
-     col = COL[1],
-     pch = 20)
-# at <- seq(-0.4, 0.4, 0.1)
-# labels <- c(-0.4, "", -0.2, "", 0, "", 0.2, "", 0.4)
-axis(1) #, at, labels)
-points(X[X <= (5.5/15)/(6.5/7)], Y[X<= (5.5/15)/(6.5/7)], lwd=3, col = COL[4], cex=0.4)
+# plot(X, Y,
+#      xlim = range(diffs) + c(-1, 1) * sd(diffs) / 4,
+#      xlab = "Relative risk of infection (vaccine/placebo)",
+#      ylab = "",
+#      axes = FALSE,
+#      ylim = c(0, max(Y)),
+#      col = COL[1],
+#      pch = 20)
+# # at <- seq(-0.4, 0.4, 0.1)
+# # labels <- c(-0.4, "", -0.2, "", 0, "", 0.2, "", 0.4)
+# axis(1) #, at, labels)
+# points(X[X <= (5.5/15)/(6.5/7)], Y[X<= (5.5/15)/(6.5/7)], lwd=3, col = COL[4], cex=0.4)
 ```
 
 <!-- #### Observed statistic vs null value {.unnumbered} -->
 
-Note that the distribution of these simulated differences is centered around 1. We simulated the relative risks assuming that the independence model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where *near* is pretty generous in this case since the sample sizes are so small in this study.
+The distribution of simulated relative risks is not symmetric, but will have a median around one. We simulated the relative risks assuming that the independence (of observations relative to group) model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where *near* is pretty generous in this case since the sample sizes are so small in this study.
 
 ::: workedexample
 How often would you observe a sample relative risk of at most 0.357 (at least a 64.3% reduction in risk on vaccine) according to Figure \@ref(fig:malaria-rand-dot-plot)? Often, sometimes, rarely, or never?
@@ -701,7 +713,7 @@ cpr.90ci <- as.vector(quantile(result, c(0.05,0.95)))
 
 Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000) by finding the percentiles of the distribution that correspond to the confidence level. For example, here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences. The bootstrap 5^th^ percentile proportion is `r cpr.90ci[1]` and the 95^th^ percentile is `r cpr.90ci[2]`. The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between `r cpr.90ci[1]` and `r cpr.90ci[2]`. More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between `r abs(cpr.90ci[1])` less to `r cpr.90ci[2]` more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
-```{r bootCPR1000CI, fig.cap="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\\hat{p}_{c} = 11/50$. ", warning=FALSE, fig.width=10}
+```{r bootCPR1000CI, fig.cap="The CPR data are bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\\hat{p}_{c} = 11/50$. ", warning=FALSE, fig.width=10}
 
 #result from previous R chunk
 bsq <- quantile(result, probs = c(0.01, 0.025, 0.05, 0.1, 0.9, 0.95, 0.975, 0.99))
@@ -824,15 +836,17 @@ Like with $\hat{p}$, the difference of two sample proportions $\hat{p}_1 - \hat{
 
 ### Evaluating the two conditions required for modeling $\pi_1 - \pi_2$ using theory-based methods
 
-First, we require a broader independence condition, and secondly, the success-failure condition must be met by both groups.
+First, we require a broader independence condition for the observations, and secondly, the success-failure condition must be met by both groups.
 
 ::: onebox
 **Conditions for the sampling distribution of** $\hat{p}_1 -\hat{p}_2$ to be normal.
 
 The difference $\hat{p}_1 - \hat{p}_2$ can be modeled using a normal distribution when
 
-1.  **Independence** (extended). The data are independent within and between the two groups. Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.
+1.  **Independence** (extended). The data are independent within and between the two groups. Generally this is satisfied if the data come from two independent random samples (so only differ based on the group) or if the data come from a randomized experiment, but always consider the data collection story in assessing this assumption.[^Independence-two-props1]
 2.  **Success-failure condition.** The success-failure condition holds for both groups, where we check successes and failures in each group separately. This condition is met if we have at least 10 successes and 10 failures in each sample. If data are displayed in a two-way table, this is equivalent to checking that all cells in the table have at least 10 observations.
+
+[^Independence-two-props1]: A possible violation of independence for this situation is that the "groups" to measure the outcome on come from two different assessments on the same individual, such as from two time points of measuring the same outcome or measuring two different outcomes, but where each response has a pair in the other group.
 
 When these conditions are satisfied, then the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is approximately normal with mean $\pi_1 - \pi_2$ and standard deviation
 
@@ -895,7 +909,7 @@ We reconsider the experiment for patients who underwent cardiopulmonary resuscit
 
 ------------------------------------------------------------------------
 
-We first check for independence: since this is a randomized experiment, this condition is satisfied.
+We first check for independence: since this is a randomized experiment and we do not expect any connections between the observed results either within or between groups, this condition is satisfied.
 
 Next, we check the success-failure condition for each group. We have at least 10 successes and 10 failures in each experiment arm (11, 14, 39, 26), so this condition is also satisfied.
 
@@ -953,7 +967,7 @@ A 5-year experiment was conducted to evaluate the effectiveness of fish oils on 
 Create a 95% confidence interval for the effect of fish oils on heart attacks for patients who are well-represented by those in the study. Also interpret the interval in the context of the study.[^15-categorical-two-props-13]
 :::
 
-[^15-categorical-two-props-13]: Because the patients were randomized, the subjects are independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)$. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.
+[^15-categorical-two-props-13]: Because the patients were randomized and there is no indication that results for one subject might impact another, the subjects may be assumed to be independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)$. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.
 
 ```{r fish-oil-data}
 temptbl <- fish_oil_18[[3]] %>% 
@@ -1039,7 +1053,7 @@ Is it reasonable to model the difference in proportions using a normal distribut
 
 ------------------------------------------------------------------------
 
-Because the patients are randomized, they can be treated as independent, both within and between groups. We also must check the success-failure condition for each group. Under the null hypothesis, the proportions $\pi_{mgm}$ and $\pi_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the pooled proportion from the two samples, $\hat{p}_{\textit{pool}} = 0.0112$: \begin{align*}
+Because the patients are randomized and the study design does not suggest any connections among the subjects or their outcomes, they can be treated as independent, both within and between groups. We also must check the success-failure condition for each group. Under the null hypothesis, the proportions $\pi_{mgm}$ and $\pi_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the pooled proportion from the two samples, $\hat{p}_{\textit{pool}} = 0.0112$: \begin{align*}
   \hat{p}_{\textit{pool}} \times n_{mgm}
       &= 0.0112 \times \text{44,925} = 503 \\
    (1 - \hat{p}_{\textit{pool}}) \times n_{mgm}
@@ -1085,13 +1099,7 @@ The point estimate of the difference in breast cancer death rates is \begin{alig
   \end{align*} The breast cancer death rate in the mammogram group was 0.00012 less than in the control group.
 
 Next, the standard error of $\hat{p}_{mgm} - \hat{p}_{ctrl}$ is calculated *using the pooled proportion*, $\hat{p}_{\textit{pool}}$: \begin{align*}
-SE_0 = \sqrt{
-      \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
-          {n_{mgm}}
-      + \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
-          {n_{ctrl}}
-    }
-    = 0.00070
+SE_0 = \sqrt{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}}) \left(\frac{1}{n_{mgm}} + \frac{1}{n_{ctrl}} \right)}= 0.00070
 \end{align*}
 :::
 

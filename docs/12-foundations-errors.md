@@ -70,6 +70,8 @@ There are four possible scenarios in a hypothesis test, which are summarized in 
 </tbody>
 </table>
 
+
+
 A **Type 1 Error**\index{Type 1 Error} is rejecting the null hypothesis when $H_0$ is actually true.
 Since we rejected the null hypothesis in the [Martian alphabet example](#Martian) and [sex discrimination case study](#caseStudySexDiscrimination), it is possible that we made a Type 1 Error in one or both of those studies.
 
@@ -446,6 +448,13 @@ Examine Figure \@ref(fig:prac-signif). The distribution of possible sample propo
 <!-- TODO -->
 <!-- ::: -->
 
+
+-   Since decisions in hypothesis testing are based on probabilities (i.e., p-values), it's possible to make the wrong decision. A **Type 1 error** occurs when we reject a true null hypothesis. If we fail to reject a false null hypothesis, we have committed a **Type 2 error**. 
+
+-   The **power** of a hypothesis test is the probability of rejecting the null hypothesis, which varies depending on the true value of the parameter. Power typically increases as the sample size increases. Thus, small samples may show an effect in the sample that is **practically important** --- may matter in real life --- but the test did not have high enough power to reject the null hypothesis, so was not statistically significant. On the other hand, large samples may show an effect in the sample that isn't very meaningful, or not practically important, but is **statistically significant** due to high power.
+
+
+
 ### Terms {-}
 
 We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
@@ -469,6 +478,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
   </tr>
 </tbody>
 </table>
+
+
 
 <!-- ### Key ideas {-} -->
 

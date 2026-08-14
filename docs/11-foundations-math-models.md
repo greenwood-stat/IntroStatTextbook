@@ -37,7 +37,7 @@ While they differ in the settings, in their outcomes, and in the technique we ha
 **Sampling distribution.**
 
 A sampling distribution is the distribution of all possible values of a *sample statistic* from samples of a given sample size from a given population.
-We can think about the sample distribution as describing as how sample statistics (e.g., the sample proportion $\hat{p}$ or the sample mean $\bar{x}$) vary from one study to another.
+We can think about the sample distribution as describing as how sample statistics (e.g., the sample proportion $\hat{p}$ or the sample mean $\bar{y}$) vary from one study to another.
 
 A sampling distribution is contrasted with a *data distribution*^[Data distributions are also sometimes referred to as "sample distributions." But since "sample distributions" and "sampling distributions" are very different concepts---one is a distribution of a variable measured on observational units (sample distribution), and the other is a distribution of a summary statistic measured on samples (sampling distribution)---we choose to use "data distribution" to further distinguish this difference.] which shows the variability of the *observed* data values.
 The data distribution can be visualized from the observations themselves.
@@ -92,7 +92,7 @@ Mathematical theory guarantees that if repeated samples are taken a sample propo
 (Note: we typically only take **one** sample, but the mathematical model lets us know what to expect if we *had* taken repeated samples.) These conditions fall into two general categories describing the independence between observations and the need to take a sufficiently large sample size.
 
 1.  Observations in the sample are **independent**.
-    Independence can be guaranteed when we take a random sample from a large population.
+    Independence must be assessed based on the study design and source of the data. Look for groups or clusters of observations that might be similar within the groups and different between. The most common violation of this would be to take more than observation from the same subject, say at different times.
 
 2.  The sample is **large enough**.
     The sample size cannot be too small.
@@ -202,15 +202,15 @@ The solution to the previous example relies on a standardization technique calle
 The **Z-score**\index{Z-score} of an observation is defined as the number of standard deviations it falls above or below the mean.
 If the observation is one standard deviation above the mean, its Z-score is 1.
 If it is 1.5 standard deviations *below* the mean, then its Z-score is -1.5.
-If $x$ is an observation from a distribution $N(\mu, \sigma)$, we define the Z-score mathematically as
+If $y$ is an observation from a distribution $N(\mu, \sigma)$, we define the Z-score mathematically as
 
 
 
-$$ Z = \frac{x-\mu}{\sigma} $$
+$$ Z = \frac{y-\mu}{\sigma} $$
 
-Using $\mu_{SAT}=1500,$ $\sigma_{SAT}=300,$ and $x_{Nel}=1800,$ we find Nel's Z score:
+Using $\mu_{SAT}=1500,$ $\sigma_{SAT}=300,$ and $y_{Nel}=1800,$ we find Nel's Z score:
 
-$$ Z_{Nel} = \frac{x_{Nel} - \mu_{SAT}}{\sigma_{SAT}} = \frac{1800-1500}{300} = 1 $$
+$$ Z_{Nel} = \frac{y_{Nel} - \mu_{SAT}}{\sigma_{SAT}} = \frac{1800-1500}{300} = 1 $$
 
 ::: onebox
 **The Z-score.**
@@ -218,25 +218,25 @@ $$ Z_{Nel} = \frac{x_{Nel} - \mu_{SAT}}{\sigma_{SAT}} = \frac{1800-1500}{300} = 
 The Z-score of an observation is the number of standard deviations it falls above or below the mean.
 We compute the Z-score for an observation $x$ that follows a distribution with mean $\mu$ and standard deviation $\sigma$ by first subtracting its mean, then dividing by its standard deviation:
 
-$$Z = \frac{x-\mu}{\sigma}$$
-If the observation $x$ comes from a *normal* distribution centered at $\mu$ with standard deviation of $\sigma$, then the Z score will be distributed according to a *normal* distribution with a center of 0 and a standard deviation of 1.
-That is, the normality remains when transforming from $x$ to $Z$ with a shift in both the center as well as the spread.
+$$Z = \frac{y-\mu}{\sigma}$$
+If the observation $y$ comes from a *normal* distribution centered at $\mu$ with standard deviation of $\sigma$, then the Z score will be distributed according to a *normal* distribution with a center of 0 and a standard deviation of 1.
+That is, the normality remains when transforming from $y$ to $Z$ with a shift in both the center as well as the spread.
 :::
 
 ::: {.guidedpractice data-latex=""}
 Use Sian's ACT score, 24, along with the ACT mean and standard deviation to compute their Z score.[^foundations-mathematical-4]
 :::
 
-[^foundations-mathematical-4]: $Z_{Sian} = \frac{x_{Sian} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6$
+[^foundations-mathematical-4]: $Z_{Sian} = \frac{y_{Sian} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6$
 
 Observations above the mean always have positive Z-scores while those below the mean have negative Z-scores. If an observation is equal to the mean (e.g., SAT score of 1500), then the Z-score is $0$.
 
 ::: {.workedexample data-latex=""}
-Let $X$ represent a random variable from $N(\mu=3, \sigma=2),$ and suppose we observe $x=5.19.$ Find the Z score of $x.$ Then, use the Z score to determine how many standard deviations above or below the mean $x$ falls.
+Let $Y$ represent a random variable from $N(\mu=3, \sigma=2),$ and suppose we observe $y=5.19.$ Find the Z score of $y.$ Then, use the Z score to determine how many standard deviations above or below the mean $y$ falls.
 
 ------------------------------------------------------------------------
 
-Its Z score is given by $Z = \frac{x-\mu}{\sigma} = \frac{5.19 - 3}{2} = 2.19/2 = 1.095.$ The observation $x$ is 1.095 standard deviations *above* the mean.
+Its Z score is given by $Z = \frac{y-\mu}{\sigma} = \frac{5.19 - 3}{2} = 2.19/2 = 1.095.$ The observation $y$ is 1.095 standard deviations *above* the mean.
 We know it must be above the mean since $Z$ is positive.
 :::
 
@@ -245,9 +245,9 @@ Head lengths of brushtail possums follow a nearly normal distribution with mean 
 Compute the Z scores for possums with head lengths of 95.4 mm and 85.8 mm.[^foundations-mathematical-5]
 :::
 
-[^foundations-mathematical-5]: For $x_1=95.4$ mm: $Z_1 = \frac{x_1 - \mu}{\sigma} = \frac{95.4 - 92.6}{3.6} = 0.78.$ For $x_2=85.8$ mm: $Z_2 = \frac{85.8 - 92.6}{3.6} = -1.89.$
+[^foundations-mathematical-5]: For $y_1=95.4$ mm: $Z_1 = \frac{y_1 - \mu}{\sigma} = \frac{95.4 - 92.6}{3.6} = 0.78.$ For $y_2=85.8$ mm: $Z_2 = \frac{85.8 - 92.6}{3.6} = -1.89.$
 
-We can use Z-scores to roughly identify which observations are more unusual than others. One observation $x_1$ is said to be more unusual than another observation $x_2$ if the absolute value of its Z-score is larger than the absolute value of the other observation's Z-score: $|Z_1| > |Z_2|$. This technique is especially insightful when a distribution is symmetric.
+We can use Z-scores to roughly identify which observations are more unusual than others. One observation $y_1$ is said to be more unusual than another observation $y_2$ if the absolute value of its Z-score is larger than the absolute value of the other observation's Z-score: $|Z_1| > |Z_2|$. This technique is especially insightful when a distribution is symmetric.
 
 ::: {.guidedpractice data-latex=""}
 Which of the two brushtail possum observations in the previous guided practice is more *unusual*?[^foundations-mathematical-6]
@@ -288,13 +288,13 @@ The `normTail()` function is available in the `openintro` R package and will dra
 In the code below, we find the percentile of $Z=0.43$ is 0.6664, or the $66.64^{th}$ percentile.
 
 
-```r
+``` r
 pnorm(0.43, m = 0, s = 1)
 #> [1] 0.666
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-11-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-11-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage.
 The quantile represents the cutoff value.[^05-inference-cat-20] We determine the Z-score for the $80^{th}$ percentile using `qnorm()`: 0.84.
@@ -302,24 +302,24 @@ The quantile represents the cutoff value.[^05-inference-cat-20] We determine the
 [^05-inference-cat-20]: To remember the function `qnorm()` as providing a cutoff, notice that both `qnorm()` and "cutoff" start with the sound "kuh". To remember the `pnorm()` function as providing a probability from a given cutoff, notice that both `pnorm()` and probability start with the sound "puh".
 
 
-```r
+``` r
 qnorm(0.80, m = 0, s = 1)
 #> [1] 0.842
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-12-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-12-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Sian on the ACT: 0.73.
 
 
-```r
+``` r
 pnorm(24, m = 21, s = 5)
 #> [1] 0.726
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-13-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-13-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 ::: {.guidedpractice data-latex=""}
 Determine the proportion of SAT test takers who scored better than Nel on the SAT.[^foundations-mathematical-7]
@@ -343,7 +343,7 @@ The $x$-axis identifies the mean and the values at 2 standard deviations above a
 The simplest way to find the shaded area under the curve makes use of the Z score of the cutoff value.
 With $\mu=1500,$ $\sigma=300,$ and the cutoff value $x=1630,$ the Z score is computed as
 
-$$ Z = \frac{x - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43. $$
+$$ Z = \frac{y - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43. $$
 We use software to find the percentile of $Z=0.43$, which yields 0.6664.
 However, the percentile describes those who had a Z-score *lower* than 0.43. To find the area *above* $Z=0.43$, we compute one minus the area of the lower tail, as seen below.
 
@@ -378,11 +378,11 @@ Edward earned a 1400 on his SAT. What is his percentile?
 
 First, a picture is needed. Edward's percentile is the proportion of people who do not get as high as a 1400. These are the scores to the left of 1400.
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-14-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-14-1.png" alt="" width="60%" style="display: block; margin: auto;" />
 
 The mean $\mu=1500,$ the standard deviation $\sigma=300,$ and the cutoff for the tail area $x=1400$ are used to compute the Z score:
 
-$$ Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.33$$
+$$ Z = \frac{y - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.33$$
 
 Statistical software can be used to find the proportion of the $N(0,1)$ curve to the left of $-0.33$ which is 0.3707.
 Edward is at the $37^{th}$ percentile.
@@ -396,7 +396,7 @@ Also draw a new picture.
 
 If Edward did better than 37% of SAT takers, then about 63% must have done better than them.
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-15-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-15-1.png" alt="" width="60%" style="display: block; margin: auto;" />
 :::
 
 ::: protip
@@ -431,9 +431,9 @@ Also draw one picture for each part.
 Numerical answers, calculated using statistical software (e.g., `pnorm()` in R): (a) 18.17th percentile.
 (b) 96.55th percentile.
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-16-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-16-1.png" alt="" width="60%" style="display: block; margin: auto;" />
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-17-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-17-1.png" alt="" width="60%" style="display: block; margin: auto;" />
 :::
 
 
@@ -446,7 +446,7 @@ Erik's height is at the $40^{th}$ percentile. How tall is he?
 
 As always, first draw the picture.
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-18-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-18-1.png" alt="" width="60%" style="display: block; margin: auto;" />
 
 In this case, the lower tail probability is known (0.40), which can be shaded on the diagram. We want to find the observation that corresponds to this value. As a first step in this direction, we determine the Z-score associated with the $40^{th}$ percentile.
 
@@ -454,14 +454,14 @@ Because the percentile is below 50%, we know $Z$ will be negative.
 Statistical software provides the $Z$ value to be $-0.25.$
 
 
-```r
+``` r
 qnorm(0.4, mean = 0, sd = 1)
 #> [1] -0.253
 ```
 
 Knowing $Z_{Erik}=-0.25$ and the population parameters $\mu=70$ and $\sigma=3.3$ inches, the Z-score formula can be set up to determine Erik's unknown height, labeled $x_{Erik}$: \begin{eqnarray*}
--0.25 = Z_{Erik} = \frac{x_{Erik} - \mu}{\sigma} = \frac{x_{Erik} - 70}{3.3}
-\end{eqnarray*} Solving for $x_{Erik}$ yields the height 69.18 inches. That is, Erik is about 5'9'' (this is notation for 5-feet, 9-inches).
+-0.25 = Z_{Erik} = \frac{y_{Erik} - \mu}{\sigma} = \frac{y_{Erik} - 70}{3.3}
+\end{eqnarray*} Solving for $y_{Erik}$ yields the height 69.18 inches. That is, Erik is about 5'9'' (this is notation for 5-feet, 9-inches).
 :::
 
 
@@ -473,19 +473,19 @@ What is the adult male height at the $82^{nd}$ percentile?
 Again, we draw the figure first.
 
 
-<img src="11-foundations-math-models_files/figure-html/height82Perc-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/height82Perc-1.png" alt="" width="60%" style="display: block; margin: auto;" />
 
 And calculate the Z value associated with the $82^{nd}$ percentile:
 
 
-```r
+``` r
 qnorm(0.82, m = 0, s = 1)
 #> [1] 0.915
 ```
 
 Next, we want to find the Z-score at the $82^{nd}$ percentile, which will be a positive value (because the percentile is bigger than 50\%).
-Using `qnorm()`, the $82^{nd}$ percentile corresponds to $Z=0.92$. Finally, the height $x$ is found using the Z-score formula with the known mean $\mu$, standard deviation $\sigma$, and Z-score $Z=0.92$: \begin{eqnarray*}
-0.92 = Z = \frac{x-\mu}{\sigma} = \frac{x - 70}{3.3}
+Using `qnorm()`, the $82^{nd}$ percentile corresponds to $Z=0.92$. Finally, the height $y$ is found using the Z-score formula with the known mean $\mu$, standard deviation $\sigma$, and Z-score $Z=0.92$: \begin{eqnarray*}
+0.92 = Z = \frac{y-\mu}{\sigma} = \frac{y - 70}{3.3}
 \end{eqnarray*} This yields 73.04 inches or about 6'1'' as the height at the $82^{nd}$ percentile.
 :::
 
@@ -495,7 +495,7 @@ Using `qnorm()`, the $82^{nd}$ percentile corresponds to $Z=0.92$. Finally, the 
 (b) What is the $97.5^{th}$ percentile of the male heights? As always with normal probability problems, first draw a picture.[^05-inference-cat-27]
 :::
 
-[^05-inference-cat-27]: Remember: draw a picture first, then find the Z-score. (We leave the pictures to you.) The Z-score can be found by using the percentiles and the normal probability table. (a) We look for 0.95 in the probability portion (middle part) of the normal probability table, which leads us to row 1.6 and (about) column 0.05, i.e., $Z_{95}=1.65$. Knowing $Z_{95}=1.65$, $\mu = 1500$, and $\sigma = 300$, we setup the Z-score formula: $1.65 = \frac{x_{95} - 1500}{300}$. We solve for $x_{95}$: $x_{95} = 1995$. (b) Similarly, we find $Z_{97.5} = 1.96$, again setup the Z-score formula for the heights, and calculate $x_{97.5} = 76.5$.
+[^05-inference-cat-27]: Remember: draw a picture first, then find the Z-score. (We leave the pictures to you.) The Z-score can be found by using the percentiles and the normal probability table. (a) We look for 0.95 in the probability portion (middle part) of the normal probability table, which leads us to row 1.6 and (about) column 0.05, i.e., $Z_{95}=1.65$. Knowing $Z_{95}=1.65$, $\mu = 1500$, and $\sigma = 300$, we setup the Z-score formula: $1.65 = \frac{y_{95} - 1500}{300}$. We solve for $y_{95}$: $y_{95} = 1995$. (b) Similarly, we find $Z_{97.5} = 1.96$, again setup the Z-score formula for the heights, and calculate $y_{97.5} = 76.5$.
 
 (a) What is the probability that a randomly selected male adult is at least 6'2'' (74 inches)?\
 (b) What is the probability that a male adult is shorter than 5'9'' (69 inches)?[^foundations-mathematical-12]
@@ -513,12 +513,12 @@ These heights correspond to 69 inches and 74 inches.
 First, draw the figure.
 The area of interest is no longer an upper or lower tail.
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-21-1.png" width="60%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-21-1.png" alt="" width="60%" style="display: block; margin: auto;" />
 
 The total area under the curve is 1.
 If we find the area of the two tails that are not shaded (from the previous Guided Practice, these areas are $0.3821$ and $0.1131$), then we can find the middle area:
 
-<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-22-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="11-foundations-math-models_files/figure-html/unnamed-chunk-22-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.
 :::
@@ -662,6 +662,9 @@ In Section \@ref(theory-prop) we will discuss different percentages for the conf
 <!-- TODO -->
 <!-- ::: -->
 
+-   A **theory-based confidence interval** is always of the form: $\mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})$. The amount we add and subtract to the statistic ((multiplier) $\times$ (standard error of the statistic)) is called the **margin of error**. The mathematical model for the sampling variability of a sample proportion or difference in sample proportions is the **normal distribution**, which is due to the **Central Limit Theorem**.
+
+
 ### Terms {-}
 
 We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
@@ -695,6 +698,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
   </tr>
 </tbody>
 </table>
+
+
 
 <!-- ### Key ideas {-} -->
 

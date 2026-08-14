@@ -87,7 +87,7 @@ Such evidence may be true and verifiable, but it may only represent extraordinar
 :::
 
 <div class="figure" style="text-align: center">
-<img src="images/mn-winter/mn-winter.jpg" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, &quot;It is one storm, in one region, of one country.&quot;" width="35%" />
+<img src="images/mn-winter/mn-winter.jpg" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, "It is one storm, in one region, of one country."" width="35%" />
 <p class="caption">(\#fig:mn-winter)In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, "It is one storm, in one region, of one country."</p>
 </div>
 
@@ -291,7 +291,7 @@ Suppose an observational study tracked sunscreen use and skin cancer, and it was
 Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. 
 One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen *and* more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.
 
-<img src="02-data-design_files/figure-html/sun-causes-cancer-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="02-data-design_files/figure-html/sun-causes-cancer-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 
 <!--
 Some studies:
@@ -545,6 +545,8 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
 </tbody>
 </table>
+
+
 
 
 ### Key ideas {-}

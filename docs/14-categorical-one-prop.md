@@ -479,7 +479,7 @@ A simple random sample of 826 payday loan borrowers was surveyed to better under
 
 ------------------------------------------------------------------------
 
-1.  The data are a random sample, so the observations are independent and representative of the population of interest.
+1.  The data are a random sample, so the observations are representative of the population of interest and there is no indication of a violation of independence from the study description.
 
     We also must check the success-failure condition, which we do using $\hat{p}$ in place of $\pi$ when computing a confidence interval:
 
@@ -581,7 +581,7 @@ Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star
 
 
 
-```r
+``` r
 # z* for 90% --> alpha = 0.15 --> need 5% on each side:
 qnorm(.90 + .05)
 #> [1] 1.645
@@ -648,6 +648,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
   </tr>
 </tbody>
 </table>
+
+
 
 <!-- ### Key ideas {-} -->
 

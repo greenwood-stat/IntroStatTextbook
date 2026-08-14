@@ -129,7 +129,7 @@ The tools in this textbook are designed to evaluate only one single sample of da
 With actual studies, we do not have repeated samples, so we are not able to use repeated samples to visualize the variability in slopes.
 We have seen variability in samples throughout this text, so it should not come as a surprise that different samples will produce different linear models.
 However, it is nice to visually consider the linear models produced by different slopes.
-Additionally, as with measuring the variability of previous statistics (e.g., $\bar{x}_1 - \bar{x}_2$ or $\hat{p}_1 - \hat{p}_2$), the histogram of the sample statistics can provide information related to inferential considerations.
+Additionally, as with measuring the variability of previous statistics (e.g., $\bar{y}_1 - \bar{y}_2$ or $\hat{p}_1 - \hat{p}_2$), the histogram of the sample statistics can provide information related to inferential considerations.
 
 In the following sections, the distribution (i.e., histogram) of $b_1$ (the estimated slope coefficient) will be constructed in the same three ways that, by now, may be familiar to you.
 First (in Section \@ref(randslope)), the distribution of $b_1$ when $\beta_1 = 0$ is constructed by randomizing (permuting) the response variable.
@@ -168,7 +168,7 @@ By repeatedly permuting the response variable, any pattern in the linear model t
 We will continue to use the crop data to investigate the linear relationship between `wheat` and `maize`.  Note that the fitted least squares model (see Chapter \@ref(explore-regression)) describing the relationship is given in Table \@ref(tab:lsCrops).  
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:lsCrops)The least squares estimates of the intercept and slope are given in the `estimate` column.  The observed slope is 0.195.</caption>
+<caption>(\#tab:lsCrops)(\#tab:lsCrops)The least squares estimates of the intercept and slope are given in the `estimate` column.  The observed slope is 0.195.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> term </th>
@@ -195,6 +195,8 @@ We will continue to use the crop data to investigate the linear relationship bet
   </tr>
 </tbody>
 </table>
+
+
 
 From the "estimate" column, we can write our least squares regression line as
 \[
@@ -385,7 +387,7 @@ squares regression line in Figure \@ref(fig:unemploymentAndChangeInHouse). The r
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:midtermUnempRegTable)Output from statistical software for the regression
+<caption>(\#tab:midtermUnempRegTable)(\#tab:midtermUnempRegTable)Output from statistical software for the regression
     line modeling the midterm election losses for the
     President's party as a response to unemployment.</caption>
  <thead>
@@ -414,6 +416,8 @@ squares regression line in Figure \@ref(fig:unemploymentAndChangeInHouse). The r
   </tr>
 </tbody>
 </table>
+
+
 
 ::: {.workedexample}
 What do the first and second columns of Table \@ref(tab:midtermUnempRegTable)  represent?
@@ -483,7 +487,7 @@ This suggests the hypothesis test will reject the null claim that the slope is z
 The point of the tools in this section are to go beyond a visual interpretation of the linear relationship toward a formal mathematical claim about the statistical significance of the slope estimate.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:rOutputForIncomeAidLSRLineInInferenceSection)Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.</caption>
+<caption>(\#tab:rOutputForIncomeAidLSRLineInInferenceSection)(\#tab:rOutputForIncomeAidLSRLineInInferenceSection)Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> term </th>
@@ -510,6 +514,8 @@ The point of the tools in this section are to go beyond a visual interpretation 
   </tr>
 </tbody>
 </table>
+
+
 
 
 ::: {.guidedpractice}
@@ -670,12 +676,7 @@ Not only should we be cautious about the inference, but the model *itself* is al
 
 ### **I**ndependence
 
-The technical condition describing the independence of the observations is often the most crucial but also the most difficult to diagnose.  It is also extremely difficult to gather a dataset which is a true random sample from the population of interest.  (Note: a true randomized experiment from a fixed set of individuals is much easier to implement, and indeed, randomized experiments are done in most medical studies these days.)  
-
-Dependent observations can bias results in ways that produce fundamentally flawed analyses.  That is, if you hang out at the gym measuring height and weight, your linear model is surely not a representation of all students at your university.  At best it is a model describing students who use the gym (but also who are willing to talk to you, that use the gym at the times you were there measuring, etc.).  
-
-In lieu of trying to answer whether or not your observations are a true random sample, you might instead focus on whether or not you believe your observations are representative of the populations.
-Humans are notoriously bad at implementing random procedures, so you should be wary of any process that used human intuition to balance the data with respect to, for example, the demographics of the individuals in the sample.
+The technical condition describing the independence of the observations is crucial but also difficult to diagnose. Dependent observations can bias results in ways that produce fundamentally flawed analyses. If data are measured sequentially in time, then neighboring observations in time might be dependent and plotting results versus time might hint at violations of independence. If data are obtained from multiple groups of subjects, then those groups could also present a violation of independence.
 
 ### **N**ormality
 
@@ -691,11 +692,19 @@ On additional reason to worry slightly less about normality is that neither the 
 
 ### **E**qual variability
 
-As with normality, the equal variability condition (that points are spread out in similar ways around the line for all values of $x$) will not cause problems for the estimate of the linear model, for a randomization test, or for a bootstrap confidence interval.
-However, data that exhibit non-equal variance across the range of $x$-values will have the potential to seriously mis-estimate the variability of the slope which will have consequences for the inference results (i.e., hypothesis tests and confidence intervals).
+As with normality, the equal variability condition (that points are spread out in similar ways around the line for all values of $x$) will not cause problems for the estimate of the linear model. However, data that exhibit non-equal variance across the range of $x$-values will have the potential to seriously mis-estimate the variability of the slope which will have consequences for the inference results (i.e., hypothesis tests and confidence intervals).
 
-When the equal variability condition is violated and a theory-based analysis (e.g., p-value from T-score) is needed, there are existing methods which can easily handle the unequal variance (e.g., weighted least squares analysis), but these are covered in a later course.
+When the equal variability condition is violated and inferences are needed, there are existing methods which can easily handle the unequal variance (e.g., weighted least squares analysis), but these are covered in a later course. One might also consider a transformation of the response such a log or square-root that could alleviate the issue with non-constant variance, but this creates additional interpretation challenges.
 
+
+### Scope of Inference for Regression
+
+It is also extremely difficult to gather a dataset which is a true random sample from the population of interest that allows inferences to that target population.  That is, if you hang out at the gym measuring height and weight, your linear model is surely not a representation of all students at your university.  At best it is a model describing students who use the gym (but also who are willing to talk to you, that use the gym at the times you were there measuring, etc.).  
+
+In lieu of trying to answer whether or not your observations are a true random sample, you might instead focus on whether or not you believe your observations are representative of the populations.
+Humans are notoriously bad at implementing random procedures, so you should be wary of any process that used human intuition to balance the data with respect to, for example, the demographics of the individuals in the sample.
+
+A true randomized experiment from a fixed set of individuals is much easier to implement than collecting a random sample, and indeed, randomized experiments are done in most medical studies these days. In this setting, the random assignment would be for the quantitative amount of something that constitutes the explanatory variable values. Researchers would determine the range of values to explore and then randomly allocate values in that range to different subjects. Inferences only apply in that range of allocated values or, in observational studies, the observed range of the predictor, and not outside of those values.
 
 ## Chapter review {#chp21-review}
 
@@ -728,6 +737,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
   </tr>
 </tbody>
 </table>
+
+
 
 <!-- ### Key ideas {-} -->
 

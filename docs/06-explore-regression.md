@@ -334,7 +334,7 @@ The dataset where these data are stored is called `elmhurst` in the `openintro` 
 The first five rows of this dataset are given in Table \@ref(tab:elmhurst-data).
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:elmhurst-data)First five rows of the `elmhurst` dataset.</caption>
+<caption>(\#tab:elmhurst-data)(\#tab:elmhurst-data)First five rows of the `elmhurst` dataset.</caption>
  <thead>
   <tr>
    <th style="text-align:right;"> family_income </th>
@@ -371,6 +371,8 @@ The first five rows of this dataset are given in Table \@ref(tab:elmhurst-data).
 </tbody>
 </table>
 
+
+
 We can see that family income is recorded in a variable called `family_income` and gift aid from university is recorded in a variable called `gift_aid`. 
 For now, we won't worry about the `price_paid` variable. 
 We should also note that these data are from the 2011-2012 academic year, and all monetary amounts are given in \$1,000s, i.e., the family income of the first student in the data shown in Table \@ref(tab:elmhurst-data) is \$92,900 and they received a gift aid of $21,700. (The data source states that all numbers have been rounded to the nearest whole dollar.) 
@@ -380,7 +382,7 @@ Using these data, we can estimate the linear regression line by fitting a `l`ine
 
 
 
-```r
+``` r
 lm(gift_aid ~ family_income, data = elmhurst)
 #> 
 #> Call:
@@ -440,7 +442,7 @@ For now we will focus on the first column of the output, which lists ${b}_0$ and
 In Chapter \@ref(inference-reg) we will dive deeper into the remaining columns which give us information on how accurate and precise these values of intercept and slope that are calculated from a sample of 50 students are in estimating the population parameters of intercept and slope for *all* students.
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:rOutputForIncomeAidLSRLine)Summary of least squares fit for the Elmhurst data.</caption>
+<caption>(\#tab:rOutputForIncomeAidLSRLine)(\#tab:rOutputForIncomeAidLSRLine)Summary of least squares fit for the Elmhurst data.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> term </th>
@@ -468,6 +470,8 @@ In Chapter \@ref(inference-reg) we will dive deeper into the remaining columns w
 </tbody>
 </table>
 
+
+
 ### Calculating the least squares regression line using summary statistics (special topic)
 
 An alternative way of calculating the values of intercept and slope of a least squares line is manual calculations using formulas. 
@@ -486,7 +490,7 @@ Table \@ref(tab:summaryStatsElmhurstRegr) shows the sample means for the family 
 We could plot the point $(102, 19.9)$ on Figure \@ref(fig:elmhurstScatterW2Lines) to verify it falls on the least squares line (the solid line). 
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:summaryStatsElmhurstRegr)Summary statistics for family income and gift aid.</caption>
+<caption>(\#tab:summaryStatsElmhurstRegr)(\#tab:summaryStatsElmhurstRegr)Summary statistics for family income and gift aid.</caption>
  <thead>
 <tr>
 <th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Family income, $x$</div></th>
@@ -511,6 +515,8 @@ We could plot the point $(102, 19.9)$ on Figure \@ref(fig:elmhurstScatterW2Lines
   </tr>
 </tbody>
 </table>
+
+
 
 Next, we formally find the point estimates $b_0$ and $b_1$ of the parameters $\beta_0$ and $\beta_1$.
 
@@ -720,7 +726,7 @@ The parameter estimates are given in Table \@ref(tab:marioKartNewUsedRegrSummary
 
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:marioKartNewUsedRegrSummary)Least squares ression summary for the final auction price against the condition of the game.</caption>
+<caption>(\#tab:marioKartNewUsedRegrSummary)(\#tab:marioKartNewUsedRegrSummary)Least squares ression summary for the final auction price against the condition of the game.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> term </th>
@@ -747,6 +753,8 @@ The parameter estimates are given in Table \@ref(tab:marioKartNewUsedRegrSummary
   </tr>
 </tbody>
 </table>
+
+
 
 Using values from Table \@ref(tab:marioKartNewUsedRegrSummary), the model equation can be summarized as 
 
@@ -877,7 +885,7 @@ Though some of these summary measures will be covered in later chapters, Table \
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:summary-measures)Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.</caption>
+<caption>(\#tab:summary-measures)(\#tab:summary-measures)Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Response Variable </th>
@@ -918,6 +926,8 @@ Though some of these summary measures will be covered in later chapters, Table \
   </tr>
 </tbody>
 </table>
+
+
 
 
 ### Notation summary {-}
@@ -978,15 +988,17 @@ However you should be able to easily spot them as **bolded text**.
 </tbody>
 </table>
 
+
+
 ### Key ideas {-}
 
 * Two variables are **associated** when the behavior of one variable depends on the value of the other variable. For two quantitative variables, this occurs when a trend is apparent on a scatterplot. If this trend is linear with a non-zero slope, we say the two quantitative variables are **correlated**. Recall again from Chapter \@ref(data-hello), *association does not imply causation*!
 
 * A **least squares regression line** represents the _predicted_ value of the response variable, $y$, for a given $x$-value. Since the actual observed values of the response variable are denoted by $y$, we denote the predicted values by $\hat{y}$.
 
-* The **slope** of the regression line is the predicted change in the response variable that is associated with a one-unit increase in $x$.
+* The **slope** of the regression line is the predicted (estimated mean) change in the response variable that is associated with a one-unit increase in $x$.
 
-* The $y$-**intercept** of the regression line is the predicted value of the response variable when $x = 0$. If the collected data did not include $x$-values near zero, then this prediction is an example of **extrapolation** --- using the regression line to make predictions outside the range of observed data.
+* The $y$-**intercept** of the regression line is the predicted (estimated mean) value of the response variable when $x = 0$. If the collected data did not include $x$-values near zero, then this prediction is an example of **extrapolation** --- using the regression line to make predictions outside the range of observed data.
 
 * A regression line only provides a predicted response value, which may or may not be close to the value we would actually observe. A numerical measure of this "prediction  error" is the **residual** = (observed $y$-value) $-$ (predicted $\hat{y}$-value); that is, the distance from the observed $y$-value to the regression line. Positive residuals indicate that the observed $y$-value is _above_ the regression line (our regression model underestimated the response); negative residuals indicate that the observed $y$-value is _below_ the regression line (our regression model overestimated the response).
 

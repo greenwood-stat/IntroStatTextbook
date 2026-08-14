@@ -71,7 +71,7 @@ Note that if we had done a one-sided hypothesis test, the resulting hypotheses w
 There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did. The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSection).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:resultsForCPRStudyInSmallSampleSection)Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.</caption>
+<caption>(\#tab:resultsForCPRStudyInSmallSampleSection)(\#tab:resultsForCPRStudyInSmallSampleSection)Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -101,6 +101,8 @@ There were 50 patients in the experiment who did not receive a blood thinner and
   </tr>
 </tbody>
 </table>
+
+
 
 ::: guidedpractice
 What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups ($\hat{p}_t - \hat{p}_c$) and the relative "risk" of survival ($\hat{p}_t/\hat{p}_c$).[^15-categorical-two-props-2]
@@ -200,7 +202,7 @@ The remaining 75 students were placed in the treatment group, and they saw a sli
 Would the extra statement reminding students of an obvious fact impact the purchasing decision? Table \@ref(tab:OpportunityCostTable) summarizes the study results.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTable)Summary of student choices in the opportunity cost study.</caption>
+<caption>(\#tab:OpportunityCostTable)(\#tab:OpportunityCostTable)Summary of student choices in the opportunity cost study.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -231,6 +233,8 @@ Would the extra statement reminding students of an obvious fact impact the purch
 </tbody>
 </table>
 
+
+
 ```{=html}
 <!--
 %150 participants were asked whether they would buy a DVD under a particular circumstance. Participants in the control group were given two options, and participants in the treatment group were given the same options, except in the *not buy* option they were reminded that not spending the money meant the money could be used for a later purchase. This table summarizes the results from the study.}
@@ -239,7 +243,7 @@ Would the extra statement reminding students of an obvious fact impact the purch
 It might be a little easier to review the results using row proportions, specifically considering the proportion of participants in each group who said they would buy or not buy the DVD. These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp), and a segmented bar plot is provided in Figure \@ref(fig:OpportunityCostBarplot).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTableRowProp)The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.</caption>
+<caption>(\#tab:OpportunityCostTableRowProp)(\#tab:OpportunityCostTableRowProp)The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -269,6 +273,8 @@ It might be a little easier to review the results using row proportions, specifi
   </tr>
 </tbody>
 </table>
+
+
 
 <div class="figure" style="text-align: center">
 <img src="15-categorical-two-props_files/figure-html/OpportunityCostBarplot-1.png" alt="Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups." width="90%" />
@@ -336,7 +342,7 @@ The results of a single randomization from chance alone is shown in Table \@ref(
 -->
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTableSimulated)Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.</caption>
+<caption>(\#tab:OpportunityCostTableSimulated)(\#tab:OpportunityCostTableSimulated)Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -367,6 +373,8 @@ The results of a single randomization from chance alone is shown in Table \@ref(
 </tbody>
 </table>
 
+
+
 Just one simulation will not be enough to get a sense of what sorts of differences would happen from chance alone. We'll simulate another set of simulated groups and compute the new difference: 0.013. And again: 0.067. And again: -0.173. We'll do this 1,000 times. The results are summarized in a dot plot in Figure \@ref(fig:OpportunityCostDiffsDotPlot), where each point represents a simulation. Since there are so many points, it is more convenient to summarize the results in a histogram such as the one in Figure \@ref(fig:OpportunityCostDiffs), where the height of each histogram bar represents the fraction of observations in that group.
 
 <div class="figure" style="text-align: center">
@@ -392,7 +400,7 @@ Since the study was a randomized experiment, we can conclude that the effect was
 We consider a study on a new malaria vaccine called PfSPZ. In this study, volunteer patients were randomized into one of two experiment groups: 14 patients received an experimental vaccine and 6 patients received a placebo vaccine. Nineteen weeks later, all 20 patients were exposed to a drug-sensitive malaria virus strain; the motivation of using a drug-sensitive strain of virus here is for ethical considerations, allowing any infections to be treated effectively. The results are summarized in Table \@ref(tab:malaria-vaccine-20-exp-summary), where 9 of the 14 treatment patients remained free of signs of infection while all of the 6 patients in the control group patients showed some baseline signs of infection.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:malaria-vaccine-20-exp-summary)Summary results for the malaria vaccine experiment.</caption>
+<caption>(\#tab:malaria-vaccine-20-exp-summary)(\#tab:malaria-vaccine-20-exp-summary)Summary results for the malaria vaccine experiment.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -417,8 +425,8 @@ We consider a study on a new malaria vaccine called PfSPZ. In this study, volunt
    <td style="text-align:left;"> 11 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> `no infection` </td>
-   <td style="text-align:left;"> placebo </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> no infection </td>
    <td style="text-align:left;"> 9 </td>
    <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 9 </td>
@@ -432,6 +440,8 @@ We consider a study on a new malaria vaccine called PfSPZ. In this study, volunt
   </tr>
 </tbody>
 </table>
+
+
 
 ::: guidedpractice
 Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?[^15-categorical-two-props-8]
@@ -451,7 +461,7 @@ Converting this to a percent decrease[^15-categorical-two-props-9], we see that 
 
 [^15-categorical-two-props-9]: $(0.357 - 1)\times 100$% = -64.3%
 
-[^15-categorical-two-props-10]: With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero. With this adjustment, the sample relative risk is: $\frac{5.5/15}{6.5/7} = 0.395$. We will use this adjustment when simulating relative risks as well.
+[^15-categorical-two-props-10]: With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero (which happens in rare simulated relative risks here. With this adjustment, the sample relative risk is: $\frac{5.5/15}{6.5/7} = 0.395$. We will use this adjustment when simulating relative risks as well.
 
 In terms of relative risk, our null and alternative hypotheses are
 
@@ -481,16 +491,16 @@ How could you use cards to re-randomize one sample into groups? Remember, in thi
 
 [^15-categorical-two-props-11]: 1\. Take 20 notecards to represent the 20 patients, where we write down "infection" on 11 cards and "no infection" on 9 cards. 2. Thoroughly shuffle the notecards and deal 14 into a "vaccine" pile and 6 into a "placebo" pile. 3. Compute the proportion of "infection" cards in the "vaccine" pile and divide it by the proportion of "infection" cards in the "placebo" pile to get the simulated sample relative risk.
 
-Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram of the relative risks found from 1,000 randomization simulations, where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).
+Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram of the relative risks found from 1,000 randomization simulations, where each value represents a simulated relative risk of infection (treatment rate divided by control rate) assuming the relative risk is 1.
 
 <div class="figure" style="text-align: center">
-<img src="15-categorical-two-props_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study." width="90%" />
-<p class="caption">(\#fig:malaria-rand-dot-plot)A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study.</p>
+<img src="15-categorical-two-props_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Twelve of the 1,000 simulations (shaded in red) had a relative risk of at most 0.395, the adjusted relative risk observed in the study." width="90%" />
+<p class="caption">(\#fig:malaria-rand-dot-plot)A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Twelve of the 1,000 simulations (shaded in red) had a relative risk of at most 0.395, the adjusted relative risk observed in the study.</p>
 </div>
 
 <!-- #### Observed statistic vs null value {.unnumbered} -->
 
-Note that the distribution of these simulated differences is centered around 1. We simulated the relative risks assuming that the independence model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where *near* is pretty generous in this case since the sample sizes are so small in this study.
+The distribution of simulated relative risks is not symmetric, but will have a median around one. We simulated the relative risks assuming that the independence (of observations relative to group) model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where *near* is pretty generous in this case since the sample sizes are so small in this study.
 
 ::: workedexample
 How often would you observe a sample relative risk of at most 0.357 (at least a 64.3% reduction in risk on vaccine) according to Figure \@ref(fig:malaria-rand-dot-plot)? Often, sometimes, rarely, or never?
@@ -569,8 +579,8 @@ Repeated bootstrap simulations lead to a bootstrap sampling distribution of the 
 Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000) by finding the percentiles of the distribution that correspond to the confidence level. For example, here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences. The bootstrap 5^th^ percentile proportion is -0.03 and the 95^th^ percentile is 0.28. The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between -0.03 and 0.28. More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.03 less to 0.28 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
 <div class="figure" style="text-align: center">
-<img src="15-categorical-two-props_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="90%" />
-<p class="caption">(\#fig:bootCPR1000CI)The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. </p>
+<img src="15-categorical-two-props_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data are bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="90%" />
+<p class="caption">(\#fig:bootCPR1000CI)The CPR data are bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. </p>
 </div>
 
 <!-- ##### SE bootstrap interval {-} -->
@@ -626,15 +636,17 @@ Like with $\hat{p}$, the difference of two sample proportions $\hat{p}_1 - \hat{
 
 ### Evaluating the two conditions required for modeling $\pi_1 - \pi_2$ using theory-based methods
 
-First, we require a broader independence condition, and secondly, the success-failure condition must be met by both groups.
+First, we require a broader independence condition for the observations, and secondly, the success-failure condition must be met by both groups.
 
 ::: onebox
 **Conditions for the sampling distribution of** $\hat{p}_1 -\hat{p}_2$ to be normal.
 
 The difference $\hat{p}_1 - \hat{p}_2$ can be modeled using a normal distribution when
 
-1.  **Independence** (extended). The data are independent within and between the two groups. Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.
+1.  **Independence** (extended). The data are independent within and between the two groups. Generally this is satisfied if the data come from two independent random samples (so only differ based on the group) or if the data come from a randomized experiment, but always consider the data collection story in assessing this assumption.[^Independence-two-props1]
 2.  **Success-failure condition.** The success-failure condition holds for both groups, where we check successes and failures in each group separately. This condition is met if we have at least 10 successes and 10 failures in each sample. If data are displayed in a two-way table, this is equivalent to checking that all cells in the table have at least 10 observations.
+
+[^Independence-two-props1]: A possible violation of independence for this situation is that the "groups" to measure the outcome on come from two different assessments on the same individual, such as from two time points of measuring the same outcome or measuring two different outcomes, but where each response has a pair in the other group.
 
 When these conditions are satisfied, then the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is approximately normal with mean $\pi_1 - \pi_2$ and standard deviation
 
@@ -695,7 +707,7 @@ We reconsider the experiment for patients who underwent cardiopulmonary resuscit
 
 ------------------------------------------------------------------------
 
-We first check for independence: since this is a randomized experiment, this condition is satisfied.
+We first check for independence: since this is a randomized experiment and we do not expect any connections between the observed results either within or between groups, this condition is satisfied.
 
 Next, we check the success-failure condition for each group. We have at least 10 successes and 10 failures in each experiment arm (11, 14, 39, 26), so this condition is also satisfied.
 
@@ -705,7 +717,7 @@ With both conditions satisfied, the difference in sample proportions can be reas
 ````{=html}
 <!--
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
+<caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
     Patients in the treatment group were given
     a blood thinner, and patients in the control
     group were not.</caption>
@@ -738,6 +750,8 @@ With both conditions satisfied, the difference in sample proportions can be reas
   </tr>
 </tbody>
 </table>
+
+
 -->
 ````
 
@@ -771,13 +785,13 @@ A 5-year experiment was conducted to evaluate the effectiveness of fish oils on 
 Create a 95% confidence interval for the effect of fish oils on heart attacks for patients who are well-represented by those in the study. Also interpret the interval in the context of the study.[^15-categorical-two-props-13]
 :::
 
-[^15-categorical-two-props-13]: Because the patients were randomized, the subjects are independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)$. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.
+[^15-categorical-two-props-13]: Because the patients were randomized and there is no indication that results for one subject might impact another, the subjects may be assumed to be independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)$. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:fish-oil-data)Results for the study on n-3 fatty acid supplement and related health benefits.</caption>
+<caption>(\#tab:fish-oil-data)(\#tab:fish-oil-data)Results for the study on n-3 fatty acid supplement and related health benefits.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">  </th>
    <th style="text-align:right;"> fish oil </th>
    <th style="text-align:right;"> placebo </th>
   </tr>
@@ -801,6 +815,8 @@ Create a 95% confidence interval for the effect of fish oils on heart attacks fo
 </tbody>
 </table>
 
+
+
 ### Hypothesis test for $H_0: \pi_1 - \pi_2 = 0$
 
 \index{data!mammography|(} \index{data!breast cancer|(}
@@ -812,7 +828,7 @@ A 30-year study was conducted with nearly 90,000 female participants. During a 5
 If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On the other hand, if mammograms are not as effective as regular breast cancer exams, we would expect to see an increase in breast cancer deaths in the mammogram group.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:mammogramStudySummaryTable)Summary results for breast cancer study.</caption>
+<caption>(\#tab:mammogramStudySummaryTable)(\#tab:mammogramStudySummaryTable)Summary results for breast cancer study.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -836,6 +852,8 @@ If mammograms are much more effective than non-mammogram breast cancer exams, th
   </tr>
 </tbody>
 </table>
+
+
 
 ::: guidedpractice
 Is this study an experiment or an observational study?[^15-categorical-two-props-14]
@@ -882,7 +900,7 @@ Is it reasonable to model the difference in proportions using a normal distribut
 
 ------------------------------------------------------------------------
 
-Because the patients are randomized, they can be treated as independent, both within and between groups. We also must check the success-failure condition for each group. Under the null hypothesis, the proportions $\pi_{mgm}$ and $\pi_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the pooled proportion from the two samples, $\hat{p}_{\textit{pool}} = 0.0112$: \begin{align*}
+Because the patients are randomized and the study design does not suggest any connections among the subjects or their outcomes, they can be treated as independent, both within and between groups. We also must check the success-failure condition for each group. Under the null hypothesis, the proportions $\pi_{mgm}$ and $\pi_{ctrl}$ are equal, so we check the success-failure condition with our best estimate of these values under $H_0$, the pooled proportion from the two samples, $\hat{p}_{\textit{pool}} = 0.0112$: \begin{align*}
   \hat{p}_{\textit{pool}} \times n_{mgm}
       &= 0.0112 \times \text{44,925} = 503 \\
    (1 - \hat{p}_{\textit{pool}}) \times n_{mgm}
@@ -928,13 +946,7 @@ The point estimate of the difference in breast cancer death rates is \begin{alig
   \end{align*} The breast cancer death rate in the mammogram group was 0.00012 less than in the control group.
 
 Next, the standard error of $\hat{p}_{mgm} - \hat{p}_{ctrl}$ is calculated *using the pooled proportion*, $\hat{p}_{\textit{pool}}$: \begin{align*}
-SE_0 = \sqrt{
-      \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
-          {n_{mgm}}
-      + \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
-          {n_{ctrl}}
-    }
-    = 0.00070
+SE_0 = \sqrt{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}}) \left(\frac{1}{n_{mgm}} + \frac{1}{n_{ctrl}} \right)}= 0.00070
 \end{align*}
 :::
 
@@ -1015,11 +1027,11 @@ So far in this chapter, we have seen the normal distribution applied as the appr
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:zcompare)Similarities of $z$-methods across one sample and two independent samples analysis of a categorical response variable.</caption>
+<caption>(\#tab:zcompare)(\#tab:zcompare)Similarities of $z$-methods across one sample and two independent samples analysis of a categorical response variable.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;">  one sample  </th>
+   <th style="text-align:left;"> one sample </th>
    <th style="text-align:left;"> two indep. samples </th>
   </tr>
  </thead>
@@ -1072,6 +1084,8 @@ So far in this chapter, we have seen the normal distribution applied as the appr
 </tbody>
 </table>
 
+
+
 **Hypothesis tests.** When applying the normal distribution for a hypothesis test, we proceed as follows:
 
 1.  Write appropriate hypotheses.\
@@ -1120,6 +1134,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
   </tr>
 </tbody>
 </table>
+
+
 
 <!-- ### Key ideas {-} -->
 

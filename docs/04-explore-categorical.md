@@ -27,101 +27,34 @@ Load these data into your RStudio session using the following commands:
 
 
 
-<table>
-<caption>(\#tab:emailDF)Six rows from the `email` data set.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:left;"> type </th>
-   <th style="text-align:right;"> num_char </th>
-   <th style="text-align:right;"> line_breaks </th>
-   <th style="text-align:left;"> format </th>
-   <th style="text-align:left;"> number </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> not spam </td>
-   <td style="text-align:right;"> 11.37 </td>
-   <td style="text-align:right;"> 202 </td>
-   <td style="text-align:left;"> HTML </td>
-   <td style="text-align:left;"> big </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> not spam </td>
-   <td style="text-align:right;"> 10.50 </td>
-   <td style="text-align:right;"> 202 </td>
-   <td style="text-align:left;"> HTML </td>
-   <td style="text-align:left;"> small </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> not spam </td>
-   <td style="text-align:right;"> 7.77 </td>
-   <td style="text-align:right;"> 192 </td>
-   <td style="text-align:left;"> HTML </td>
-   <td style="text-align:left;"> small </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> not spam </td>
-   <td style="text-align:right;"> 13.26 </td>
-   <td style="text-align:right;"> 255 </td>
-   <td style="text-align:left;"> HTML </td>
-   <td style="text-align:left;"> small </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> not spam </td>
-   <td style="text-align:right;"> 1.23 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:left;"> not HTML </td>
-   <td style="text-align:left;"> none </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> not spam </td>
-   <td style="text-align:right;"> 1.09 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:left;"> not HTML </td>
-   <td style="text-align:left;"> none </td>
-  </tr>
-</tbody>
-</table>
 
-<table>
-<caption>(\#tab:emailVariables)Variables and their descriptions for the `email` data set.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:left;"> description </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> type </td>
-   <td style="text-align:left;"> Whether the email was spam or not spam. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> num_char </td>
-   <td style="text-align:left;"> The number of characters in the email, in thousands. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> line_breaks </td>
-   <td style="text-align:left;"> The number of line breaks in the email (does not count text wrapping). </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> format </td>
-   <td style="text-align:left;"> Whether the email was written using HTML (e.g., may have included bolding or active links) or not. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> number </td>
-   <td style="text-align:left;"> Categorical variable saying whether there was no number, a small number (under 1 million), or a big number. </td>
-  </tr>
-</tbody>
-</table>
+
+Table: (\#tab:emailDF)Six rows from the `email` data set.
+
+|   |type     | num_char| line_breaks|format   |number |
+|:--|:--------|--------:|-----------:|:--------|:------|
+|1  |not spam |    11.37|         202|HTML     |big    |
+|2  |not spam |    10.50|         202|HTML     |small  |
+|3  |not spam |     7.77|         192|HTML     |small  |
+|4  |not spam |    13.26|         255|HTML     |small  |
+|5  |not spam |     1.23|          29|not HTML |none   |
+|6  |not spam |     1.09|          25|not HTML |none   |
+
+
+
+
+
+Table: (\#tab:emailVariables)Variables and their descriptions for the `email` data set.
+
+|variable    |description                                                                                                 |
+|:-----------|:-----------------------------------------------------------------------------------------------------------|
+|type        |Whether the email was spam or not spam.                                                                     |
+|num_char    |The number of characters in the email, in thousands.                                                        |
+|line_breaks |The number of line breaks in the email (does not count text wrapping).                                      |
+|format      |Whether the email was written using HTML (e.g., may have included bolding or active links) or not.          |
+|number      |Categorical variable saying whether there was no number, a small number (under 1 million), or a big number. |
+
+
 
 ## Contingency tables and conditional proportions
 
@@ -130,23 +63,15 @@ A summary table for a single categorical variable that reports the number of obs
 If we replaced the counts with percentages or proportions (relative frequencies),
 the table would be called a **relative frequency table**.
 
-<table>
-<caption>(\#tab:emailTableNumber)Frequency table of `Number` variable.</caption>
- <thead>
-  <tr>
-   <th style="text-align:right;"> none </th>
-   <th style="text-align:right;"> small </th>
-   <th style="text-align:right;"> big </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 549 </td>
-   <td style="text-align:right;"> 2827 </td>
-   <td style="text-align:right;"> 545 </td>
-  </tr>
-</tbody>
-</table>
+
+
+Table: (\#tab:emailTableNumber)Frequency table of `Number` variable.
+
+| none| small| big|
+|----:|-----:|---:|
+|  549|  2827| 545|
+
+
 
 
 Table \@ref(tab:emailTable) summarizes two variables:
@@ -167,7 +92,7 @@ In this textbook, we generally take the convention of putting the categories of 
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:emailTable)Contingency table of `number` (cols) and `type` (rows) variables.</caption>
+<caption>(\#tab:emailTable)(\#tab:emailTable)Contingency table of `number` (cols) and `type` (rows) variables.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -212,6 +137,8 @@ In this textbook, we generally take the convention of putting the categories of 
 </tbody>
 </table>
 
+
+
 We would like to examine whether the presence of numbers---none, small or large---in an email provides any useful value in classifying email as spam or not spam---that is, is there an **association** between the variables `number` and `type`? 
 
 ::: {.guidedpractice}
@@ -242,10 +169,10 @@ are called **column proportions**.
 Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of `not spam` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of non-spam emails in the sample that do not have any numbers.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:rowPropSpamNumber)A contingency table with row proportions for the `type` and `number` variables.</caption>
+<caption>(\#tab:rowPropSpamNumber)(\#tab:rowPropSpamNumber)A contingency table with row proportions for the `type` and `number` variables.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">  </th>
    <th style="text-align:right;"> none </th>
    <th style="text-align:right;"> small </th>
    <th style="text-align:right;"> big </th>
@@ -267,13 +194,15 @@ Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab
 </tbody>
 </table>
 
+
+
 A contingency table of the column proportions is computed in a similar way, where each column proportion is computed as the count divided by the corresponding column total. Table \@ref(tab:colPropSpamNumber) shows such a table, and here the value 0.729 indicates that 72.9% of emails with no numbers were spam. This rate of spam is much lower than emails with only small numbers (94.1%) or big numbers (90.8%). Because these spam rates vary between the three levels of `number` (`none`, `small`, `big`), this provides evidence that the `spam` and `number` variables are associated in this data set.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:colPropSpamNumber)A contingency table with column proportions for the `type` and `number` variables.</caption>
+<caption>(\#tab:colPropSpamNumber)(\#tab:colPropSpamNumber)A contingency table with column proportions for the `type` and `number` variables.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">  </th>
    <th style="text-align:right;"> none </th>
    <th style="text-align:right;"> small </th>
    <th style="text-align:right;"> big </th>
@@ -296,6 +225,8 @@ A contingency table of the column proportions is computed in a similar way, wher
 </table>
 
 
+
+
 ::: {.guidedpractice}
 What does 0.458 represent in Table \@ref(tab:rowPropSpamNumber)? What does 0.059 represent in Table \@ref(tab:colPropSpamNumber)?^[0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.]
 :::
@@ -316,10 +247,10 @@ If we generate the column proportions, we can see that a higher fraction of plai
 :::
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:emailSpamHTMLTableTotals)A contingency table for `type` and `format`.</caption>
+<caption>(\#tab:emailSpamHTMLTableTotals)(\#tab:emailSpamHTMLTableTotals)A contingency table for `type` and `format`.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;">   </th>
+   <th style="text-align:left;">  </th>
    <th style="text-align:right;"> not HTML </th>
    <th style="text-align:right;"> HTML </th>
    <th style="text-align:right;"> Total </th>
@@ -346,6 +277,8 @@ If we generate the column proportions, we can see that a higher fraction of plai
   </tr>
 </tbody>
 </table>
+
+
 
 The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
 
@@ -459,7 +392,7 @@ If you're still not convinced that you shouldn't use pie charts, read ["The Issu
 A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases^[This example is adapted from @Agresti2007 (p. 49-52).]. Table \@ref(tab:DP) and Figure \@ref(fig:DPbarplot) summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:DP)Contingency table of homicide cases in Florida from 1976 through 1987.</caption>
+<caption>(\#tab:DP)(\#tab:DP)Contingency table of homicide cases in Florida from 1976 through 1987.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -500,6 +433,8 @@ A 1991 study by Radelet and Pierce examined whether race was associated with whe
 </tbody>
 </table>
 
+
+
 <div class="figure" style="text-align: center">
 <img src="04-explore-categorical_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="90%" />
 <p class="caption">(\#fig:DPbarplot)Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans.</p>
@@ -519,7 +454,7 @@ Since these are _observational data_, confounding variables are most likely pres
 If we subset the data by the race of the victim, we see a different picture. Table \@ref(tab:DP2) and Figure \@ref(fig:DPbarplot2) summarize the same data, but separately for Caucasian and African American homicide victims.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:DP2)Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.</caption>
+<caption>(\#tab:DP2)(\#tab:DP2)Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -587,6 +522,8 @@ If we subset the data by the race of the victim, we see a different picture. Tab
   </tr>
 </tbody>
 </table>
+
+
 
 <div class="figure" style="text-align: center">
 <img src="04-explore-categorical_files/figure-html/DPbarplot2-1.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" /><img src="04-explore-categorical_files/figure-html/DPbarplot2-2.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" />
@@ -674,6 +611,8 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
 </tbody>
 </table>
+
+
 
 ### Key ideas {-}
 

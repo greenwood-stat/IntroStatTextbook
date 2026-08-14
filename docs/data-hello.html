@@ -1,145 +1,688 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 1 Hello data | Montana State Introductory Statistics with R</title>
-<meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="Scientists seek to answer questions using rigorous methods and careful observations. These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 1 Hello data | Montana State Introductory Statistics with R">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/data-hello.html">
-<meta property="og:description" content="Scientists seek to answer questions using rigorous methods and careful observations. These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 1 Hello data | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="Scientists seek to answer questions using rigorous methods and careful observations. These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
-    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-    for (let popover of popovers){
-      const div = document.createElement('div');
-      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-      div.innerHTML = popover.getAttribute('data-content');
-      
-      // Will this work with TeX on its own line?
-      var has_math = div.querySelector("span.math");
-      if (has_math) {
-        document.body.appendChild(div);
-      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-      	MathJax.Hub.Queue(function(){
-          popover.setAttribute('data-content', div.innerHTML);
-      	})
-      }
-    }
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Hello data | Montana State Introductory Statistics with R</title>
+  <meta name="description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Hello data | Montana State Introductory Statistics with R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="github-repo" content="MTstateIntroStats/IntroStatTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Hello data | Montana State Introductory Statistics with R" />
+  
+  <meta name="twitter:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  
+
+<meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager, Mark Greenwood" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rstudio.html"/>
+<link rel="next" href="data-design.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
 <style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
-  </style>
-<link rel="stylesheet" href="css/ims-style.css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/ims-style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="authors.html">Authors</a></li>
-<li><a class="" href="preface.html">Preface</a></li>
-<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
-<li class="book-part">Introduction to data</li>
-<li><a class="active" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
-<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
-<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
-<li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
-<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
-<li class="book-part">Foundations of inference</li>
-<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
-<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
-<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
-<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
-<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
-<li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
-<li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
-<li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
-<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
-<li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
-<li><a class="" href="references.html">References</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MSU Intro Stat with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="authors.html"><a href="authors.html"><i class="fa fa-check"></i>Authors</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#examples-and-exercises"><i class="fa fa-check"></i>Examples and exercises</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#data-sets-and-their-sources"><i class="fa fa-check"></i>Data sets and their sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#stat-216-coursepack"><i class="fa fa-check"></i>STAT 216 Coursepack</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i>Preliminaries: Getting started in RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#accessing-rstudio"><i class="fa fa-check"></i>Accessing RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#alternative-options-for-accessing-rstudio"><i class="fa fa-check"></i>Alternative options for accessing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#packages"><i class="fa fa-check"></i>Packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#using-packages"><i class="fa fa-check"></i>Using packages</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#the-catstats-package"><i class="fa fa-check"></i>The <code>catstats</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#projects"><i class="fa fa-check"></i>Projects</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#r-script-files"><i class="fa fa-check"></i>R script files</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#loading-data"><i class="fa fa-check"></i>Loading data</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-1"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-files"><i class="fa fa-check"></i>Exporting files</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-r-script-files"><i class="fa fa-check"></i>Exporting R script files</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-2"><i class="fa fa-check"></i>Try it!</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-plots"><i class="fa fa-check"></i>Exporting plots</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-3"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#home"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i>Troubleshooting</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#extra-references"><i class="fa fa-check"></i>Extra references</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction to data</b></span></li>
+<li class="chapter" data-level="1" data-path="data-hello.html"><a href="data-hello.html"><i class="fa fa-check"></i><b>1</b> Hello data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="data-hello.html"><a href="data-hello.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.2" data-path="data-hello.html"><a href="data-hello.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="data-hello.html"><a href="data-hello.html#observations-variables-and-data-frames"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data frames</a></li>
+<li class="chapter" data-level="1.2.2" data-path="data-hello.html"><a href="data-hello.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.2.3" data-path="data-hello.html"><a href="data-hello.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="data-hello.html"><a href="data-hello.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.2.5" data-path="data-hello.html"><a href="data-hello.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="data-hello.html"><a href="data-hello.html#chp1-review"><i class="fa fa-check"></i><b>1.3</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#summary"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#terms"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-hello.html"><a href="data-hello.html#key-ideas"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-design.html"><a href="data-design.html"><i class="fa fa-check"></i><b>2</b> Study design</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-design.html"><a href="data-design.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>2.1</b> Sampling principles and strategies</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="data-design.html"><a href="data-design.html#populations-and-samples"><i class="fa fa-check"></i><b>2.1.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-design.html"><a href="data-design.html#parameters-and-statistics"><i class="fa fa-check"></i><b>2.1.2</b> Parameters and statistics</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-design.html"><a href="data-design.html#anecdotal-evidence"><i class="fa fa-check"></i><b>2.1.3</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-design.html"><a href="data-design.html#sampling-from-a-population"><i class="fa fa-check"></i><b>2.1.4</b> Sampling from a population</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-design.html"><a href="data-design.html#samp-methods"><i class="fa fa-check"></i><b>2.1.5</b> Four sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-design.html"><a href="data-design.html#observational-studies"><i class="fa fa-check"></i><b>2.2</b> Observational studies</a></li>
+<li class="chapter" data-level="2.3" data-path="data-design.html"><a href="data-design.html#experiments"><i class="fa fa-check"></i><b>2.3</b> Experiments</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data-design.html"><a href="data-design.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>2.3.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-design.html"><a href="data-design.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>2.3.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="data-design.html"><a href="data-design.html#scope-of-inference"><i class="fa fa-check"></i><b>2.4</b> Scope of inference</a></li>
+<li class="chapter" data-level="2.5" data-path="data-design.html"><a href="data-design.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#summary-1"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#terms-1"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-design.html"><a href="data-design.html#key-ideas-1"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-applications.html"><a href="data-applications.html"><i class="fa fa-check"></i><b>3</b> Applications: Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-applications.html"><a href="data-applications.html#dataframes-in-r"><i class="fa fa-check"></i><b>3.1</b> Dataframes in R</a></li>
+<li class="chapter" data-level="3.2" data-path="data-applications.html"><a href="data-applications.html#datastruc"><i class="fa fa-check"></i><b>3.2</b> Tidy structure of data</a></li>
+<li class="chapter" data-level="3.3" data-path="data-applications.html"><a href="data-applications.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>3.3</b> Using the pipe to chain</a></li>
+<li class="chapter" data-level="3.4" data-path="data-applications.html"><a href="data-applications.html#a-data-wrangling-example"><i class="fa fa-check"></i><b>3.4</b> A data wrangling example</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#filtering"><i class="fa fa-check"></i>Filtering</a></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#mutating"><i class="fa fa-check"></i>Mutating</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#terms-2"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="data-applications.html"><a href="data-applications.html#r-functions"><i class="fa fa-check"></i>R functions</a></li>
+</ul></li>
+<li class="part"><span><b>II Exploratory data analysis</b></span></li>
+<li class="chapter" data-level="4" data-path="explore-categorical.html"><a href="explore-categorical.html"><i class="fa fa-check"></i><b>4</b> Exploring categorical data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="explore-categorical.html"><a href="explore-categorical.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>4.1</b> Contingency tables and conditional proportions</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="explore-categorical.html"><a href="explore-categorical.html#row-and-column-proportions"><i class="fa fa-check"></i><b>4.1.1</b> Row and column proportions</a></li>
+<li class="chapter" data-level="4.1.2" data-path="explore-categorical.html"><a href="explore-categorical.html#sample-proportions-and-population-proportions"><i class="fa fa-check"></i><b>4.1.2</b> Sample proportions and population proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="explore-categorical.html"><a href="explore-categorical.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>4.2</b> Bar plots and mosaic plots</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="explore-categorical.html"><a href="explore-categorical.html#mosaic-plots"><i class="fa fa-check"></i><b>4.2.1</b> Mosaic plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="explore-categorical.html"><a href="explore-categorical.html#why-not-pie-charts"><i class="fa fa-check"></i><b>4.3</b> Why not pie charts?</a></li>
+<li class="chapter" data-level="4.4" data-path="explore-categorical.html"><a href="explore-categorical.html#simpson"><i class="fa fa-check"></i><b>4.4</b> Simpson’s paradox</a></li>
+<li class="chapter" data-level="4.5" data-path="explore-categorical.html"><a href="explore-categorical.html#chp4-review"><i class="fa fa-check"></i><b>4.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#summary-2"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#terms-3"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-categorical.html"><a href="explore-categorical.html#key-ideas-2"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="explore-numerical.html"><a href="explore-numerical.html"><i class="fa fa-check"></i><b>5</b> Exploring quantitative data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="explore-numerical.html"><a href="explore-numerical.html#scatterplots"><i class="fa fa-check"></i><b>5.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="5.2" data-path="explore-numerical.html"><a href="explore-numerical.html#dotplots"><i class="fa fa-check"></i><b>5.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="5.3" data-path="explore-numerical.html"><a href="explore-numerical.html#histograms"><i class="fa fa-check"></i><b>5.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="5.4" data-path="explore-numerical.html"><a href="explore-numerical.html#variance-sd"><i class="fa fa-check"></i><b>5.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="5.5" data-path="explore-numerical.html"><a href="explore-numerical.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>5.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="5.6" data-path="explore-numerical.html"><a href="explore-numerical.html#describing-and-comparing-quantitative-distributions"><i class="fa fa-check"></i><b>5.6</b> Describing and comparing quantitative distributions</a></li>
+<li class="chapter" data-level="5.7" data-path="explore-numerical.html"><a href="explore-numerical.html#robust-statistics"><i class="fa fa-check"></i><b>5.7</b> Robust statistics</a></li>
+<li class="chapter" data-level="5.8" data-path="explore-numerical.html"><a href="explore-numerical.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>5.8</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="5.9" data-path="explore-numerical.html"><a href="explore-numerical.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>5.9</b> Mapping data (special topic)</a></li>
+<li class="chapter" data-level="5.10" data-path="explore-numerical.html"><a href="explore-numerical.html#chp5-review"><i class="fa fa-check"></i><b>5.10</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#summary-3"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#terms-4"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-numerical.html"><a href="explore-numerical.html#key-ideas-3"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="explore-regression.html"><a href="explore-regression.html"><i class="fa fa-check"></i><b>6</b> Correlation and regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="explore-regression.html"><a href="explore-regression.html#fit-line-res-cor"><i class="fa fa-check"></i><b>6.1</b> Fitting a line, residuals, and correlation</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="explore-regression.html"><a href="explore-regression.html#fitting-a-line-to-data"><i class="fa fa-check"></i><b>6.1.1</b> Fitting a line to data</a></li>
+<li class="chapter" data-level="6.1.2" data-path="explore-regression.html"><a href="explore-regression.html#using-linear-regression-to-predict-possum-head-lengths"><i class="fa fa-check"></i><b>6.1.2</b> Using linear regression to predict possum head lengths</a></li>
+<li class="chapter" data-level="6.1.3" data-path="explore-regression.html"><a href="explore-regression.html#residuals"><i class="fa fa-check"></i><b>6.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="6.1.4" data-path="explore-regression.html"><a href="explore-regression.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>6.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="explore-regression.html"><a href="explore-regression.html#least-squares-regression"><i class="fa fa-check"></i><b>6.2</b> Least squares regression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="explore-regression.html"><a href="explore-regression.html#gift-aid-for-freshman-at-elmhurst-college"><i class="fa fa-check"></i><b>6.2.1</b> Gift aid for freshman at Elmhurst College</a></li>
+<li class="chapter" data-level="6.2.2" data-path="explore-regression.html"><a href="explore-regression.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>6.2.2</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="6.2.3" data-path="explore-regression.html"><a href="explore-regression.html#finding-and-interpreting-the-least-squares-line"><i class="fa fa-check"></i><b>6.2.3</b> Finding and interpreting the least squares line</a></li>
+<li class="chapter" data-level="6.2.4" data-path="explore-regression.html"><a href="explore-regression.html#calculating-the-least-squares-regression-line-using-summary-statistics-special-topic"><i class="fa fa-check"></i><b>6.2.4</b> Calculating the least squares regression line using summary statistics (special topic)</a></li>
+<li class="chapter" data-level="6.2.5" data-path="explore-regression.html"><a href="explore-regression.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>6.2.5</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="6.2.6" data-path="explore-regression.html"><a href="explore-regression.html#describing-the-strength-of-a-fit"><i class="fa fa-check"></i><b>6.2.6</b> Describing the strength of a fit</a></li>
+<li class="chapter" data-level="6.2.7" data-path="explore-regression.html"><a href="explore-regression.html#categorical-predictor-two-levels"><i class="fa fa-check"></i><b>6.2.7</b> Categorical predictors with two levels (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="explore-regression.html"><a href="explore-regression.html#outliers-in-regression"><i class="fa fa-check"></i><b>6.3</b> Outliers in linear regression</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="explore-regression.html"><a href="explore-regression.html#types-of-outliers"><i class="fa fa-check"></i><b>6.3.1</b> Types of outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="explore-regression.html"><a href="explore-regression.html#chp6-review"><i class="fa fa-check"></i><b>6.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#summary-4"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#data-visualization-summary"><i class="fa fa-check"></i>Data visualization summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#summary-measures"><i class="fa fa-check"></i>Summary measures</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#notation-summary"><i class="fa fa-check"></i>Notation summary</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#terms-5"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-regression.html"><a href="explore-regression.html#key-ideas-4"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html"><i class="fa fa-check"></i><b>7</b> Multivariable models</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#gapminder-world"><i class="fa fa-check"></i><b>7.1</b> Gapminder world</a></li>
+<li class="chapter" data-level="7.2" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#simpsons-paradox-revisited"><i class="fa fa-check"></i><b>7.2</b> Simpson’s paradox revisited</a></li>
+<li class="chapter" data-level="7.3" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#regression-multiple-predictors"><i class="fa fa-check"></i><b>7.3</b> Multiple regression (special topic)</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#ind-and-cat-predictors"><i class="fa fa-check"></i><b>7.3.1</b> Indicator and categorical predictors</a></li>
+<li class="chapter" data-level="7.3.2" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#many-predictors-in-a-model"><i class="fa fa-check"></i><b>7.3.2</b> Many predictors in a model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#summary-5"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#terms-6"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="explore-mult-reg.html"><a href="explore-mult-reg.html#key-ideas-5"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="explore-applications.html"><a href="explore-applications.html"><i class="fa fa-check"></i><b>8</b> Applications: Explore</a></li>
+<li class="part"><span><b>III Foundations of inference</b></span></li>
+<li class="chapter" data-level="9" data-path="foundations-randomization.html"><a href="foundations-randomization.html"><i class="fa fa-check"></i><b>9</b> Hypothesis testing with randomization</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#Martian"><i class="fa fa-check"></i><b>9.1</b> Motivating example: Martian alphabet</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-data"><i class="fa fa-check"></i><b>9.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#variability-in-a-statistic"><i class="fa fa-check"></i><b>9.1.2</b> Variability in a statistic</a></li>
+<li class="chapter" data-level="9.1.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-statistic-vs.-null-statistics"><i class="fa fa-check"></i><b>9.1.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#caseStudySexDiscrimination"><i class="fa fa-check"></i><b>9.2</b> Case study: Sex discrimination</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-data-1"><i class="fa fa-check"></i><b>9.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="9.2.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#variability-of-the-statistic"><i class="fa fa-check"></i><b>9.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="9.2.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#observed-statistic-vs.-null-statistics-1"><i class="fa fa-check"></i><b>9.2.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="foundations-randomization.html"><a href="foundations-randomization.html#HypothesisTesting"><i class="fa fa-check"></i><b>9.3</b> Hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="foundations-randomization.html"><a href="foundations-randomization.html#the-us-court-system"><i class="fa fa-check"></i><b>9.3.1</b> The US court system</a></li>
+<li class="chapter" data-level="9.3.2" data-path="foundations-randomization.html"><a href="foundations-randomization.html#p-value-stat-signif"><i class="fa fa-check"></i><b>9.3.2</b> p-value and statistical significance</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="foundations-randomization.html"><a href="foundations-randomization.html#chp9-review"><i class="fa fa-check"></i><b>9.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#summary-6"><i class="fa fa-check"></i>Summary</a></li>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#terms-7"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="foundations-randomization.html"><a href="foundations-randomization.html#key-ideas-6"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html"><i class="fa fa-check"></i><b>10</b> Confidence intervals with bootstrapping</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#case-study-med-consult"><i class="fa fa-check"></i><b>10.1</b> Case study: Medical consultant</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#observed-data-2"><i class="fa fa-check"></i><b>10.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="10.1.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#variability-of-the-statistic-1"><i class="fa fa-check"></i><b>10.1.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>10.2</b> Confidence intervals</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#plausible-range-of-values-for-the-population-parameter"><i class="fa fa-check"></i><b>10.2.1</b> Plausible range of values for the population parameter</a></li>
+<li class="chapter" data-level="10.2.2" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#bootstrap-confidence-interval"><i class="fa fa-check"></i><b>10.2.2</b> Bootstrap confidence interval</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#chp10-review"><i class="fa fa-check"></i><b>10.3</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-bootstrapping.html"><a href="foundations-bootstrapping.html#terms-8"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html"><i class="fa fa-check"></i><b>11</b> Inference with mathematical models</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#CLTsection"><i class="fa fa-check"></i><b>11.1</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="11.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal"><i class="fa fa-check"></i><b>11.2</b> Normal distributions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-distribution-model"><i class="fa fa-check"></i><b>11.2.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="11.2.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>11.2.2</b> Standardizing with Z-scores</a></li>
+<li class="chapter" data-level="11.2.3" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>11.2.3</b> Normal probability calculations in R</a></li>
+<li class="chapter" data-level="11.2.4" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#normal-probability-examples"><i class="fa fa-check"></i><b>11.2.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="11.2.5" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#rule"><i class="fa fa-check"></i><b>11.2.5</b> 68-95-99.7 rule</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#quantifying-the-variability-of-a-statistic"><i class="fa fa-check"></i><b>11.3</b> Quantifying the variability of a statistic</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#standard-error"><i class="fa fa-check"></i><b>11.3.1</b> Standard error</a></li>
+<li class="chapter" data-level="11.3.2" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#moe"><i class="fa fa-check"></i><b>11.3.2</b> Margin of error</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#chp11-review"><i class="fa fa-check"></i><b>11.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-mathematical.html"><a href="foundations-mathematical.html#terms-9"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="foundations-errors.html"><a href="foundations-errors.html"><i class="fa fa-check"></i><b>12</b> Errors, power, and practical importance</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="foundations-errors.html"><a href="foundations-errors.html#decerr"><i class="fa fa-check"></i><b>12.1</b> Decision errors</a></li>
+<li class="chapter" data-level="12.2" data-path="foundations-errors.html"><a href="foundations-errors.html#significance-level"><i class="fa fa-check"></i><b>12.2</b> Significance level</a></li>
+<li class="chapter" data-level="12.3" data-path="foundations-errors.html"><a href="foundations-errors.html#two-sided-tests"><i class="fa fa-check"></i><b>12.3</b> Two-sided hypotheses</a></li>
+<li class="chapter" data-level="12.4" data-path="foundations-errors.html"><a href="foundations-errors.html#controlling-the-type-1-error-rate"><i class="fa fa-check"></i><b>12.4</b> Controlling the Type 1 error rate</a></li>
+<li class="chapter" data-level="12.5" data-path="foundations-errors.html"><a href="foundations-errors.html#power"><i class="fa fa-check"></i><b>12.5</b> Power</a></li>
+<li class="chapter" data-level="12.6" data-path="foundations-errors.html"><a href="foundations-errors.html#statistical-significance-vs.-practical-importance"><i class="fa fa-check"></i><b>12.6</b> Statistical significance vs. practical importance</a></li>
+<li class="chapter" data-level="12.7" data-path="foundations-errors.html"><a href="foundations-errors.html#chp12-review"><i class="fa fa-check"></i><b>12.7</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="foundations-errors.html"><a href="foundations-errors.html#terms-10"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="foundations-applications.html"><a href="foundations-applications.html"><i class="fa fa-check"></i><b>13</b> Applications: Foundations</a></li>
+<li class="part"><span><b>IV Inference for categorical data</b></span></li>
+<li class="chapter" data-level="14" data-path="inference-one-prop.html"><a href="inference-one-prop.html"><i class="fa fa-check"></i><b>14</b> Inference for a single proportion</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="inference-one-prop.html"><a href="inference-one-prop.html#one-prop-null-boot"><i class="fa fa-check"></i><b>14.1</b> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#steps-1-and-2-hypotheses-and-test-statistic"><i class="fa fa-check"></i>Steps 1 and 2: Hypotheses and test statistic</a></li>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#steps-3-and-4-null-distribution-and-p-value"><i class="fa fa-check"></i>Steps 3 and 4: Null distribution and p-value</a></li>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#step-5-conclusion-and-scope-of-inference"><i class="fa fa-check"></i>Step 5: Conclusion and scope of inference</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="inference-one-prop.html"><a href="inference-one-prop.html#boot-ci-prop"><i class="fa fa-check"></i><b>14.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></a></li>
+<li class="chapter" data-level="14.3" data-path="inference-one-prop.html"><a href="inference-one-prop.html#theory-prop"><i class="fa fa-check"></i><b>14.3</b> Theory-based inferential methods for <span class="math inline">\(\pi\)</span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="inference-one-prop.html"><a href="inference-one-prop.html#evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods"><i class="fa fa-check"></i><b>14.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\hat{p}\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="14.3.2" data-path="inference-one-prop.html"><a href="inference-one-prop.html#payday-lenders"><i class="fa fa-check"></i><b>14.3.2</b> Theory-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
+<li class="chapter" data-level="14.3.3" data-path="inference-one-prop.html"><a href="inference-one-prop.html#theory-based-confidence-interval-for-pi"><i class="fa fa-check"></i><b>14.3.3</b> Theory-based confidence interval for <span class="math inline">\(\pi\)</span></a></li>
+<li class="chapter" data-level="14.3.4" data-path="inference-one-prop.html"><a href="inference-one-prop.html#violating-conditions"><i class="fa fa-check"></i><b>14.3.4</b> Violating conditions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="inference-one-prop.html"><a href="inference-one-prop.html#chp14-review"><i class="fa fa-check"></i><b>14.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-prop.html"><a href="inference-one-prop.html#terms-11"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="inference-two-props.html"><a href="inference-two-props.html"><i class="fa fa-check"></i><b>15</b> Inference for comparing two proportions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="inference-two-props.html"><a href="inference-two-props.html#two-prop-errors"><i class="fa fa-check"></i><b>15.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="inference-two-props.html"><a href="inference-two-props.html#cpr"><i class="fa fa-check"></i><b>15.1.1</b> Case study: CPR and blood thinner</a></li>
+<li class="chapter" data-level="15.1.2" data-path="inference-two-props.html"><a href="inference-two-props.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>15.1.2</b> Case study: Opportunity cost</a></li>
+<li class="chapter" data-level="15.1.3" data-path="inference-two-props.html"><a href="inference-two-props.html#caseStudyMalaria"><i class="fa fa-check"></i><b>15.1.3</b> Case study: Malaria vaccine</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="inference-two-props.html"><a href="inference-two-props.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>15.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="inference-two-props.html"><a href="inference-two-props.html#observed-data-3"><i class="fa fa-check"></i><b>15.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="15.2.2" data-path="inference-two-props.html"><a href="inference-two-props.html#variability-of-the-statistic-2"><i class="fa fa-check"></i><b>15.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="15.2.3" data-path="inference-two-props.html"><a href="inference-two-props.html#what-does-95-mean"><i class="fa fa-check"></i><b>15.2.3</b> What does 95% mean?</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="inference-two-props.html"><a href="inference-two-props.html#math-2prop"><i class="fa fa-check"></i><b>15.3</b> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="inference-two-props.html"><a href="inference-two-props.html#evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods"><i class="fa fa-check"></i><b>15.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\pi_1 - \pi_2\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="15.3.2" data-path="inference-two-props.html"><a href="inference-two-props.html#confidence-interval-for-pi_1---pi_2"><i class="fa fa-check"></i><b>15.3.2</b> Confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
+<li class="chapter" data-level="15.3.3" data-path="inference-two-props.html"><a href="inference-two-props.html#hypothesis-test-for-h_0-pi_1---pi_2-0"><i class="fa fa-check"></i><b>15.3.3</b> Hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="inference-two-props.html"><a href="inference-two-props.html#chp15-review"><i class="fa fa-check"></i><b>15.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="inference-two-props.html"><a href="inference-two-props.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>15.4.1</b> Summary of Z-procedures</a></li>
+<li class="chapter" data-level="" data-path="inference-two-props.html"><a href="inference-two-props.html#terms-12"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html"><i class="fa fa-check"></i><b>16</b> Applications: Infer categorical</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#making-tables-from-raw-data"><i class="fa fa-check"></i>Making tables from raw data</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-one-proportion"><i class="fa fa-check"></i>Simulation-based inference for one proportion</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-difference-in-two-proportions"><i class="fa fa-check"></i>Simulation-based inference for difference in two proportions</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#simulation-based-inference-for-relative-risk"><i class="fa fa-check"></i>Simulation-based inference for relative risk</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#theory-based-inference-for-one-proportion"><i class="fa fa-check"></i>Theory-based inference for one proportion</a></li>
+<li class="chapter" data-level="" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#theory-based-inference-for-a-difference-in-two-proportions"><i class="fa fa-check"></i>Theory-based inference for a difference in two proportions</a></li>
+</ul></li>
+<li class="chapter" data-level="16.1" data-path="inference-categ-applications.html"><a href="inference-categ-applications.html#catstats-function-summary"><i class="fa fa-check"></i><b>16.1</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>V Inference for quantitative data</b></span></li>
+<li class="chapter" data-level="17" data-path="inference-one-mean.html"><a href="inference-one-mean.html"><i class="fa fa-check"></i><b>17</b> Inference for a single mean</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>17.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#observed-data-4"><i class="fa fa-check"></i><b>17.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="17.1.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#variability-of-the-statistic-3"><i class="fa fa-check"></i><b>17.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="17.1.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrap-percentile-confidence-interval-for-sigma-special-topic"><i class="fa fa-check"></i><b>17.1.3</b> Bootstrap percentile confidence interval for <span class="math inline">\(\sigma\)</span> (special topic)</a></li>
+<li class="chapter" data-level="17.1.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#bootstrapping-is-not-a-solution-to-small-sample-sizes"><i class="fa fa-check"></i><b>17.1.4</b> Bootstrapping is not a solution to small sample sizes!</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-mean-null-boot"><i class="fa fa-check"></i><b>17.2</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#observed-data-5"><i class="fa fa-check"></i><b>17.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="17.2.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#shifted-bootstrapped-null-distribution"><i class="fa fa-check"></i><b>17.2.2</b> Shifted bootstrapped null distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-mean-math"><i class="fa fa-check"></i><b>17.3</b> Theory-based inferential methods for <span class="math inline">\(\mu\)</span></a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="inference-one-mean.html"><a href="inference-one-mean.html#evaluating-the-two-conditions-required-for-modeling-bary-using-theory-based-methods"><i class="fa fa-check"></i><b>17.3.1</b> Evaluating the two conditions required for modeling <span class="math inline">\(\bar{y}\)</span> using theory-based methods</a></li>
+<li class="chapter" data-level="17.3.2" data-path="inference-one-mean.html"><a href="inference-one-mean.html#introducing-the-t-distribution"><i class="fa fa-check"></i><b>17.3.2</b> Introducing the <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="17.3.3" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-sample-t-confidence-intervals"><i class="fa fa-check"></i><b>17.3.3</b> One sample <span class="math inline">\(t\)</span>-confidence intervals</a></li>
+<li class="chapter" data-level="17.3.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#one-sample-t-tests"><i class="fa fa-check"></i><b>17.3.4</b> One sample <span class="math inline">\(t\)</span>-tests</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="inference-one-mean.html"><a href="inference-one-mean.html#chp17-review"><i class="fa fa-check"></i><b>17.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-one-mean.html"><a href="inference-one-mean.html#terms-13"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="inference-paired-means.html"><a href="inference-paired-means.html"><i class="fa fa-check"></i><b>18</b> Inference for comparing paired means</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#shifted-bootstrap-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>18.1</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-7"><i class="fa fa-check"></i><b>18.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.1.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-4"><i class="fa fa-check"></i><b>18.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="18.1.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-statistic-vs.-null-value"><i class="fa fa-check"></i><b>18.1.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>18.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-8"><i class="fa fa-check"></i><b>18.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.2.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-5"><i class="fa fa-check"></i><b>18.2.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#paired-mean-math"><i class="fa fa-check"></i><b>18.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span></a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-data-9"><i class="fa fa-check"></i><b>18.3.1</b> Observed data</a></li>
+<li class="chapter" data-level="18.3.2" data-path="inference-paired-means.html"><a href="inference-paired-means.html#variability-of-the-statistic-6"><i class="fa fa-check"></i><b>18.3.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="18.3.3" data-path="inference-paired-means.html"><a href="inference-paired-means.html#observed-statistic-vs.-null-statistics-2"><i class="fa fa-check"></i><b>18.3.3</b> Observed statistic vs. null statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="inference-paired-means.html"><a href="inference-paired-means.html#chp18-review"><i class="fa fa-check"></i><b>18.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-paired-means.html"><a href="inference-paired-means.html#terms-14"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="inference-two-means.html"><a href="inference-two-means.html"><i class="fa fa-check"></i><b>19</b> Inference for comparing two independent means</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="inference-two-means.html"><a href="inference-two-means.html#rand2mean"><i class="fa fa-check"></i><b>19.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-data-10"><i class="fa fa-check"></i><b>19.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="19.1.2" data-path="inference-two-means.html"><a href="inference-two-means.html#variability-of-the-statistic-7"><i class="fa fa-check"></i><b>19.1.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="19.1.3" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-statistic-vs.-null-value-1"><i class="fa fa-check"></i><b>19.1.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="inference-two-means.html"><a href="inference-two-means.html#boot-ci-diff-means"><i class="fa fa-check"></i><b>19.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="inference-two-means.html"><a href="inference-two-means.html#observed-data-11"><i class="fa fa-check"></i><b>19.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="19.2.2" data-path="inference-two-means.html"><a href="inference-two-means.html#variability-of-the-statistic-8"><i class="fa fa-check"></i><b>19.2.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="inference-two-means.html"><a href="inference-two-means.html#math2samp"><i class="fa fa-check"></i><b>19.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span></a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="inference-two-means.html"><a href="inference-two-means.html#t-test-for-mu_1---mu_2"><i class="fa fa-check"></i><b>19.3.1</b> <span class="math inline">\(t\)</span>-test for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+<li class="chapter" data-level="19.3.2" data-path="inference-two-means.html"><a href="inference-two-means.html#t-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>19.3.2</b> <span class="math inline">\(t\)</span> confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="inference-two-means.html"><a href="inference-two-means.html#chp19-review"><i class="fa fa-check"></i><b>19.4</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-two-means.html"><a href="inference-two-means.html#summary-of-t-procedures"><i class="fa fa-check"></i>Summary of t-procedures</a></li>
+<li class="chapter" data-level="" data-path="inference-two-means.html"><a href="inference-two-means.html#terms-15"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="inference-num-applications.html"><a href="inference-num-applications.html"><i class="fa fa-check"></i><b>20</b> Applications: Infer quantitative</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="inference-num-applications.html"><a href="inference-num-applications.html#inference-for-quantitative-data-using-r-and-catstats"><i class="fa fa-check"></i><b>20.1</b> Inference for quantitative data using R and <code>catstats</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#using-the-t-distribution"><i class="fa fa-check"></i>Using the <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#simulation-based-inference-for-paired-mean-difference"><i class="fa fa-check"></i>Simulation-based inference for paired mean difference</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#theory-based-inference-for-paired-mean-difference"><i class="fa fa-check"></i>Theory-based inference for paired mean difference</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#simulation-based-inference-for-the-difference-of-two-means"><i class="fa fa-check"></i>Simulation-based inference for the difference of two means</a></li>
+<li class="chapter" data-level="" data-path="inference-num-applications.html"><a href="inference-num-applications.html#theory-based-inference-for-the-difference-of-two-means"><i class="fa fa-check"></i>Theory-based inference for the difference of two means</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="inference-num-applications.html"><a href="inference-num-applications.html#catstats-function-summary-1"><i class="fa fa-check"></i><b>20.2</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>VI Inference for regression</b></span></li>
+<li class="chapter" data-level="21" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>21</b> Inference for correlation and slope</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="inference-reg.html"><a href="inference-reg.html#case-study-sandwich-store"><i class="fa fa-check"></i><b>21.1</b> Case study: Sandwich store</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-13"><i class="fa fa-check"></i><b>21.1.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.1.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-10"><i class="fa fa-check"></i><b>21.1.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="inference-reg.html"><a href="inference-reg.html#randslope"><i class="fa fa-check"></i><b>21.2</b> Randomization test for <span class="math inline">\(H_0: \beta_1= 0\)</span></a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-14"><i class="fa fa-check"></i><b>21.2.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.2.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-11"><i class="fa fa-check"></i><b>21.2.2</b> Variability of the statistic</a></li>
+<li class="chapter" data-level="21.2.3" data-path="inference-reg.html"><a href="inference-reg.html#observed-statistic-vs.-null-value-3"><i class="fa fa-check"></i><b>21.2.3</b> Observed statistic vs. null value</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="inference-reg.html"><a href="inference-reg.html#bootbeta1"><i class="fa fa-check"></i><b>21.3</b> Bootstrap confidence interval for <span class="math inline">\(\beta_1\)</span></a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="inference-reg.html"><a href="inference-reg.html#observed-data-15"><i class="fa fa-check"></i><b>21.3.1</b> Observed data</a></li>
+<li class="chapter" data-level="21.3.2" data-path="inference-reg.html"><a href="inference-reg.html#variability-of-the-statistic-12"><i class="fa fa-check"></i><b>21.3.2</b> Variability of the statistic</a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="inference-reg.html"><a href="inference-reg.html#inference-on-the-correlation-coefficient-rho"><i class="fa fa-check"></i><b>21.4</b> Inference on the correlation coefficient <span class="math inline">\(\rho\)</span></a></li>
+<li class="chapter" data-level="21.5" data-path="inference-reg.html"><a href="inference-reg.html#mathslope"><i class="fa fa-check"></i><b>21.5</b> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span></a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="inference-reg.html"><a href="inference-reg.html#case-study-midterm-elections-and-unemployment"><i class="fa fa-check"></i><b>21.5.1</b> Case study: Midterm elections and unemployment</a></li>
+<li class="chapter" data-level="21.5.2" data-path="inference-reg.html"><a href="inference-reg.html#understanding-regression-output-from-software"><i class="fa fa-check"></i><b>21.5.2</b> Understanding regression output from software</a></li>
+<li class="chapter" data-level="21.5.3" data-path="inference-reg.html"><a href="inference-reg.html#intuition-vs.-formal-inference"><i class="fa fa-check"></i><b>21.5.3</b> Intuition vs. formal inference</a></li>
+<li class="chapter" data-level="21.5.4" data-path="inference-reg.html"><a href="inference-reg.html#theory-based-confidence-interval-for-a-regression-coefficient"><i class="fa fa-check"></i><b>21.5.4</b> Theory-based confidence interval for a regression coefficient</a></li>
+</ul></li>
+<li class="chapter" data-level="21.6" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>21.6</b> Checking model conditions</a>
+<ul>
+<li class="chapter" data-level="21.6.1" data-path="inference-reg.html"><a href="inference-reg.html#linearity"><i class="fa fa-check"></i><b>21.6.1</b> <strong>L</strong>inearity</a></li>
+<li class="chapter" data-level="21.6.2" data-path="inference-reg.html"><a href="inference-reg.html#independence"><i class="fa fa-check"></i><b>21.6.2</b> <strong>I</strong>ndependence</a></li>
+<li class="chapter" data-level="21.6.3" data-path="inference-reg.html"><a href="inference-reg.html#normality"><i class="fa fa-check"></i><b>21.6.3</b> <strong>N</strong>ormality</a></li>
+<li class="chapter" data-level="21.6.4" data-path="inference-reg.html"><a href="inference-reg.html#equal-variability"><i class="fa fa-check"></i><b>21.6.4</b> <strong>E</strong>qual variability</a></li>
+<li class="chapter" data-level="21.6.5" data-path="inference-reg.html"><a href="inference-reg.html#scope-of-inference-for-regression"><i class="fa fa-check"></i><b>21.6.5</b> Scope of Inference for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="21.7" data-path="inference-reg.html"><a href="inference-reg.html#chp21-review"><i class="fa fa-check"></i><b>21.7</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-reg.html"><a href="inference-reg.html#terms-16"><i class="fa fa-check"></i>Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html"><i class="fa fa-check"></i><b>22</b> Applications: Infer regression</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#inference-for-regression-using-r-and-catstats"><i class="fa fa-check"></i><b>22.1</b> Inference for regression using R and <code>catstats</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#simulation-based-inference-for-the-regression-slope"><i class="fa fa-check"></i>Simulation-based inference for the regression slope</a></li>
+<li class="chapter" data-level="" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#theory-based-inference-for-the-regression-slope"><i class="fa fa-check"></i>Theory-based inference for the regression slope</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="inference-reg-applications.html"><a href="inference-reg-applications.html#catstats-function-summary-2"><i class="fa fa-check"></i><b>22.2</b> <code>catstats</code> function summary</a></li>
+</ul></li>
+<li class="part"><span><b>VII Probability</b></span></li>
+<li class="chapter" data-level="23" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>23</b> Probability with tables</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="probability.html"><a href="probability.html#defining-probability"><i class="fa fa-check"></i><b>23.1</b> Defining probability</a></li>
+<li class="chapter" data-level="23.2" data-path="probability.html"><a href="probability.html#finding-probabilities-with-tables"><i class="fa fa-check"></i><b>23.2</b> Finding probabilities with tables</a></li>
+<li class="chapter" data-level="23.3" data-path="probability.html"><a href="probability.html#probability-notation"><i class="fa fa-check"></i><b>23.3</b> Probability notation</a></li>
+<li class="chapter" data-level="23.4" data-path="probability.html"><a href="probability.html#diagnostic-testing"><i class="fa fa-check"></i><b>23.4</b> Diagnostic testing</a>
+<ul>
+<li class="chapter" data-level="23.4.1" data-path="probability.html"><a href="probability.html#the-case-of-baby-jeff"><i class="fa fa-check"></i><b>23.4.1</b> The case of Baby Jeff</a></li>
+</ul></li>
+<li class="chapter" data-level="23.5" data-path="probability.html"><a href="probability.html#chp23-review"><i class="fa fa-check"></i><b>23.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#terms-17"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path="probability.html"><a href="probability.html#key-ideas-7"><i class="fa fa-check"></i>Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-hello" class="section level1" number="1">
-<h1>
-<span class="header-section-number">1</span> Hello data<a class="anchor" aria-label="anchor" href="#data-hello"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Montana State Introductory Statistics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-hello" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Hello data<a href="data-hello.html#data-hello" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <!-- Old reference: #intro-to-data -->
 <div class="chapterintro">
 <p>Scientists seek to answer questions using rigorous methods and careful observations.
 These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a statistical investigation and are called <strong>data</strong>.
 Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.</p>
 </div>
-<p>Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://www.census.gov/history/www/through_the_decades/overview/1790.html" class="uri"&gt;https://www.census.gov/history/www/through_the_decades/overview/1790.html&lt;/a&gt;&lt;/p&gt;'><sup>4</sup></a>, the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the <strong>statistical investigation process</strong> looked something like this (adapted from <span class="citation">Tintle et al. (<a href="references.html#ref-ISI2016" role="doc-biblioref">2016</a>)</span>):</p>
+<p>Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>, the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the <strong>statistical investigation process</strong> looked something like this (adapted from <span class="citation">Tintle et al. (<a href="#ref-ISI2016">2016</a>)</span>):</p>
 <ol style="list-style-type: decimal">
 <li>Ask a research question.</li>
 <li>Design a study and collect data.</li>
@@ -149,24 +692,22 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
 <li>Revisit and look forward.</li>
 </ol>
 <p>With the rise of data science, however, we might not start with a research question,
-and instead start with a data set<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Data used in this context are called “found data.”&lt;/p&gt;"><sup>5</sup></a>.
-In this case, the statistical investigation process looks more like the data exploration cycle found in Figure <a href="data-hello.html#fig:data-science-explore">1.1</a> taken from <span class="citation">Wickham and Grolemund (<a href="references.html#ref-R4DS" role="doc-biblioref">2017</a>)</span>.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:data-science-explore"></span>
-<img src="images/data-science-explore.png" alt="Wickham and Grolemund's data exploration cycle (2017)." width="75%"><p class="caption">
+and instead start with a data set<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.
+In this case, the statistical investigation process looks more like the data exploration cycle found in Figure <a href="data-hello.html#fig:data-science-explore">1.1</a> taken from <span class="citation">Wickham and Grolemund (<a href="#ref-R4DS">2017</a>)</span>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:data-science-explore"></span>
+<img src="images/data-science-explore.png" alt="Wickham and Grolemund's data exploration cycle (2017)." width="75%" />
+<p class="caption">
 Figure 1.1: Wickham and Grolemund’s data exploration cycle (2017).
 </p>
 </div>
 <p>In either case, the ideas, concepts, and methods presented in this book will provide you with the tools to work through the statistical investigation process, whether starting with a research question or starting with data.</p>
-<div id="basic-stents-strokes" class="section level2" number="1.1">
-<h2>
-<span class="header-section-number">1.1</span> Case study: using stents to prevent strokes<a class="anchor" aria-label="anchor" href="#basic-stents-strokes"><i class="fas fa-link"></i></a>
-</h2>
+<div id="basic-stents-strokes" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Case study: using stents to prevent strokes<a href="data-hello.html#basic-stents-strokes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p></p>
 <p>In this section, we introduce a classic challenge in statistics: evaluating the efficacy of a medical treatment.
 Terms in this section, and indeed much of this chapter, will all be revisited later in the text.
 The plan for now is simply to get a sense of the role statistics can play in practice.</p>
-<p>Here, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke <span class="citation">(<a href="references.html#ref-chimowitz2011stenting" role="doc-biblioref">Chimowitz et al. 2011</a>)</span>.
+<p>Here, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke <span class="citation">(<a href="#ref-chimowitz2011stenting"><span class="nocase">Chimowitz et al.</span> 2011</a>)</span>.
 Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death.</p>
 <p>Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:</p>
 <blockquote>
@@ -174,11 +715,9 @@ Stents are small mesh tubes that are placed inside narrow or weak arteries to as
 </blockquote>
 <p>The researchers who asked this question conducted an experiment with 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:</p>
 <ul>
-<li>
-<strong>Treatment group</strong>. Patients in the treatment group received a stent and medical management.
+<li><strong>Treatment group</strong>. Patients in the treatment group received a stent and medical management.
 The medical management included medications, management of risk factors, and help in lifestyle modification.</li>
-<li>
-<strong>Control group</strong>. Patients in the control group received the same medical management as the treatment group, but they did not receive stents.</li>
+<li><strong>Control group</strong>. Patients in the control group received the same medical management as the treatment group, but they did not receive stents.</li>
 </ul>
 <p>Researchers randomly assigned 224 patients to the treatment group and 227 to the control group.
 In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.</p>
@@ -188,13 +727,16 @@ Patient outcomes are recorded as <code>stroke</code> or <code>no event</code>, r
 <div class="data">
 <p>The data from this study can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/stent30.html"><code>stent30</code></a> and <a href="http://openintrostat.github.io/openintro/reference/stent365.html"><code>stent365</code></a>.</p>
 <p>Load these data into your RStudio session using the following commands:</p>
-<p><code><a href="http://openintrostat.github.io/openintro/">library(openintro)</a></code><br><code>data(stent30)</code><br><code>data(stent365)</code></p>
+<p><code>library(openintro)</code><br />
+<code>data(stent30)</code><br />
+<code>data(stent365)</code></p>
 </div>
-<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:stentStudyResultsDF">Table 1.1: </span>Results for five patients from the stent study.
+<span id="tab:stentStudyResultsDF">Table 1.1: </span><span id="tab:stentStudyResultsDF">Table 1.2: </span>Results for five patients from the stent study.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:right;">
 patient
 </th>
@@ -207,7 +749,8 @@ group
 <th style="text-align:left;">
 365 days
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:right;">
@@ -280,16 +823,16 @@ no event
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>Considering data from each of the 451 patients individually would be a long, cumbersome path towards answering the original research question.
 Instead, performing a statistical data analysis allows us to consider all of the data at once.
-Table <a href="data-hello.html#tab:stentStudyResultsDFsummary">1.2</a> summarizes the raw data in a more helpful way.
+Table <a href="data-hello.html#tab:stentStudyResultsDFsummary">1.3</a> summarizes the raw data in a more helpful way.
 In this table, we can quickly see what happened over the entire study.
 For instance, to identify the number of patients in the treatment group who had a stroke within 30 days after the treatment, we look in the leftmost column (30 days), at the intersection of treatment and stroke: 33.
 To identify the number of control patients who did not have a stroke after 365 days after receiving treatment, we look at the rightmost column (365 days), at the intersection of control and no event: 199.</p>
-<div class="inline-table"><table class="table table-sm">
+<table>
 <caption>
-<span id="tab:stentStudyResultsDFsummary">Table 1.2: </span>Descriptive statistics for the stent study.
+<span id="tab:stentStudyResultsDFsummary">Table 1.3: </span><span id="tab:stentStudyResultsDFsummary">Table 1.4: </span>Descriptive statistics for the stent study.
 </caption>
 <thead>
 <tr>
@@ -376,18 +919,18 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>The data summarized in this table can also be visualized with a <strong>barplot</strong>, seen in Figure <a href="data-hello.html#fig:stentStudyResultsDFbarplot">1.2</a>:</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:stentStudyResultsDFbarplot"></span>
-<img src="01-data-hello_files/figure-html/stentStudyResultsDFbarplot-1.png" alt="Segmented barplot of outcomes in stent study by group and time." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:stentStudyResultsDFbarplot"></span>
+<img src="01-data-hello_files/figure-html/stentStudyResultsDFbarplot-1.png" alt="Segmented barplot of outcomes in stent study by group and time." width="90%" />
+<p class="caption">
 Figure 1.2: Segmented barplot of outcomes in stent study by group and time.
 </p>
 </div>
 <div class="guidedpractice">
 <p>Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year.
 Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.
-(Note: answers to all Guided Practice exercises are provided in footnotes!)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The proportion of the 224 patients who had a stroke within 365 days: &lt;span class="math inline"&gt;\(45/224 = 0.20\)&lt;/span&gt;.&lt;/p&gt;'><sup>6</sup></a></p>
+(Note: answers to all Guided Practice exercises are provided in footnotes!)<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 </div>
 <p>We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
 A <strong>summary statistic</strong> is a single number summarizing a large amount of data.
@@ -416,21 +959,18 @@ However, this study does leave us with an important lesson: we should keep our e
 </div>
 <p></p>
 </div>
-<div id="data-basics" class="section level2" number="1.2">
-<h2>
-<span class="header-section-number">1.2</span> Data basics<a class="anchor" aria-label="anchor" href="#data-basics"><i class="fas fa-link"></i></a>
-</h2>
+<div id="data-basics" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data basics<a href="data-hello.html#data-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.</p>
-<div id="observations-variables-and-data-frames" class="section level3" number="1.2.1">
-<h3>
-<span class="header-section-number">1.2.1</span> Observations, variables, and data frames<a class="anchor" aria-label="anchor" href="#observations-variables-and-data-frames"><i class="fas fa-link"></i></a>
-</h3>
+<div id="observations-variables-and-data-frames" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Observations, variables, and data frames<a href="data-hello.html#observations-variables-and-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p></p>
-<p>Here, we will consider loans offered through the Lending Club, a peer-to-peer lending company. Such data could be used to explore characteristics of people receiving loans from the platform, such as job titles, annual income, or home ownership. Table <a href="data-hello.html#tab:loan50DF">1.3</a> displays six rows of a data set for 50 randomly sampled loans. These observations will be referred to as the <code>loan50</code> data set.</p>
+<p>Here, we will consider loans offered through the Lending Club, a peer-to-peer lending company. Such data could be used to explore characteristics of people receiving loans from the platform, such as job titles, annual income, or home ownership. Table <a href="data-hello.html#tab:loan50DF">1.5</a> displays six rows of a data set for 50 randomly sampled loans. These observations will be referred to as the <code>loan50</code> data set.</p>
 <div class="data">
 <p>The data can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/loan50.html"><code>loan50</code></a>.</p>
 <p>Load these data into your RStudio session using the following commands:</p>
-<p><code><a href="http://openintrostat.github.io/openintro/">library(openintro)</a></code><br><code>data(loan50)</code></p>
+<p><code>library(openintro)</code><br />
+<code>data(loan50)</code></p>
 </div>
 <p>Each row in the table represents a single loan.
 The formal name for a row is a <strong>case</strong> or <strong>observational unit</strong>. Since there are 50 observational units in our data set, the <strong>sample size</strong>, denoted by <span class="math inline">\(n\)</span>, is 50 (<span class="math inline">\(n = 50\)</span>).
@@ -440,581 +980,315 @@ The columns represent characteristics of each loan, where each column is referre
 Be careful not to confuse summary statistics—calculated from a <em>group</em> of observational units—with variables.</p>
 </div>
 <div class="guidedpractice">
-<p>What is the grade of the first loan in Table <a href="data-hello.html#tab:loan50DF">1.3</a>?
+<p>What is the grade of the first loan in Table <a href="data-hello.html#tab:loan50DF">1.5</a>?
 What is the home ownership status of the borrower for that first loan?
-Reminder: for these Guided Practice questions, you can check your answer in the footnote.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The loan’s grade is B, and the borrower rents their residence.&lt;/p&gt;"><sup>7</sup></a></p>
+Reminder: for these Guided Practice questions, you can check your answer in the footnote.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
 </div>
 <p>In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood.
 For instance, it is always important to be sure we know what each variable means and its units of measurement.
-Descriptions of the variables in the <code>loan50</code> data set are given in Table <a href="data-hello.html#tab:loan50Variables">1.4</a>.</p>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:loan50DF">Table 1.3: </span>Six rows from the <code>loan50</code> data set.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-loan_amount
-</th>
-<th style="text-align:right;">
-interest_rate
-</th>
-<th style="text-align:right;">
-term
-</th>
-<th style="text-align:left;">
-grade
-</th>
-<th style="text-align:left;">
-state
-</th>
-<th style="text-align:right;">
-total_income
-</th>
-<th style="text-align:left;">
-homeownership
-</th>
-</tr></thead>
+Descriptions of the variables in the <code>loan50</code> data set are given in Table <a href="data-hello.html#tab:loan50Variables">1.6</a>.</p>
+<table style="width:100%;">
+<caption><span id="tab:loan50DF">Table 1.5: </span>Six rows from the <code>loan50</code> data set.</caption>
+<colgroup>
+<col width="4%" />
+<col width="16%" />
+<col width="19%" />
+<col width="6%" />
+<col width="8%" />
+<col width="8%" />
+<col width="17%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">loan_amount</th>
+<th align="right">interest_rate</th>
+<th align="right">term</th>
+<th align="left">grade</th>
+<th align="left">state</th>
+<th align="right">total_income</th>
+<th align="left">homeownership</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:right;">
-22000
-</td>
-<td style="text-align:right;">
-10.90
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-NJ
-</td>
-<td style="text-align:right;">
-59000
-</td>
-<td style="text-align:left;">
-rent
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">22000</td>
+<td align="right">10.90</td>
+<td align="right">60</td>
+<td align="left">B</td>
+<td align="left">NJ</td>
+<td align="right">59000</td>
+<td align="left">rent</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:right;">
-6000
-</td>
-<td style="text-align:right;">
-9.92
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-CA
-</td>
-<td style="text-align:right;">
-60000
-</td>
-<td style="text-align:left;">
-rent
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">6000</td>
+<td align="right">9.92</td>
+<td align="right">36</td>
+<td align="left">B</td>
+<td align="left">CA</td>
+<td align="right">60000</td>
+<td align="left">rent</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-25000
-</td>
-<td style="text-align:right;">
-26.30
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:left;">
-SC
-</td>
-<td style="text-align:right;">
-75000
-</td>
-<td style="text-align:left;">
-mortgage
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">25000</td>
+<td align="right">26.30</td>
+<td align="right">36</td>
+<td align="left">E</td>
+<td align="left">SC</td>
+<td align="right">75000</td>
+<td align="left">mortgage</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:right;">
-6000
-</td>
-<td style="text-align:right;">
-9.92
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-CA
-</td>
-<td style="text-align:right;">
-75000
-</td>
-<td style="text-align:left;">
-rent
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">6000</td>
+<td align="right">9.92</td>
+<td align="right">36</td>
+<td align="left">B</td>
+<td align="left">CA</td>
+<td align="right">75000</td>
+<td align="left">rent</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:right;">
-25000
-</td>
-<td style="text-align:right;">
-9.43
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-254000
-</td>
-<td style="text-align:left;">
-mortgage
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="right">25000</td>
+<td align="right">9.43</td>
+<td align="right">60</td>
+<td align="left">B</td>
+<td align="left">OH</td>
+<td align="right">254000</td>
+<td align="left">mortgage</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:right;">
-6400
-</td>
-<td style="text-align:right;">
-9.92
-</td>
-<td style="text-align:right;">
-36
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:left;">
-IN
-</td>
-<td style="text-align:right;">
-67000
-</td>
-<td style="text-align:left;">
-mortgage
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="right">6400</td>
+<td align="right">9.92</td>
+<td align="right">36</td>
+<td align="left">B</td>
+<td align="left">IN</td>
+<td align="right">67000</td>
+<td align="left">mortgage</td>
 </tr>
 </tbody>
-</table></div>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:loan50Variables">Table 1.4: </span>Variables and their descriptions for the <code>loan50</code> data set.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-description
-</th>
-</tr></thead>
+</table>
+<table>
+<caption><span id="tab:loan50Variables">Table 1.6: </span>Variables and their descriptions for the <code>loan50</code> data set.</caption>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="left">description</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-loan_amount
-</td>
-<td style="text-align:left;">
-Amount of the loan received, in US dollars.
-</td>
+<tr class="odd">
+<td align="left">loan_amount</td>
+<td align="left">Amount of the loan received, in US dollars.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-interest_rate
-</td>
-<td style="text-align:left;">
-Interest rate on the loan, in an annual percentage.
-</td>
+<tr class="even">
+<td align="left">interest_rate</td>
+<td align="left">Interest rate on the loan, in an annual percentage.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-term
-</td>
-<td style="text-align:left;">
-The length of the loan, which is always set as a whole number of months.
-</td>
+<tr class="odd">
+<td align="left">term</td>
+<td align="left">The length of the loan, which is always set as a whole number of months.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-grade
-</td>
-<td style="text-align:left;">
-Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid.
-</td>
+<tr class="even">
+<td align="left">grade</td>
+<td align="left">Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-state
-</td>
-<td style="text-align:left;">
-US state where the borrower resides.
-</td>
+<tr class="odd">
+<td align="left">state</td>
+<td align="left">US state where the borrower resides.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-total_income
-</td>
-<td style="text-align:left;">
-Borrower’s total income, including any second income, in US dollars.
-</td>
+<tr class="even">
+<td align="left">total_income</td>
+<td align="left">Borrower’s total income, including any second income, in US dollars.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-homeownership
-</td>
-<td style="text-align:left;">
-Indicates whether the person owns, owns but has a mortgage, or rents.
-</td>
+<tr class="odd">
+<td align="left">homeownership</td>
+<td align="left">Indicates whether the person owns, owns but has a mortgage, or rents.</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p></p>
-<p>The data in Table <a href="data-hello.html#tab:loan50DF">1.3</a> represent a <strong>data frame</strong> (or data matrix), which is a convenient and common way to organize data, especially if collecting data in a spreadsheet.
+<p>The data in Table <a href="data-hello.html#tab:loan50DF">1.5</a> represent a <strong>data frame</strong> (or data matrix), which is a convenient and common way to organize data, especially if collecting data in a spreadsheet.
 Each row of a data frame corresponds to a unique case (observational unit), and each column corresponds to a variable.</p>
 <p>When recording data, use a data frame unless you have a very good reason to use a different structure.
 This structure allows new cases to be added as rows or new variables as new columns.</p>
 <div class="guidedpractice">
 <p>The grades for assignments, quizzes, and exams in a course are often recorded in a gradebook that takes the form of a data frame.
-How might you organize a course’s grade data using a data frame?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.&lt;/p&gt;"><sup>8</sup></a></p>
+How might you organize a course’s grade data using a data frame?<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
 </div>
 <p></p>
 <div class="guidedpractice">
 <p>We consider data for 3,142 counties in the United States,
 which include the name of each county, the state where it resides, its population in 2017, how its population changed from 2010 to 2017, poverty rate, and nine additional characteristics.
-How might these data be organized in a data frame?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.&lt;/p&gt;"><sup>9</sup></a></p>
+How might these data be organized in a data frame?<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
 </div>
-<p>The data described in the Guided Practice above represent the <strong>county</strong> data set, which is shown as a data frame in Table <a href="data-hello.html#tab:countyDF">1.5</a>.
-The variables as well as the variables in the data set that did not fit in Table <a href="data-hello.html#tab:countyDF">1.5</a> are described in Table <a href="data-hello.html#tab:countyVariables">1.6</a></p>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:countyDF">Table 1.5: </span>Six observations and six variables from the <code>county</code> data set.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-name
-</th>
-<th style="text-align:left;">
-state
-</th>
-<th style="text-align:right;">
-pop2017
-</th>
-<th style="text-align:right;">
-pop_change
-</th>
-<th style="text-align:right;">
-unemployment_rate
-</th>
-<th style="text-align:left;">
-median_edu
-</th>
-</tr></thead>
+<p>The data described in the Guided Practice above represent the <strong>county</strong> data set, which is shown as a data frame in Table <a href="data-hello.html#tab:countyDF">1.7</a>.
+The variables as well as the variables in the data set that did not fit in Table <a href="data-hello.html#tab:countyDF">1.7</a> are described in Table <a href="data-hello.html#tab:countyVariables">1.8</a></p>
+<table>
+<caption><span id="tab:countyDF">Table 1.7: </span>Six observations and six variables from the <code>county</code> data set.</caption>
+<colgroup>
+<col width="20%" />
+<col width="10%" />
+<col width="10%" />
+<col width="15%" />
+<col width="24%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="left">state</th>
+<th align="right">pop2017</th>
+<th align="right">pop_change</th>
+<th align="right">unemployment_rate</th>
+<th align="left">median_edu</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Autauga County
-</td>
-<td style="text-align:left;">
-Alabama
-</td>
-<td style="text-align:right;">
-55504
-</td>
-<td style="text-align:right;">
-1.48
-</td>
-<td style="text-align:right;">
-3.86
-</td>
-<td style="text-align:left;">
-some_college
-</td>
+<tr class="odd">
+<td align="left">Autauga County</td>
+<td align="left">Alabama</td>
+<td align="right">55504</td>
+<td align="right">1.48</td>
+<td align="right">3.86</td>
+<td align="left">some_college</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Baldwin County
-</td>
-<td style="text-align:left;">
-Alabama
-</td>
-<td style="text-align:right;">
-212628
-</td>
-<td style="text-align:right;">
-9.19
-</td>
-<td style="text-align:right;">
-3.99
-</td>
-<td style="text-align:left;">
-some_college
-</td>
+<tr class="even">
+<td align="left">Baldwin County</td>
+<td align="left">Alabama</td>
+<td align="right">212628</td>
+<td align="right">9.19</td>
+<td align="right">3.99</td>
+<td align="left">some_college</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Barbour County
-</td>
-<td style="text-align:left;">
-Alabama
-</td>
-<td style="text-align:right;">
-25270
-</td>
-<td style="text-align:right;">
--6.22
-</td>
-<td style="text-align:right;">
-5.90
-</td>
-<td style="text-align:left;">
-hs_diploma
-</td>
+<tr class="odd">
+<td align="left">Barbour County</td>
+<td align="left">Alabama</td>
+<td align="right">25270</td>
+<td align="right">-6.22</td>
+<td align="right">5.90</td>
+<td align="left">hs_diploma</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Bibb County
-</td>
-<td style="text-align:left;">
-Alabama
-</td>
-<td style="text-align:right;">
-22668
-</td>
-<td style="text-align:right;">
-0.73
-</td>
-<td style="text-align:right;">
-4.39
-</td>
-<td style="text-align:left;">
-hs_diploma
-</td>
+<tr class="even">
+<td align="left">Bibb County</td>
+<td align="left">Alabama</td>
+<td align="right">22668</td>
+<td align="right">0.73</td>
+<td align="right">4.39</td>
+<td align="left">hs_diploma</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Blount County
-</td>
-<td style="text-align:left;">
-Alabama
-</td>
-<td style="text-align:right;">
-58013
-</td>
-<td style="text-align:right;">
-0.68
-</td>
-<td style="text-align:right;">
-4.02
-</td>
-<td style="text-align:left;">
-hs_diploma
-</td>
+<tr class="odd">
+<td align="left">Blount County</td>
+<td align="left">Alabama</td>
+<td align="right">58013</td>
+<td align="right">0.68</td>
+<td align="right">4.02</td>
+<td align="left">hs_diploma</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Bullock County
-</td>
-<td style="text-align:left;">
-Alabama
-</td>
-<td style="text-align:right;">
-10309
-</td>
-<td style="text-align:right;">
--2.28
-</td>
-<td style="text-align:right;">
-4.93
-</td>
-<td style="text-align:left;">
-hs_diploma
-</td>
+<tr class="even">
+<td align="left">Bullock County</td>
+<td align="left">Alabama</td>
+<td align="right">10309</td>
+<td align="right">-2.28</td>
+<td align="right">4.93</td>
+<td align="left">hs_diploma</td>
 </tr>
 </tbody>
-</table></div>
-<div class="inline-table"><table class="table table-sm">
-<caption>
-<span id="tab:countyVariables">Table 1.6: </span>Variables and their descriptions for the <code>county</code> data set.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-description
-</th>
-</tr></thead>
+</table>
+<table>
+<caption><span id="tab:countyVariables">Table 1.8: </span>Variables and their descriptions for the <code>county</code> data set.</caption>
+<colgroup>
+<col width="11%" />
+<col width="88%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="left">description</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-name
-</td>
-<td style="text-align:left;">
-Name of county.
-</td>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">Name of county.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-state
-</td>
-<td style="text-align:left;">
-Name of state.
-</td>
+<tr class="even">
+<td align="left">state</td>
+<td align="left">Name of state.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-pop2000
-</td>
-<td style="text-align:left;">
-Population in 2000.
-</td>
+<tr class="odd">
+<td align="left">pop2000</td>
+<td align="left">Population in 2000.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-pop2010
-</td>
-<td style="text-align:left;">
-Population in 2010.
-</td>
+<tr class="even">
+<td align="left">pop2010</td>
+<td align="left">Population in 2010.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-pop2017
-</td>
-<td style="text-align:left;">
-Population in 2017.
-</td>
+<tr class="odd">
+<td align="left">pop2017</td>
+<td align="left">Population in 2017.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-pop_change
-</td>
-<td style="text-align:left;">
-Population change from 2010 to 2017.
-</td>
+<tr class="even">
+<td align="left">pop_change</td>
+<td align="left">Population change from 2010 to 2017.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-poverty
-</td>
-<td style="text-align:left;">
-Percent of population in poverty in 2017.
-</td>
+<tr class="odd">
+<td align="left">poverty</td>
+<td align="left">Percent of population in poverty in 2017.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-homeownership
-</td>
-<td style="text-align:left;">
-Homeownership rate, 2006-2010.
-</td>
+<tr class="even">
+<td align="left">homeownership</td>
+<td align="left">Homeownership rate, 2006-2010.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-multi_unit
-</td>
-<td style="text-align:left;">
-Percent of housing units in multi-unit structures, 2006-2010.
-</td>
+<tr class="odd">
+<td align="left">multi_unit</td>
+<td align="left">Percent of housing units in multi-unit structures, 2006-2010.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-unemployment_rate
-</td>
-<td style="text-align:left;">
-Unemployment rate in 2017.
-</td>
+<tr class="even">
+<td align="left">unemployment_rate</td>
+<td align="left">Unemployment rate in 2017.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-metro
-</td>
-<td style="text-align:left;">
-Whether the county contains a metropolitan area, taking one of the values <code>yes</code> or <code>no</code>.
-</td>
+<tr class="odd">
+<td align="left">metro</td>
+<td align="left">Whether the county contains a metropolitan area, taking one of the values <code>yes</code> or <code>no</code>.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-median_edu
-</td>
-<td style="text-align:left;">
-Median education level (2013-2017), taking one of the values <code>below_hs</code>, <code>hs_diploma</code>, <code>some_college</code>, or <code>bachelors</code>.
-</td>
+<tr class="even">
+<td align="left">median_edu</td>
+<td align="left">Median education level (2013-2017), taking one of the values <code>below_hs</code>, <code>hs_diploma</code>, <code>some_college</code>, or <code>bachelors</code>.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-per_capita_income
-</td>
-<td style="text-align:left;">
-Per capita (per person) income (2013-2017).
-</td>
+<tr class="odd">
+<td align="left">per_capita_income</td>
+<td align="left">Per capita (per person) income (2013-2017).</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-median_hh_income
-</td>
-<td style="text-align:left;">
-Median household income.
-</td>
+<tr class="even">
+<td align="left">median_hh_income</td>
+<td align="left">Median household income.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-smoking_ban
-</td>
-<td style="text-align:left;">
-Describes whether the type of county-level smoking ban in place in 2010, taking one of the values <code>none</code>, <code>partial</code>, or <code>comprehensive</code>.
-</td>
+<tr class="odd">
+<td align="left">smoking_ban</td>
+<td align="left">Describes whether the type of county-level smoking ban in place in 2010, taking one of the values <code>none</code>, <code>partial</code>, or <code>comprehensive</code>.</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div class="data">
 <p>These data can be found in the <a href="http://openintrostat.github.io/usdata">usdata</a> package: <a href="http://openintrostat.github.io/usdata/reference/county.html"><code>county</code></a>.</p>
 <p>Load these data into your RStudio session using the following commands:</p>
-<p><code><a href="https://github.com/OpenIntroStat/usdata">library(usdata)</a></code><br><code>data(county)</code></p>
+<p><code>library(usdata)</code><br />
+<code>data(county)</code></p>
 </div>
 </div>
-<div id="variable-types" class="section level3" number="1.2.2">
-<h3>
-<span class="header-section-number">1.2.2</span> Types of variables<a class="anchor" aria-label="anchor" href="#variable-types"><i class="fas fa-link"></i></a>
-</h3>
+<div id="variable-types" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Types of variables<a href="data-hello.html#variable-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Examine the <code>unemployment_rate</code>, <code>pop2017</code>, <code>state</code>, <code>metro</code>, and <code>median_edu</code> variables in the <code>county</code> data set.
 Each of these variables is inherently different from the others, yet some share certain characteristics.</p>
 <p>First consider <code>unemployment_rate</code>, which is said to be a <strong>quantitative</strong> or <strong>numerical</strong> variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
@@ -1029,9 +1303,9 @@ Because the responses themselves are categories, <code>state</code> is called a 
 This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering.
 A variable with these properties is called an <strong>ordinal</strong> variable, while a regular categorical variable without this type of special ordering is called a <strong>nominal</strong> variable.
 To simplify analyses, any ordinal variable in this book will be treated as a nominal (unordered) categorical variable.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:variables"></span>
-<img src="01/figures/variables/variables.png" alt="Breakdown of variables into their respective types." width="75%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:variables"></span>
+<img src="01/figures/variables/variables.png" alt="Breakdown of variables into their respective types." width="75%" />
+<p class="caption">
 Figure 1.3: Breakdown of variables into their respective types.
 </p>
 </div>
@@ -1039,7 +1313,7 @@ Figure 1.3: Breakdown of variables into their respective types.
 <p>Data were collected about students in a statistics course.
 Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course.
 Classify each of the variables as continuous quantitative, discrete quantitative, or categorical.</p>
-<hr>
+<hr />
 <p>The number of siblings and student height represent quantitative variables.
 Because the number of siblings is a count, it is discrete.
 Height varies continuously, so it is a continuous quantitative variable.
@@ -1049,13 +1323,11 @@ The last variable classifies students into two categories—those who have and t
 <div class="guidedpractice">
 <p>An experiment is evaluating the effectiveness of a new drug in treating migraines.
 A <code>group</code> variable is used to indicate the experiment group for each patient: treatment or control.
-The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;group&lt;/code&gt; variable can take just one of two group names, making it categorical. The &lt;code&gt;num_migraines&lt;/code&gt; variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, &lt;code&gt;num_migraines&lt;/code&gt; is a discrete quantitative variable.&lt;/p&gt;"><sup>10</sup></a></p>
+The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p>
 </div>
 </div>
-<div id="variable-relations" class="section level3" number="1.2.3">
-<h3>
-<span class="header-section-number">1.2.3</span> Relationships between variables<a class="anchor" aria-label="anchor" href="#variable-relations"><i class="fas fa-link"></i></a>
-</h3>
+<div id="variable-relations" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Relationships between variables<a href="data-hello.html#variable-relations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Many analyses are motivated by a researcher looking for a relationship between two or more variables.
 A social scientist may like to answer some of the following questions:</p>
 <blockquote>
@@ -1067,7 +1339,7 @@ A social scientist may like to answer some of the following questions:</p>
 <blockquote>
 <p>How useful a predictor is median education level for the median household income for US counties?</p>
 </blockquote>
-<p>To answer these questions, data must be collected, such as the <code>county</code> data set shown in Table <a href="data-hello.html#tab:countyDF">1.5</a>.
+<p>To answer these questions, data must be collected, such as the <code>county</code> data set shown in Table <a href="data-hello.html#tab:countyDF">1.7</a>.
 Examining <strong>summary statistics</strong> could provide insights for each of the three questions about counties.
 Additionally, graphs can be used to visually explore the data.</p>
 <p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two quantitative variables.
@@ -1076,9 +1348,9 @@ Each point on the plot represents a single county (a single observational unit).
 For instance, the highlighted dot corresponds to County 413 in the <code>county</code> data set: Chattahoochee County, Georgia, which has 39.4% of units in multi-unit structures and a homeownership rate of 31.3%.
 The scatterplot suggests a relationship between the two variables: counties with a higher rate of multi-units tend to have lower homeownership rates.
 We might brainstorm as to why this relationship exists and investigate each idea to determine which are the most reasonable explanations.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:county-multi-unit-homeownership"></span>
-<img src="01-data-hello_files/figure-html/county-multi-unit-homeownership-1.png" alt="A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:county-multi-unit-homeownership"></span>
+<img src="01-data-hello_files/figure-html/county-multi-unit-homeownership-1.png" alt="A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%." width="90%" />
+<p class="caption">
 Figure 1.4: A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.
 </p>
 </div>
@@ -1086,19 +1358,19 @@ Figure 1.4: A scatterplot of homeownership versus the percent of units that are 
 When two variables show some connection with one another, they are called <strong>associated</strong> variables.
 Associated variables can also be called <strong>dependent</strong> variables and vice-versa.</p>
 <div class="guidedpractice">
-<p>Examine the variables in the <code>loan50</code> data set, which are described in Table <a href="data-hello.html#tab:loan50Variables">1.4</a>.
-Create two questions about possible relationships between variables in <code>loan50</code> that are of interest to you.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone’s income is above the average, will their interest rate tend to be above or below the average?&lt;/p&gt;"><sup>11</sup></a></p>
+<p>Examine the variables in the <code>loan50</code> data set, which are described in Table <a href="data-hello.html#tab:loan50Variables">1.6</a>.
+Create two questions about possible relationships between variables in <code>loan50</code> that are of interest to you.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
 </div>
 <div class="workedexample">
 <p>This example examines the relationship between the change in population from 2010 to 2017 and median household income for counties, which is visualized as a scatterplot in Figure <a href="data-hello.html#fig:county-pop-change-med-hh-income">1.5</a>.
 Are these variables associated?</p>
-<hr>
+<hr />
 <p>The larger the median household income for a county, the higher the population growth observed for the county.
 While this trend isn’t true for every county, the trend in the plot is evident. Since there is some relationship between the variables, they are associated.</p>
 </div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:county-pop-change-med-hh-income"></span>
-<img src="01-data-hello_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:county-pop-change-med-hh-income"></span>
+<img src="01-data-hello_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="90%" />
+<p class="caption">
 Figure 1.5: A scatterplot showing <code>pop_change</code> against <code>median_hh_income</code>. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.
 </p>
 </div>
@@ -1112,17 +1384,15 @@ A pair of variables are either related in some way (associated) or not (independ
 No pair of variables is both associated and independent.</p>
 </div>
 </div>
-<div id="explanatory-and-response-variables" class="section level3" number="1.2.4">
-<h3>
-<span class="header-section-number">1.2.4</span> Explanatory and response variables<a class="anchor" aria-label="anchor" href="#explanatory-and-response-variables"><i class="fas fa-link"></i></a>
-</h3>
+<div id="explanatory-and-response-variables" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Explanatory and response variables<a href="data-hello.html#explanatory-and-response-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When we ask questions about the relationship between two variables, we sometimes also want to determine if the change in one variable causes a change in the other.
 Consider the following rephrasing of an earlier question about the <code>county</code> data set:</p>
 <blockquote>
 <p>If there is an increase in the median household income in a county, does this drive an increase in its population?</p>
 </blockquote>
 <p>In this question, we are asking whether one variable affects another.
-If this is our underlying belief, then <em>median household income</em> is the <strong>explanatory variable</strong> variable and the <em>population change</em> is the <strong>response variable</strong> variable in the hypothesized relationship.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Sometimes the explanatory variable is called the &lt;strong&gt;independent&lt;/strong&gt; variable and the response variable is called the &lt;strong&gt;dependent&lt;/strong&gt; variable. However, this becomes confusing since a &lt;em&gt;pair&lt;/em&gt; of variables might be independent or dependent, so we avoid this language.&lt;/p&gt;"><sup>12</sup></a></p>
+If this is our underlying belief, then <em>median household income</em> is the <strong>explanatory variable</strong> variable and the <em>population change</em> is the <strong>response variable</strong> variable in the hypothesized relationship.<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a></p>
 <p></p>
 <div class="onebox">
 <p><strong>Explanatory and response variables.</strong></p>
@@ -1140,10 +1410,8 @@ For many pairs of variables, there is no hypothesized relationship, and these la
 <p>Bear in mind that the act of labeling the variables in this way does nothing to guarantee that a causal relationship exists.
 A formal evaluation to check whether one variable causes a change in another requires an experiment.</p>
 </div>
-<div id="introducing-observational-studies-and-experiments" class="section level3" number="1.2.5">
-<h3>
-<span class="header-section-number">1.2.5</span> Introducing observational studies and experiments<a class="anchor" aria-label="anchor" href="#introducing-observational-studies-and-experiments"><i class="fas fa-link"></i></a>
-</h3>
+<div id="introducing-observational-studies-and-experiments" class="section level3 hasAnchor" number="1.2.5">
+<h3><span class="header-section-number">1.2.5</span> Introducing observational studies and experiments<a href="data-hello.html#introducing-observational-studies-and-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are two primary types of data collection: observational studies and experiments. We already encountered an experiment in the case study in Section <a href="data-hello.html#basic-stents-strokes">1.1</a>, and an observational study with the Lending Club data in this section.</p>
 <p>Researchers perform an <strong>observational study</strong> when they collect data in a way that does not directly interfere with how the data arise.
 For instance, researchers may collect information via surveys, review medical or company records, or follow a <strong>cohort</strong> of many similar individuals to form hypotheses about why certain diseases might develop.
@@ -1163,26 +1431,23 @@ In general, association does not imply causation, and causation can only be infe
 </div>
 </div>
 </div>
-<div id="chp1-review" class="section level2" number="1.3">
-<h2>
-<span class="header-section-number">1.3</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp1-review"><i class="fas fa-link"></i></a>
-</h2>
-<div id="summary" class="section level3 unnumbered">
-<h3>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
-</h3>
+<div id="chp1-review" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Chapter review<a href="data-hello.html#chp1-review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="summary" class="section level3 unnumbered hasAnchor">
+<h3>Summary<a href="data-hello.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This chapter introduced you to the world of data.
 Data can be organized in many ways but tidy data, where each row represents an observation and each column represents a variable, lends itself most easily to statistical analysis.
 Many of the ideas from this chapter will be seen as we move on to doing full data analyses.
 In the next chapter you’re going to learn about how we can design studies to collect the data we need to make conclusions with the desired scope of inference.</p>
 </div>
-<div id="terms" class="section level3 unnumbered">
-<h3>Terms<a class="anchor" aria-label="anchor" href="#terms"><i class="fas fa-link"></i></a>
-</h3>
+<div id="terms" class="section level3 unnumbered hasAnchor">
+<h3>Terms<a href="data-hello.html#terms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
 However you should be able to easily spot them as <strong>bolded text</strong>.</p>
-<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<tbody>
 <tr>
 <td style="text-align:left;">
 associated
@@ -1292,97 +1557,110 @@ ordinal
 <td style="text-align:left;">
 </td>
 </tr>
-</tbody></table></div>
+</tbody>
+</table>
 </div>
-<div id="key-ideas" class="section level3 unnumbered">
-<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas"><i class="fas fa-link"></i></a>
-</h3>
+<div id="key-ideas" class="section level3 unnumbered hasAnchor">
+<h3>Key ideas<a href="data-hello.html#key-ideas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>A data set is comprised of measurements of <strong>variables</strong> on <strong>observational units</strong>.
 The type of variable can be <strong>quantitative</strong> or <strong>categorical</strong>, and a variable’s role can be an <strong>explanatory variable</strong> or <strong>response variable</strong>.</p></li>
 <li><p>In an <strong>observational study</strong>, we merely <em>observe</em> the behavior of the individuals in the study; we do not manipulate the variables on the individuals in any way. In a <strong>randomized experiment</strong>, we <em>randomly assign</em> values of an explanatory variable to the observational units, then observe the response variable. Random assignment allows us to investigate causal relationships because it balances out any potential <strong>confounding variables</strong>, on average. These ideas will be discussed in detail in the next chapter.</p></li>
 </ul>
-</div>
-</div>
-</div>
-
-  <div class="chapter-nav">
-<div class="prev"><a href="rstudio.html">Preliminaries: Getting started in RStudio</a></div>
-<div class="next"><a href="data-design.html"><span class="header-section-number">2</span> Study design</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-hello"><span class="header-section-number">1</span> Hello data</a></li>
-<li><a class="nav-link" href="#basic-stents-strokes"><span class="header-section-number">1.1</span> Case study: using stents to prevent strokes</a></li>
-<li>
-<a class="nav-link" href="#data-basics"><span class="header-section-number">1.2</span> Data basics</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#observations-variables-and-data-frames"><span class="header-section-number">1.2.1</span> Observations, variables, and data frames</a></li>
-<li><a class="nav-link" href="#variable-types"><span class="header-section-number">1.2.2</span> Types of variables</a></li>
-<li><a class="nav-link" href="#variable-relations"><span class="header-section-number">1.2.3</span> Relationships between variables</a></li>
-<li><a class="nav-link" href="#explanatory-and-response-variables"><span class="header-section-number">1.2.4</span> Explanatory and response variables</a></li>
-<li><a class="nav-link" href="#introducing-observational-studies-and-experiments"><span class="header-section-number">1.2.5</span> Introducing observational studies and experiments</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#chp1-review"><span class="header-section-number">1.3</span> Chapter review</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#summary">Summary</a></li>
-<li><a class="nav-link" href="#terms">Terms</a></li>
-<li><a class="nav-link" href="#key-ideas">Key ideas</a></li>
-</ul>
-</li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/01-data-hello.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/01-data-hello.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
 
 </div>
-</div> <!-- .container -->
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-chimowitz2011stenting" class="csl-entry">
+<span class="nocase">Chimowitz, Marc I, Michael J Lynn, Colin P Derdeyn, et al.</span> 2011. <span>“Stenting Versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.”</span> <em>New England Journal of Medicine</em> 365 (11): 993–1003. <a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1105335">http://www.nejm.org/doi/full/10.1056/NEJMoa1105335</a>.
+</div>
+<div id="ref-ISI2016" class="csl-entry">
+Tintle, Nathan L, Beth L Chance, George W Cobb, et al. 2016. <em>Introduction to Statistical Investigations</em>. 1st ed. Wiley.
+</div>
+<div id="ref-R4DS" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science</em>. O’Reilly Media.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p><a href="https://www.census.gov/history/www/through_the_decades/overview/1790.html" class="uri">https://www.census.gov/history/www/through_the_decades/overview/1790.html</a><a href="data-hello.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Data used in this context are called “found data.”<a href="data-hello.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>The proportion of the 224 patients who had a stroke within 365 days: <span class="math inline">\(45/224 = 0.20\)</span>.<a href="data-hello.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>The loan’s grade is B, and the borrower rents their residence.<a href="data-hello.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.<a href="data-hello.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.<a href="data-hello.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>The <code>group</code> variable can take just one of two group names, making it categorical. The <code>num_migraines</code> variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, <code>num_migraines</code> is a discrete quantitative variable.<a href="data-hello.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone’s income is above the average, will their interest rate tend to be above or below the average?<a href="data-hello.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>Sometimes the explanatory variable is called the <strong>independent</strong> variable and the response variable is called the <strong>dependent</strong> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so we avoid this language.<a href="data-hello.html#fnref12" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+          </div>
+        </div>
+      </div>
+<a href="rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": false,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/01-data-hello.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["stat216-textbook.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
+
 </html>

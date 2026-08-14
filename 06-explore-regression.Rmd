@@ -781,9 +781,9 @@ ggplot(possum, aes(x = total_l, y = head_l)) +
            xmin = max(possum$total_l)-2, xmax = max(possum$total_l), 
            ymin = min(possum$head_l), ymax = max(possum$head_l),
            fill = COL["green","full"], alpha = 0.2) +
-  annotate("text", x = 93, y = 86, hjust = 1, vjust = 1, 
+  annotate("text", x = 93, y = 89, hjust = 1, vjust = 1, 
            label = "Total variability in\nhead lengths\namong all possums",
-           color = COL["green", "full"], size = 5)
+           color = COL["green", "full"], size = 4, alpha = 0.5)
 ```
 
 ::: {.guidedpractice}
@@ -1237,9 +1237,9 @@ make_terms_table(terms_chp_6)
 
 * A **least squares regression line** represents the _predicted_ value of the response variable, $y$, for a given $x$-value. Since the actual observed values of the response variable are denoted by $y$, we denote the predicted values by $\hat{y}$.
 
-* The **slope** of the regression line is the predicted change in the response variable that is associated with a one-unit increase in $x$.
+* The **slope** of the regression line is the predicted (estimated mean) change in the response variable that is associated with a one-unit increase in $x$.
 
-* The $y$-**intercept** of the regression line is the predicted value of the response variable when $x = 0$. If the collected data did not include $x$-values near zero, then this prediction is an example of **extrapolation** --- using the regression line to make predictions outside the range of observed data.
+* The $y$-**intercept** of the regression line is the predicted (estimated mean) value of the response variable when $x = 0$. If the collected data did not include $x$-values near zero, then this prediction is an example of **extrapolation** --- using the regression line to make predictions outside the range of observed data.
 
 * A regression line only provides a predicted response value, which may or may not be close to the value we would actually observe. A numerical measure of this "prediction  error" is the **residual** = (observed $y$-value) $-$ (predicted $\hat{y}$-value); that is, the distance from the observed $y$-value to the regression line. Positive residuals indicate that the observed $y$-value is _above_ the regression line (our regression model underestimated the response); negative residuals indicate that the observed $y$-value is _below_ the regression line (our regression model overestimated the response).
 

@@ -147,8 +147,8 @@ terms_chp_5 <- c(terms_chp_5, "mean", "average", "distribution")
 loan50_mean_interest_rate <- mean(loan50$interest_rate)
 ```
 
-The sample mean is often labeled $\bar{x}$.
-The letter $x$ is being used as a generic placeholder for the variable and the bar over the $x$ communicates we're looking at the average of that variable. In our example $x$ would represent interest rate, and $\bar{x}$ = `r round(loan50_mean_interest_rate, 2)`%.
+The sample mean is often^[Some books use $\bar{y}$ and some use $\bar{x}$, we are choosing $\bar{y}$ to be able to use consistent notation into more complex methods.] labeled $\bar{y}$.
+The letter $y$ is being used as a generic placeholder for the variable and the bar over the $y$ communicates we're looking at the average of that variable. In our example $y$ would represent interest rate, and $\bar{y}$ = `r round(loan50_mean_interest_rate, 2)`%.
 It is useful to think of the mean as the balancing point of the distribution^[For
 more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point).], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
 
@@ -157,11 +157,11 @@ more practice with this concept of the mean as a balancing point, see this [Khan
   
 The sample mean can be calculated as the sum of the observed values divided by the number of observations:
 
-\[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]
+\[ \bar{y} = \frac{y_1 + y_2 + \cdots + y_n}{n} \]
 :::
 
 ::: {.guidedpractice}
-Examine the equation for the mean. What does $x_1$ correspond to? And $x_2$ Can you infer a general meaning to what $x_i$ might represent?^[$x_1$ corresponds to the interest rate for the first loan in the sample, $x_2$ to the second loan's interest rate, and $x_i$ corresponds to the interest rate for the $i^{th}$ loan in the data set. For example, if $i = 4$, then we're examining $x_4$, which refers to the fourth observation in the data set.]
+Examine the equation for the mean. What does $y_1$ correspond to? And $y_2$ Can you infer a general meaning to what $y_i$ might represent?^[$y_1$ corresponds to the interest rate for the first loan in the sample, $y_2$ to the second loan's interest rate, and $y_i$ corresponds to the interest rate for the $i^{th}$ loan in the data set. For example, if $i = 4$, then we're examining $y_4$, which refers to the fourth observation in the data set.]
 :::
 
 ::: {.guidedpractice}
@@ -172,8 +172,8 @@ The `loan50` data set represents a sample from a larger population of loans made
 We could compute a mean for this population in the same way as the sample mean.
 However, the population mean has a special label: $\mu$.
 The symbol $\mu$ is the Greek letter *mu* and represents the average of all observations in the population.
-Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g., $\mu_x$.
-Often times it is too expensive or time consuming to measure the population mean precisely, so we often estimate $\mu$ using the sample mean, $\bar{x}$.
+Sometimes a subscript, such as $_y$, is used to represent which variable the population mean refers to, e.g., $\mu_y$.
+Often times it is too expensive or time consuming to measure the population mean precisely, so we often estimate $\mu$ using the sample mean, $\bar{y}$.
 
 ::: {.pronunciation}
 The Greek letter $\mu$ is pronounced *mu*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=47).
@@ -396,7 +396,7 @@ loan50_interest_rate_var <- var(loan50$interest_rate)
 loan50_interest_rate_sd <- sd(loan50$interest_rate)
 ```
 
-$$ x_1 - \bar{x} = `r round(loan50$interest_rate[1], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[1]` $$ $$ x_2 - \bar{x} = `r round(loan50$interest_rate[2], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[2]` $$ $$ x_3 - \bar{x} = `r round(loan50$interest_rate[3], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[3]` $$ $$ \vdots $$ $$ x_{50} - \bar{x} = `r round(loan50$interest_rate[50], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[50]` $$
+$$ y_1 - \bar{y} = `r round(loan50$interest_rate[1], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[1]` $$ $$ y_2 - \bar{y} = `r round(loan50$interest_rate[2], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[2]` $$ $$ y_3 - \bar{y} = `r round(loan50$interest_rate[3], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[3]` $$ $$ \vdots $$ $$ y_{50} - \bar{y} = `r round(loan50$interest_rate[50], 2)` - `r round(loan50_interest_rate_mean, 2)` = `r loan50_interest_rate_deviation[50]` $$
 
 If we square these deviations and then take an average, the result is equal to the sample **variance**, denoted by $s^2$:
 
@@ -418,7 +418,7 @@ The **standard deviation** is defined as the square root of the variance:
 
 $$ s = \sqrt{`r round(loan50_interest_rate_var, 2)`} = `r round(loan50_interest_rate_sd, 2)` $$
 
-While often omitted, a subscript of $_x$ may be added to the variance and standard deviation, i.e., $s_x^2$ and $s_x$, if it is useful as a reminder that these are the variance and standard deviation of the observations represented by $x_1$, $x_2$, ..., $x_n$.
+While often omitted, a subscript of $_y$ may be added to the variance and standard deviation, i.e., $s_y^2$ and $s_y$, if it is useful as a reminder that these are the variance and standard deviation of the observations represented by $y_1$, $y_2$, ..., $y_n$.
 
 ```{r include=FALSE}
 terms_chp_5 <- c(terms_chp_5, "standard deviation")
@@ -429,7 +429,7 @@ terms_chp_5 <- c(terms_chp_5, "standard deviation")
   
 The sample variance is the (near) average squared distance from the mean:
 \[
-  s^2 = \frac{((x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + \cdots + (x_n - \bar{x})^2)}{n-1}
+  s^2 = \frac{((y_1 - \bar{y})^2 + (y_2 - \bar{y})^2 + \cdots + (y_n - \bar{y})^2)}{n-1}
 \]
 The sample standard deviation is the square root of the variance: $s = \sqrt{s^2}$.
 
@@ -717,10 +717,10 @@ When asked to describe or compare univariate (single variable) quantitative dist
 
 We can compare quantitative distributions by using side-by-side box plots,
 or stacked histograms or dot plots. Recall that the `loan50` data set represents a sample from a larger loan data set called `loans`.
-This larger data set contains information on 10,000 loans made through Lending Club. Figure \@ref(fig:homeownership-interest-boxplots) examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `interest_rate`. Note that `homeownership`
-is a categorical variable and `interest_rate` is a quantitative variable.
+This larger data set contains information on 10,000 loans made through Lending Club. Figure \@ref(fig:homeownership-interest-boxplots) examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `loan_amount`. Note that `homeownership`
+is a categorical variable and `loan_amount` is a quantitative variable.
 
-```{r homeownership-interest-boxplots, fig.height=2, fig.cap="Side-by-side box plots of loan interest rates by homeownership category and corresponding histograms."}
+```{r homeownership-interest-boxplots, fig.height=2, fig.cap="Side-by-side box plots of loan amounts by homeownership category and corresponding histograms."}
 plot1 <- ggplot(loans_full_schema, aes(x = homeownership, y = loan_amount, fill = homeownership)) + 
   geom_boxplot() +
   labs(x = "Homeownership", y = "Loan Amount ($)")+
@@ -908,8 +908,8 @@ Nearly all of the data fall into the left-most bin, and the extreme skew obscure
 
 There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
 For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure \@ref(fig:county-pop-transform).
-This data is symmetric, and any potential outliers appear much less extreme than in the original data set.
-By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models against the data.
+These data are symmetric, and any potential outliers appear much less extreme than in the original data set.
+By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models for the data.
 
 ```{r include=FALSE}
 terms_chp_5 <- c(terms_chp_5, "transformation")

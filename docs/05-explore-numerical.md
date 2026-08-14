@@ -112,8 +112,8 @@ To compute the mean interest rate of the 50 loans above, we add up all the inter
 
 
 
-The sample mean is often labeled $\bar{x}$.
-The letter $x$ is being used as a generic placeholder for the variable and the bar over the $x$ communicates we're looking at the average of that variable. In our example $x$ would represent interest rate, and $\bar{x}$ = 11.57%.
+The sample mean is often^[Some books use $\bar{y}$ and some use $\bar{x}$, we are choosing $\bar{y}$ to be able to use consistent notation into more complex methods.] labeled $\bar{y}$.
+The letter $y$ is being used as a generic placeholder for the variable and the bar over the $y$ communicates we're looking at the average of that variable. In our example $y$ would represent interest rate, and $\bar{y}$ = 11.57%.
 It is useful to think of the mean as the balancing point of the distribution^[For
 more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point).], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
 
@@ -122,11 +122,11 @@ more practice with this concept of the mean as a balancing point, see this [Khan
   
 The sample mean can be calculated as the sum of the observed values divided by the number of observations:
 
-\[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]
+\[ \bar{y} = \frac{y_1 + y_2 + \cdots + y_n}{n} \]
 :::
 
 ::: {.guidedpractice}
-Examine the equation for the mean. What does $x_1$ correspond to? And $x_2$ Can you infer a general meaning to what $x_i$ might represent?^[$x_1$ corresponds to the interest rate for the first loan in the sample, $x_2$ to the second loan's interest rate, and $x_i$ corresponds to the interest rate for the $i^{th}$ loan in the data set. For example, if $i = 4$, then we're examining $x_4$, which refers to the fourth observation in the data set.]
+Examine the equation for the mean. What does $y_1$ correspond to? And $y_2$ Can you infer a general meaning to what $y_i$ might represent?^[$y_1$ corresponds to the interest rate for the first loan in the sample, $y_2$ to the second loan's interest rate, and $y_i$ corresponds to the interest rate for the $i^{th}$ loan in the data set. For example, if $i = 4$, then we're examining $y_4$, which refers to the fourth observation in the data set.]
 :::
 
 ::: {.guidedpractice}
@@ -137,8 +137,8 @@ The `loan50` data set represents a sample from a larger population of loans made
 We could compute a mean for this population in the same way as the sample mean.
 However, the population mean has a special label: $\mu$.
 The symbol $\mu$ is the Greek letter *mu* and represents the average of all observations in the population.
-Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g., $\mu_x$.
-Often times it is too expensive or time consuming to measure the population mean precisely, so we often estimate $\mu$ using the sample mean, $\bar{x}$.
+Sometimes a subscript, such as $_y$, is used to represent which variable the population mean refers to, e.g., $\mu_y$.
+Often times it is too expensive or time consuming to measure the population mean precisely, so we often estimate $\mu$ using the sample mean, $\bar{y}$.
 
 ::: {.pronunciation}
 The Greek letter $\mu$ is pronounced *mu*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=47).
@@ -159,27 +159,14 @@ The mean is useful for making comparisons across different samples that may have
 Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug. 
 A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:center;"> New drug </th>
-   <th style="text-align:center;"> Standard drug </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Number of patients </td>
-   <td style="text-align:center;"> 500 </td>
-   <td style="text-align:center;"> 1000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Total asthma attacks </td>
-   <td style="text-align:center;"> 200 </td>
-   <td style="text-align:center;"> 300 </td>
-  </tr>
-</tbody>
-</table>
+
+
+|                     | New drug | Standard drug |
+|:--------------------|:--------:|:-------------:|
+|Number of patients   |   500    |     1000      |
+|Total asthma attacks |   200    |      300      |
+
+
 
 Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
 Instead, we should look at the average number of asthma attacks per patient in each group:
@@ -236,37 +223,15 @@ Dot plots show the exact value for each observation. This is useful for small da
 
 
 
-<table>
-<caption>(\#tab:binnedIntRateAmountTable)Counts for the binned `interest_rate` data.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Interest rate </th>
-   <th style="text-align:center;"> 5% - 7.5% </th>
-   <th style="text-align:center;"> 7.5% - 10% </th>
-   <th style="text-align:center;"> 10% - 12.5% </th>
-   <th style="text-align:center;"> 12.5% - 15% </th>
-   <th style="text-align:center;"> 15% - 17.5% </th>
-   <th style="text-align:center;"> 17.5% - 20% </th>
-   <th style="text-align:center;"> 20% - 22.5% </th>
-   <th style="text-align:center;"> 22.5% - 25% </th>
-   <th style="text-align:center;"> 25% - 27.5% </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> n </td>
-   <td style="text-align:center;"> 11 </td>
-   <td style="text-align:center;"> 15 </td>
-   <td style="text-align:center;"> 8 </td>
-   <td style="text-align:center;"> 4 </td>
-   <td style="text-align:center;"> 5 </td>
-   <td style="text-align:center;"> 4 </td>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 1 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-</tbody>
-</table>
+
+
+Table: (\#tab:binnedIntRateAmountTable)Counts for the binned `interest_rate` data.
+
+|Interest rate | 5% - 7.5% | 7.5% - 10% | 10% - 12.5% | 12.5% - 15% | 15% - 17.5% | 17.5% - 20% | 20% - 22.5% | 22.5% - 25% | 25% - 27.5% |
+|:-------------|:---------:|:----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|
+|n             |    11     |     15     |      8      |      4      |      5      |      4      |      1      |      1      |      1      |
+
+
 
 <div class="figure" style="text-align: center">
 <img src="05-explore-numerical_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="90%" />
@@ -341,7 +306,7 @@ We call the distance of an observation from its mean its **deviation**. Below ar
 
 
 
-$$ x_1 - \bar{x} = 10.9 - 11.57 = -0.67 $$ $$ x_2 - \bar{x} = 9.92 - 11.57 = -1.65 $$ $$ x_3 - \bar{x} = 26.3 - 11.57 = 14.73 $$ $$ \vdots $$ $$ x_{50} - \bar{x} = 6.08 - 11.57 = -5.49 $$
+$$ y_1 - \bar{y} = 10.9 - 11.57 = -0.67 $$ $$ y_2 - \bar{y} = 9.92 - 11.57 = -1.65 $$ $$ y_3 - \bar{y} = 26.3 - 11.57 = 14.73 $$ $$ \vdots $$ $$ y_{50} - \bar{y} = 6.08 - 11.57 = -5.49 $$
 
 If we square these deviations and then take an average, the result is equal to the sample **variance**, denoted by $s^2$:
 
@@ -361,7 +326,7 @@ The **standard deviation** is defined as the square root of the variance:
 
 $$ s = \sqrt{25.52} = 5.05 $$
 
-While often omitted, a subscript of $_x$ may be added to the variance and standard deviation, i.e., $s_x^2$ and $s_x$, if it is useful as a reminder that these are the variance and standard deviation of the observations represented by $x_1$, $x_2$, ..., $x_n$.
+While often omitted, a subscript of $_y$ may be added to the variance and standard deviation, i.e., $s_y^2$ and $s_y$, if it is useful as a reminder that these are the variance and standard deviation of the observations represented by $y_1$, $y_2$, ..., $y_n$.
 
 
 
@@ -370,7 +335,7 @@ While often omitted, a subscript of $_x$ may be added to the variance and standa
   
 The sample variance is the (near) average squared distance from the mean:
 \[
-  s^2 = \frac{((x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + \cdots + (x_n - \bar{x})^2)}{n-1}
+  s^2 = \frac{((y_1 - \bar{y})^2 + (y_2 - \bar{y})^2 + \cdots + (y_n - \bar{y})^2)}{n-1}
 \]
 The sample standard deviation is the square root of the variance: $s = \sqrt{s^2}$.
 
@@ -524,6 +489,8 @@ the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot).
 </tbody>
 </table>
 
+
+
 When there are an odd number of observations, there will be exactly one
 observation that splits the data into two halves, and in such a case that
 observation is the median (no average needed).
@@ -641,12 +608,12 @@ When asked to describe or compare univariate (single variable) quantitative dist
 
 We can compare quantitative distributions by using side-by-side box plots,
 or stacked histograms or dot plots. Recall that the `loan50` data set represents a sample from a larger loan data set called `loans`.
-This larger data set contains information on 10,000 loans made through Lending Club. Figure \@ref(fig:homeownership-interest-boxplots) examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `interest_rate`. Note that `homeownership`
-is a categorical variable and `interest_rate` is a quantitative variable.
+This larger data set contains information on 10,000 loans made through Lending Club. Figure \@ref(fig:homeownership-interest-boxplots) examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `loan_amount`. Note that `homeownership`
+is a categorical variable and `loan_amount` is a quantitative variable.
 
 <div class="figure" style="text-align: center">
-<img src="05-explore-numerical_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category and corresponding histograms." width="90%" />
-<p class="caption">(\#fig:homeownership-interest-boxplots)Side-by-side box plots of loan interest rates by homeownership category and corresponding histograms.</p>
+<img src="05-explore-numerical_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan amounts by homeownership category and corresponding histograms." width="90%" />
+<p class="caption">(\#fig:homeownership-interest-boxplots)Side-by-side box plots of loan amounts by homeownership category and corresponding histograms.</p>
 </div>
 
 We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.
@@ -675,7 +642,7 @@ These scenarios are plotted alongside the original data in Figure \@ref(fig:loan
 </div>
 
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:robustOrNotTable)A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.</caption>
+<caption>(\#tab:robustOrNotTable)(\#tab:robustOrNotTable)A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -714,6 +681,8 @@ These scenarios are plotted alongside the original data in Figure \@ref(fig:loan
   </tr>
 </tbody>
 </table>
+
+
 
 ::: {.guidedpractice}
 (a) Which is more affected by extreme observations, the mean or median?  
@@ -759,8 +728,8 @@ Nearly all of the data fall into the left-most bin, and the extreme skew obscure
 
 There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
 For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure \@ref(fig:county-pop-transform).
-This data is symmetric, and any potential outliers appear much less extreme than in the original data set.
-By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models against the data.
+These data are symmetric, and any potential outliers appear much less extreme than in the original data set.
+By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models for the data.
 
 
 
@@ -910,6 +879,8 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
 </tbody>
 </table>
+
+
 
 ### Key ideas {-}
 

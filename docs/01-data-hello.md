@@ -74,7 +74,7 @@ Load these data into your RStudio session using the following commands:
 :::
 
 <table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:stentStudyResultsDF)Results for five patients from the stent study.</caption>
+<caption>(\#tab:stentStudyResultsDF)(\#tab:stentStudyResultsDF)Results for five patients from the stent study.</caption>
  <thead>
   <tr>
    <th style="text-align:right;"> patient </th>
@@ -117,6 +117,8 @@ Load these data into your RStudio session using the following commands:
 </tbody>
 </table>
 
+
+
 Considering data from each of the 451 patients individually would be a long, cumbersome path towards answering the original research question. 
 Instead, performing a statistical data analysis allows us to consider all of the data at once. 
 Table \@ref(tab:stentStudyResultsDFsummary) summarizes the raw data in a more helpful way. 
@@ -125,7 +127,7 @@ For instance, to identify the number of patients in the treatment group who had 
 To identify the number of control patients who did not have a stroke after 365 days after receiving treatment, we look at the rightmost column (365 days), at the intersection of control and no event: 199.
 
 <table>
-<caption>(\#tab:stentStudyResultsDFsummary)Descriptive statistics for the stent study.</caption>
+<caption>(\#tab:stentStudyResultsDFsummary)(\#tab:stentStudyResultsDFsummary)Descriptive statistics for the stent study.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -164,6 +166,8 @@ To identify the number of control patients who did not have a stroke after 365 d
   </tr>
 </tbody>
 </table>
+
+
 
 The data summarized in this table can also be visualized with a \index{barplot}**barplot**, seen in Figure \@ref(fig:stentStudyResultsDFbarplot):
 
@@ -256,123 +260,36 @@ In practice, it is especially important to ask clarifying questions to ensure im
 For instance, it is always important to be sure we know what each variable means and its units of measurement.
 Descriptions of the variables in the `loan50` data set are given in Table \@ref(tab:loan50Variables).
 
-<table>
-<caption>(\#tab:loan50DF)Six rows from the `loan50` data set.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> loan_amount </th>
-   <th style="text-align:right;"> interest_rate </th>
-   <th style="text-align:right;"> term </th>
-   <th style="text-align:left;"> grade </th>
-   <th style="text-align:left;"> state </th>
-   <th style="text-align:right;"> total_income </th>
-   <th style="text-align:left;"> homeownership </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 22000 </td>
-   <td style="text-align:right;"> 10.90 </td>
-   <td style="text-align:right;"> 60 </td>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> NJ </td>
-   <td style="text-align:right;"> 59000 </td>
-   <td style="text-align:left;"> rent </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 6000 </td>
-   <td style="text-align:right;"> 9.92 </td>
-   <td style="text-align:right;"> 36 </td>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> CA </td>
-   <td style="text-align:right;"> 60000 </td>
-   <td style="text-align:left;"> rent </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 25000 </td>
-   <td style="text-align:right;"> 26.30 </td>
-   <td style="text-align:right;"> 36 </td>
-   <td style="text-align:left;"> E </td>
-   <td style="text-align:left;"> SC </td>
-   <td style="text-align:right;"> 75000 </td>
-   <td style="text-align:left;"> mortgage </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 6000 </td>
-   <td style="text-align:right;"> 9.92 </td>
-   <td style="text-align:right;"> 36 </td>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> CA </td>
-   <td style="text-align:right;"> 75000 </td>
-   <td style="text-align:left;"> rent </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 25000 </td>
-   <td style="text-align:right;"> 9.43 </td>
-   <td style="text-align:right;"> 60 </td>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> OH </td>
-   <td style="text-align:right;"> 254000 </td>
-   <td style="text-align:left;"> mortgage </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 6400 </td>
-   <td style="text-align:right;"> 9.92 </td>
-   <td style="text-align:right;"> 36 </td>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> IN </td>
-   <td style="text-align:right;"> 67000 </td>
-   <td style="text-align:left;"> mortgage </td>
-  </tr>
-</tbody>
-</table>
 
-<table>
-<caption>(\#tab:loan50Variables)Variables and their descriptions for the `loan50` data set.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:left;"> description </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> loan_amount </td>
-   <td style="text-align:left;"> Amount of the loan received, in US dollars. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> interest_rate </td>
-   <td style="text-align:left;"> Interest rate on the loan, in an annual percentage. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> term </td>
-   <td style="text-align:left;"> The length of the loan, which is always set as a whole number of months. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> grade </td>
-   <td style="text-align:left;"> Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> state </td>
-   <td style="text-align:left;"> US state where the borrower resides. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> total_income </td>
-   <td style="text-align:left;"> Borrower's total income, including any second income, in US dollars. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> homeownership </td>
-   <td style="text-align:left;"> Indicates whether the person owns, owns but has a mortgage, or rents. </td>
-  </tr>
-</tbody>
-</table>
+
+Table: (\#tab:loan50DF)Six rows from the `loan50` data set.
+
+|   | loan_amount| interest_rate| term|grade |state | total_income|homeownership |
+|:--|-----------:|-------------:|----:|:-----|:-----|------------:|:-------------|
+|1  |       22000|         10.90|   60|B     |NJ    |        59000|rent          |
+|2  |        6000|          9.92|   36|B     |CA    |        60000|rent          |
+|3  |       25000|         26.30|   36|E     |SC    |        75000|mortgage      |
+|4  |        6000|          9.92|   36|B     |CA    |        75000|rent          |
+|5  |       25000|          9.43|   60|B     |OH    |       254000|mortgage      |
+|6  |        6400|          9.92|   36|B     |IN    |        67000|mortgage      |
+
+
+
+
+
+Table: (\#tab:loan50Variables)Variables and their descriptions for the `loan50` data set.
+
+|variable      |description                                                                                                              |
+|:-------------|:------------------------------------------------------------------------------------------------------------------------|
+|loan_amount   |Amount of the loan received, in US dollars.                                                                              |
+|interest_rate |Interest rate on the loan, in an annual percentage.                                                                      |
+|term          |The length of the loan, which is always set as a whole number of months.                                                 |
+|grade         |Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid. |
+|state         |US state where the borrower resides.                                                                                     |
+|total_income  |Borrower's total income, including any second income, in US dollars.                                                     |
+|homeownership |Indicates whether the person owns, owns but has a mortgage, or rents.                                                    |
+
+
 
 \index{data!loan50|)}
 
@@ -400,141 +317,44 @@ How might these data be organized in a data frame?^[Each county may be viewed as
 The data described in the Guided Practice above represent the **county** data set, which is shown as a data frame in Table \@ref(tab:countyDF).
 The variables as well as the variables in the data set that did not fit in Table \@ref(tab:countyDF) are described in Table \@ref(tab:countyVariables)
 
-<table>
-<caption>(\#tab:countyDF)Six observations and six variables from the `county` data set.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> name </th>
-   <th style="text-align:left;"> state </th>
-   <th style="text-align:right;"> pop2017 </th>
-   <th style="text-align:right;"> pop_change </th>
-   <th style="text-align:right;"> unemployment_rate </th>
-   <th style="text-align:left;"> median_edu </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Autauga County </td>
-   <td style="text-align:left;"> Alabama </td>
-   <td style="text-align:right;"> 55504 </td>
-   <td style="text-align:right;"> 1.48 </td>
-   <td style="text-align:right;"> 3.86 </td>
-   <td style="text-align:left;"> some_college </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Baldwin County </td>
-   <td style="text-align:left;"> Alabama </td>
-   <td style="text-align:right;"> 212628 </td>
-   <td style="text-align:right;"> 9.19 </td>
-   <td style="text-align:right;"> 3.99 </td>
-   <td style="text-align:left;"> some_college </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Barbour County </td>
-   <td style="text-align:left;"> Alabama </td>
-   <td style="text-align:right;"> 25270 </td>
-   <td style="text-align:right;"> -6.22 </td>
-   <td style="text-align:right;"> 5.90 </td>
-   <td style="text-align:left;"> hs_diploma </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bibb County </td>
-   <td style="text-align:left;"> Alabama </td>
-   <td style="text-align:right;"> 22668 </td>
-   <td style="text-align:right;"> 0.73 </td>
-   <td style="text-align:right;"> 4.39 </td>
-   <td style="text-align:left;"> hs_diploma </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Blount County </td>
-   <td style="text-align:left;"> Alabama </td>
-   <td style="text-align:right;"> 58013 </td>
-   <td style="text-align:right;"> 0.68 </td>
-   <td style="text-align:right;"> 4.02 </td>
-   <td style="text-align:left;"> hs_diploma </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bullock County </td>
-   <td style="text-align:left;"> Alabama </td>
-   <td style="text-align:right;"> 10309 </td>
-   <td style="text-align:right;"> -2.28 </td>
-   <td style="text-align:right;"> 4.93 </td>
-   <td style="text-align:left;"> hs_diploma </td>
-  </tr>
-</tbody>
-</table>
 
-<table>
-<caption>(\#tab:countyVariables)Variables and their descriptions for the `county` data set.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:left;"> description </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> name </td>
-   <td style="text-align:left;"> Name of county. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> state </td>
-   <td style="text-align:left;"> Name of state. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pop2000 </td>
-   <td style="text-align:left;"> Population in 2000. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pop2010 </td>
-   <td style="text-align:left;"> Population in 2010. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pop2017 </td>
-   <td style="text-align:left;"> Population in 2017. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> pop_change </td>
-   <td style="text-align:left;"> Population change from 2010 to 2017. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> poverty </td>
-   <td style="text-align:left;"> Percent of population in poverty in 2017. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> homeownership </td>
-   <td style="text-align:left;"> Homeownership rate, 2006-2010. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> multi_unit </td>
-   <td style="text-align:left;"> Percent of housing units in multi-unit structures, 2006-2010. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> unemployment_rate </td>
-   <td style="text-align:left;"> Unemployment rate in 2017. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> metro </td>
-   <td style="text-align:left;"> Whether the county contains a metropolitan area, taking one of the values `yes` or `no`. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> median_edu </td>
-   <td style="text-align:left;"> Median education level (2013-2017), taking one of the values `below_hs`, `hs_diploma`, `some_college`, or `bachelors`. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> per_capita_income </td>
-   <td style="text-align:left;"> Per capita (per person) income (2013-2017). </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> median_hh_income </td>
-   <td style="text-align:left;"> Median household income. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> smoking_ban </td>
-   <td style="text-align:left;"> Describes whether the type of county-level smoking ban in place in 2010, taking one of the values `none`, `partial`, or `comprehensive`. </td>
-  </tr>
-</tbody>
-</table>
+
+Table: (\#tab:countyDF)Six observations and six variables from the `county` data set.
+
+|name           |state   | pop2017| pop_change| unemployment_rate|median_edu   |
+|:--------------|:-------|-------:|----------:|-----------------:|:------------|
+|Autauga County |Alabama |   55504|       1.48|              3.86|some_college |
+|Baldwin County |Alabama |  212628|       9.19|              3.99|some_college |
+|Barbour County |Alabama |   25270|      -6.22|              5.90|hs_diploma   |
+|Bibb County    |Alabama |   22668|       0.73|              4.39|hs_diploma   |
+|Blount County  |Alabama |   58013|       0.68|              4.02|hs_diploma   |
+|Bullock County |Alabama |   10309|      -2.28|              4.93|hs_diploma   |
+
+
+
+
+
+Table: (\#tab:countyVariables)Variables and their descriptions for the `county` data set.
+
+|variable          |description                                                                                                                              |
+|:-----------------|:----------------------------------------------------------------------------------------------------------------------------------------|
+|name              |Name of county.                                                                                                                          |
+|state             |Name of state.                                                                                                                           |
+|pop2000           |Population in 2000.                                                                                                                      |
+|pop2010           |Population in 2010.                                                                                                                      |
+|pop2017           |Population in 2017.                                                                                                                      |
+|pop_change        |Population change from 2010 to 2017.                                                                                                     |
+|poverty           |Percent of population in poverty in 2017.                                                                                                |
+|homeownership     |Homeownership rate, 2006-2010.                                                                                                           |
+|multi_unit        |Percent of housing units in multi-unit structures, 2006-2010.                                                                            |
+|unemployment_rate |Unemployment rate in 2017.                                                                                                               |
+|metro             |Whether the county contains a metropolitan area, taking one of the values `yes` or `no`.                                                 |
+|median_edu        |Median education level (2013-2017), taking one of the values `below_hs`, `hs_diploma`, `some_college`, or `bachelors`.                   |
+|per_capita_income |Per capita (per person) income (2013-2017).                                                                                              |
+|median_hh_income  |Median household income.                                                                                                                 |
+|smoking_ban       |Describes whether the type of county-level smoking ban in place in 2010, taking one of the values `none`, `partial`, or `comprehensive`. |
+
+
 
 ::: {.data}
 These data can be found in the [usdata](http://openintrostat.github.io/usdata) package: [`county`](http://openintrostat.github.io/usdata/reference/county.html).
@@ -802,6 +622,8 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
 </tbody>
 </table>
+
+
 
 
 ### Key ideas {-}

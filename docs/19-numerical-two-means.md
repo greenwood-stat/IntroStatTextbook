@@ -8,7 +8,7 @@ We now extend the methods from Chapters \@ref(inference-one-mean) and \@ref(infe
 Chapter \@ref(inference-paired-means) examined the case of **dependent** samples, where the two samples are paired. With paired data, we take the difference between two measurements on each observational unit, and then calculate the mean of those differences, $\mu_d$.
 In this chapter, the two groups of measurements are independent---knowledge of the observations in one group does not change what we would expect to happen in the other group. Our summary measure for independent groups first takes the mean of each group, and then the difference, a **difference in means** between Group 1 and Group 2: $\mu_1 - \mu_2.$ 
 
-In our investigations, we'll identify a reasonable point estimate of $\mu_1 - \mu_2$ based on the sample, and you may have already guessed its form: $\bar{x}_1 - \bar{x}_2.$ \index{point estimate!difference of means} Then we'll look at the inferential analysis in three different ways: using a randomization test, applying bootstrapping for interval estimates, and, if we verify that the point estimate can be modeled using a normal distribution, we compute the estimate's standard error and apply the mathematical framework.
+In our investigations, we'll identify a reasonable point estimate of $\mu_1 - \mu_2$ based on the sample, and you may have already guessed its form: $\bar{y}_1 - \bar{y}_2.$ \index{point estimate!difference of means} Then we'll look at the inferential analysis in three different ways: using a randomization test, applying bootstrapping for interval estimates, and, if we verify that the point estimate can be modeled using a normal distribution, we compute the estimate's standard error and apply the mathematical framework.
 :::
 
 Below we summarize the notation used throughout this chapter.
@@ -17,7 +17,7 @@ Below we summarize the notation used throughout this chapter.
 **Notation for a binary explanatory variable and quantitative response variable.**
 
 * $n_1$, $n_2$ = sample sizes of two independent samples
-* $\bar{x}_1$, $\bar{x}_2$ = sample means of two independent samples
+* $\bar{y}_1$, $\bar{y}_2$ = sample means of two independent samples
 * $s_1$, $s_2$ = sample standard deviations of two independent samples
 * $\mu_1$, $\mu_2$ = population means of two independent populations
 * $\sigma_1$, $\sigma_2$ = population standard deviations of two independent populations
@@ -28,7 +28,7 @@ two population means, $\mu_1 - \mu_2$, under the condition
 that the data are not paired.
 Just as with a single sample, we identify conditions to ensure
 we can use the $t$-distribution with a point estimate
-of the difference, $\bar{x}_1 - \bar{x}_2$,
+of the difference, $\bar{y}_1 - \bar{y}_2$,
 and a new standard error formula.
 
 The details for working through inferential problems in the two independent means setting are strikingly similar to those applied to the two independent proportions setting.
@@ -61,12 +61,12 @@ An instructor decided to run two slight variations of the same exam. Prior to pa
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:summaryStatsForTwoVersionsOfExams)Summary statistics of scores for each exam version.</caption>
+<caption>(\#tab:summaryStatsForTwoVersionsOfExams)(\#tab:summaryStatsForTwoVersionsOfExams)Summary statistics of scores for each exam version.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
    <th style="text-align:right;"> $n$ </th>
-   <th style="text-align:right;"> $\bar{x}$ </th>
+   <th style="text-align:right;"> $\bar{y}$ </th>
    <th style="text-align:right;"> $s$ </th>
    <th style="text-align:right;"> minimum </th>
    <th style="text-align:right;"> maximum </th>
@@ -93,6 +93,8 @@ An instructor decided to run two slight variations of the same exam. Prior to pa
 </table>
 
 
+
+
 <div class="figure" style="text-align: center">
 <img src="19-numerical-two-means_files/figure-html/boxplotTwoVersionsOfExams-1.png" alt="Exam scores for students given one of three different exams." width="90%" />
 <p class="caption">(\#fig:boxplotTwoVersionsOfExams)Exam scores for students given one of three different exams.</p>
@@ -100,7 +102,7 @@ An instructor decided to run two slight variations of the same exam. Prior to pa
 
 ::: {.guidedpractice}
 Construct hypotheses to evaluate whether the observed
-difference in sample means, $\bar{x}_A - \bar{x}_B=3.1$,
+difference in sample means, $\bar{y}_A - \bar{y}_B=3.1$,
 is due to chance. We will later evaluate these hypotheses
 by computing a p-value for the test.^[$H_0$: the exams are equally difficult, on average. $\mu_A - \mu_B = 0$. $H_A$: one exam was more difficult than the other, on average. $\mu_A - \mu_B \neq 0.$]
 ::: 
@@ -108,8 +110,7 @@ by computing a p-value for the test.^[$H_0$: the exams are equally difficult, on
 ::: {.guidedpractice}
 Before moving on to evaluate the hypotheses in the previous Guided Practice, let's think carefully about the dataset.  Are the observations across the two groups independent?  Are there any concerns about outliers?^[
 (a) Since the exams were shuffled,
-  the "treatment" in this case was randomly assigned,
-  so independence within and between groups is satisfied.
+  the "treatment" in this case was randomly assigned and we are willing to assume that students did not "help" one another on the exams within or across versions, independence within and between groups is satisfied.
   (b) The summary statistics suggest the data are roughly
   symmetric about the mean, and the min/max values don't
   suggest any outliers of concern.]
@@ -123,8 +124,8 @@ Before moving on to evaluate the hypotheses in the previous Guided Practice, let
 In Sections \@ref(caseStudySexDiscrimination) and \@ref(two-prop-errors), the variability of the statistic (previously: $\hat{p}_1 - \hat{p}_2$) was visualized after shuffling the observations across the two treatment groups many times.
 The shuffling process implements the null hypothesis model (that there is no effect of the treatment).
 In the exam example, the null hypothesis is that exam A and exam B are equally difficult, so the average scores across the two tests should be the same.
-If the exams were equally difficult, *due to natural variability*, we would sometimes expect students to do slightly better on exam A ($\bar{x}_A > \bar{x}_B$) and sometimes expect students to do slightly better on exam B ($\bar{x}_B > \bar{x}_A$).
-The question at hand is: Does $\bar{x}_A - \bar{x}_B=3.1$ indicate that exam A is easier than exam B?.
+If the exams were equally difficult, *due to natural variability*, we would sometimes expect students to do slightly better on exam A ($\bar{y}_A > \bar{y}_B$) and sometimes expect students to do slightly better on exam B ($\bar{y}_B > \bar{y}_A$).
+The question at hand is: Does $\bar{y}_A - \bar{y}_B=3.1$ indicate that exam A is easier than exam B?.
 
 
 Figure \@ref(fig:rand2means) shows the process of randomizing the exam to the observed exam scores.
@@ -135,11 +136,11 @@ There is only one iteration of the randomization process in Figure \@ref(fig:ran
 
 
 <div class="figure" style="text-align: center">
-<img src="06/figures/rand2means.png" alt="The version of the test (A or B) is randomly allocated to the test scores, under the null assumption that the tests are equally difficult." width="75%" />
+<img src="06/figures/rand2meansy.png" alt="The version of the test (A or B) is randomly allocated to the test scores, under the null assumption that the tests are equally difficult." width="75%" />
 <p class="caption">(\#fig:rand2means)The version of the test (A or B) is randomly allocated to the test scores, under the null assumption that the tests are equally difficult.</p>
 </div>
 
-Building on Figure \@ref(fig:rand2means), Figure \@ref(fig:randexams) shows the values of the simulated statistics $\bar{x}_{1, sim} - \bar{x}_{2, sim}$ over 1000 random simulations.
+Building on Figure \@ref(fig:rand2means), Figure \@ref(fig:randexams) shows the values of the simulated statistics $\bar{y}_{1, sim} - \bar{y}_{2, sim}$ over 1000 random simulations.
 We see that, just by chance, the difference in scores can range anywhere from -10 points to +10 points.
 
 <div class="figure" style="text-align: center">
@@ -150,7 +151,7 @@ We see that, just by chance, the difference in scores can range anywhere from -1
 
 ### Observed statistic vs. null value
 
-The goal of the randomization test is to assess the observed data, here the statistic of interest is $\bar{x}_A - \bar{x}_B = 3.1$.
+The goal of the randomization test is to assess the observed data, here the statistic of interest is $\bar{y}_A - \bar{y}_B = 3.1$.
 The randomization distribution allows us to identify whether a difference of 3.1 points is more than one would expect by natural variability.
 By plotting the value of 3.1 on Figure \@ref(fig:randexamspval), we can measure how different or similar 3.1 is to the randomized differences which were generated under the null hypothesis.
 
@@ -177,7 +178,7 @@ With this large of a p-value, the data do not convincingly show that one exam
 
 
 
-The large p-value and consistency of $\bar{x}_A - \bar{x}_B=3.1$ with the randomized differences leads us to *not reject the null hypothesis*.  Said differently, there is no evidence to think that one of the tests is easier than the other.
+The large p-value and consistency of $\bar{y}_A - \bar{y}_B=3.1$ with the randomized differences leads us to *not reject the null hypothesis*.  Said differently, there is little to no evidence to think that one of the tests is easier than the other.
 
 One might be inclined to conclude that the tests have the same level of difficulty, but that conclusion would be wrong. Indeed, our best point estimate of the true average difference in means between the two tests is 3.1!
 The hypothesis testing framework is set up only to reject a null claim, it is not set up to validate a null claim.
@@ -185,14 +186,14 @@ As we concluded, the data are consistent with exams A and B being equally diffic
 The data are not able to adjudicate on whether the exams are equally hard or whether one of them is slightly easier.
 
 Conclusions where the null hypothesis is not rejected often seem unsatisfactory.
-However, in this case, the teacher and class are probably all relieved that there is no evidence to demonstrate that one of the exams is more difficult than the other.
+However, in this case, the teacher and class are probably all relieved that there is little evidence to demonstrate that one of the exams is more difficult than the other.
 
 
 <!--
 Below is the t-test for the example above using a randomization test.  Doesn't seem like we need both.
 
 
-After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$-distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 3.1$. The standard error of the estimate can be calculated as
+After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$-distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{y}_A - \bar{y}_B = 3.1$. The standard error of the estimate can be calculated as
 \begin{align*}
 SE
   = \sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}}
@@ -265,7 +266,7 @@ Before providing a full example working through a bootstrap analysis on actual d
 
 
 <div class="figure" style="text-align: center">
-<img src="06/figures/bootmeans2means.png" alt="For the two group comparison, 1000 bootstrap resamples are taken  separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples.  The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest." width="75%" />
+<img src="06/figures/bootmeans2meansy.png" alt="For the two group comparison, 1000 bootstrap resamples are taken  separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples.  The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest." width="75%" />
 <p class="caption">(\#fig:bootmeans2means)For the two group comparison, 1000 bootstrap resamples are taken  separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples.  The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest.</p>
 </div>
 
@@ -287,12 +288,12 @@ for the effect of ESCs on the change in heart pumping
 capacity relative to the control group.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:statsSheepEscStudy)Summary statistics of the embryonic stem cell study.</caption>
+<caption>(\#tab:statsSheepEscStudy)(\#tab:statsSheepEscStudy)Summary statistics of the embryonic stem cell study.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
    <th style="text-align:right;"> $n$ </th>
-   <th style="text-align:right;"> $\bar{x}$ </th>
+   <th style="text-align:right;"> $\bar{y}$ </th>
    <th style="text-align:right;"> $s$ </th>
   </tr>
  </thead>
@@ -313,6 +314,8 @@ capacity relative to the control group.
 </table>
 
 
+
+
 <div class="figure" style="text-align: center">
 <img src="19-numerical-two-means_files/figure-html/stemCellTherapyForHearts-1.png" alt="Histograms for both the embryonic stem cell and control group." width="90%" /><img src="19-numerical-two-means_files/figure-html/stemCellTherapyForHearts-2.png" alt="Histograms for both the embryonic stem cell and control group." width="90%" />
 <p class="caption">(\#fig:stemCellTherapyForHearts)Histograms for both the embryonic stem cell and control group.</p>
@@ -320,11 +323,7 @@ capacity relative to the control group.
 
 The point estimate of the true difference in the mean heart pumping variable
 is straightforward to find: it is the difference in the sample means.
-\begin{align*}
-\bar{x}_{esc} - \bar{x}_{control}\ 
-  =\ 3.50 - (-4.33)\ 
-  =\ 7.83
-\end{align*}
+$\bar{y}_{esc} - \bar{y}_{control}  = 3.50 - (-4.33) = 7.83$.
 
 ::: {.guidedpractice}
 Identify the roles of the two variables in this study --- which variable is the explanatory variable and which is the response? What is the scope of inference for this study?^[Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment --- cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.]
@@ -369,14 +368,14 @@ The $t$-distribution can be used for inference when working
     The data are independent within and between
     the two groups, e.g., the data come from
     independent random samples or from a
-    randomized experiment.  
+    randomized experiment and that there is no suggestion of groups or structure that connect observations across or within the groups.  
 * *Normality*.
     We check the outliers for
     each group separately.
 
 The standard error may be computed as
   \[
-SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
+SE(\bar{y}_1 - \bar{y}_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
 \]
 
 The official formula for the degrees of freedom is quite
@@ -398,7 +397,7 @@ A dataset called `ncbirths` represents a random sample of 150 cases of mothers a
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:babySmokeDF)Four cases from the `ncbirths` data set. The value `NA`, shown for the first two entries of the first variable, indicates that piece of data is missing.</caption>
+<caption>(\#tab:babySmokeDF)(\#tab:babySmokeDF)Four cases from the `ncbirths` data set. The value `NA`, shown for the first two entries of the first variable, indicates that piece of data is missing.</caption>
  <thead>
   <tr>
    <th style="text-align:right;"> fage </th>
@@ -465,6 +464,8 @@ A dataset called `ncbirths` represents a random sample of 150 cases of mothers a
 </tbody>
 </table>
 
+
+
 ::: {.example}
 Set up appropriate hypotheses to evaluate
     whether there is a relationship between a mother smoking
@@ -492,8 +493,8 @@ The alternative hypothesis represents the research question.
 We check the two conditions necessary to model the difference
 in sample means using the $t$-distribution: the **independence** and **normality** conditions _for each sample_.
 
-* Because the data come from a simple random sample,
-    the observations are independent,
+* Because these data come from a simple random sample and there is no reason to assume any connections in the responses across subjects,
+    the observations can be assumed to be independent,
     both within and between samples.  
 * With both data sets over 30 observations,
     we inspect the data in
@@ -513,7 +514,7 @@ in sample means may be modeled using a $t$-distribution.
 ::: {.guidedpractice}
 The summary statistics in Table \@ref(tab:SumStatsBirthWeightNewbornsSmoke) may be useful
 for this Guided Practice.^[(a) The difference in sample means is an
-  appropriate point estimate: $\bar{x}_{n} - \bar{x}_{s} = 0.40$.
+  appropriate point estimate: $\bar{y}_{n} - \bar{y}_{s} = 0.40$.
   (b) The standard error of the estimate can be
   calculated using the standard error formula:
   \begin{align*}
@@ -531,7 +532,7 @@ for this Guided Practice.^[(a) The difference in sample means is an
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:SumStatsBirthWeightNewbornsSmoke)Summary statistics for the `ncbirths` data set.</caption>
+<caption>(\#tab:SumStatsBirthWeightNewbornsSmoke)(\#tab:SumStatsBirthWeightNewbornsSmoke)Summary statistics for the `ncbirths` data set.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -559,6 +560,8 @@ for this Guided Practice.^[(a) The difference in sample means is an
 </table>
 
 
+
+
 #### Observed statistic vs. null value {-}
 
 
@@ -568,7 +571,7 @@ for this Guided Practice.^[(a) The difference in sample means is an
 The T score is a ratio of how the groups differ as compared to how the observations within a group vary.
   
 \begin{align*}
-T = \frac{\bar{x}_1 - \bar{x}_2 - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+T = \frac{\bar{y}_1 - \bar{y}_2 - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
 \end{align*}
 
 When the null hypothesis is true and the conditions are met, T has a $t$-distribution with $df = min(n_1 - 1, n_2 -1)$.
@@ -582,8 +585,8 @@ Conditions:
 
 ::: {.example}
 Complete the hypothesis test started in the previous Example and Guided Practice on the `ncbirths` dataset and research question.  
-    For reference, $\bar{x}_{n} - \bar{x}_{s} = 0.40$,
-    $SE(\bar{x}_{n} - \bar{x}_{s}) = 0.26$, and the sample sizes were $n_n = 100$ and $n_s = 50$.
+    For reference, $\bar{y}_{n} - \bar{y}_{s} = 0.40$,
+    $SE(\bar{y}_{n} - \bar{y}_{s}) = 0.26$, and the sample sizes were $n_n = 100$ and $n_s = 50$.
 
 ---
   
@@ -610,7 +613,7 @@ We can find the test statistic for this test
 :::
 
 
-```r
+``` r
 pt(1.54, df = 49, lower.tail = FALSE)
 #> [1] 0.065
 ```
@@ -655,7 +658,7 @@ to tout that as a *benefit* of smoking:
 Fact check: the babies from women who smoke are not actually
 as healthy as the babies from women who do not
 smoke.^[You can watch an episode of John Oliver
-  on [*Last Week Tonight*](youtu.be/6UsHHOCH4q8) to explore the present day
+  on [*Last Week Tonight*](https://youtu.be/6UsHHOCH4q8) to explore the present day
   offenses of the tobacco industry.
   Please be aware that there is some adult language.]
 
@@ -677,9 +680,9 @@ smoke.^[You can watch an episode of John Oliver
   \begin{align*}
   \text{point estimate} \ &\pm\  t^{\star}_{df} \times SE(\text{point estimate}) \\
   &\to \\
-  \bar{x}_1 - \bar{x}_2 \ &\pm\  t^{\star}_{df} \times \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+  \bar{y}_1 - \bar{y}_2 \ &\pm\  t^{\star}_{df} \times \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
   \end{align*}
-  where $\bar{x}_1$ and $\bar{x}_2$ are the two sample means, $t^{\star}_{df}$
+  where $\bar{y}_1$ and $\bar{y}_2$ are the two sample means, $t^{\star}_{df}$
   corresponds to the confidence level and degrees of freedom
   $df$, and $SE$ is the standard error as estimated by
   the sample.
@@ -688,14 +691,16 @@ smoke.^[You can watch an episode of John Oliver
 ::: {.example}
 Consider again the data from Section \@ref(boot-ci-diff-means) on the use of embryonic stem cells (ESCs) to improve heart function. Can the $t$-distribution be used to make
     inference on the true difference in average change in heart pumping function using the point estimate,
-    $\bar{x}_{esc} - \bar{x}_{control} = 7.83$?
+    $\bar{y}_{esc} - \bar{y}_{control} = 7.83$?
       
 ---
 
 First, we check for independence.
   Because the sheep were randomized into
-  the groups, independence within
+  the groups to get the treatments and there is no information on groups or clusters of sheep[^sheep-independence-1], independence within
   and between groups is satisfied.
+
+[^sheep-independence-1]: Violations for the independence assumption could come from having sheep that are from different research facilities, different pens or fields in the same facility, or even different sheep breeds that might systematically differ.
 
   Figure \@ref(fig:stemCellTherapyForHearts)
   does not reveal any clear outliers
@@ -723,8 +728,8 @@ Calculate a 95% confidence interval for the
 
 First, compute the point estimate and its standard error:
   \begin{align*}
-  \bar{x}_{esc} - \bar{x}_{control} &= 3.50 - (-4.33) = 7.83\\   
-  SE(\bar{x}_{esc} - \bar{x}_{control}) &= \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
+  \bar{y}_{esc} - \bar{y}_{control} &= 3.50 - (-4.33) = 7.83\\   
+  SE(\bar{y}_{esc} - \bar{y}_{control}) &= \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
   \end{align*}
   Using $df = 8$, we can identify the
   critical value of $t^{\star}_{8} = 2.31$
@@ -741,7 +746,7 @@ First, compute the point estimate and its standard error:
 :::
 
 
-```r
+``` r
 qt(0.975, df = 8)
 #> [1] 2.31
 ```
@@ -765,11 +770,11 @@ In the past three chapters, we have seen the $t$-distribution applied as the app
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:tcompare)Similarities of $t$-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.</caption>
+<caption>(\#tab:tcompare)(\#tab:tcompare)Similarities of $t$-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;">  one sample  </th>
+   <th style="text-align:left;"> one sample </th>
    <th style="text-align:left;"> paired sample </th>
    <th style="text-align:left;"> two indep. samples </th>
   </tr>
@@ -795,9 +800,9 @@ In the past three chapters, we have seen the $t$-distribution applied as the app
   </tr>
   <tr>
    <td style="text-align:left;"> statistic of interest </td>
-   <td style="text-align:left;"> mean: $\bar{x}$ </td>
-   <td style="text-align:left;"> paired mean diff: $\bar{x}_d$ </td>
-   <td style="text-align:left;"> diff in means: $\bar{x}_1 - \bar{x}_2$ </td>
+   <td style="text-align:left;"> mean: $\bar{y}$ </td>
+   <td style="text-align:left;"> paired mean diff: $\bar{y}_d$ </td>
+   <td style="text-align:left;"> diff in means: $\bar{y}_1 - \bar{y}_2$ </td>
   </tr>
   <tr>
    <td style="text-align:left;"> standard error </td>
@@ -833,11 +838,13 @@ In the past three chapters, we have seen the $t$-distribution applied as the app
 </table>
 
 
+
+
 **Hypothesis tests.** When applying the $t$-distribution for a hypothesis test involving means, we proceed as follows:
 
 1. Write appropriate hypotheses.  
 2. Verify conditions for using the $t$-distribution.  
-    * **Independence.** Observational units must be independent. This is typically true if the data came from a random sample (or two random samples, or one random sample randomly assigned to two treatments).
+    * **Independence.** Observational units must be independent. This is typically true if the data came from a random sample (or two random samples, or one random sample randomly assigned to two treatments) but you should always consider the context of the study and data collection process.
    * **Normality.** If the sample size is less than 30 and there are no clear outliers in the data, or if the sample size is at least 30
       and there are no *particularly extreme* outliers,
       then we can apply the $t$-distribution for a hypothesis tests of means. For a difference of means when the data are not paired, this condition must be met for each of the two samples.  
@@ -877,6 +884,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
   </tr>
 </tbody>
 </table>
+
+
 
 <!-- ### Key ideas {-} -->
 

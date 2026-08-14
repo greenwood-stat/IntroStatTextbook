@@ -33,7 +33,7 @@ All registered STAT 216 students should have access to this server starting on t
 3. Reset your NetID password at [password.montana.edu
 ](http://password.montana.edu/). Your NetID password expires 180 days from the day you set it. If your password has expired, you will not be able to log into the RStudio server.
 
-After you have tried all the steps above, if you continue to have issues logging in, please email the STAT 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
+After you have tried all the steps above, if you continue to have issues logging in, please email the STAT 216 Faculty Course Supervisor [Dr.\ Mark Greenwood](mailto:greenwood@montana.edu).
 You may also refer to the following section for other options for accessing RStudio.
 
 *Note that any work you save on the server will be deleted and your access will be removed after the semester ends. Thus, if you would like to save any files, export them to your own computer prior to the end of the semester.*
@@ -42,16 +42,11 @@ You may also refer to the following section for other options for accessing RStu
 
 We recommend using RStudio through the MSU RStudio server, but there are other options for accessing this free software:
 
-1. Use RStudio through an MSU [virtual machine](https://studentlabs.montana.edu/remotelabs/howto.html). We **highly recommend installing the VMware Horizon Client** if you will be using the virtual machine regularly, as using it through a web browser runs the risk of losing your work if the browser disconnects from the system (which can happen for a number of reasons).
-    * Your log-in is your 7-character NetID and password.
-    * Select the "MSU" domain (_not_ "GFCMSU" or "MSUNORTHERN").
-    * Upon logging in, select the "CLS-STAT-REMOTE" virtual machine. You will then see an RStudio icon on the virtual desktop.  
+1. Use RStudio on an MSU on-campus computer lab. 
 
-2. Use RStudio on an MSU on-campus computer lab. 
+2. Use RStudio through the [RStudio Cloud](https://rstudio.cloud/). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
 
-3. Use RStudio through the [RStudio Cloud](https://rstudio.cloud/). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
-
-4. Download R and RStudio to your own laptop. (Note: R and RStudio will not run on iPad, notebooks, or Chromebooks.)
+3. Download R and RStudio to your own laptop. (Note: R and RStudio will not run on iPad, notebooks, or Chromebooks.)
     a. Download and install [R](https://cloud.r-project.org/).
     b. Download and install [RStudio Desktop](https://rstudio.com/products/rstudio/).
     c. Install the `catstats` package.
