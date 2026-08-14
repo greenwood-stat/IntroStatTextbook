@@ -168,7 +168,7 @@ By repeatedly permuting the response variable, any pattern in the linear model t
 We will continue to use the crop data to investigate the linear relationship between `wheat` and `maize`.  Note that the fitted least squares model (see Chapter \@ref(explore-regression)) describing the relationship is given in Table \@ref(tab:lsCrops).  
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:lsCrops)(\#tab:lsCrops)The least squares estimates of the intercept and slope are given in the `estimate` column.  The observed slope is 0.195.</caption>
+<caption>(\#tab:lsCrops)The least squares estimates of the intercept and slope are given in the `estimate` column.  The observed slope is 0.195.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> term </th>
@@ -387,7 +387,7 @@ squares regression line in Figure \@ref(fig:unemploymentAndChangeInHouse). The r
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:midtermUnempRegTable)(\#tab:midtermUnempRegTable)Output from statistical software for the regression
+<caption>(\#tab:midtermUnempRegTable)Output from statistical software for the regression
     line modeling the midterm election losses for the
     President's party as a response to unemployment.</caption>
  <thead>
@@ -487,7 +487,7 @@ This suggests the hypothesis test will reject the null claim that the slope is z
 The point of the tools in this section are to go beyond a visual interpretation of the linear relationship toward a formal mathematical claim about the statistical significance of the slope estimate.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:rOutputForIncomeAidLSRLineInInferenceSection)(\#tab:rOutputForIncomeAidLSRLineInInferenceSection)Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.</caption>
+<caption>(\#tab:rOutputForIncomeAidLSRLineInInferenceSection)Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> term </th>

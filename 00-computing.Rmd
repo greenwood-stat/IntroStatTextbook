@@ -8,7 +8,7 @@ STAT 216 and this textbook use [R](https://www.r-project.org/) and [RStudio](htt
 R and RStudio are free and open source. R is the programming language that runs computations, while RStudio is the interface in which you engage with R (called an "integrated development environment", or IDE). We will often use "R" and "RStudio" interchangeably throughout this textbook.
 
 This preliminaries chapter will introduce you to the RStudio environment itself.
-We will begin to learn how to code in RStudio in Chapter @\ref(#data-applications).
+We will begin to learn how to code in RStudio in Chapter \@ref(data-applications).
 
 
 ## Accessing RStudio {-}

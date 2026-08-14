@@ -13,7 +13,7 @@ However, this particular dependency, **pairing**, can be modeled quite effective
 Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter \@ref(inference-one-mean)) but has other features that resemble a two-sample analysis (which we will see in Chapter \@ref(inference-two-means)).  Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are **paired** --- each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:pairedexamples)(\#tab:pairedexamples)Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.</caption>
+<caption>(\#tab:pairedexamples)Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Observational unit </th>
@@ -228,7 +228,7 @@ $14.26 - 13.55 = 0.71$,
  and the third is $13.50 - 12.53 = 0.97$.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:textbooksDF)(\#tab:textbooksDF)Four cases of the `ucla_textbooks_f18` dataset.</caption>
+<caption>(\#tab:textbooksDF)Four cases of the `ucla_textbooks_f18` dataset.</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> subject </th>
@@ -340,7 +340,7 @@ Figure \@ref(fig:diffInTextbookPricesF18), and summary statistics
 are displayed in Table \@ref(tab:textbooksSummaryStats).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:textbooksSummaryStats)(\#tab:textbooksSummaryStats)Summary statistics for the 68 new textbook price differences (UCLA -- Amazon).</caption>
+<caption>(\#tab:textbooksSummaryStats)Summary statistics for the 68 new textbook price differences (UCLA -- Amazon).</caption>
  <thead>
   <tr>
    <th style="text-align:left;"> $n$ </th>

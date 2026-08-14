@@ -259,7 +259,7 @@ We will continue to use the crop data to investigate the linear relationship bet
 ```{r lsCrops}
 lm(wheat ~ maize, data = crops_USA) %>% 
   tidy() %>%
- kable(caption = "The least squares estimates of the intercept and slope are given in the `estimate` column.  The observed slope is 0.195.") %>%
+ kable(format = "html", caption = "The least squares estimates of the intercept and slope are given in the `estimate` column.  The observed slope is 0.195.") %>%
  kable_styling() 
 ```
 
@@ -600,7 +600,7 @@ d <- midterms_house
 th <- !d$year %in% c(1935, 1939)
 lm(house_change ~ unemp, d[th,]) %>% 
   tidy() %>%
- kable(caption = "Output from statistical software for the regression
+ kable(format = "html", caption = "Output from statistical software for the regression
     line modeling the midterm election losses for the
     President's party as a response to unemployment.") %>%
  kable_styling() 
@@ -715,7 +715,7 @@ d$gift_aid <- d$gift_aid * 1000
 d$family_income <- d$family_income * 1000
 lm(gift_aid ~ family_income, d) %>% 
   tidy() %>%
- kable(caption = "Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.") %>%
+ kable(format = "html", caption = "Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.") %>%
  kable_styling() 
 ```
 

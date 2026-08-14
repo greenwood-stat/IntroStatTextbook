@@ -815,7 +815,7 @@ Figure 21.8: Original (left) and permuted (right) data. The permutation removes 
 <p>We will continue to use the crop data to investigate the linear relationship between <code>wheat</code> and <code>maize</code>. Note that the fitted least squares model (see Chapter <a href="explore-regression.html#explore-regression">6</a>) describing the relationship is given in Table <a href="inference-reg.html#tab:lsCrops">21.1</a>.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:lsCrops">Table 21.1: </span><span id="tab:lsCrops">Table 21.2: </span>The least squares estimates of the intercept and slope are given in the <code>estimate</code> column. The observed slope is 0.195.
+<span id="tab:lsCrops">Table 21.1: </span>The least squares estimates of the intercept and slope are given in the <code>estimate</code> column. The observed slope is 0.195.
 </caption>
 <thead>
 <tr>
@@ -1027,11 +1027,11 @@ test statistic using a <span class="math inline">\(T\)</span>, since it follows 
 <p>We will rely on statistical software to compute the standard error and
 leave the explanation of how this standard error is determined to a
 second or third statistics course.
-Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.3</a> shows software output for the least
+Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.2</a> shows software output for the least
 squares regression line in Figure <a href="inference-reg.html#fig:unemploymentAndChangeInHouse">21.15</a>. The row labeled <code>unemp</code> includes all relevant information about the slope estimate (i.e., the coefficient of the unemployment variable).</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:midtermUnempRegTable">Table 21.3: </span><span id="tab:midtermUnempRegTable">Table 21.4: </span>Output from statistical software for the regression
+<span id="tab:midtermUnempRegTable">Table 21.2: </span>Output from statistical software for the regression
 line modeling the midterm election losses for the
 President’s party as a response to unemployment.
 </caption>
@@ -1092,7 +1092,7 @@ unemp
 </tbody>
 </table>
 <div class="workedexample">
-<p>What do the first and second columns of Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.3</a> represent?</p>
+<p>What do the first and second columns of Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.2</a> represent?</p>
 <hr />
 <p>The entries in the first column represent the least squares estimates, <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>. Using the estimates, we could write the equation for the least
 square regression line as <span class="math display">\[\begin{aligned}
@@ -1112,9 +1112,9 @@ T
   = \frac{\text{estimate} - \text{null value}}{\text{SE(estimate)}}
   = \frac{-0.89 - 0}{0.835}
   = -1.07\end{aligned}\]</span> This corresponds to the third column of
-Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.3</a> .</p>
+Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.2</a> .</p>
 <div class="workedexample">
-<p>Use Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.3</a> to determine the p-value for the
+<p>Use Table <a href="inference-reg.html#tab:midtermUnempRegTable">21.2</a> to determine the p-value for the
 hypothesis test.</p>
 <hr />
 <p>The last column of the table gives the p-value for a
@@ -1144,7 +1144,7 @@ Figure 21.16: Gift aid and family income for a random sample of 50 first-year st
 <p>The point of the tools in this section are to go beyond a visual interpretation of the linear relationship toward a formal mathematical claim about the statistical significance of the slope estimate.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:rOutputForIncomeAidLSRLineInInferenceSection">Table 21.5: </span><span id="tab:rOutputForIncomeAidLSRLineInInferenceSection">Table 21.6: </span>Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.
+<span id="tab:rOutputForIncomeAidLSRLineInInferenceSection">Table 21.3: </span>Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.
 </caption>
 <thead>
 <tr>
@@ -1203,7 +1203,7 @@ family_income
 </tbody>
 </table>
 <div class="guidedpractice">
-<p>Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">21.5</a> shows
+<p>Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">21.3</a> shows
 statistical software output from fitting the least squares regression
 line shown in Figure <a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection">21.16</a>. Use the output to formally
 evaluate the following hypotheses.</p>
@@ -1240,7 +1240,7 @@ freedom. For simple linear regression, the model’s degrees of freedom are <spa
 </div>
 <div class="workedexample">
 <p>Compute a 95% confidence interval for the slope coefficient using the
-regression output from Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">21.5</a>.</p>
+regression output from Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">21.3</a>.</p>
 <hr />
 <p>The point estimate is <span class="math inline">\(b_1 = -0.0431\)</span> and the standard error is <span class="math inline">\(SE(b_1) = 0.0108\)</span>. The degrees of freedom for the distribution are <span class="math inline">\(df = n - 2 = 48\)</span>, and are typically noted in the regression output, allowing us to identify <span class="math inline">\(t_{48}^{\star} = 2.01\)</span> for use in the confidence interval.</p>
 <p>We can now construct the confidence interval in the usual way:

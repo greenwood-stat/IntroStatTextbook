@@ -84,7 +84,7 @@ aesthetics <- tribble(
   "Shape", "Categorical")
 
 aesthetics %>%
-  kable(caption = "Examples of aesthetics and types of variables mapped to these aesthetics.")
+  kable(format = "html", caption = "Examples of aesthetics and types of variables mapped to these aesthetics.")
 ```
 
 In Figure \@ref(fig:gapminder-1), quantitative variables GDP per capita, life expectancy, and population are mapped to aesthetics: position on the $x$-axis, position on the $y$-axis, and population, respectively. The categorical variable Region is mapped to color. Explore individual countries by hovering over the points.
@@ -147,7 +147,7 @@ George Will based his claim state expenditures, average SAT scores, and other ed
 SAT <- read.csv("https://math.montana.edu/courses/s216/data/sat.csv")
 SAT %>% 
   slice_head(n = 6) %>%
-  kable(caption = "Six rows from the `SAT` data set.",
+  kable(format = "html", caption = "Six rows from the `SAT` data set.",
         row.names = TRUE)
 ```
 
@@ -165,7 +165,7 @@ SAT_var_def <- tribble(
 )
 
 SAT_var_def %>%
-  kable(caption = "Variables and their descriptions for the `SAT` data set.")
+  kable(format = "html", caption = "Variables and their descriptions for the `SAT` data set.")
 ```
 
 Mr. Will claims that expenditure per pupil has a _negative_ correlation with average SAT scores across states. Is this true? Indeed, the correlation between `expend` and `sat` is equal to $r$ = `r round(cor(SAT$expend, SAT$sat),3)`, and the relationship between the two variables is shown in Figure \@ref(fig:expend-sat). Hover over each point to view data on a particular State.
@@ -272,7 +272,7 @@ loans <- loans_full_schema %>%
 
 loans %>%
   slice_head(n = 6) %>%
-  kable(caption = "First six rows from the `loans_full_schema` data set.") %>%
+  kable(format = "html", caption = "First six rows from the `loans_full_schema` data set.") %>%
   kable_styling(full_width = FALSE, bootstrap_options = "striped", latex_options = "striped")
 ```
 
@@ -291,7 +291,7 @@ loans_var_def <- tribble(
 
 loans_var_def %>%
   mutate(variable = cell_spec(variable, monospace = TRUE)) %>%
-  kable(escape = FALSE, caption = "Variables and their descriptions for the `loans` data set.") %>%
+  kable(format = "html", escape = FALSE, caption = "Variables and their descriptions for the `loans` data set.") %>%
   kable_styling(bootstrap_options = c("striped", "condensed"), 
                 latex_options = "striped")
 ```
@@ -309,7 +309,7 @@ Results of this model are shown in Table \@ref(tab:intRateVsPastBankrModel).
 m_bankruptcy <- lm(interest_rate ~ bankruptcy, data = loans)
 tidy(m_bankruptcy) %>%
   mutate(p.value = "<0.0001") %>%
-  kable(caption = "Summary of a linear model for predicting interest rate based on whether the borrower has a bankruptcy in their record. Degrees of freedom for this model is 9998.") %>%
+  kable(format = "html", caption = "Summary of a linear model for predicting interest rate based on whether the borrower has a bankruptcy in their record. Degrees of freedom for this model is 9998.") %>%
   kable_styling(full_width = FALSE)
 ```
 
@@ -340,7 +340,7 @@ terms_chp_7 <- c(terms_chp_7, "reference level")
 m_verified_income <- lm(interest_rate ~ verified_income, data = loans)
 tidy(m_verified_income) %>%
   mutate(p.value = "<0.0001") %>%
-  kable(caption = "Summary of a linear model for predicting interest rate based on whether the borrower’s income source and amount has been verified. This predictor has three levels, which results in 2 rows in the regression output.") %>%
+  kable(format = "html", caption = "Summary of a linear model for predicting interest rate based on whether the borrower’s income source and amount has been verified. This predictor has three levels, which results in 2 rows in the regression output.") %>%
   kable_styling(full_width = FALSE)
 ```
 
@@ -485,7 +485,7 @@ tidy(m_full) %>%
     p.value = as.character(round(p.value, 4)), 
     p.value = if_else(p.value == "0", "<0.0001", p.value)
     ) %>%
-  kable(caption = "Output for the regression model, where interest rate is the outcome and the variables listed are the predictors. Degrees of freedom for this model is 9990.") %>%
+  kable(format = "html", caption = "Output for the regression model, where interest rate is the outcome and the variables listed are the predictors. Degrees of freedom for this model is 9990.") %>%
   kable_styling(full_width = FALSE)
 ```
 

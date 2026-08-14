@@ -246,7 +246,7 @@ Some properties of the pipe syntax (`%>%`) to keep in mind:
 
 Pipes are used commonly with functions in the `dplyr` package
 (included in the `tidyverse` package) and they allow us to
-sequentially build data wrangling operations.
+sequentially build data wrangling operations. In R versions $\geq$ 4.1.0, the equivalent code of `|>` also provides the pipe functionality.
 Pipes are also helpful when creating data visualizations in the `ggplot2` package.
 
 ## A data wrangling example

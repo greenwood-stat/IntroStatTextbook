@@ -85,7 +85,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.",
+ kable(format = "html", caption = "Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.",
     col.names = c("", "Treatment", "Control", "Total")) %>%
  kable_styling() 
 ```
@@ -228,7 +228,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary of student choices in the opportunity cost study.",
+ kable(format = "html", caption = "Summary of student choices in the opportunity cost study.",
     col.names = c("", "control group", "treatment group", "Total")) %>%
  kable_styling() #%>%
  #add_header_above(c(" ", "`decision`" = 2, " "))
@@ -250,7 +250,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.",
+ kable(format = "html", caption = "The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.",
     col.names = c("", "control group", "treatment group", "Total")) %>%
  kable_styling() #%>%
  #add_header_above(c( " ", "`decision`" = 2, " "))
@@ -342,7 +342,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.",
+ kable(format = "html", caption = "Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.",
     col.names = c( "", "control group", "treatment group", "Total")) %>%
  kable_styling() #%>%
  #add_header_above(c( " ", "`decision`" = 2, " "))
@@ -465,7 +465,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary results for the malaria vaccine experiment.",
+ kable(format = "html", caption = "Summary results for the malaria vaccine experiment.",
     col.names = c("", "", "vaccine", "placebo", "Total")) %>%
  kable_styling() %>%
  add_header_above(c(" ", " ", "`treatment`" = 2, " "))
@@ -927,7 +927,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Results for the CPR study.
+ kable(format = "html", caption = "Results for the CPR study.
     Patients in the treatment group were given
     a blood thinner, and patients in the control
     group were not.", 
@@ -977,7 +977,8 @@ temptbl <- temptbl %>%
   mutate(total = myocardioal_infarction + no_event) %>%
   t()
 row.names(temptbl) <- c("heart attack","no event","Total")
-kable(temptbl, caption = "Results for the study on n-3 fatty acid supplement and related health benefits.", 
+kable(temptbl, format = "html",
+      caption = "Results for the study on n-3 fatty acid supplement and related health benefits.", 
     col.names = c( "fish oil", "placebo"),
     row.names = TRUE) %>%
  kable_styling()
@@ -1001,7 +1002,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary results for breast cancer study.", 
+ kable(format = "html", caption = "Summary results for breast cancer study.", 
     col.names = c( "", "", "Mammogram", "Control"))  %>%
  kable_styling()
 ```
@@ -1213,7 +1214,7 @@ zsim_table <- tribble(
 )
 
 zsim_table %>%
- kable(caption = "Similarities of $z$-methods across one sample and two independent samples analysis of a categorical response variable.", 
+ kable(format = "html", caption = "Similarities of $z$-methods across one sample and two independent samples analysis of a categorical response variable.", 
     col.names = c("", " one sample ", "two indep. samples")) %>%
  kable_styling()
 ```

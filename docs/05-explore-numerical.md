@@ -159,12 +159,27 @@ The mean is useful for making comparisons across different samples that may have
 Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug. 
 A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:
 
-
-
-|                     | New drug | Standard drug |
-|:--------------------|:--------:|:-------------:|
-|Number of patients   |   500    |     1000      |
-|Total asthma attacks |   200    |      300      |
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:center;"> New drug </th>
+   <th style="text-align:center;"> Standard drug </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Number of patients </td>
+   <td style="text-align:center;"> 500 </td>
+   <td style="text-align:center;"> 1000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total asthma attacks </td>
+   <td style="text-align:center;"> 200 </td>
+   <td style="text-align:center;"> 300 </td>
+  </tr>
+</tbody>
+</table>
 
 
 
@@ -223,13 +238,37 @@ Dot plots show the exact value for each observation. This is useful for small da
 
 
 
-
-
-Table: (\#tab:binnedIntRateAmountTable)Counts for the binned `interest_rate` data.
-
-|Interest rate | 5% - 7.5% | 7.5% - 10% | 10% - 12.5% | 12.5% - 15% | 15% - 17.5% | 17.5% - 20% | 20% - 22.5% | 22.5% - 25% | 25% - 27.5% |
-|:-------------|:---------:|:----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|
-|n             |    11     |     15     |      8      |      4      |      5      |      4      |      1      |      1      |      1      |
+<table>
+<caption>(\#tab:binnedIntRateAmountTable)Counts for the binned `interest_rate` data.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Interest rate </th>
+   <th style="text-align:center;"> 5% - 7.5% </th>
+   <th style="text-align:center;"> 7.5% - 10% </th>
+   <th style="text-align:center;"> 10% - 12.5% </th>
+   <th style="text-align:center;"> 12.5% - 15% </th>
+   <th style="text-align:center;"> 15% - 17.5% </th>
+   <th style="text-align:center;"> 17.5% - 20% </th>
+   <th style="text-align:center;"> 20% - 22.5% </th>
+   <th style="text-align:center;"> 22.5% - 25% </th>
+   <th style="text-align:center;"> 25% - 27.5% </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> n </td>
+   <td style="text-align:center;"> 11 </td>
+   <td style="text-align:center;"> 15 </td>
+   <td style="text-align:center;"> 8 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 
 
@@ -642,7 +681,7 @@ These scenarios are plotted alongside the original data in Figure \@ref(fig:loan
 </div>
 
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:robustOrNotTable)(\#tab:robustOrNotTable)A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.</caption>
+<caption>(\#tab:robustOrNotTable)A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>

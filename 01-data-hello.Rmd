@@ -95,7 +95,8 @@ stent %>%
   arrange(group) %>%
   mutate(patient = 1:n()) %>%
   relocate(patient) %>%
-  kable(caption = "Results for five patients from the stent study.") %>%
+  kable(format = "html",
+        caption = "Results for five patients from the stent study.") %>%
   kable_styling(bootstrap_options = c("striped", "condensed"), 
                 latex_options = "striped")
 ```
@@ -115,7 +116,8 @@ stent %>%
   count(group, stage, outcome) %>%
   pivot_wider(names_from = c(stage, outcome), values_from = n) %>%
   adorn_totals(where = "row") %>%
-  kable(caption = "Descriptive statistics for the stent study.",
+  kable(format = "html", 
+        caption = "Descriptive statistics for the stent study.",
         col.names = c("", "stroke", "no event", "stroke", "no event")) %>%
   add_header_above(c(" " = 1, "30 days" = 2, "365 days" = 2), extra_css = "border-bottom: 2px solid") %>%
   row_spec(1, extra_css = "border-top: 2px solid") %>%
@@ -233,7 +235,7 @@ Descriptions of the variables in the `loan50` data set are given in Table \@ref(
 loan50 %>% 
   select(loan_amount, interest_rate, term, grade, state, total_income, homeownership) %>%
   slice_head(n = 6) %>%
-  kable(caption = "Six rows from the `loan50` data set.",
+  kable(format = "html", caption = "Six rows from the `loan50` data set.",
         row.names = TRUE)
 ```
 
@@ -250,7 +252,8 @@ loan50_var_def <- tribble(
 )
 
 loan50_var_def %>%
-  kable(caption = "Variables and their descriptions for the `loan50` data set.")
+  kable(format = "html", 
+        caption = "Variables and their descriptions for the `loan50` data set.")
 ```
 
 \index{data!loan50|)}
@@ -286,7 +289,8 @@ data(county)
 county %>%
   select(name, state, pop2017, pop_change, unemployment_rate, median_edu) %>%
   slice_head(n = 6) %>%
-  kable(caption = "Six observations and six variables from the `county` data set.")
+  kable(format = "html", 
+        caption = "Six observations and six variables from the `county` data set.")
 ```
 
 ```{r countyVariables}
@@ -310,7 +314,8 @@ county_var_def <- tribble(
 )
 
 county_var_def %>%
-  kable(caption = "Variables and their descriptions for the `county` data set.")
+  kable(format = "html", 
+        caption = "Variables and their descriptions for the `county` data set.")
 ```
 
 ::: {.data}
@@ -407,7 +412,7 @@ The scatterplot suggests a relationship between the two variables: counties with
 We might brainstorm as to why this relationship exists and investigate each idea to determine which are the most reasonable explanations.
 
 ```{r county-multi-unit-homeownership, fig.cap = "A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.", warning=FALSE}
-ggplot(county, aes(x = multi_unit, y = homeownership)) +
+p1 <- ggplot(county, aes(x = multi_unit, y = homeownership)) +
   geom_point(alpha = 0.3, color = COL["blue", "full"],
              fill = COL["black", "full"], shape = 21) +
   labs(
@@ -427,7 +432,8 @@ ggplot(county, aes(x = multi_unit, y = homeownership)) +
                aes(x = multi_unit, y = 0, xend = multi_unit, yend = homeownership,
                    color = COL["red", "full"]), linetype = "dashed") +
   scale_x_continuous(labels = percent_format(scale = 1)) +
-  scale_y_continuous(labels = percent_format(scale = 1))
+  scale_y_continuous(labels = percent_format(scale = 1)) 
+ggplotly(p1)
 ```
 
 The multi-unit and homeownership rates are said to be associated because the plot shows a discernible pattern.
@@ -454,7 +460,7 @@ While this trend isn't true for every county, the trend in the plot is evident. 
 :::
 
 ```{r county-pop-change-med-hh-income, fig.cap = "A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.", warning=FALSE}
-ggplot(county, aes(x = median_hh_income, y = pop_change)) +
+p2 <- ggplot(county, aes(x = median_hh_income, y = pop_change)) +
   geom_point(alpha = 0.3, color = COL["blue", "full"],
              fill = COL["black", "full"], shape = 21) +
   labs(
@@ -474,6 +480,7 @@ ggplot(county, aes(x = median_hh_income, y = pop_change)) +
                    color = COL["red", "full"]), linetype = "dashed") +
   scale_x_continuous(labels = dollar_format(scale = 0.001, suffix = "K")) +
   scale_y_continuous(labels = percent_format(scale = 1), limits = c(-40, 40))
+ggplotly(p2)
 ```
 
 Because there is a downward trend in Figure \@ref(fig:county-multi-unit-homeownership)---counties with more units in multi-unit structures are associated with lower homeownership---these variables are said to be **negatively associated**.
