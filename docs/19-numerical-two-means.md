@@ -61,7 +61,7 @@ An instructor decided to run two slight variations of the same exam. Prior to pa
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:summaryStatsForTwoVersionsOfExams)(\#tab:summaryStatsForTwoVersionsOfExams)Summary statistics of scores for each exam version.</caption>
+<caption>(\#tab:summaryStatsForTwoVersionsOfExams)Summary statistics of scores for each exam version.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -288,7 +288,7 @@ for the effect of ESCs on the change in heart pumping
 capacity relative to the control group.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:statsSheepEscStudy)(\#tab:statsSheepEscStudy)Summary statistics of the embryonic stem cell study.</caption>
+<caption>(\#tab:statsSheepEscStudy)Summary statistics of the embryonic stem cell study.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -397,7 +397,7 @@ A dataset called `ncbirths` represents a random sample of 150 cases of mothers a
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:babySmokeDF)(\#tab:babySmokeDF)Four cases from the `ncbirths` data set. The value `NA`, shown for the first two entries of the first variable, indicates that piece of data is missing.</caption>
+<caption>(\#tab:babySmokeDF)Four cases from the `ncbirths` data set. The value `NA`, shown for the first two entries of the first variable, indicates that piece of data is missing.</caption>
  <thead>
   <tr>
    <th style="text-align:right;"> fage </th>
@@ -532,7 +532,7 @@ for this Guided Practice.^[(a) The difference in sample means is an
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:SumStatsBirthWeightNewbornsSmoke)(\#tab:SumStatsBirthWeightNewbornsSmoke)Summary statistics for the `ncbirths` data set.</caption>
+<caption>(\#tab:SumStatsBirthWeightNewbornsSmoke)Summary statistics for the `ncbirths` data set.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -770,11 +770,11 @@ In the past three chapters, we have seen the $t$-distribution applied as the app
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:tcompare)(\#tab:tcompare)Similarities of $t$-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.</caption>
+<caption>(\#tab:tcompare)Similarities of $t$-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> one sample </th>
+   <th style="text-align:left;">  one sample  </th>
    <th style="text-align:left;"> paired sample </th>
    <th style="text-align:left;"> two indep. samples </th>
   </tr>

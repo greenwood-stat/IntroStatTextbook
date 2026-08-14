@@ -24,7 +24,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.",
+ kable(format = "html", caption = "Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.",
     col.names = c("Observational unit", "Comparison groups", "Measurement", "Value of interest")) %>%
  kable_styling() 
 ```
@@ -275,7 +275,7 @@ ucla_textbooks_f18 <- ucla_textbooks_f18 %>%
 
 ucla_textbooks_f18 %>%
   head(4) %>%
-   kable(caption = "Four cases of the `ucla_textbooks_f18` dataset.") %>%
+   kable(format = "html", caption = "Four cases of the `ucla_textbooks_f18` dataset.") %>%
  kable_styling() 
 
 ```
@@ -375,7 +375,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary statistics for the 68 new textbook price differences (UCLA -- Amazon).",
+ kable(format = "html", caption = "Summary statistics for the 68 new textbook price differences (UCLA -- Amazon).",
     col.names = c("$n$", "$\\bar{y}_{d}$", "$s_{d}$")) %>%
  kable_styling() 
 ```

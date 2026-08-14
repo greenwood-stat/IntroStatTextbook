@@ -71,7 +71,7 @@ Note that if we had done a one-sided hypothesis test, the resulting hypotheses w
 There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did. The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSection).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:resultsForCPRStudyInSmallSampleSection)(\#tab:resultsForCPRStudyInSmallSampleSection)Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.</caption>
+<caption>(\#tab:resultsForCPRStudyInSmallSampleSection)Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -202,7 +202,7 @@ The remaining 75 students were placed in the treatment group, and they saw a sli
 Would the extra statement reminding students of an obvious fact impact the purchasing decision? Table \@ref(tab:OpportunityCostTable) summarizes the study results.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTable)(\#tab:OpportunityCostTable)Summary of student choices in the opportunity cost study.</caption>
+<caption>(\#tab:OpportunityCostTable)Summary of student choices in the opportunity cost study.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -243,7 +243,7 @@ Would the extra statement reminding students of an obvious fact impact the purch
 It might be a little easier to review the results using row proportions, specifically considering the proportion of participants in each group who said they would buy or not buy the DVD. These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp), and a segmented bar plot is provided in Figure \@ref(fig:OpportunityCostBarplot).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTableRowProp)(\#tab:OpportunityCostTableRowProp)The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.</caption>
+<caption>(\#tab:OpportunityCostTableRowProp)The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -342,7 +342,7 @@ The results of a single randomization from chance alone is shown in Table \@ref(
 -->
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTableSimulated)(\#tab:OpportunityCostTableSimulated)Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.</caption>
+<caption>(\#tab:OpportunityCostTableSimulated)Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -400,7 +400,7 @@ Since the study was a randomized experiment, we can conclude that the effect was
 We consider a study on a new malaria vaccine called PfSPZ. In this study, volunteer patients were randomized into one of two experiment groups: 14 patients received an experimental vaccine and 6 patients received a placebo vaccine. Nineteen weeks later, all 20 patients were exposed to a drug-sensitive malaria virus strain; the motivation of using a drug-sensitive strain of virus here is for ethical considerations, allowing any infections to be treated effectively. The results are summarized in Table \@ref(tab:malaria-vaccine-20-exp-summary), where 9 of the 14 treatment patients remained free of signs of infection while all of the 6 patients in the control group patients showed some baseline signs of infection.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:malaria-vaccine-20-exp-summary)(\#tab:malaria-vaccine-20-exp-summary)Summary results for the malaria vaccine experiment.</caption>
+<caption>(\#tab:malaria-vaccine-20-exp-summary)Summary results for the malaria vaccine experiment.</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -717,7 +717,7 @@ With both conditions satisfied, the difference in sample proportions can be reas
 ````{=html}
 <!--
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
+<caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
     Patients in the treatment group were given
     a blood thinner, and patients in the control
     group were not.</caption>
@@ -788,10 +788,10 @@ Create a 95% confidence interval for the effect of fish oils on heart attacks fo
 [^15-categorical-two-props-13]: Because the patients were randomized and there is no indication that results for one subject might impact another, the subjects may be assumed to be independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)$. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:fish-oil-data)(\#tab:fish-oil-data)Results for the study on n-3 fatty acid supplement and related health benefits.</caption>
+<caption>(\#tab:fish-oil-data)Results for the study on n-3 fatty acid supplement and related health benefits.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">   </th>
    <th style="text-align:right;"> fish oil </th>
    <th style="text-align:right;"> placebo </th>
   </tr>
@@ -828,7 +828,7 @@ A 30-year study was conducted with nearly 90,000 female participants. During a 5
 If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On the other hand, if mammograms are not as effective as regular breast cancer exams, we would expect to see an increase in breast cancer deaths in the mammogram group.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:mammogramStudySummaryTable)(\#tab:mammogramStudySummaryTable)Summary results for breast cancer study.</caption>
+<caption>(\#tab:mammogramStudySummaryTable)Summary results for breast cancer study.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -1027,11 +1027,11 @@ So far in this chapter, we have seen the normal distribution applied as the appr
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:zcompare)(\#tab:zcompare)Similarities of $z$-methods across one sample and two independent samples analysis of a categorical response variable.</caption>
+<caption>(\#tab:zcompare)Similarities of $z$-methods across one sample and two independent samples analysis of a categorical response variable.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> one sample </th>
+   <th style="text-align:left;">  one sample  </th>
    <th style="text-align:left;"> two indep. samples </th>
   </tr>
  </thead>

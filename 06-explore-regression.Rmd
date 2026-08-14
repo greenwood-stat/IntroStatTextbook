@@ -520,7 +520,7 @@ The first five rows of this dataset are given in Table \@ref(tab:elmhurst-data).
 ```{r elmhurst-data}
 elmhurst %>%
   slice_head(n = 5) %>%
-  kable(caption = "First five rows of the `elmhurst` dataset.") %>%
+  kable(format = "html", caption = "First five rows of the `elmhurst` dataset.") %>%
   kable_styling(full_width = FALSE)
 ```
 
@@ -590,7 +590,7 @@ In Chapter \@ref(inference-reg) we will dive deeper into the remaining columns w
 
 ```{r rOutputForIncomeAidLSRLine}
 m_ga_fi %>%
-  kable(caption = "Summary of least squares fit for the Elmhurst data.") %>%
+  kable(format = "html", caption = "Summary of least squares fit for the Elmhurst data.") %>%
   kable_styling(full_width = FALSE) 
 ```
 
@@ -621,7 +621,7 @@ elmhurst %>%
     ga_s = sd(gift_aid),
     r    = cor(family_income, gift_aid)
   ) %>%
-  kable(
+  kable(format = "html", 
     col.names = c("mean", "sd", "mean", "sd", "R"),
     align = "ccccc",
     caption = "Summary statistics for family income and gift aid."
@@ -896,7 +896,7 @@ m_total_pr_cond_slope <- m_total_pr_cond_tidy %>%
   pull(estimate)
 
 m_total_pr_cond_tidy %>%
-  kable(caption = "Least squares ression summary for the final auction price against the condition of the game.") %>%
+  kable(format = "html", caption = "Least squares ression summary for the final auction price against the condition of the game.") %>%
   kable_styling(full_width = FALSE) 
 ```
 
@@ -1193,7 +1193,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.",
+ kable(format = "html", caption = "Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.",
   col.names = c("Response Variable", "Explanatory Variable", "Summary Measure(s)")) %>%
  kable_styling() 
 ```

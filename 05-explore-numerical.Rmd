@@ -201,7 +201,7 @@ drug_asthma <- tribble(
   "Total asthma attacks", 200,         300
 )
 drug_asthma %>%
-  kable(col.names = c("", "New drug", "Standard drug"),
+  kable(format = "html", col.names = c("", "New drug", "Standard drug"),
         align = c("lcc"))
 ```
 
@@ -278,7 +278,7 @@ loan50 %>%
   unite("Interest rate", lower:upper, sep = " - ") %>%
   pivot_wider(names_from = "Interest rate", values_from = "n") %>%
   bind_cols(tibble("Interest rate" = "n"), .) %>%
-  kable(align = "lccccccccc", caption = "Counts for the binned `interest_rate` data.")
+  kable(format = "html", align = "lccccccccc", caption = "Counts for the binned `interest_rate` data.")
 ```
 
 ```{r loan50IntRateHist, fig.cap = "A histogram of `interest_rate`. This distribution is strongly skewed to the right."}
@@ -845,7 +845,7 @@ loan50_robust_check %>%
     SD = sd(interest_rate), 
     .groups = "drop"
     ) %>%
-  kable(align = "lcccc", caption = "A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.") %>%
+  kable(format = "html", align = "lcccc", caption = "A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.") %>%
   kable_styling("striped") %>%
   add_header_above(c(" " = 1, "Robust" = 2, "Not robust" = 2))
 ```

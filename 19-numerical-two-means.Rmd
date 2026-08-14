@@ -82,7 +82,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary statistics of scores for each exam version.",
+ kable(format = "html", caption = "Summary statistics of scores for each exam version.",
     col.names = c("", "$n$", "$\\bar{y}$", "$s$", "minimum", "maximum")) %>%
  kable_styling() 
 ```
@@ -367,7 +367,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary statistics of the embryonic stem cell study.",
+ kable(format = "html", caption = "Summary statistics of the embryonic stem cell study.",
     col.names = c("", "$n$", "$\\bar{y}$", "$s$")) %>%
  kable_styling() 
 ```
@@ -518,7 +518,7 @@ A dataset called `ncbirths` represents a random sample of 150 cases of mothers a
 ncbirths %>% 
   select(-premie, -mature, -lowbirthweight) %>%
   head(4) %>%
- kable(caption = "Four cases from the `ncbirths` data set. The value `NA`, shown for the first two entries of the first variable, indicates that piece of data is missing.") %>%
+ kable(format = "html", caption = "Four cases from the `ncbirths` data set. The value `NA`, shown for the first two entries of the first variable, indicates that piece of data is missing.") %>%
  kable_styling() 
 ```
 
@@ -616,7 +616,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary statistics for the `ncbirths` data set.",
+ kable(format = "html", caption = "Summary statistics for the `ncbirths` data set.",
     col.names = c("", "smoker", "nonsmoker")) %>%
  kable_styling() 
 ```
@@ -863,7 +863,7 @@ tsim_table <- tribble(
 )
 
 tsim_table %>%
- kable(caption = "Similarities of $t$-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.", 
+ kable(format = "html", caption = "Similarities of $t$-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.", 
     col.names = c("", " one sample ", "paired sample", "two indep. samples")) %>%
  kable_styling()
 ```

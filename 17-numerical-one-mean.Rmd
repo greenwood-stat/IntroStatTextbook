@@ -865,7 +865,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in micrograms of mercury per wet gram
+ kable(format = "html", caption = "Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in micrograms of mercury per wet gram
     of muscle ($\\mu$g/wet g).",
     col.names = c( "$n$", "$\\bar{y}$", "$s$", "minimum", "maximum")) %>%
  kable_styling() 

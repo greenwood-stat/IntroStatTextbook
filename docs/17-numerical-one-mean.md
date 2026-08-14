@@ -643,7 +643,7 @@ We will identify a confidence interval for the average mercury content in dolphi
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:summaryStatsOfHgInMuscleOfRissosDolphins)(\#tab:summaryStatsOfHgInMuscleOfRissosDolphins)Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in micrograms of mercury per wet gram
+<caption>(\#tab:summaryStatsOfHgInMuscleOfRissosDolphins)Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in micrograms of mercury per wet gram
     of muscle ($\mu$g/wet g).</caption>
  <thead>
   <tr>

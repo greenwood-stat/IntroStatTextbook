@@ -40,7 +40,8 @@ email <- email %>%
 email %>% 
   select("type", "num_char", "line_breaks", "format", "number") %>%
   slice_head(n = 6) %>%
-  kable(caption = "Six rows from the `email` data set.",
+  kable(format = "html", 
+        caption = "Six rows from the `email` data set.",
         row.names = TRUE)
 ```
 
@@ -55,7 +56,8 @@ email_var_def <- tribble(
 )
 
 email_var_def %>%
-  kable(caption = "Variables and their descriptions for the `email` data set.")
+  kable(format = "html", 
+        caption = "Variables and their descriptions for the `email` data set.")
 ```
 
 ## Contingency tables and conditional proportions
@@ -68,7 +70,7 @@ the table would be called a **relative frequency table**.
 ```{r emailTableNumber}
 tab <- as.numeric(table(email[,c("number")]))
 names(tab) <- c("none","small","big")
-kable(data.frame(t(tab)), caption = "Frequency table of `Number` variable.")
+kable(format = "html", data.frame(t(tab)), caption = "Frequency table of `Number` variable.")
 ```
 
 
@@ -104,7 +106,8 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Contingency table of `number` (cols) and `type` (rows) variables.",
+ kable(format = "html", 
+       caption = "Contingency table of `number` (cols) and `type` (rows) variables.",
     col.names = c("", "", "none", "small", "big", "Total")) %>%
  add_header_above(c(" ", " ", "`number`" = 3, " ")) %>%
   kable_styling()  
@@ -151,7 +154,7 @@ g.prop <- round(g / rep(rowSums(g), 3), 3)
 dimnames(g.prop)[[1]] <- c("spam", "not spam")
 
 g.prop %>%
- kable(caption = "A contingency table with row proportions for the `type` and `number` variables.") %>%
+ kable(format = "html", caption = "A contingency table with row proportions for the `type` and `number` variables.") %>%
   kable_styling()  
 ```
 
@@ -163,7 +166,7 @@ g.prop <- round(g / rep(colSums(g), rep(2,3)), 3)
 dimnames(g.prop)[[1]] <- c("spam", "not spam")
 
 g.prop %>%
- kable(caption = "A contingency table with column proportions for the `type` and `number` variables.") %>%
+ kable(format = "html", caption = "A contingency table with column proportions for the `type` and `number` variables.") %>%
   kable_styling()  
 ```
 
@@ -195,7 +198,7 @@ dimnames(g)[[1]] <- c("spam", "not spam", "Total")
 dimnames(g)[[2]] <- c("not HTML", "HTML", "Total")
 
 g %>%
- kable(caption = "A contingency table for `type` and `format`.") %>%
+ kable(format = "html", caption = "A contingency table for `type` and `format`.") %>%
   kable_styling()  
 ```
 
@@ -366,7 +369,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Contingency table of homicide cases in Florida from 1976 through 1987.",
+ kable(format = "html", caption = "Contingency table of homicide cases in Florida from 1976 through 1987.",
     col.names = c("", "", "Caucasian", "African American", "Total")) %>%
  add_header_above(c(" ", "", "Defendant's race" = 2, " ")) %>%
   kable_styling()  
@@ -411,7 +414,7 @@ temptbl <- tribble(
 )
 
 temptbl %>%
- kable(caption = "Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.",
+ kable(format = "html", caption = "Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.",
     col.names = c("Victim's race", "Defendant's race", "Yes", "No", "Percent Yes")) %>%
  add_header_above(c(" ", "", "Death Penalty?" = 2, " ")) %>%
   kable_styling()  
